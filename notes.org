@@ -1,0 +1,271 @@
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{diagrams}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{examples}{Example}
+#+MATHJAX mathml:t
+#+BABEL :exports results
+
+* Notes for 2011-09-16
+** Reading for [2011-09-16]--[2011-09-26]
+   1. Homotopy Theory and Model Categories by Dwyer and Spalinski
+      [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.152.8004][CiteSeer]]
+   2. An elementary illustrated introduction to Simplicial Sets by G. Friedman
+      [[http://arxiv.org/abs/0809.4221][arXiv]]
+   3. Fiber Bundles ... pp. in Hatcher
+** Fibrations and Cofibrations in $Top$
+   - $Top$ is the category of compactly generated topological spaces
+
+*** Definition 							 :DEFINITION:
+A continuous map $p: E\rightarrow B$ is a *fibration* if we have a
+solution to the following lifting problem:
+#+begin_src latex :file diag1.svg
+\begin{diagram}
+  Y\times \{0\} & \rTo & E \\
+  \dTo & \ruDotsto & \dTo \\
+  Y\times I & \rTo & B
+\end{diagram}
+#+end_src
+
+*** Examples
+**** Covering Spaces (for which there exists a unique lift)	    :EXAMPLE:
+**** Fiber bundles (over a paracompact base)			    :EXAMPLE:
+**** Pullback fibrations					    :EXAMPLE:
+If $p:E\rightarrow B$ is a fibration and $f: X\rightarrow B$ is a
+continuous map, consider the space $f^*(E) = \{(x,e)\in X\times E |
+f(x)=p(x)\}$
+Then we have the diagram
+#+begin_src latex :file diag2.svg
+\begin{diagram}
+  f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
+  \dTo^{\pi_2} & & \dTo_p \\
+  X & \rTo_f & B
+\end{diagram}
+#+end_src
+
+  1. What is $\pi_2$?
+
+     The restriction of $X\times E \rightarrow X$ to $f*(E)\subseteq
+     X\times E$.
+
+  2. Pullbacks have a good universal property
+
+     We have the diagram
+#+begin_src latex :file diag3.svg
+  \begin{diagram}
+    Q \\
+    &\rdTo(2,4)_{q_2}\rdDotsto^{\exists!u}\rdTo(4,2)^{q_1}\\
+    &&f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
+    &&\dTo^{\pi_2} & & \dTo_p \\
+    &&X & \rTo_f & B
+  \end{diagram}
+#+end_src
+
+     where $\pi_2\circ u = q_2$ and $pi_1\circ u = q_1$.
+
+  3. We can form the diagram
+#+begin_src latex :file diag4.svg
+  \begin{diagram}
+    Y\times\{0\}&\rTo&f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
+    \dTo&\ruDotsto(3,1)^{\exists H}&\dTo^{\pi_2} & & \dTo_p \\
+    Y\times I&\rTo&X & \rTo_f & B
+  \end{diagram}
+#+end_src
+     Since $p$ is a fibration, there exists a map $H$ making the
+     diagram commute. Then we have,
+#+begin_src latex :file diag5.svg
+  \begin{diagram}
+    Y\times\{0\}&\rTo&f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
+    \dTo&\ruTo^{\exists H'}\ruDotsto(3,1)^{\exists H}&\dTo^{\pi_2} & & \dTo_p \\
+    Y\times I&\rTo&X & \rTo_f & B
+  \end{diagram}
+#+end_src
+     by the universal property, where $Q=Y\times I$, $q_1=H$, and then
+     $H'=u$.
+
+     Exercise: Show that H' is a lift.
+**** Path Space Fibrations					    :EXAMPLE:
+
+  Given a continuous map $f:X\rightarrow Y$ where $Y$ is path
+  connected.
+
+  Can replace $X$ by a homotopy equivalent space $P_f$.
+
+     - Build $P_f$ (start with Y)
+
+       $Y^I\coloneqq Map(I,Y)$ with the (approximately) the compact
+       open topology.
+
+       * Step 1. $q:Y^I\rightarrow Y$ is a
+         fibration. ($q:\alpha\mapsto\alpha(a)$)
+       * Step 2.
+#+BEGIN_SRC latex :file diag6.svg
+  \begin{diagram}
+    P_f:=&f^*(Y^I)\SEpbk&\rTo^{\pi_1}&Y^I \\
+    &\dTo_{\pi_2}&&q\\
+    &X&\rTo_f&Y
+  \end{diagram}
+#+END_SRC
+	 The pullback $P_f\rightarrow^{\pi_2}X$ is a fibration.
+
+*** Last thing to say about fibrations
+
+    There are examples that don't come from fiber bundles
+
+**** Project 1 (20 minute talk) 				    :PROJECT:
+     Give an example of these fibrations (with applications).
+     - Hopf/Serre Fibration
+
+** Cofbirations
+   Let $A$, $X$ be reasonable spaces (e.g. CW-complexes).
+
+*** Definition							 :DEFINITION:
+    $i: A\rightarrow X$ is a *cofibration* if there exists a lift $H$
+#+BEGIN_SRC latex :file diag7.svg
+  \begin{diagram}
+    X\times\{0\} \cup A\times I & \rTo^{f\cup  h} & y \\
+    \dTo & \ruDotsto_{\exists H}\\
+    X\times I
+  \end{diagram}
+#+END_SRC
+
+    for any map $f:X\rightarrow Y$ and $h:A\times I \rightarrow Y$ a
+    homotopy extending $f|_A$.
+
+    A cofibration is essentially an embedding whose image is
+    closed. The intuition is that the homotopy on the boundary of $A$
+    can be extended.
+
+*** Key points about cofibrations
+    Cofibrations are *dual* to fibrations.
+
+    $A\times I\rightarrow^f B$ is dual to $A\rightarrow B^I$.
+
+    $f:X\rightarrow Y$ is a fibration if
+#+begin_src latex :file diag8.svg
+\begin{diagram}
+  X&\lTo^{ev_0}&X^I \\
+  \uTo&\ruDotsto&\dTo^f\\
+  Z&\rTo&Y^I
+\end{diagram}
+#+end_src
+
+    $f:Y\rightarrow X$ is a cofibration if
+#+begin_src latex :file diag9.svg
+\begin{diagram}
+  X&\rTo^{i_0}&X\times I \\
+  \dTo&\ldDotsto&\uTo^{f\times I}\\
+  Z&\lTo&Y\times I
+\end{diagram}
+#+end_src
+
+*** Key points about cofibrations 2
+
+**** Definition (Pushout) 					 :DEFINITION:
+     Let $f:A\rightarrow B$ and $g:A\rightarrow C$ be continuous maps.
+
+     We have
+#+BEGIN_SRC latex :file diag10.svg
+  \begin{diagram}
+    A&\rTo^f&B\\
+    \dTo_g&&\dTo&\rdTo(2,4)\\
+    C&\rTo&\NEpbk f_*C \\
+    &\rdTo(4,2)&&\rdDotsto^{\exists!} \\
+    &&&&D
+\end{diagram}
+#+END_SRC
+
+     where $f_*C \coloneqq B\sqcup C/f(a)\sim g(a)$ and $B\sqcup
+     C\coloneqq\{(b,c_0,0)\in B\times C\times I |b\in B\} \cup
+     C\coloneqq\{(b_0,c,1)\in B\times C\times I |c\in C\}$
+
+     In $Top$, we can always construct $f_*C$.
+
+
+h**** Theorem							    :THEOREM:
+     If $g:A\rightarrow C$ is a cofibration, then
+#+BEGIN_SRC latex :file diag11.svg
+  \begin{diagram}
+    A&\rTo^f&B\\
+    \dTo_g&&\dTo\\
+    C&\rTo&\NEpbk f_*C \\
+\end{diagram}
+#+END_SRC
+     $B\rightarrow f_*C$ is also a cofbiration
+
+     Proof. dual to that for cofibrations.
+
+**** Mapping Cylinders 						    :EXAMPLE:
+     Let $f:A\rightarrow X$ be continuous.
+     We replace $X$ by a homotopy equilvaent space
+
+     Define $M_f$ such that $A\rightarrow M_f$ is a cofibration.
+
+#+BEGIN_SRC latex :file diag12.svg
+  \begin{diagram}
+  A\times\{1\}&\rTo&X\times\{1\}\\
+  \dTo&&\dTo
+  A\times I&\rTo&M_f
+#+END_SRC
+     $M_f$ is the mapping cylinder of $f$.
+
+
+*** Model Categories
+    We axiomatics these properties of $Top$.
+
+    Then we can use all the power of homotopy theory in general
+    settings.
+
+    Let $\mathscr{C}$ be a nice category and $W$ weak equivalences (a
+    distinguished class of maps in $\mathscr{C}$. Then the object of
+    study is $\mathscr{C}[W^{-1}]$. In the topological setting this is
+    $Top/homptopy$, and the category on which $\pi_*X$ is defined.
+
+    We have a functor \(\mathscr{C}\rightarrow^{\mathscr{L}\text{
+    invert $W$}} \mathscr{C}[W^{-1}]\eqqcolon
+    Ho(\mathscr{C})\). $Ho(\mathscr{C}$ is called the homotopy category
+    or derived category.
+
+    We are interested in $Map_{Ho(\mathscr{C})}(X,Y)$, $\pi_*(X)$,
+    $H_*(X)$ in $Ho(\mathscr{C})$. We have various models of what
+    happens in $Ho(\mathscr{C})$:
+    - Higher Category Theory
+    - $(\infinity,1)$-categories
+    - Quasi-categories
+    - Complete Segal Spaces
+
+    The behaviour is governed by the cofibrations and fibrations.
+
+** Basic Objects
+
+*** Definition							 :DEFINITION:
+    A (small) *category* $\mathscr{C}$ consists of
+    1) A set of objects $obj(\mathscr{C})$
+    2) For every $X,Y\in obj(\mathscr{C})$ a set
+       $Hom_{\mathscr(C)}(X,Y)$ of maps $X\rightarrow Y)
+    3) An associative and unital composition.
+
+*** Definition							 :DEFINITION:
+    A category $\mathscr{C}$ is *enriched* over a category
+    $(\mathscr{D},\otimes,1)$ if it has
+    1) A set of objects $obj(\mathscr{C})$
+    2) $Hom_{\mathscr(C)}(X,Y)$ is an object of $\mathscr{D}$
+    3) $\mathscr{D} has a multiplication, so
+       $Hom(X,Y)\otimes Hom(Y,Z)\rightarrow Hom(X,Y)$
+       is given by the multiplication.
+
+**** Example							    :EXAMPLE:
+     $Ho(\mathscr{C})$ can be transformed into a category enriched in
+     "spaces". (This is a $(\infinity,1)$-category)
+
+
+     Given $\mathscr{C}$ + a model structure, we can form (via
+     $\mathscr{L}$ the homotopy category $Ho(\mathscr C)$. From that, we
+     can for the Dwyer-Kan localization $\mathscr{LH}$ of
+     $Ho(\mathscr{C}$ to get a simplicial category (aka
+     $(\infinity,1)$-category).
+
+**** Project							    :PROJECT:
+     A dg-category $\mathscr{C}$ is a category enriched in chain complexes
+
+*** Definition							 :DEFINITION:
+    A map of categories (*functor*) $F:C\rightarrow D$
