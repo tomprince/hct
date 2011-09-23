@@ -1,0 +1,91 @@
+#+TITLE: André-Quillen Homology
+#+BABEL :exports results
+#+LATEX_HEADER: \usepackage{amsfonts}
+
+- John Harper
+- Joint work with Michael Ching and Catherine Hess
+- Grew out of questions asked at Isle of Skye Conference
+
+* Main Questions
+  1) What properties of an algebraic object $X$ (e.g. commutative ring
+     spectra) does its "homology" detect?
+  2) How much of $X$ can be recovered from its "homology"?
+
+* Quillen Homology
+
+  The general idea is to look at the abelianization in some category
+#+BEGIN_SRC latex :file 2011-09-19.1.svg
+\begin{diagram}
+  \text{objects}&\pile{\rTo^{Ab}\\\dashv\\\lTo_{\text{forget}}}&\text{Abelian
+  objects}
+\end{diagram}
+#+END_SRC
+  For example $H^1$ of groups is abelianization. More generally, we
+  have some notion of equivalence in our category, so we take the
+  derived version of this:
+#+BEGIN_SRC latex :file 2011-09-19.2.svg
+\begin{diagram}
+  \text{objects + homoptopy theory}&\rTo^{\underline{L}Ab}&\text{Abelian
+  objects + homotopy theory}
+\end{diagram}
+#+END_SRC
+  Since $Ab$ is a left adjoint, we take the left dervied
+  Abelianization. The Quillen homology of $X$ is defined as
+  $\underline{L}Ab(X)$.
+** Examples
+*** Spaces (empty algebraic structure)				    :EXAMPLE:
+#+BEGIN_SRC latex :file 2011-09-19.3.svg
+  \begin{diagram}
+    sSet&\rTo^{Ab=\mathbb{Z}(-)}&sAb \\
+    \dTo\dashv\uTo\\
+    \text{spaces}
+  \end{diagram}
+#+END_SRC
+    $\pi_*\underline{L}Ab(Y)=H_*(Y)$
+
+*** Groups							    :EXAMPLE:
+#+BEGIN_SRC latex :file 2011-09-19.4.svg
+  \begin{diagram}
+    sGrp&\rTo^{Ab}&sAb \\
+    \uInto\\
+    Grp
+  \end{diagram}
+#+END_SRC
+    $\pi_*\underline{L}Ab(G)=H_{*+1}(BG)$
+
+*** Commutative Rings						    :EXAMPLE:
+#+BEGIN_SRC latex :file 2011-09-19.5.svg
+  \begin{diagram}
+    \tilde X\in&CRng\downarrow \mathbb{Z}&\pile{\rTo^{Ab}\\\lTo_{\text{forget}}}&(CRng\downarrow\mathbb{Z})_{Ab} \\
+    &\dTo^{\text{equiv}}\uTo&&\dTo\uTo_{\text{equiv}} \\
+    &\text{non-unital }CRng&\lTo_{0-Alg}&Mod_{\mathbb{Z}} \\
+    &X&\rMapsto&X/X^2&\simeq Z\otimes_X\Omega_{\tilde X/\mathbb{Z}}
+  \end{diagram}
+#+END_SRC
+
+We are interested in the topological analogy of Quillen Homology
+1) Commutative Ring Spectra ($E_\infinity$)
+2) $E_n$-ring spectra
+2) Any operadic algebra
+
+
+* Basic Setup
+  (Commutative ring spectra will be a special case)
+
+  Let $\mathscr{O}$ be an operad in symmetric spectra $Sp^\Sigma$ such
+  that $\mathscr{O}[0]=*$ (non-unital). Having this determines a
+  canonical map
+  $\mathscr{O}\xleftarrow{f}\tau_1\mathscr{O}\coloneqq(*,\mathscr{O}[1],*,\ldots)$.
+
+** $\mathscr{O}$-algebra in $Sp^\Sigma$ 			    :EXAMPLE:
+
+#+BEGIN_SRC latex :file 2011-09-19.6.svg
+  \begin{diagram}
+    Alg_{\mathscr{O}}&\pile{\rTo^{f_*=\tau_1\mathscr{O}\circ-}\\\lTo_{f^*\text{forget}}}&Mod_{\mathscr{O}[1]}
+    \\
+    X&\rMapsto&\tau_1\mathscr{O}\circ_{\mathscr{O}}&=\mathscr{O}\wedge
+    X/\text{kill off n-ary operations}
+  \end{diagram}
+#+END_SRC
+  These are the indecomposables.
+** Topological Quillen Homology

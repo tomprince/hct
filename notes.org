@@ -1,17 +1,30 @@
+#+TITLE: Notes for Higher Category Theory
 #+LATEX_HEADER: \usepackage{amsthm}
-#+LATEX_HEADER: \usepackage{diagrams}
+#+LATEX_HEADER: \usepackage{empheq}
 #+LATEX_HEADER: \newtheorem{definition}{Definition}
 #+LATEX_HEADER: \newtheorem{examples}{Example}
 #+MATHJAX mathml:t
+#+OPTIONS LaTeX:mathjax
+#+LINK_HOME: index
 #+BABEL :exports results
 
 * Notes for 2011-09-16
+  :PROPERTIES:
+  :ID:       f443edc2-532b-4a1f-a90e-9fae0d1cc0fb
+  :END:
+** Books
+   1. T.Y. Lam - Lectures on Modules and Rings
+   2. Charles Weibel - A Introduction to Homological Algebra
+   3. Dames R. Munkres - Elements Of Algebraic Topology
+   4. James Davis and Paul Kirk - [[http://www.maths.ed.ac.uk/~aar/papers/davkir.pdf][Lecture Notes in Algebraic Topology]]
+   5. Structured Ring Spectra
+
 ** Reading for [2011-09-16]--[2011-09-26]
    1. Homotopy Theory and Model Categories by Dwyer and Spalinski
       [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.152.8004][CiteSeer]]
    2. An elementary illustrated introduction to Simplicial Sets by G. Friedman
       [[http://arxiv.org/abs/0809.4221][arXiv]]
-   3. Fiber Bundles ... pp. in Hatcher
+   3. Fiber Bundles - [[http://www.math.cornell.edu/~hatcher/AT/AT.pdf#page=385][pp.375-384 in Hatcher]]
 ** Fibrations and Cofibrations in $Top$
    - $Top$ is the category of compactly generated topological spaces
 
@@ -105,7 +118,7 @@ Then we have the diagram
     &X&\rTo_f&Y
   \end{diagram}
 #+END_SRC
-	 The pullback $P_f\rightarrow^{\pi_2}X$ is a fibration.
+	 The pullback $P_f\xrightarrow{\pi_2}X$ is a fibration.
 
 *** Last thing to say about fibrations
 
@@ -138,7 +151,7 @@ Then we have the diagram
 *** Key points about cofibrations
     Cofibrations are *dual* to fibrations.
 
-    $A\times I\rightarrow^f B$ is dual to $A\rightarrow B^I$.
+    $A\times I\xrightarrow{f}B$ is dual to $A\rightarrow B^I$.
 
     $f:X\rightarrow Y$ is a fibration if
 #+begin_src latex :file diag8.svg
@@ -220,10 +233,10 @@ h**** Theorem							    :THEOREM:
     study is $\mathscr{C}[W^{-1}]$. In the topological setting this is
     $Top/homptopy$, and the category on which $\pi_*X$ is defined.
 
-    We have a functor \(\mathscr{C}\rightarrow^{\mathscr{L}\text{
-    invert $W$}} \mathscr{C}[W^{-1}]\eqqcolon
-    Ho(\mathscr{C})\). $Ho(\mathscr{C}$ is called the homotopy category
-    or derived category.
+    We have a functor
+    \(\mathscr{C}\xrightarrow{\mathscr{L}\text{invert $W$}}
+    \mathscr{C}[W^{-1}]\eqqcolon Ho(\mathscr{C})\). $Ho(\mathscr{C}$
+    is called the homotopy category or derived category.
 
     We are interested in $Map_{Ho(\mathscr{C})}(X,Y)$, $\pi_*(X)$,
     $H_*(X)$ in $Ho(\mathscr{C})$. We have various models of what
@@ -267,5 +280,32 @@ h**** Theorem							    :THEOREM:
 **** Project							    :PROJECT:
      A dg-category $\mathscr{C}$ is a category enriched in chain complexes
 
-*** Definition							 :DEFINITION:
-    A map of categories (*functor*) $F:C\rightarrow D$
+*** Functor 							 :DEFINITION:
+    A map of categories (*functor*) $F:C\rightarrow D$ is  given by
+    1) $F_0:obj(\mathscr{C})\rightarrow obj(\mathscr{D})$ set map
+       between objects
+    2) $F_{x,y}:Hom_{\mathscr{C}}(X,Y) \rightarrow
+       Hom_{\mathscr{D}}(F_0X, F_0Y)$
+    3) maps compatible with the composition
+
+**** Properties of functors
+    1) $F:\mathscr{C}\rightarrow\mathscr{D}$ is an *equivalence* if there exists
+       $G:\mathscr{D}\rightarrow\mathscr{C}$ such that $GF\simeq
+       id_{\mathscr{C}}$ and $FG\simeq id_{mathscr{D}}$.
+
+       Note: the idea is to think of a category as a space.
+
+    2) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *full* if $F_{X,Y}$ is
+       surjective for every $X,Y\in\mathscr{C}$ and *faithful* if it
+       is injective.
+    3) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *essentially
+       surjective* if forall $d\in\mathscr{D}$, there exists
+       $c\in\mathscr{C}$ such that $d\simeq F_0(c)$.
+
+*** Nerves
+    $\mathscr{C}\xmapsto{\text{nerve}}N(\mathscr{C})$ is a
+    space. $F:\mathscr{C}\rightarrow\mathscr{D}$ is a weak equivalence
+    if $NF$ is a weak equivalence.
+
+    Fibrations in $Cat$. A functor is a fibration if every nice path
+    (isomorphism) lifts.
