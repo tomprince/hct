@@ -114,10 +114,11 @@ Can replace $X$ by a homotopy equivalent space $P_f$.
 #+BEGIN_SRC latex :file diag6.svg
   \begin{diagram}
     P_f:=&f^*(Y^I)\SEpbk&\rTo^{\pi_1}&Y^I \\
-    &\dTo_{\pi_2}&&q\\
+    &\dTo^{\pi_2}&&\dTo_q\\
     &X&\rTo_f&Y
   \end{diagram}
 #+END_SRC
+
     The pullback $P_f\xrightarrow{\pi_2}X$ is a fibration.
 
 *** Last thing to say about fibrations
@@ -180,7 +181,7 @@ We have
   \begin{diagram}
     A&\rTo^f&B\\
     \dTo_g&&\dTo&\rdTo(2,4)\\
-    C&\rTo&\NEpbk f_*C \\
+    C&\rTo&\NWpbk f_*C \\
     &\rdTo(4,2)&&\rdDotsto^{\exists!} \\
     &&&&D
 \end{diagram}
@@ -198,7 +199,7 @@ If $g:A\rightarrow C$ is a cofibration, then
   \begin{diagram}
     A&\rTo^f&B\\
     \dTo_g&&\dTo\\
-    C&\rTo&\NEpbk f_*C \\
+    C&\rTo&\NWpbk f_*C \\
 \end{diagram}
 #+END_SRC
 $B\rightarrow f_*C$ is also a cofbiration
@@ -213,10 +214,12 @@ Define $M_f$ such that $A\rightarrow M_f$ is a cofibration.
 
 #+BEGIN_SRC latex :file diag12.svg
   \begin{diagram}
-  A\times\{1\}&\rTo&X\times\{1\}\\
-  \dTo&&\dTo
-  A\times I&\rTo&M_f
+    A\times\{1\}&\rTo&X\times\{1\}\\
+    \dTo&&\dTo \\
+    A\times I&\rTo&M_f
+  \end{diagram}
 #+END_SRC
+
 $M_f$ is the mapping cylinder of $f$.
 
 *** Model Categories
@@ -251,14 +254,14 @@ The behaviour is governed by the cofibrations and fibrations.
 A (small) *category* $\mathscr{C}$ consists of
 1) A set of objects $obj(\mathscr{C})$
 2) For every $X,Y\in obj(\mathscr{C})$ a set
-   $Hom_{\mathscr(C)}(X,Y)$ of maps $X\rightarrow Y)
+   $Hom_{\mathscr{C}}(X,Y)$ of maps $X\rightarrow Y)
 3) An associative and unital composition.
 
 *** Definition							 :DEFINITION:
 A category $\mathscr{C}$ is *enriched* over a category
 $(\mathscr{D},\otimes,1)$ if it has
 1) A set of objects $obj(\mathscr{C})$
-2) $Hom_{\mathscr(C)}(X,Y)$ is an object of $\mathscr{D}$
+2) $Hom_{\mathscr{C}}(X,Y)$ is an object of $\mathscr{D}$
 3) $\mathscr{D} has a multiplication, so
    $Hom(X,Y)\otimes Hom(Y,Z)\rightarrow Hom(X,Y)$
    is given by the multiplication.
@@ -308,6 +311,9 @@ Fibrations in $Cat$. A functor is a fibration if every nice path
 (isomorphism) lifts.
 
 * Notes for 2011-09-20
+:PROPERTIES:
+:ID: d7138a37-7cbf-4862-aadd-18f0ba7596ef
+:END:
 
 - Examples of Model Categories
   - In particular, the fibrant and cofibrant objects in them.
@@ -317,9 +323,9 @@ Given $\mathscr C$ a category, and subcategory $\mathscr W\subseteq
 \mathscr C$ of weak equivalences.
 
 If $\mathscr C$ is a model category
-- $Ho\mathscr C = \mathscr C[W^{-1}] where
+- $Ho\mathscr{C} = \mathscr{C}[W^{-1}] where
 - $obj(Ho\mathscr C) = \obj\mathscr C$
-- $Hom_{Ho\mathscr C)(X,Y)=[X_c,Y_f]$
+- $Hom_{Ho\mathscr C}(X,Y)=[X_c,Y_f]$
   homotopy classes of maps where
   - $X_c$ is a cofibrant replacement of $X$
   - $Y_f$ is a fibrant replacement of $Y$.
@@ -336,13 +342,13 @@ $I$ (resp. $J$).
 - staturation ("generated") is closure under pushout and countable
   (transfinite) composition
 **** Maps in a category                                          :DEFINITION:
-Let $\matscr C$ a category, $I$ a =class= of maps in $\mathscr C$. A
+Let $\mathscr C$ a category, $I$ a *class* of maps in $\mathscr C$. A
 map is
 1) $I$-injective ($I-inj$) iff it has the RLP wrt all maps in $I$.
 2) $I$-projective ($I-proj$) iff it has the RLP wrt all maps in $I$.
 3) an $I$-cofibration ($I-cof$) iff it has the LLP wrt $I-inj$.
    $I-cof=(I-inj)-proj$
-4) an $I$-fibration ($I-fib) iff it has the RLP wrt $I-proj.
+4) an $I$-fibration ($I-fib$) iff it has the RLP wrt $I-proj$.
    $I-fib=(I-proj)-inj$
 ***** Examples                                                      :EXAMPLE:
 If $\mathscr C$ is a model category, with $W$, $F$, $C$ then
@@ -366,10 +372,10 @@ Usually $I-cof$ has little to do with $I$.
   generators carefully.
 
 ***** Relative cell complexes                                    :DEFINITION:
-Let $I$ be a =set= of maps in $\mathscr C$ (where $\mathscr C$ has all
+Let $I$ be a *set* of maps in $\mathscr C$ (where $\mathscr C$ has all
 small colimits).
 
-A =relative $I$-cell-complex= ($I-cell$) is a countable (transfinite) composition
+A *relative $I$-cell-complex* ($I-cell$) is a countable (transfinite) composition
 of pushouts of maps in $I$.
 
 If $f:A\rightarrow B$ is a relative $I$-cell complex, then there
@@ -378,18 +384,19 @@ $X:\lambda\rightarrow\mathscr C$ such that the $f$ is the composition
 of $X$.
 
 - $X:\lambda\rightarrow\mathscr C$.
-  $\underbrace[X]{X_0\rightarrowX_1\rightarrow\cdots\rightarrow
-  X_n\xrightarrow{h_n}\cdots$
+
+  $\underbrace{X_0\rightarrowX_1\rightarrow\cdots\rightarrow
+  X_n\xrightarrow{h_n}\cdots}_X$
 
 #+BEGIN_SRC latex :file diag14.svg
   \begin{diagram}
      C_\beta&\rTo&X_\beta\\
      \dTo^{q_\beta\in I}&&\dTo^{h_\beta}\\
-     D_\beta\rTo&\NEpbk X_{\beta+1}\\
+     D_\beta&\rTo&\NWpbk X_{\beta+1}\\
    \end{digram}
 #+END_SRC
 
-$A\in\mathscr C$ is a =cell complex= (relative cell
+$A\in\mathscr C$ is a *cell complex* (relative cell
 complex in Hovey) if $0\rightarrow
 A$ is (where $0$ is the initial object in $\mathscr C$).
 
@@ -406,7 +413,7 @@ $I$-cell \subseteq I-cof$
 
 *** Model Structures directly from Axioms                           :EXAMPLE:
 - Categories
-- $Ch(R)_{\ge0}
+- $Ch(R)_{\ge0}$
 - Sets
 
 *** Trick 1                                                    :DEFINITION:
@@ -421,21 +428,21 @@ $J$ such that
 with $I$ (resp. $J$) the set of generating cofibrations (resp. trivial cofibrations).
 
 **** Remarks
-1) If all domains of $I$ and $J$ are =compact= objects of $\mathscr C$
-   then $\mathscr C$ is a =cellular= model category.
+1) If all domains of $I$ and $J$ are *compact* objects of $\mathscr C$
+   then $\mathscr C$ is a *cellular* model category.
    - In which case $I-cof=I-cell$.
    - Exmaples: $Ch_{\ge0}(R)$, $Ch(R)$, stable $R$-modules
    - Non-example: $Top$
 2) A cofibrantly generated model category $\mathscr C$ which is also
-   locally presentable is a =combinatorial= model category
+   locally presentable is a *combinatorial* model category
    ($(\infinity,1)-category).
 
 **** Smallness
-[[file:small-notes.org][Alternative presentation]]
+[[file:smallness.org][Alternative presentation]]
 
 $f:A\rightarrow B$ in $I$.
 $X:\rightarrow Y$ a relative $I$-cell complex then
-$\colim \mathscr C(A,X_\beta)=\mathscr C(A,\colim X_\beta)$.
+$colim \mathscr C(A,X_\beta)=\mathscr C(A,colim X_\beta)$.
 
 **** Why cofibrantly generated?
 A. It is actually easier to find a cofibrantly generated model structure on
@@ -464,11 +471,11 @@ equivalences and $I$ and $J$ are the generating cofibrations
 Cofibrantly generated model structures make transferring homotopy
 easier.
 
-$F:\mathscr C\stackrel{\rightarrow\\\leftarrow}\mathscr D:U$.
-where $\mathscr C$, $\mathscr C$ are model categories, $F$ and $U$
+$F:\mathscr{C}{\rightarrow\atop\leftarrow}\mathscr D:U$.
+where $\mathscr C$, $\mathscr D$ are model categories, $F$ and $U$
 adjoint (the left adjoint is written on top)
 
-$(F,U)$ is a =quillen adjunciton= if
+$(F,U)$ is a *quillen adjunciton* if
 - $F$ preserves cofibrant objects and equivalences between them
 or
 - $U$ preserves fibrant objects and equivalences between them
@@ -478,7 +485,7 @@ adjunction if $Ff$ is a cofibration (resp. trivially cofibration) in
 $D when $f\in I$ (resp. $f\in J$.
 
 ***** Problem
-$Cat \stackrel{\xrightarrow{N}\\xleftarrow{\tau}} sSet_*}$ where
+$Cat {\xrightarrow{N}\atop\xleftarrow[\tau]{}} sSet_*$ where
 $sSet_*$ has the Joyal model structure.
 
 **** $Top$
@@ -491,7 +498,7 @@ topology.
 
 $X_\alpha=Y\times\{0,1\}/(x,0)\sim(x,1)\text{ if }x<\alpha$.
 
-$X=\colim_{\alpha<\lambda} X_\alpha = Y\cup (\lambda,1)$.
+$X=colim_{\alpha<\lambda} X_\alpha = Y\cup (\lambda,1)$.
 
 There exists a map from $S$ to $X$ that does not factor through the
 limit.
@@ -503,8 +510,9 @@ Quillen)
   $\pi_n(f,x):\pi_n(X,x)\rightarrow\pi_n(Y,f(x))$ is an isomorphism
   for all $n\ge0$ and $x\in X$.
 
-$I'=\{\text{boundary inclusions }S^{n-1}\rInto D^n}$
-$J=\{\text{inclusions }$
+- \(I'=\{\text{boundary inclusions }S^{n-1}\hookrightarrow D^n\}\)
+
+- \(J=\{\text{inclusions }D^n\rightarrow D\times I^n\}\)
 
 $f$ is a cofibration if $f\in I'-cof$
 $f$ is a fibration if $f\in J-inj$.
@@ -517,6 +525,9 @@ fibrant objects are all spaces
 cofibrant objects are retracts of CW-complexes
 
 * Notes for 2011-09-23
+:PROPERTIES:
+:ID: 542fb78e-5cde-4a19-9eef-b781940dfc3a
+:END:
 
 ** Review
 $\mathscr C$ a model category, then there is a $Ho(\mathscr C) =
@@ -537,13 +548,13 @@ $D(R)=Ho(Ch_(\ge0))
 - compactly generated topological spaces, pointed
 
 Let $f: X\rightarrow Y$ a continuous map
-- $f$ is an =inclusion= if $U$ is open in $X$ iff there exists an
+- $f$ is an *inclusion* if $U$ is open in $X$ iff there exists an
   open $V$ in Y$ such that $f^{-1}(V)=U$.
 
   - Lemma
     Every topological space is small wrt inclusions.
     - Proof
-     Let $\lambda$ be an ordianl, $X:\lambda\rightarrow Top$ is a
+     Let $\lambda$ be an ordinal, $X:\lambda\rightarrow Top$ is a
      $\lambda$-sequence of inclusions
 
      $X_0\xrightarrow{h_0}X_1\xrightarrow{h_1}->\cdots\rightarrow
@@ -551,16 +562,16 @@ Let $f: X\rightarrow Y$ a continuous map
 
       - By composition, each $X_\alpha\rightarrow X\beta$ is also an
 	inclusion for any $\beta>\alpha$.
-      - implies $X_\alpha \rightarrow \colim_{x<\lambda}X_x$
-	(consider $\colim_n(X_0\subset X_1\subset\cdots\subset X_n)
-      - For any $f:A \xrightarrow \colim_{\alpha<\lambda} X_\alpha$, we
+      - implies $X_\alpha \rightarrow colim_{x<\lambda}X_x$
+	(consider $colim_n(X_0\subset X_1\subset\cdots\subset X_n)
+      - For any $f:A \xrightarrow colim_{\alpha<\lambda} X_\alpha$, we
 	want a factorization through some $X_\alpha$.
 
 	It will suffice to that $f(A)\subseteq X_\alpha$ for some
 	$\alpha<\lambda$.
 
 	Sets are small:
-	$\colim_{\alpha<\lambda)Hom(A,X_\alpha)=Hom(A,\colim_{\alpha<\lambda)X_\alpha$
+	$colim_{\alpha<\lambda}Hom(A,X_\alpha)=Hom(A,colim_{\alpha<\lambda}X_\alpha$
 	for every $A$ and some $\lambda$ (condition is $\lambda>|A|$.
   - If you have "sets" underlying objects then there is no need for
     smallness arguments.
@@ -577,10 +588,10 @@ $f:X\rightarrow Y$ is a weak homotopy equivalence if
 $\pi_f:\pi_*(X,x)\rightarrow\pi_(Y,fx)$ is a bijection for $*\ge
 0$ and $x\in X$.
 
-$I\coloneqq\{\text{boundary inclusions $S^{n-1}\rInto D^n | n\ge
-0}$ where $S^{-1}=\emptyset$ and $D^n=\{0\}$.
+$I\coloneqq\{\text{boundary inclusions }S^{n-1}\hookrightarrow D^n | n\ge 0\}$
+where $S^{-1}=\emptyset$ and $D^n=\{0\}$.
 
-$J\coloneqq\{D^n\rightarrow D^n\times I|N\ge 0}$ where the maps
+$J\coloneqq\{D^n\rightarrow D^n\times I|N\ge 0\}$ where the maps
 are given by $x\mapsto (x,0)$.
 
 Theorem(Quillen '67) Top has a cofibrantly generated model
@@ -590,18 +601,18 @@ structure with w.e. given by the weak homotopy equivalences.
 
 Remember $f:A\rightarrow B$ a cofibrations does not imply $f\in
 I$. $f\in\overline I=\text{staturation of }I$.
-$A=\overbrace[h]{X_0\xrightarrow{h_0}X_1\rightarrow\cdots\rightarrow
- X_\beta\rightarrow B}$
+$A=\overbrace{X_0\xrightarrow{h_0}X_1\rightarrow\cdots\rightarrow
+ X_\beta\rightarrow B}^h$
 Where
 #+BEGIN_SRC latex :file diag13.svg
   \begin{diagram}
     C&\rTo&X_\alpha\\
     \dTo^{i\in I}&&\dTo_{h_\alpha}\\
-    D&\rTo&\NEpbki X_{\alpha+1}
+    D&\rTo&\NWpbki X_{\alpha+1}
   \end{diagram}
 #+END_SRC
 
-- Fibrations = Serre fibrations are =defined= by having the RLP
+- Fibrations = Serre fibrations are /defined/ by having the RLP
   wrt maps in $\overline J$
 #+BEGIN_SRC latex :file diag13.svg
   \begin{diagram}
@@ -651,9 +662,10 @@ Where
          \begin{diagram}
             A&\rTo&C\\
             \dTo^{i\in J}&&\dTo^j\\
-            B\rTo&\NEpbk D\
-          \end{digram}
+            B&\rTo&\NWpbk D
+          \end{diagram}
 	     #+END_SRC
+
 	     $D\times I=(B\times I)\times_{A\times I}(C\times I)$
        (locally Hausdorff spaces are cartesian closed)
 
@@ -677,7 +689,7 @@ Where
          - because w.e. satisfy 2-out-of-3, every map in
            $J-cof$ is a weak homotopy equivalence.
 
-=Point=
+*Point*
 The small object arguments is "in" this proof.
 $X\xrightarrow{f}Y$
 $X\xrightarrow{~}M\rightarrow Y$ (build $M$ out of cells)
@@ -685,11 +697,11 @@ $X\xrightarrow{~}M\rightarrow Y$ (build $M$ out of cells)
 How do you use this proof to
 - Show that the cofibrant objects in $Top$ are retracts of cell
   complexes?
-  - $A$ is a cofibrant if $*\rInto A$ is a cofibration?
-#+BEGIN_SRC latex :file diag14.svg
+  - $A$ is a cofibrant if $*\hookrightarrow A$ is a cofibration?
+#+BEGIN_SRC latex :file diag15.svg
 \begin{diagram}
   S^{n-1}&\rTo&*\\
   \dTo&&\dTo\\
-  D^n\rTo&\NEpbk A_0\\
-\end{digram}
+  D^n\rTo&&\NWpbk A_0\\
+\end{diagram}
 #+END_SRC

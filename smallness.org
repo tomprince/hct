@@ -1,0 +1,91 @@
+#+TITLE: Some notes on smallness
+#+AUTHOR: Tom Prince
+
+* Ordinals
+- An *ordinal* is a well-ordered set, i.e. a totally ordered set such
+  that every subset has a minimum element.
+  - There is a successor operation on ordinals, taking an ordinal
+    $\lambda$ to the ordinal $\lambda+1 = \lambda\cup\{\lambda\}.
+  - Given any totally ordered set of ordinals (under inclusion), the
+    union is again an ordinal.
+  - Typically, one thinks of the /class/ of ordinals as the closure
+    under successor and union starting from just the empty set.
+  - The class of these ordinals is itself well-ordered.
+  - A *limit ordinal* is an ordinal that is not the successor of some ordinal.
+- the *cardinals* can be thought of as the least ordinal of a given cardinality.
+  - i.e., there is an equivalence relation on ordinals, where two
+    ordinals are equivalent if there is a bijection between
+    them. Since the ordinals, each equivalence class has a minimum.
+  - This minimum is the union of all ordinals smaller than it, hence a
+    limit ordinal.
+
+- Let $\lambda$ be an ordinal and $\mathscr C$ a category.
+  - A functor $X:\lambda\rightarrow \mathscr C$ is continuous if for
+    every limit ordinal $\alpha < \lambda$, $X_\alpha=colim_{\beta<\alpha}X_\beta$.
+* Small objects
+Let $\mathscr C$ be a category and $M$ a class of maps in $\mathscr
+C$. Let $\lambda$ be a cardinal.
+
+An object $C\in\mathscr C$ is $\lambda$-small relative to $M$, if for
+every continuous functor $X:\lambda + 1\rightarrow\mathscr C$ such that for every
+$\alpha<\lambda$, $X_\alpha\rightarrow X_{\alpha+1}$ is in $M$, every
+map $C\rightarrow X_\lambda$ factors through some $X_\alpha$ where
+$\alpha<\lambda$. This can be restated as
+$Hom(C,colim_{\alpha<\lambda} X_\alpha) = colim_{\alpha<\lambda}
+Hom(C,X_\alpha)$.
+
+** Small object argument
+Given a set of maps $M$, the small object argument argument gives a
+factorization of a map $f:X\rightarrow Y$ into map $X\rightarrow Z$ in
+the saturation of $M$, followed by a map $Z\rightarrow Y$ in
+$M-inj$. We do this by iteratively adding all solutions to lifting
+problems of $M$ relative to $f$ to $X$.
+
+Explicitly, let $Z_0=X$. Then for each $\alpha$, let $I_\alpha$ be the
+set of all diagrams
+#+BEGIN_SRC latex :file smallness1.svg
+  \begin{diagram}
+    C&\rTo& Z_\alpha\\
+    \dTo^m&&\dTo\\
+    D&\rTo& Y
+  \end{diagram}
+#+END_SRC
+where $m$ is in $M$. Then $Z_{\alpha+1}$ is the pushout along
+$\coprod_{i\in I_\alpha}C_i\rightarrow\coprod_{i\in I_\alpha}D_i$ of
+$Z_\alpha$. Thus, we get a factorization of $X\rightarrow
+Z_\alpha\rightarrow Y$, for every ordinal $\alpha$. This extends to a
+continuous functor $\mathscr Z$ from the ordinals to $C$.
+
+Let every source object of maps in $M$ be $\lambda$-small relative to
+the saturation of $M$. Then, given a lifting problem
+#+BEGIN_SRC latex :file smallness2.svg
+  \begin{diagram}
+    C&\rTo&Z_\lambda\\
+    \dTo^m&&\dTo\\
+    D&\rTo& Y
+  \end{diagram}
+#+END_SRC
+the map $C\rightarrow Z_\lambda$ factors through some $Z_\alpha$,
+$\alpha<\lambda$, so we have
+#+BEGIN_SRC latex :file smallness3.svg
+  \begin{diagram}
+    C&\rTo&Z_\alpha\\
+    &&\dTo&\rdTo \\
+    \dTo^m&&Z_{\alpha+1}&\rTo& Z_\lambda\\
+    &\ruDotsto&&&\dTo\\
+    D&\rTo&&& Y
+  \end{diagram}
+#+END_SRC
+where the dotted arrow exists, since $Z_{\alpha+1}$ is a pushout.
+
+In particular, if the source of every map in $M$ is $\alpha$-small relative to
+$\overline M$ for some $\alpha$, then since $M$ is a set, the union of
+all $\alpha$s is again an ordinal. Let $\lambda$ be a cardinal greater
+that the union, then the source of all maps in $M$ are $\lambda$-small
+relative to $\overline M$.
+** Examples of small objects
+*** Set
+Every object is small.
+
+*Proof* Let $X$ be an object, and $\lambda$ a cardinal greater than
+ the cardinality of $X$.

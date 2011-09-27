@@ -18,10 +18,8 @@ Alternative approach to these invariants:
   - how: Find a *stability condition* that cuts these sheaves out of
     the space $M_{Coh(X)}$.
 
-- $M_{Coh(X)$ is the moduli stack classifying coherent sheaves.
+- $M_{Coh(X)}$ is the moduli stack classifying coherent sheaves.
 - Lying: this counting happens in $D^b(X)\contains Coh(X)$.
-
-
 
 1) We have no "space" to cut interesting spaces out of.
 2) We really want to be able to handle all objects of $D^b(X)$.
@@ -35,7 +33,7 @@ Want classifying stack for $Coh(X)$.
 Want a space $M_{Coh(X)}$ satisfying
 1) $\{p\subset M_{Coh(X)}\text{ closed}\}$ should correspond to
    objects in $Coh(X)$ (actually $Iso(Coh(X))$)
-   - To give topology, define $Hom(Y,M_{Coh(X))\coloneqq Iso(\{N\in
+   - To give topology, define $Hom(Y,M_{Coh(X)}\coloneqq Iso(\{N\in
      Coh(X\times Y) | N\text{ is flat over }Y\}$
    - Gives a functor from $Sch_X\rightarrow \text{Groupoids}$
    - $M_{Coh(X)}(Y)\mapsto Iso(Coh_{fl}(X\times Y)$
@@ -47,9 +45,9 @@ Want a space $M_{Coh(X)}$ satisfying
 $Pic(X)\subset M_{Coh(X)}$ classifies line bundles on $X$
 - Let $L$ be a line bundle on $X\times Y$. So $L$ is in
   $M_{Coh(X)}(Y)$.
-  - Let $p\in Y$ closed, then $L|_{X\times p$ is a line bundle on $X$.
+  - Let $p\in Y$ closed, then $L|_{X\times p}$ is a line bundle on $X$.
 
-$QCoh(X)$, $Ch_{QCoh(X)$
+$QCoh(X)$, $Ch_{QCoh(X)}$
 $D(X)$ obtained by formally inverting chain maps that induce
 isomorphisms on cohomology, i.e. collapse by objects that "should" be
 zero.
@@ -85,7 +83,7 @@ Can we find $M_{D^b(X)}$?
 Can we find $M_{\tilde{D^b(X)}}$?
 - Yes
 - $Coh(X)$ ---> $M_{Coh(X)}: Sch \rightarrow Cat \subset Cat_{\Delta}$
-- So $M_{\tilde{D^b(X)}: Sch\rightarrow Cat_{\Delta}$ ($Cat_{\Delta}$
+- So $M_{\tilde{D^b(X)}}: Sch\rightarrow Cat_{\Delta}$ ($Cat_{\Delta}$
   simplicial category)
 
 - $Cat_\Delta\rightarrow Set_\Delta$ simplicial nerve
@@ -100,11 +98,11 @@ Can we find $M_{\tilde{D^b(X)}}$?
   N(D^(b(X\times Y))$ (write $Iso(D^b(X\times Y))$)
 - Still not right object (need flatness condition)
 
-Definition: =Relative Tor amplitude=
+Definition: *Relative Tor amplitude*
 - Turns out that $D(X)$ is a symmetric monoidal category, using an
   extension of $\otimes$ on modules
 - If $f:X\rightarrow Y$, $M\in D^b(X)$, $M$ is said to have
-  =finite relative Tor amplitude= if for any $N\in D(X)$ with
+  *finite relative Tor amplitude* if for any $N\in D(X)$ with
   $H^i(N)=0$ for $i\ne0$, then $M\otimes f^*(N)$ has non-zero
   cohomology between $[a,b]$ where $a$ and $b$ depend only on $M$.
 - Example: $M$ is flat over $Y$ if $[a,b]=[0,0]$.
@@ -119,5 +117,5 @@ Theorem: $M_{D^b(X)}$ is locally geometric and locally almost finite
 type
 
 locally geometric:
-- $(M_(D^b(X)})_n$ is open in $M_{D^b(X)}$ and is an artin stack
-- $M_{D^b(X)$ is the union of these
+- $(M_{D^b(X)})_n$ is open in $M_{D^b(X)}$ and is an artin stack
+- $M_{D^b(X)}$ is the union of these
