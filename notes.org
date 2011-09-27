@@ -9,24 +9,24 @@
 #+BABEL :exports results
 
 * Notes for 2011-09-16
-  :PROPERTIES:
-  :ID:       f443edc2-532b-4a1f-a90e-9fae0d1cc0fb
-  :END:
+:PROPERTIES:
+:ID:       f443edc2-532b-4a1f-a90e-9fae0d1cc0fb
+:END:
 ** Books
-   1. T.Y. Lam - Lectures on Modules and Rings
-   2. Charles Weibel - A Introduction to Homological Algebra
-   3. Dames R. Munkres - Elements Of Algebraic Topology
-   4. James Davis and Paul Kirk - [[http://www.maths.ed.ac.uk/~aar/papers/davkir.pdf][Lecture Notes in Algebraic Topology]]
-   5. Structured Ring Spectra
+1. T.Y. Lam - Lectures on Modules and Rings
+2. Charles Weibel - A Introduction to Homological Algebra
+3. Dames R. Munkres - Elements Of Algebraic Topology
+4. James Davis and Paul Kirk - [[http://www.maths.ed.ac.uk/~aar/papers/davkir.pdf][Lecture Notes in Algebraic Topology]]
+5. Structured Ring Spectra
 
 ** Reading for [2011-09-16]--[2011-09-26]
-   1. Homotopy Theory and Model Categories by Dwyer and Spalinski
-      [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.152.8004][CiteSeer]]
-   2. An elementary illustrated introduction to Simplicial Sets by G. Friedman
-      [[http://arxiv.org/abs/0809.4221][arXiv]]
-   3. Fiber Bundles - [[http://www.math.cornell.edu/~hatcher/AT/AT.pdf#page=385][pp.375-384 in Hatcher]]
+1. Homotopy Theory and Model Categories by Dwyer and Spalinski
+   [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.152.8004][CiteSeer]]
+2. An elementary illustrated introduction to Simplicial Sets by G. Friedman
+   [[http://arxiv.org/abs/0809.4221][arXiv]]
+3. Fiber Bundles - [[http://www.math.cornell.edu/~hatcher/AT/AT.pdf#page=385][pp.375-384 in Hatcher]]
 ** Fibrations and Cofibrations in $Top$
-   - $Top$ is the category of compactly generated topological spaces
+- $Top$ is the category of compactly generated topological spaces
 
 *** Definition 							 :DEFINITION:
 A continuous map $p: E\rightarrow B$ is a *fibration* if we have a
@@ -55,14 +55,14 @@ Then we have the diagram
 \end{diagram}
 #+end_src
 
-  1. What is $\pi_2$?
+1. What is $\pi_2$?
 
-     The restriction of $X\times E \rightarrow X$ to $f*(E)\subseteq
-     X\times E$.
+   The restriction of $X\times E \rightarrow X$ to $f*(E)\subseteq
+   X\times E$.
 
-  2. Pullbacks have a good universal property
+2. Pullbacks have a good universal property
 
-     We have the diagram
+   We have the diagram
 #+begin_src latex :file diag3.svg
   \begin{diagram}
     Q \\
@@ -73,9 +73,9 @@ Then we have the diagram
   \end{diagram}
 #+end_src
 
-     where $\pi_2\circ u = q_2$ and $pi_1\circ u = q_1$.
+   where $\pi_2\circ u = q_2$ and $pi_1\circ u = q_1$.
 
-  3. We can form the diagram
+3. We can form the diagram
 #+begin_src latex :file diag4.svg
   \begin{diagram}
     Y\times\{0\}&\rTo&f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
@@ -83,8 +83,8 @@ Then we have the diagram
     Y\times I&\rTo&X & \rTo_f & B
   \end{diagram}
 #+end_src
-     Since $p$ is a fibration, there exists a map $H$ making the
-     diagram commute. Then we have,
+   Since $p$ is a fibration, there exists a map $H$ making the
+   diagram commute. Then we have,
 #+begin_src latex :file diag5.svg
   \begin{diagram}
     Y\times\{0\}&\rTo&f^*(E)\SEpbk & \rTo^{\pi_1} & E \\
@@ -92,25 +92,25 @@ Then we have the diagram
     Y\times I&\rTo&X & \rTo_f & B
   \end{diagram}
 #+end_src
-     by the universal property, where $Q=Y\times I$, $q_1=H$, and then
-     $H'=u$.
+   by the universal property, where $Q=Y\times I$, $q_1=H$, and then
+   $H'=u$.
 
-     Exercise: Show that H' is a lift.
+   Exercise: Show that H' is a lift.
 **** Path Space Fibrations					    :EXAMPLE:
 
-  Given a continuous map $f:X\rightarrow Y$ where $Y$ is path
-  connected.
+Given a continuous map $f:X\rightarrow Y$ where $Y$ is path
+connected.
 
-  Can replace $X$ by a homotopy equivalent space $P_f$.
+Can replace $X$ by a homotopy equivalent space $P_f$.
 
-     - Build $P_f$ (start with Y)
+- Build $P_f$ (start with Y)
 
-       $Y^I\coloneqq Map(I,Y)$ with the (approximately) the compact
-       open topology.
+  $Y^I\coloneqq Map(I,Y)$ with the (approximately) the compact
+  open topology.
 
-       * Step 1. $q:Y^I\rightarrow Y$ is a
-         fibration. ($q:\alpha\mapsto\alpha(a)$)
-       * Step 2.
+  * Step 1. $q:Y^I\rightarrow Y$ is a
+    fibration. ($q:\alpha\mapsto\alpha(a)$)
+  * Step 2.
 #+BEGIN_SRC latex :file diag6.svg
   \begin{diagram}
     P_f:=&f^*(Y^I)\SEpbk&\rTo^{\pi_1}&Y^I \\
@@ -118,21 +118,21 @@ Then we have the diagram
     &X&\rTo_f&Y
   \end{diagram}
 #+END_SRC
-	 The pullback $P_f\xrightarrow{\pi_2}X$ is a fibration.
+    The pullback $P_f\xrightarrow{\pi_2}X$ is a fibration.
 
 *** Last thing to say about fibrations
 
-    There are examples that don't come from fiber bundles
+There are examples that don't come from fiber bundles
 
 **** Project 1 (20 minute talk) 				    :PROJECT:
-     Give an example of these fibrations (with applications).
-     - Hopf/Serre Fibration
+Give an example of these fibrations (with applications).
+- Hopf/Serre Fibration
 
 ** Cofbirations
-   Let $A$, $X$ be reasonable spaces (e.g. CW-complexes).
+Let $A$, $X$ be reasonable spaces (e.g. CW-complexes).
 
 *** Definition							 :DEFINITION:
-    $i: A\rightarrow X$ is a *cofibration* if there exists a lift $H$
+$i: A\rightarrow X$ is a *cofibration* if there exists a lift $H$
 #+BEGIN_SRC latex :file diag7.svg
   \begin{diagram}
     X\times\{0\} \cup A\times I & \rTo^{f\cup  h} & y \\
@@ -141,19 +141,19 @@ Then we have the diagram
   \end{diagram}
 #+END_SRC
 
-    for any map $f:X\rightarrow Y$ and $h:A\times I \rightarrow Y$ a
-    homotopy extending $f|_A$.
+for any map $f:X\rightarrow Y$ and $h:A\times I \rightarrow Y$ a
+homotopy extending $f|_A$.
 
-    A cofibration is essentially an embedding whose image is
-    closed. The intuition is that the homotopy on the boundary of $A$
-    can be extended.
+A cofibration is essentially an embedding whose image is
+closed. The intuition is that the homotopy on the boundary of $A$
+can be extended.
 
 *** Key points about cofibrations
-    Cofibrations are *dual* to fibrations.
+Cofibrations are *dual* to fibrations.
 
-    $A\times I\xrightarrow{f}B$ is dual to $A\rightarrow B^I$.
+$A\times I\xrightarrow{f}B$ is dual to $A\rightarrow B^I$.
 
-    $f:X\rightarrow Y$ is a fibration if
+$f:X\rightarrow Y$ is a fibration if
 #+begin_src latex :file diag8.svg
 \begin{diagram}
   X&\lTo^{ev_0}&X^I \\
@@ -162,7 +162,7 @@ Then we have the diagram
 \end{diagram}
 #+end_src
 
-    $f:Y\rightarrow X$ is a cofibration if
+$f:Y\rightarrow X$ is a cofibration if
 #+begin_src latex :file diag9.svg
 \begin{diagram}
   X&\rTo^{i_0}&X\times I \\
@@ -172,11 +172,10 @@ Then we have the diagram
 #+end_src
 
 *** Key points about cofibrations 2
-
 **** Definition (Pushout) 					 :DEFINITION:
-     Let $f:A\rightarrow B$ and $g:A\rightarrow C$ be continuous maps.
+Let $f:A\rightarrow B$ and $g:A\rightarrow C$ be continuous maps.
 
-     We have
+We have
 #+BEGIN_SRC latex :file diag10.svg
   \begin{diagram}
     A&\rTo^f&B\\
@@ -187,15 +186,14 @@ Then we have the diagram
 \end{diagram}
 #+END_SRC
 
-     where $f_*C \coloneqq B\sqcup C/f(a)\sim g(a)$ and $B\sqcup
-     C\coloneqq\{(b,c_0,0)\in B\times C\times I |b\in B\} \cup
-     C\coloneqq\{(b_0,c,1)\in B\times C\times I |c\in C\}$
+where $f_*C \coloneqq B\sqcup C/f(a)\sim g(a)$ and $B\sqcup
+C\coloneqq\{(b,c_0,0)\in B\times C\times I |b\in B\} \cup
+C\coloneqq\{(b_0,c,1)\in B\times C\times I |c\in C\}$
 
-     In $Top$, we can always construct $f_*C$.
+In $Top$, we can always construct $f_*C$.
 
-
-h**** Theorem							    :THEOREM:
-     If $g:A\rightarrow C$ is a cofibration, then
+**** Theorem							    :THEOREM:
+If $g:A\rightarrow C$ is a cofibration, then
 #+BEGIN_SRC latex :file diag11.svg
   \begin{diagram}
     A&\rTo^f&B\\
@@ -203,15 +201,15 @@ h**** Theorem							    :THEOREM:
     C&\rTo&\NEpbk f_*C \\
 \end{diagram}
 #+END_SRC
-     $B\rightarrow f_*C$ is also a cofbiration
+$B\rightarrow f_*C$ is also a cofbiration
 
-     Proof. dual to that for cofibrations.
+Proof. dual to that for cofibrations.
 
 **** Mapping Cylinders 						    :EXAMPLE:
-     Let $f:A\rightarrow X$ be continuous.
-     We replace $X$ by a homotopy equilvaent space
+Let $f:A\rightarrow X$ be continuous.
+We replace $X$ by a homotopy equilvaent space
 
-     Define $M_f$ such that $A\rightarrow M_f$ is a cofibration.
+Define $M_f$ such that $A\rightarrow M_f$ is a cofibration.
 
 #+BEGIN_SRC latex :file diag12.svg
   \begin{diagram}
@@ -219,93 +217,479 @@ h**** Theorem							    :THEOREM:
   \dTo&&\dTo
   A\times I&\rTo&M_f
 #+END_SRC
-     $M_f$ is the mapping cylinder of $f$.
-
+$M_f$ is the mapping cylinder of $f$.
 
 *** Model Categories
-    We axiomatics these properties of $Top$.
+We axiomatics these properties of $Top$.
 
-    Then we can use all the power of homotopy theory in general
-    settings.
+Then we can use all the power of homotopy theory in general
+settings.
 
-    Let $\mathscr{C}$ be a nice category and $W$ weak equivalences (a
-    distinguished class of maps in $\mathscr{C}$. Then the object of
-    study is $\mathscr{C}[W^{-1}]$. In the topological setting this is
-    $Top/homptopy$, and the category on which $\pi_*X$ is defined.
+Let $\mathscr{C}$ be a nice category and $W$ weak equivalences (a
+distinguished class of maps in $\mathscr{C}$. Then the object of
+study is $\mathscr{C}[W^{-1}]$. In the topological setting this is
+$Top/homptopy$, and the category on which $\pi_*X$ is defined.
 
-    We have a functor
-    \(\mathscr{C}\xrightarrow{\mathscr{L}\text{invert $W$}}
-    \mathscr{C}[W^{-1}]\eqqcolon Ho(\mathscr{C})\). $Ho(\mathscr{C}$
-    is called the homotopy category or derived category.
+We have a functor
+\(\mathscr{C}\xrightarrow{\mathscr{L}\text{invert $W$}}
+\mathscr{C}[W^{-1}]\eqqcolon Ho(\mathscr{C})\). $Ho(\mathscr{C}$
+is called the homotopy category or derived category.
 
-    We are interested in $Map_{Ho(\mathscr{C})}(X,Y)$, $\pi_*(X)$,
-    $H_*(X)$ in $Ho(\mathscr{C})$. We have various models of what
-    happens in $Ho(\mathscr{C})$:
-    - Higher Category Theory
-    - $(\infinity,1)$-categories
-    - Quasi-categories
-    - Complete Segal Spaces
+We are interested in $Map_{Ho(\mathscr{C})}(X,Y)$, $\pi_*(X)$,
+$H_*(X)$ in $Ho(\mathscr{C})$. We have various models of what
+happens in $Ho(\mathscr{C})$:
+- Higher Category Theory
+- $(\infinity,1)$-categories
+- Quasi-categories
+- Complete Segal Spaces
 
-    The behaviour is governed by the cofibrations and fibrations.
+The behaviour is governed by the cofibrations and fibrations.
 
 ** Basic Objects
 
 *** Definition							 :DEFINITION:
-    A (small) *category* $\mathscr{C}$ consists of
-    1) A set of objects $obj(\mathscr{C})$
-    2) For every $X,Y\in obj(\mathscr{C})$ a set
-       $Hom_{\mathscr(C)}(X,Y)$ of maps $X\rightarrow Y)
-    3) An associative and unital composition.
+A (small) *category* $\mathscr{C}$ consists of
+1) A set of objects $obj(\mathscr{C})$
+2) For every $X,Y\in obj(\mathscr{C})$ a set
+   $Hom_{\mathscr(C)}(X,Y)$ of maps $X\rightarrow Y)
+3) An associative and unital composition.
 
 *** Definition							 :DEFINITION:
-    A category $\mathscr{C}$ is *enriched* over a category
-    $(\mathscr{D},\otimes,1)$ if it has
-    1) A set of objects $obj(\mathscr{C})$
-    2) $Hom_{\mathscr(C)}(X,Y)$ is an object of $\mathscr{D}$
-    3) $\mathscr{D} has a multiplication, so
-       $Hom(X,Y)\otimes Hom(Y,Z)\rightarrow Hom(X,Y)$
-       is given by the multiplication.
+A category $\mathscr{C}$ is *enriched* over a category
+$(\mathscr{D},\otimes,1)$ if it has
+1) A set of objects $obj(\mathscr{C})$
+2) $Hom_{\mathscr(C)}(X,Y)$ is an object of $\mathscr{D}$
+3) $\mathscr{D} has a multiplication, so
+   $Hom(X,Y)\otimes Hom(Y,Z)\rightarrow Hom(X,Y)$
+   is given by the multiplication.
 
 **** Example							    :EXAMPLE:
-     $Ho(\mathscr{C})$ can be transformed into a category enriched in
-     "spaces". (This is a $(\infinity,1)$-category)
+$Ho(\mathscr{C})$ can be transformed into a category enriched in
+"spaces". (This is a $(\infinity,1)$-category)
 
 
-     Given $\mathscr{C}$ + a model structure, we can form (via
-     $\mathscr{L}$ the homotopy category $Ho(\mathscr C)$. From that, we
-     can for the Dwyer-Kan localization $\mathscr{LH}$ of
-     $Ho(\mathscr{C}$ to get a simplicial category (aka
-     $(\infinity,1)$-category).
+Given $\mathscr{C}$ + a model structure, we can form (via
+$\mathscr{L}$ the homotopy category $Ho(\mathscr C)$. From that, we
+can for the Dwyer-Kan localization $\mathscr{LH}$ of
+$Ho(\mathscr{C}$ to get a simplicial category (aka
+$(\infinity,1)$-category).
 
 **** Project							    :PROJECT:
-     A dg-category $\mathscr{C}$ is a category enriched in chain complexes
+A dg-category $\mathscr{C}$ is a category enriched in chain complexes
 
 *** Functor 							 :DEFINITION:
-    A map of categories (*functor*) $F:C\rightarrow D$ is  given by
-    1) $F_0:obj(\mathscr{C})\rightarrow obj(\mathscr{D})$ set map
-       between objects
-    2) $F_{x,y}:Hom_{\mathscr{C}}(X,Y) \rightarrow
-       Hom_{\mathscr{D}}(F_0X, F_0Y)$
-    3) maps compatible with the composition
+A map of categories (*functor*) $F:C\rightarrow D$ is  given by
+1) $F_0:obj(\mathscr{C})\rightarrow obj(\mathscr{D})$ set map
+   between objects
+2) $F_{x,y}:Hom_{\mathscr{C}}(X,Y) \rightarrow
+   Hom_{\mathscr{D}}(F_0X, F_0Y)$
+3) maps compatible with the composition
 
 **** Properties of functors
-    1) $F:\mathscr{C}\rightarrow\mathscr{D}$ is an *equivalence* if there exists
-       $G:\mathscr{D}\rightarrow\mathscr{C}$ such that $GF\simeq
-       id_{\mathscr{C}}$ and $FG\simeq id_{mathscr{D}}$.
+1) $F:\mathscr{C}\rightarrow\mathscr{D}$ is an *equivalence* if there exists
+   $G:\mathscr{D}\rightarrow\mathscr{C}$ such that $GF\simeq
+   id_{\mathscr{C}}$ and $FG\simeq id_{mathscr{D}}$.
 
-       Note: the idea is to think of a category as a space.
+   Note: the idea is to think of a category as a space.
 
-    2) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *full* if $F_{X,Y}$ is
-       surjective for every $X,Y\in\mathscr{C}$ and *faithful* if it
-       is injective.
-    3) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *essentially
-       surjective* if forall $d\in\mathscr{D}$, there exists
-       $c\in\mathscr{C}$ such that $d\simeq F_0(c)$.
+2) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *full* if $F_{X,Y}$ is
+   surjective for every $X,Y\in\mathscr{C}$ and *faithful* if it
+   is injective.
+3) $F:\mathscr{C}\rightarrow\mathscr{D}$ is *essentially
+   surjective* if forall $d\in\mathscr{D}$, there exists
+   $c\in\mathscr{C}$ such that $d\simeq F_0(c)$.
 
 *** Nerves
-    $\mathscr{C}\xmapsto{\text{nerve}}N(\mathscr{C})$ is a
-    space. $F:\mathscr{C}\rightarrow\mathscr{D}$ is a weak equivalence
-    if $NF$ is a weak equivalence.
+$\mathscr{C}\xmapsto{\text{nerve}}N(\mathscr{C})$ is a
+space. $F:\mathscr{C}\rightarrow\mathscr{D}$ is a weak equivalence
+if $NF$ is a weak equivalence.
 
-    Fibrations in $Cat$. A functor is a fibration if every nice path
-    (isomorphism) lifts.
+Fibrations in $Cat$. A functor is a fibration if every nice path
+(isomorphism) lifts.
+
+* Notes for 2011-09-20
+
+- Examples of Model Categories
+  - In particular, the fibrant and cofibrant objects in them.
+
+** Why Model Categories.
+Given $\mathscr C$ a category, and subcategory $\mathscr W\subseteq
+\mathscr C$ of weak equivalences.
+
+If $\mathscr C$ is a model category
+- $Ho\mathscr C = \mathscr C[W^{-1}] where
+- $obj(Ho\mathscr C) = \obj\mathscr C$
+- $Hom_{Ho\mathscr C)(X,Y)=[X_c,Y_f]$
+  homotopy classes of maps where
+  - $X_c$ is a cofibrant replacement of $X$
+  - $Y_f$ is a fibrant replacement of $Y$.
+*** What is a cofibrantly generated model category.
+- transfinite composition
+  (think countable except for things like presheaves)
+  - Hovey just uses induction
+**** Cofibrantly Generated model categories 			 :DEFINITION:
+A model category $\mathscr C$ is cofibrantly generated if there
+exists a _set_ of cofibrations $I$ (resp. trivial cofibrations
+$J$) such that all other cofibrations (resp.) are "generated" by
+$I$ (resp. $J$).
+
+- staturation ("generated") is closure under pushout and countable
+  (transfinite) composition
+**** Maps in a category                                          :DEFINITION:
+Let $\matscr C$ a category, $I$ a =class= of maps in $\mathscr C$. A
+map is
+1) $I$-injective ($I-inj$) iff it has the RLP wrt all maps in $I$.
+2) $I$-projective ($I-proj$) iff it has the RLP wrt all maps in $I$.
+3) an $I$-cofibration ($I-cof$) iff it has the LLP wrt $I-inj$.
+   $I-cof=(I-inj)-proj$
+4) an $I$-fibration ($I-fib) iff it has the RLP wrt $I-proj.
+   $I-fib=(I-proj)-inj$
+***** Examples                                                      :EXAMPLE:
+If $\mathscr C$ is a model category, with $W$, $F$, $C$ then
+- $C-inj$ = F\cap W$ - trivial fibrations
+- $C-cof = C$ - cofibrations
+- $F-proj = C\cap W$ - trivial cofibrations
+- $F-fib = F$ - fibrations
+
+***** Relations
+1) $I\subseteq I-cof$
+   $I\subseteq I-fib$
+2) $(I-cof)-inj = I-inj$
+3) $(I-fib)-proj = I-proj$
+4) $I\subseteq J$ implies
+   - $J-inj \subseteq I-inj$
+   - $J-proj \subseteq I-proj$
+
+***** Remark
+Usually $I-cof$ has little to do with $I$.
+- If we want to stufy cofibrations (fibrations) we need to pick our
+  generators carefully.
+
+***** Relative cell complexes                                    :DEFINITION:
+Let $I$ be a =set= of maps in $\mathscr C$ (where $\mathscr C$ has all
+small colimits).
+
+A =relative $I$-cell-complex= ($I-cell$) is a countable (transfinite) composition
+of pushouts of maps in $I$.
+
+If $f:A\rightarrow B$ is a relative $I$-cell complex, then there
+exists an ordinal $\lambda$ and a $\lambda$-sequence
+$X:\lambda\rightarrow\mathscr C$ such that the $f$ is the composition
+of $X$.
+
+- $X:\lambda\rightarrow\mathscr C$.
+  $\underbrace[X]{X_0\rightarrowX_1\rightarrow\cdots\rightarrow
+  X_n\xrightarrow{h_n}\cdots$
+
+#+BEGIN_SRC latex :file diag14.svg
+  \begin{diagram}
+     C_\beta&\rTo&X_\beta\\
+     \dTo^{q_\beta\in I}&&\dTo^{h_\beta}\\
+     D_\beta\rTo&\NEpbk X_{\beta+1}\\
+   \end{digram}
+#+END_SRC
+
+$A\in\mathscr C$ is a =cell complex= (relative cell
+complex in Hovey) if $0\rightarrow
+A$ is (where $0$ is the initial object in $\mathscr C$).
+
+****** CW-complexes                                             :EXAMPLE:
+A relative $CW-$ complex is a relative cell complex where all cells
+are attach in order of dimension.
+
+****** id                                                           :EXAMPLE:
+$id:A\rightarrow A$ is always a relative $I$-cell complex
+
+****** Lemma                                                          :LEMMA:
+$I$-cell \subseteq I-cof$
+
+
+*** Model Structures directly from Axioms                           :EXAMPLE:
+- Categories
+- $Ch(R)_{\ge0}
+- Sets
+
+*** Trick 1                                                    :DEFINITION:
+Suppose $\mathscr C$ is a model category.
+
+We say $\mathscr C$ is cofibrantly generated if there exists sets $I$,
+$J$ such that
+1) the domains of maps of $I$ (resp. $J$) are small relative to
+   $I-cell$ (resp. $J$-cell).
+2) fibrations are $J-inj$.
+3) trivial fibrations are $I-inj$
+with $I$ (resp. $J$) the set of generating cofibrations (resp. trivial cofibrations).
+
+**** Remarks
+1) If all domains of $I$ and $J$ are =compact= objects of $\mathscr C$
+   then $\mathscr C$ is a =cellular= model category.
+   - In which case $I-cof=I-cell$.
+   - Exmaples: $Ch_{\ge0}(R)$, $Ch(R)$, stable $R$-modules
+   - Non-example: $Top$
+2) A cofibrantly generated model category $\mathscr C$ which is also
+   locally presentable is a =combinatorial= model category
+   ($(\infinity,1)-category).
+
+**** Smallness
+[[file:small-notes.org][Alternative presentation]]
+
+$f:A\rightarrow B$ in $I$.
+$X:\rightarrow Y$ a relative $I$-cell complex then
+$\colim \mathscr C(A,X_\beta)=\mathscr C(A,\colim X_\beta)$.
+
+**** Why cofibrantly generated?
+A. It is actually easier to find a cofibrantly generated model structure on
+$\mathscr C$ than just putting a model structure on $\mathscr C$.
+
+**** Theorem (Kan)                                                  :THEOREM:
+Suppose $\mathscr C$ is a category with all small limits and colimits,
+$W$ a subcategory of weak equivalences, $I$, $J$ sets of maps in
+$\mathscr C$.
+
+Then, under the following conditions, there exists a cofibrantly
+generated model structure such that $W$ is the set of weak
+equivalences and $I$ and $J$ are the generating cofibrations
+(resp. trivial cofibrations).
+1) W has the 2-out-of-3 property and is closed under retratcs.
+2) domains of maps in $I$ and $J$ are small relative to $I-cell$ (resp $J-cell$)
+3) $J-cell\subseteq W\cap J-cof$  -- classifying fibrations
+4) $I-inj\substeq W\cap J-inj$ -- classifying trivial fibrations
+5) (hard) Either
+   - $W\cap I-cof \subseteq J-cof$
+   - $W\cap J-inj \subseteq I-inj$
+   If a map is a cofibration and a weak equivalence then it is a
+   trivial cofibration
+
+**** Quillen Adjuntion                                           :DEFINITION:
+Cofibrantly generated model structures make transferring homotopy
+easier.
+
+$F:\mathscr C\stackrel{\rightarrow\\\leftarrow}\mathscr D:U$.
+where $\mathscr C$, $\mathscr C$ are model categories, $F$ and $U$
+adjoint (the left adjoint is written on top)
+
+$(F,U)$ is a =quillen adjunciton= if
+- $F$ preserves cofibrant objects and equivalences between them
+or
+- $U$ preserves fibrant objects and equivalences between them
+
+If $\mathscr C$ is cofibrantly generated then $(F,U)$ is a Quillen
+adjunction if $Ff$ is a cofibration (resp. trivially cofibration) in
+$D when $f\in I$ (resp. $f\in J$.
+
+***** Problem
+$Cat \stackrel{\xrightarrow{N}\\xleftarrow{\tau}} sSet_*}$ where
+$sSet_*$ has the Joyal model structure.
+
+**** $Top$
+- Fact(Exercise) Not every object in $Top$ is small.
+***** Sierpinski Space $S$                                          :EXAMPLE:
+Open sets: $\{\}$, $\{x\}$, $\{x,y\}$
+
+Let $\lambda$ be a limit ordinal, $Y=\lambda+1$ with the order
+topology.
+
+$X_\alpha=Y\times\{0,1\}/(x,0)\sim(x,1)\text{ if }x<\alpha$.
+
+$X=\colim_{\alpha<\lambda} X_\alpha = Y\cup (\lambda,1)$.
+
+There exists a map from $S$ to $X$ that does not factor through the
+limit.
+***** Facts
+where $Top$ is compactly generated spaces (originally shown by
+Quillen)
+
+- $f:X\rightarrow Y$ is a weak equivalence if
+  $\pi_n(f,x):\pi_n(X,x)\rightarrow\pi_n(Y,f(x))$ is an isomorphism
+  for all $n\ge0$ and $x\in X$.
+
+$I'=\{\text{boundary inclusions }S^{n-1}\rInto D^n}$
+$J=\{\text{inclusions }$
+
+$f$ is a cofibration if $f\in I'-cof$
+$f$ is a fibration if $f\in J-inj$.
+
+Exercise: show that fibrations are the Serre fibrations
+
+maps of $J$ are relative CW-complexes
+
+fibrant objects are all spaces
+cofibrant objects are retracts of CW-complexes
+
+* Notes for 2011-09-23
+
+** Review
+$\mathscr C$ a model category, then there is a $Ho(\mathscr C) =
+\mathscr C[W^{-1}]$, where
+- Objects are $obj\mathscr C$
+- maps $Hom_{Ho(\mathscr C)}(X,Y)\coloneq[X_c,Y_f]$
+
+$Ho\mathscr C\xrightarrow{\mathscr {LH}}\text{simplicial
+category}$.
+
+** Example (Digression on $D(R)$
+$D(R)=Ho(Ch_(\ge0))
+- objects are $M^\bullet$
+- $D(R)(M^\bullet,N^\bullet) = [QM^\buulet, N^\bullet]$
+  - where $Q$ is projective resolution, every object is fibrant.
+- $Hom(M^{\triangle},N^\bullet)\eqqcolon Map^h(M^\bullet,N^\bullet)$
+** Example ($Top$) (Quillen 1967)
+- compactly generated topological spaces, pointed
+
+Let $f: X\rightarrow Y$ a continuous map
+- $f$ is an =inclusion= if $U$ is open in $X$ iff there exists an
+  open $V$ in Y$ such that $f^{-1}(V)=U$.
+
+  - Lemma
+    Every topological space is small wrt inclusions.
+    - Proof
+     Let $\lambda$ be an ordianl, $X:\lambda\rightarrow Top$ is a
+     $\lambda$-sequence of inclusions
+
+     $X_0\xrightarrow{h_0}X_1\xrightarrow{h_1}->\cdots\rightarrow
+     X_\alpha\xrightarrow{h_\alpha}X_{\alpha+1}\cdots$
+
+      - By composition, each $X_\alpha\rightarrow X\beta$ is also an
+	inclusion for any $\beta>\alpha$.
+      - implies $X_\alpha \rightarrow \colim_{x<\lambda}X_x$
+	(consider $\colim_n(X_0\subset X_1\subset\cdots\subset X_n)
+      - For any $f:A \xrightarrow \colim_{\alpha<\lambda} X_\alpha$, we
+	want a factorization through some $X_\alpha$.
+
+	It will suffice to that $f(A)\subseteq X_\alpha$ for some
+	$\alpha<\lambda$.
+
+	Sets are small:
+	$\colim_{\alpha<\lambda)Hom(A,X_\alpha)=Hom(A,\colim_{\alpha<\lambda)X_\alpha$
+	for every $A$ and some $\lambda$ (condition is $\lambda>|A|$.
+  - If you have "sets" underlying objects then there is no need for
+    smallness arguments.
+  - Remark: For inclusions, we can lift continuity from Sets to
+    $Top$.
+  - Almost always, we define cofibration so that they have this
+    property. i.e. cofibrations "=" inclusions
+
+*** Model structure on $Top$
+Given $X\in Top$, $x\in X$ a basepoint
+
+$\pi_n(X,x) = Map((S^n,*),(X,x))$
+$f:X\rightarrow Y$ is a weak homotopy equivalence if
+$\pi_f:\pi_*(X,x)\rightarrow\pi_(Y,fx)$ is a bijection for $*\ge
+0$ and $x\in X$.
+
+$I\coloneqq\{\text{boundary inclusions $S^{n-1}\rInto D^n | n\ge
+0}$ where $S^{-1}=\emptyset$ and $D^n=\{0\}$.
+
+$J\coloneqq\{D^n\rightarrow D^n\times I|N\ge 0}$ where the maps
+are given by $x\mapsto (x,0)$.
+
+Theorem(Quillen '67) Top has a cofibrantly generated model
+structure with w.e. given by the weak homotopy equivalences.
+- $I$ = generating cofibrations
+- $J$ = generating acyclic cofibrations
+
+Remember $f:A\rightarrow B$ a cofibrations does not imply $f\in
+I$. $f\in\overline I=\text{staturation of }I$.
+$A=\overbrace[h]{X_0\xrightarrow{h_0}X_1\rightarrow\cdots\rightarrow
+ X_\beta\rightarrow B}$
+Where
+#+BEGIN_SRC latex :file diag13.svg
+  \begin{diagram}
+    C&\rTo&X_\alpha\\
+    \dTo^{i\in I}&&\dTo_{h_\alpha}\\
+    D&\rTo&\NEpbki X_{\alpha+1}
+  \end{diagram}
+#+END_SRC
+
+- Fibrations = Serre fibrations are =defined= by having the RLP
+  wrt maps in $\overline J$
+#+BEGIN_SRC latex :file diag13.svg
+  \begin{diagram}
+    A&\rTo&X\\
+    \dTo^j&\ruDotsto{\exists H}&\dTo_p\\
+    B&\rTo&Y
+  \end{diagram}
+#+END_SRC
+  $p$ is a fibration iff $\exists H$, $j\in\overline J$ such that
+  the above diagram commutes.
+
+- Proof of Thm (Kan's Theorem)
+
+  1) We are closed under retracts (retracts of spaces are homotopy
+        invariant) and have the 2-out-of-3 property
+  2) Classify fibrations
+	   $p:X\rightarrow Y$ is a fib iff $p$ has the RLP wrt $\overline J$.
+  3) Classify trivial fibrations
+	   $p:X\rightarrow Y$ is a fib iff $p$ has theRLP wrt $\overline I$
+  4) (Hard) If $f\in \overline J$ then $f$ is a weak homotopy
+     equivalence.
+
+     - Lemma
+	     Every map in $J-cof$ is a trivial cofibration.
+
+	     Pf (Sketch)
+       1) Every map in $J-cof$ is a cofibration
+          - $I-cof$ is the cofibrations.
+          - $J\subset \overline I$
+       2) Every map in $J-cof$ is a weak homotopy equivalence
+
+	       $A\xrightarrow{i} B$ is a deformation retract if
+         $\exists$ a homotopy $H:B\times I\rightarrow B$
+         s.t. $H(i(a),t)=i(a)$, $H(b,0)=b$, $H(b,1)=ir(b)$, where
+         $r:B\rightarrow A$.
+
+	       - Fact :: The inclusion of a deformation retract is a weak
+          homotopy equivalence. (check on $\pi_1$).
+
+	       - Fact :: Every map of $J$ is the inclusion of a
+          deformation retract.
+
+	       - Fact :: Inclusions of deformation retracts are closed
+          under pushouts.
+
+	     #+BEGIN_SRC latex :file diag14.svg
+         \begin{diagram}
+            A&\rTo&C\\
+            \dTo^{i\in J}&&\dTo^j\\
+            B\rTo&\NEpbk D\
+          \end{digram}
+	     #+END_SRC
+	     $D\times I=(B\times I)\times_{A\times I}(C\times I)$
+       (locally Hausdorff spaces are cartesian closed)
+
+	     $K:B\times I\rightarrow B$ is the homotopy that makes
+       $i$ a inclusion of a deformation retract.
+
+	     $gK+C\times I\rightarrow D$, $(c,t)\mapsto jc$ gives
+       $H:D\times I\rightarrow D$, which gives the deformation
+       retract of $j$.
+
+       - Took $i$ and inclusion deformation retract.
+         - Used $i$ is a weak homotopy equivalence
+       - Took the pushout of $i$, to get $j$. Then $j$ is the
+         inclusion of a deformation retract by $H$.
+       - Implies that $j$ is a weak equivalence.
+       - Every map in $J$ is a inclusion of deformation
+         retract.
+         - transfinite pushouts of maps in $J$ are inclusion
+           deformation retracts
+         - transfinite pushouts of maps in $J are w.e.
+         - because w.e. satisfy 2-out-of-3, every map in
+           $J-cof$ is a weak homotopy equivalence.
+
+=Point=
+The small object arguments is "in" this proof.
+$X\xrightarrow{f}Y$
+$X\xrightarrow{~}M\rightarrow Y$ (build $M$ out of cells)
+
+How do you use this proof to
+- Show that the cofibrant objects in $Top$ are retracts of cell
+  complexes?
+  - $A$ is a cofibrant if $*\rInto A$ is a cofibration?
+#+BEGIN_SRC latex :file diag14.svg
+\begin{diagram}
+  S^{n-1}&\rTo&*\\
+  \dTo&&\dTo\\
+  D^n\rTo&\NEpbk A_0\\
+\end{digram}
+#+END_SRC
