@@ -705,3 +705,259 @@ How do you use this proof to
   D^n\rTo&&\NWpbk A_0\\
 \end{diagram}
 #+END_SRC
+* Notes for 2011-09-
+  :PROPERTIES:
+  :ID:       31180905-5bdf-434d-b5d1-16d8e63c2453
+  :END:
+** Reading for [2011-09-28]-[2011-10-10]
+- Ch 1 - Basics in Enriched Category Theory by GM Kelly
+** 1
+$\mathscr M$ is a model category then $Ho\mathscr M$ is a category
+
+Q: What is the homotopy category? What is the derived category?
+
+A1: $Ho\mathscr M$ is the *component category* of a simplicial
+category.
+A2: If $M$ is the "stable homotopy category" then
+$Ho\mathscr{M}=\mathbb{S}-mod$.
+
+** Monoidal category                                             :DEFINITION:
+A *monoidal category* $\mathscr{V}=(V_0,\otimes,I,a,\ell,r)$ consists of
+1) a category $V_0$
+2) A functor $\otimes:V_0\times V_0\rightarrow V_0$
+3) an object $I\in V_0$
+natural isomrophims
+1) $a_{xyz}:(x\otimes y)\otimes z\rightarrow X\otimes(Y\otimes Z)
+2) $\ell_x:I\otimes X\rightarrow X$
+3) $r_x:X\otimes I\rightarrow X$
+subject to the following coherence diagrams
+M1)
+#+BEGIN_SRC latex :file diag16.svg
+  \begin{diagram}
+    ((W\otimes X)\otimes Y)\otimes Z&\rTo^{a}&(W\otimes X)\otimes(Y\otimes Z)\\
+    &&\dTo_a\\
+    \dTo(a\otimes 1)&&W\otimes(X\otimes(Y\otimes Z))\\
+    &&\Uto_{1\itmes a}\\
+    (W\otimes(X\otimes Y))\otimes Z&\rTo&W\otimes((X\otimes Y)\otimes Z)
+  \end{diagram}
+#+END_SRC
+M2)
+#+BEGIN_SRC latex :file diag17.svg
+  \begin{diagram}
+    (X\otimes I)\otimes Y & &\rTo&&X\otimes(I\otimes Y)\\
+    &\rdTo_{r\otimes 1)&&\ldTo{1\otimes \ell)\\
+    && X\otimes Y
+  \end{diagram}
+#+END_SRC
+
+A special case: $\mathscr{V}$ is called a *cartesian monoidal* category if $V_0$
+is a category with all finite products, $\otimes=\times$, $I=1$ is
+terminal object, $a$, $\ell$, $r$ are the cannonicl isomorphisms
+
+*** Examples                                                      :EXAMPLE:
+Cartesian monoidal categories:
+- $Set$
+- $Cat$
+- $Top$
+- $Shv(S)$
+Non-Cartesian:
+- $Ab$, $R-mod$, gradded $R-mod$, $dg-R-mod$
+
+*** Closed monoidal                                            :DEFINITION:
+A monoidal category $\mathscr V$ is said to be *closed* (cartesian closed if
+$V_0$ is catesian) if $-\otimes Y: V_0\rightarrow V_0$ has a right adjoint
+$\underline{Hom}(Y,_):V_0\leftarrow V_0$
+so that we have the adjunction
+$V(X\otimes Y,Z)=V(X, Hom(Y,Z))$
+with unit $D:X\rightarrow Hom(Y,X\times Y)$
+and counit (evaluation) $e:Hom(Y,Z)\otimes Y\rightarrow Z$.
+
+*** Enriched category                                          :DEFINITION:
+If we have $\mathscr V$ a closed monoidal category, we can "enrich".
+
+A $\mathscr{V}-cat$ (a category *enriched* in $V$ $\mathscr A$ consists of
+1) a set of objects $obj(\mathscr{A})$
+2) a hom-object $\mathscr{A}(x,y)\in V_0$ for each $x,y\in obj(\mathscr{A})$
+3) A composition $\mu=\mu_{xyz}:A(y,z)\otimes \mathscr A(x,y)\rightarrow
+   A(y,z)$ for all $x$,$y$,$z$.
+4) An identity $j_a:I\rightarrow A(x,x)$ for every $x\in \mathscr A$
+
+satisfying
+#+BEGIN_SRC latex :file diag18.svg
+\begin{diagram}
+(A(z,w)\otimes A(y,z))\otimes
+A(x,y)&&\rTo^a&&A(z,w)\otimes(A(y,z)\otimes A(x,y))\\
+\dTo^{\mu\otimes 1)&&&&\dTo_{1\otimes\mu}\\
+A(y,w)\otimes A(x,y)&&&&A(z,w)\otimes A(x,z)\\
+&\rdTo_\mu&&\ldTo_\mu\\
+&&A(x,w)
+\end{diagram}
+#+END_SRC
+
+diargam involving \mu, j, \ell, $
+
+Note: *closed* monoidal structure necessary
+
+**** Examples
+- $\mathscr V = Set$
+  $V-cat= Cat$
+- $\mathscr V = Cat$
+  $V-cat = 2-Cat$ (homotopy theorists: bicategory, since "nerve" is a
+  bisimplical set.)
+- $\mathscr V = Ab$
+  $V-cat$ is addative categories
+- $V=sSet$ or $Top$
+  $V-cat$ is simplicial categories / topological categories
+  $Cat_\Delta$
+
+  For 2 $\mathscr{V}-cat$ $A, B$, a $\mathscr V$-functor (enriched
+  functor) $T:A\rightarrow B$ consists of
+  1) a set map $T:obj A\rightarrow obj B$
+  2) $T_xy:A(x,y)\rightarrow B(Tx,Ty)$ a map of $\mathscr V$-objects
+  subject to
+  #+BEGIN_SRC latex :file diag19.svg
+    \begin{diagram}
+      A(y,z)\otmes A(x,y)&\rTo^{\mu_A}&A(x,z)\\
+      \dTo^{T\otimes T}&&\dTo_T \\
+      B(Ty,Tz)\otimes B(Tx,Ty)&\rTo_{\mu_B}& B(Tx,Ty)
+    \end{diagram}
+  #+END_SRC
+
+
+ Theorem (Kelly et al.)
+ - The 2-functor $(-)_0: \mathscr V-cat\rightarrow Cat$ is
+   *representable*..
+
+   Translation
+   Denote by $\mathscr I$ the unit $\mathscr{V}-cat$ with 1-object $0$
+   and $\mathscr{I}(0,0)=I$.
+
+   A $V$-functor $X:\mathscr{I}\]rightarrow\mathscr A$ is just picking
+   out an object $X\in\mathscr A$.
+
+   A $V$-natural transformation $f:X\rightarrow Y:\mathscr
+   I\rightarrow \mathscr A$ consists of a single component
+   $f:I\rightarrow A(X,Y)$.
+
+ Def: The ordinary category *underlying a $\mathscr{V}-cat$ $\mathscr
+ A$ is $A_0=(\mathscr{A})_0=\mathscr{V}-Cat(\mathscr{I},\mathscr(A))$
+
+ $A_0$ is the category with $obj A_0=\obj\mathscr{A}$ and a map $f:XY$
+ in $\mathscr A_0$ is just an element $f:I\rightarrow A(X,Y)$.
+
+ $A_0(X,y)=\mathscr{V}(I,\mathscr{A}(X,Y))$
+
+***** Example
+$\mathscr{V}=Top$ or $sSets$ (write $Spaces$) (pointed)
+- $Top=(CGHTop_*,\wedge,S^0)$
+
+$\mathscr A$ a $\mathscr{V}-cat$, $A_0=\pi_0\mathscr{A}$ is the
+component category of $\mathscr{A}$.
+- $A_0$ has $obj\mathscr A$
+- $A_0(x,y)=\pi_0\mathscr{A}(x,y)$
+
+$Top(*,A(x,y))=Top((S^0,*),(A(x,y),*)) = \pi_0A(x,y)$
+
+($\pi_0$ is the underlying set for now)
+
+How much information is lost when one goes from a $\mathscr{V}-cat$
+$\mathscr{A}$ to $A_0$?
+- Answer depends on $\mathscr V$.
+
+***** Awesome!
+- $Ho(\mathscr{C})=\pi_0 L^H(\mathscr{C},W)$ - 1979 Dwyer-Kan
+
+
+$\mathscr A$ is a simplicial category, $\mathscr A$ is also a model
+category, "the homotopy theory of $\mathscr A$ interacts well with the
+homotopy theory of spaces" (Quillen's SM7). Then $\mathscr A$ is a
+simplicial model category.
+
+$L^H(\mathscr A,W)$ is a simplicial category s.t $\pi_0^L^H(\mathscr
+A, W)=Ho(\mathscr{A}$ because $\mathscr A$ is a simplicial model
+category.
+
+$L^H(A,w)(X,Y)\coloneqq Map^h(X,y)=\mathscr{A}(X_c,Y_f)$.
+$\mathscr{A}$ being simplicial means we have an easy way to /compute/
+$Map^h(X,Y)$.
+
+We are going to discuss 5 versions of $L^H(A,W)$.
+
+***** Dwyer-Kan Hammock Localization
+Let $\mathscr C$ be a small category, $W\subseteq \mathscr{C}$ be a wide
+(contains all objects) subcategory. The *hammock localization* of $C$
+wrt $W$ (^L^H(\mathscr {C},W)=L^H(\mathscr{C})$ is the simplicial category
+1) $obj L^H\mathscr C$ has the same objects as $\mathscrC$
+2) For $X,Y$ in $\mathscr C$, the simplicial set $L^H\mathscr{C}(X,Y)$
+   has $k$-simplicies are the "reduced hammocks of width $k$, with any
+   length" between $X$ and $Y$.
+
+   #+BEGIN_SRC latex :file diag20.svg
+     \begin{diagram}
+       &&C_{0,1}&\rLine&C_{0,2}&\rLine\cdots\rLine&C_{0,n} \\
+       &\ruLine&\dTo&&\dTo&&\dTo&\rdLine\\
+       X&&C_{1,1}&\rLine&C_{1,2}&\rLine\cdots\rLine&&Y\\
+       &\rdLine(2,3)&\dTo&&\dTo&&\dTo&\ruLine\\
+       &&\dDots&&\dDots&&\dDots\\
+       &&C_{k,1}&\rLine&C_{k,2}&\rLine\cdots\rLine&C_{k,n} \\
+     \end{diagram}
+   #+END_SRC
+   where
+   - $n$ the length of the (rows) columns in any integer $\ge0$.
+   - All vertical maps are in $W$
+   - in each (row) column, all maps go in the same direction, if the
+     go left then they are in $W$
+   - Maps in adjacent (rows) colums go in different directions
+   - No (row) column contains only $identity maps$
+
+   $i$-face map = omitting the $i$th (column) row
+   $i$-degeneracy map = repeating the $i$th (column) row
+
+*Theorem* (D-k, 1979) For every $X,Y\in\mathscr C$ the components of
+$L^H\mathscr{C}$ are in bijective corespondence with $X\rightarrow Y$
+in $\mathscr C[W^{-1}]$
+
+$\pi_0L^H(\mathscr{C},w)(X,y)\rightleftarrow\mathscr{C}[W^{-1}](X,Y)$
+
+If $C$ is a *model category* then $L^H\mathscr{C}$ is *locally small*,
+$L^H\mathscr{C}(X,Y)$ is a simplicial set.
+
+
+****** Key facts about $L^H\mathscr{C}(X,Y)$
+- The simplical category $L^H\mathscr{C,W}$ depends only on weak equivalences.
+- If $M{rightarrow\atop\leftarrow}$ is a quillen equivalence, then the
+  corresponding simplicial categories are "the same" (weakly
+  equivalent).
+- If $M$ is a model category, $L^HM(X,Y$ is a *homotopy function
+  complex* ($Map^h(X,Y)$).
+
+  This space contains all higher homotopy information.
+
+****** An explicit model of $Map^h$
+1) Zig-Zag categories (Dwyer-Kan 1980)
+   - For $X\in M$ and let $Q(X)$ be the category who's objects look like
+     $(Q,Q\rightarrow X]$ where $Q$ is a cofibrant, $Q\righarrow X$ is a
+     weak equivalence. The morphisms are the commutative
+     triangles. (Slice of category of cofibrant objects over $X$)
+   - For any object $Y\in M$,
+     $M(-.Y): Q(X)^{op}\rightarrow Set$, $(Q,Q\rightarrow X)\mapsto
+     M(Q,Y)$
+
+     We can think of $M(-,Y)$ as being a functor to (discrete) spaces.
+
+     We form a simplicial set $hocolim_{Q(X)^{op}N(-,Y)$
+     1) Simplicial resolution of diagram
+
+        #+BEGIN_SRC latex :file diag21.svg
+          \begin{diagram}
+            Y&\LTo&Q_0&\lTo^~&Q_1&\lTo^{~}\cdots\lTo&Q_n\\
+            &&&\rdTo(4,2)&&\rdTo&\dTo\\
+            &&&&&&X
+          \end{diagram}
+        #+END_SRC
+
+     2) Take geometric realization
+
+     3) 1+2 = $hocolim$
+
+     Claim $hocolim M(-,Y)\rightarrow Map^h(X,Y)$
