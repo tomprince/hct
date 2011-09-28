@@ -705,10 +705,10 @@ How do you use this proof to
   D^n\rTo&&\NWpbk A_0\\
 \end{diagram}
 #+END_SRC
-* Notes for 2011-09-
-  :PROPERTIES:
-  :ID:       31180905-5bdf-434d-b5d1-16d8e63c2453
-  :END:
+* Notes for 2011-09-27
+:PROPERTIES:
+:ID:       31180905-5bdf-434d-b5d1-16d8e63c2453
+:END:
 ** Reading for [2011-09-28]-[2011-10-10]
 - Ch 1 - Basics in Enriched Category Theory by GM Kelly
 ** 1
@@ -726,26 +726,27 @@ A *monoidal category* $\mathscr{V}=(V_0,\otimes,I,a,\ell,r)$ consists of
 1) a category $V_0$
 2) A functor $\otimes:V_0\times V_0\rightarrow V_0$
 3) an object $I\in V_0$
-natural isomrophims
-1) $a_{xyz}:(x\otimes y)\otimes z\rightarrow X\otimes(Y\otimes Z)
+natural isomorphism.
+1) $a_{xyz}:(x\otimes y)\otimes z\rightarrow X\otimes(Y\otimes Z)$
 2) $\ell_x:I\otimes X\rightarrow X$
 3) $r_x:X\otimes I\rightarrow X$
 subject to the following coherence diagrams
-M1)
+1)
 #+BEGIN_SRC latex :file diag16.svg
   \begin{diagram}
     ((W\otimes X)\otimes Y)\otimes Z&\rTo^{a}&(W\otimes X)\otimes(Y\otimes Z)\\
     &&\dTo_a\\
-    \dTo(a\otimes 1)&&W\otimes(X\otimes(Y\otimes Z))\\
-    &&\Uto_{1\itmes a}\\
+    \dTo^{a\otimes 1}&&W\otimes(X\otimes(Y\otimes Z))\\
+    &&\uTo_{1\otimes a}\\
     (W\otimes(X\otimes Y))\otimes Z&\rTo&W\otimes((X\otimes Y)\otimes Z)
   \end{diagram}
 #+END_SRC
-M2)
+
+2)
 #+BEGIN_SRC latex :file diag17.svg
   \begin{diagram}
     (X\otimes I)\otimes Y & &\rTo&&X\otimes(I\otimes Y)\\
-    &\rdTo_{r\otimes 1)&&\ldTo{1\otimes \ell)\\
+    &\rdTo^{r\otimes 1}&&\ldTo_{1\otimes \ell}\\
     && X\otimes Y
   \end{diagram}
 #+END_SRC
@@ -784,17 +785,22 @@ A $\mathscr{V}-cat$ (a category *enriched* in $V$ $\mathscr A$ consists of
 
 satisfying
 #+BEGIN_SRC latex :file diag18.svg
-\begin{diagram}
-(A(z,w)\otimes A(y,z))\otimes
-A(x,y)&&\rTo^a&&A(z,w)\otimes(A(y,z)\otimes A(x,y))\\
-\dTo^{\mu\otimes 1)&&&&\dTo_{1\otimes\mu}\\
-A(y,w)\otimes A(x,y)&&&&A(z,w)\otimes A(x,z)\\
-&\rdTo_\mu&&\ldTo_\mu\\
-&&A(x,w)
-\end{diagram}
+  \begin{diagram}
+    (A(z,w)\otimes A(y,z))\otimes A(x,y)&&\rTo^a&&A(z,w)\otimes(A(y,z)\otimes A(x,y))\\
+    \dTo^{\mu\otimes 1}&&&&\dTo_{1\otimes\mu}\\
+    A(y,w)\otimes A(x,y)&&&&A(z,w)\otimes A(x,z)\\
+    &\rdTo_\mu&&\ldTo_\mu\\
+    &&A(x,w)
+  \end{diagram}
 #+END_SRC
-
-diargam involving \mu, j, \ell, $
+and
+#+BEGIN_SRC latex :file diag19.svg
+  \begin{diagram}
+    I\otimes A(x,x)&\rTo^\ell&A(x,x)&\lTo^r&A(x,x)\otimes I \\
+    \dTo^{j\otimes 1}&\ruTo^\mu&&\luTo^\mu&\dTo^{1\otimes j} \\
+    A(x,x)\otimes A(x,x)&& &&A(x,x)\otimes A(x,x)
+  \end{diagram}
+#+END_SRC
 
 Note: *closed* monoidal structure necessary
 
@@ -815,18 +821,17 @@ Note: *closed* monoidal structure necessary
   1) a set map $T:obj A\rightarrow obj B$
   2) $T_xy:A(x,y)\rightarrow B(Tx,Ty)$ a map of $\mathscr V$-objects
   subject to
-  #+BEGIN_SRC latex :file diag19.svg
+  #+BEGIN_SRC latex :file diag20.svg
     \begin{diagram}
-      A(y,z)\otmes A(x,y)&\rTo^{\mu_A}&A(x,z)\\
+      A(y,z)\otimes A(x,y)&\rTo^{\mu_A}&A(x,z)\\
       \dTo^{T\otimes T}&&\dTo_T \\
       B(Ty,Tz)\otimes B(Tx,Ty)&\rTo_{\mu_B}& B(Tx,Ty)
     \end{diagram}
   #+END_SRC
 
-
  Theorem (Kelly et al.)
  - The 2-functor $(-)_0: \mathscr V-cat\rightarrow Cat$ is
-   *representable*..
+   *representable*.
 
    Translation
    Denote by $\mathscr I$ the unit $\mathscr{V}-cat$ with 1-object $0$
@@ -873,8 +878,8 @@ category, "the homotopy theory of $\mathscr A$ interacts well with the
 homotopy theory of spaces" (Quillen's SM7). Then $\mathscr A$ is a
 simplicial model category.
 
-$L^H(\mathscr A,W)$ is a simplicial category s.t $\pi_0^L^H(\mathscr
-A, W)=Ho(\mathscr{A}$ because $\mathscr A$ is a simplicial model
+$L^H(\mathscr A,W)$ is a simplicial category s.t $\pi_0L^H(\mathscr
+A, W)=Ho(\mathscr{A})$ because $\mathscr A$ is a simplicial model
 category.
 
 $L^H(A,w)(X,Y)\coloneqq Map^h(X,y)=\mathscr{A}(X_c,Y_f)$.
@@ -892,16 +897,18 @@ wrt $W$ (^L^H(\mathscr {C},W)=L^H(\mathscr{C})$ is the simplicial category
    has $k$-simplicies are the "reduced hammocks of width $k$, with any
    length" between $X$ and $Y$.
 
-   #+BEGIN_SRC latex :file diag20.svg
+   #+BEGIN_SRC latex :file diag21.svg
+     \newarrow{Dots}.....
      \begin{diagram}
-       &&C_{0,1}&\rLine&C_{0,2}&\rLine\cdots\rLine&C_{0,n} \\
-       &\ruLine&\dTo&&\dTo&&\dTo&\rdLine\\
-       X&&C_{1,1}&\rLine&C_{1,2}&\rLine\cdots\rLine&&Y\\
-       &\rdLine(2,3)&\dTo&&\dTo&&\dTo&\ruLine\\
-       &&\dDots&&\dDots&&\dDots\\
-       &&C_{k,1}&\rLine&C_{k,2}&\rLine\cdots\rLine&C_{k,n} \\
+       &&C_{0,1}&\rLine&C_{0,2}&\rLine&\cdots&\rLine&C_{0,n} \\
+       &\ruLine&\dTo&&\dTo&&&&\dTo&\rdLine\\
+       X&&C_{1,1}&\rLine&C_{1,2}&\rLine&\cdots&\rLine&C_{1,n}&&Y\\
+       &\rdLine(2,3)&\dTo&&\dTo&&&&\dTo&\ruLine(2,3)\\
+       &&\dDots&&\dDots&&&&\dDots\\
+       &&C_{k,1}&\rLine&C_{k,2}&\rLine&\cdots&\rLine&C_{k,n} \\
      \end{diagram}
    #+END_SRC
+
    where
    - $n$ the length of the (rows) columns in any integer $\ge0$.
    - All vertical maps are in $W$
@@ -928,7 +935,7 @@ $L^H\mathscr{C}(X,Y)$ is a simplicial set.
 - If $M{rightarrow\atop\leftarrow}$ is a quillen equivalence, then the
   corresponding simplicial categories are "the same" (weakly
   equivalent).
-- If $M$ is a model category, $L^HM(X,Y$ is a *homotopy function
+- If $M$ is a model category, $L^HM(X,Y)$ is a *homotopy function
   complex* ($Map^h(X,Y)$).
 
   This space contains all higher homotopy information.
@@ -945,14 +952,14 @@ $L^H\mathscr{C}(X,Y)$ is a simplicial set.
 
      We can think of $M(-,Y)$ as being a functor to (discrete) spaces.
 
-     We form a simplicial set $hocolim_{Q(X)^{op}N(-,Y)$
+     We form a simplicial set $hocolim_{Q(X)^{op}}N(-,Y)$
      1) Simplicial resolution of diagram
 
-        #+BEGIN_SRC latex :file diag21.svg
+        #+BEGIN_SRC latex :file diag22.svg
           \begin{diagram}
-            Y&\LTo&Q_0&\lTo^~&Q_1&\lTo^{~}\cdots\lTo&Q_n\\
-            &&&\rdTo(4,2)&&\rdTo&\dTo\\
-            &&&&&&X
+            Y&\lTo&Q_0&\lTo^{~}&Q_1&\lTo^{~}&\cdots&\lTo&Q_n\\
+            &&&\rdTo(6,2)&&\rdTo(4,2)&&&\dTo\\
+            &&&&&&&&X
           \end{diagram}
         #+END_SRC
 

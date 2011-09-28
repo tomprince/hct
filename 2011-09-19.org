@@ -7,30 +7,30 @@
 - Grew out of questions asked at Isle of Skye Conference
 
 * Main Questions
-  1) What properties of an algebraic object $X$ (e.g. commutative ring
-     spectra) does its "homology" detect?
-  2) How much of $X$ can be recovered from its "homology"?
+1) What properties of an algebraic object $X$ (e.g. commutative ring
+   spectra) does its "homology" detect?
+2) How much of $X$ can be recovered from its "homology"?
 
 * Quillen Homology
 
-  The general idea is to look at the abelianization in some category
+The general idea is to look at the abelianization in some category
 #+BEGIN_SRC latex :file 2011-09-19.1.svg
 \begin{diagram}
   \text{objects}&\pile{\rTo^{Ab}\\\dashv\\\lTo_{\text{forget}}}&\text{Abelian
   objects}
 \end{diagram}
 #+END_SRC
-  For example $H^1$ of groups is abelianization. More generally, we
-  have some notion of equivalence in our category, so we take the
-  derived version of this:
+For example $H^1$ of groups is abelianization. More generally, we
+have some notion of equivalence in our category, so we take the
+derived version of this:
 #+BEGIN_SRC latex :file 2011-09-19.2.svg
 \begin{diagram}
   \text{objects + homoptopy theory}&\rTo^{\underline{L}Ab}&\text{Abelian
   objects + homotopy theory}
 \end{diagram}
 #+END_SRC
-  Since $Ab$ is a left adjoint, we take the left dervied
-  Abelianization. The Quillen homology of $X$ is defined as
+Since $Ab$ is a left adjoint, we take the left dervied
+Abelianization. The Quillen homology of $X$ is defined as
   $\underline{L}Ab(X)$.
 ** Examples
 *** Spaces (empty algebraic structure)				    :EXAMPLE:
@@ -41,7 +41,7 @@
     \text{spaces}
   \end{diagram}
 #+END_SRC
-    $\pi_*\underline{L}Ab(Y)=H_*(Y)$
+$\pi_*\underline{L}Ab(Y)=H_*(Y)$
 
 *** Groups							    :EXAMPLE:
 #+BEGIN_SRC latex :file 2011-09-19.4.svg
@@ -51,7 +51,7 @@
     Grp
   \end{diagram}
 #+END_SRC
-    $\pi_*\underline{L}Ab(G)=H_{*+1}(BG)$
+$\pi_*\underline{L}Ab(G)=H_{*+1}(BG)$
 
 *** Commutative Rings						    :EXAMPLE:
 #+BEGIN_SRC latex :file 2011-09-19.5.svg
@@ -70,12 +70,12 @@ We are interested in the topological analogy of Quillen Homology
 
 
 * Basic Setup
-  (Commutative ring spectra will be a special case)
+(Commutative ring spectra will be a special case)
 
-  Let $\mathscr{O}$ be an operad in symmetric spectra $Sp^\Sigma$ such
-  that $\mathscr{O}[0]=*$ (non-unital). Having this determines a
-  canonical map
-  $\mathscr{O}\xleftarrow{f}\tau_1\mathscr{O}\coloneqq(*,\mathscr{O}[1],*,\ldots)$.
+Let $\mathscr{O}$ be an operad in symmetric spectra $Sp^\Sigma$ such
+that $\mathscr{O}[0]=*$ (non-unital). Having this determines a
+canonical map
+$\mathscr{O}\xleftarrow{f}\tau_1\mathscr{O}\coloneqq(*,\mathscr{O}[1],*,\ldots)$.
 
 ** $\mathscr{O}$-algebra in $Sp^\Sigma$ 			    :EXAMPLE:
 
@@ -87,5 +87,99 @@ We are interested in the topological analogy of Quillen Homology
     X/\text{kill off n-ary operations}
   \end{diagram}
 #+END_SRC
-  These are the indecomposables.
-** Topological Quillen Homology
+These are the indecomposables.
+** Topological Quillen Homology					 :DEFINITION:
+
+Let $X\in Alg_{\mathscr{O}}$.
+
+Let $\mathscr{O}\circ(X)\coloneqq\mathscr{O}[t]\wedge_{\Sigma_t}X^{\wedge
+t}$. Then a map $\mathscr{O}\circ(X)\rightarrow X$ is a left action of
+$\mathscr O$ on $X$ in $Sp^{\Sigma}$.
+
+The *topological Quillen homology* of $X$ is
+$QH(X)\coloneq\underline{R}f^*\tau_1\mathscr{O}\stackrel{L}{\circ}_{\mathscr O}(X)
+= \tau_1\mathscr{O}\stackrel{\circ}{L}_{\mathscr O}(X)$. These are the
+derived indecomposables.
+
+*** Hurewicz map
+$X\simeq X^C\rightarrow \tau_1\mathscr{O}\circ_{\mathscr O}(X^C)$
+where $X^C$ is a resolution (cofibrant replacement).
+
+$\pi_*(X)=\pi_*\tau_1\mathscr{O}\circ{\mathscr O}(X^C)=\pi_*QH(X)$
+
+- Example :: (non-unital commutative ring spectra)
+
+  $\mathscr{O} = (*,S,S,\ldots)$ where $S$ is the sphere spectrum.
+
+  Hurewicz map: $x\simeq X^C\rightarrow X^C/(X^C)^2$
+             $\pi_*X\rightarrow \pi_*(QH(X)) = \pi_*(TAQ(X))$
+             where $TAQ(X)$ is topological quillen homology.
+
+*** Main Question
+(Q2+3) Harper - Isle of Skye conference 2009
+
+1) What properties of $X$ does $QH$ detect?
+2) How much of $X$ can be recovered from $QH(X)$ with extra structure?
+3) What is the extra strucutre?
+
+Q3 was answered in switzerland
+Q1+2 at Western, Fall 2009
+
+
+**** Recent results for 1
+Under mild conditions on $\mathscr O$ and for 0-connected
+$\mathscr{O}$-algebras (perhaps generalizable to a nilpotency
+condition.
+
+- Theorem (Harper, Hess) :: Relative Hurewicz "$QH$ detects
+     $n$-connected maps"
+- Theorem (Harper, Hess) :: Finiteness "$QH$ detects finiteness
+     properties of $\pi_*X$
+
+
+**** Recent results for 2+3
+Approach: Draw precises analogy with Bousfield-Kan $R$-completion of
+spaces. $QH$ corresponding to $H(-,R)$.
+
+$Ho(Alg_{\mathscr
+O}){\xleftarrow{Lf_*}\atop\xrightarrow[Rf^*]{}}Ho(Alg_{\tau_1\mathscr
+O}=Ho(Mod_{\mathscr{O}[1]}$
+
+- cosimplicial resolution (from adjunction)
+
+  - $QH\coloneq \underline{R}f^*\underline{L}f_*$
+  - $K\coloneq \underline{L}f_*\underline{R}f^*$
+  - monad $id\rightarrow QH$, $(QH)(QH)\righarrow QH$ on
+    $Ho(Alg_{\mathscr O}$.
+  - comonad $id\leftarrow K$, $KK\leftarrow K$ on
+    $Ho(Mod_{\mathscr{O}[1]})$.
+
+- Connection to Koszul cooperads
+  - $K$ coacts on object underlying $QH$
+  - leads to a co-augmented cosimplicial resolution
+
+
+Find conditions such that $X\rightarrow X^\wedge_{QH}\coloneq
+holim_\Delta(QH(X)\rightarrow (QH)^2\cdots)$
+
+- Theorem (Harper, Ching) :: $X$ O-connected
+
+     $E^2_{-s,t}=\pi^s\pi_tQH_\bullet(X)
+     \Rightarrow\pi_{t-s}X^\wedge_{QH}$ converges strongly and
+     $X\xleftarrow{~}X^\wedge_{QH}$.
+
+     *Proposition* $hofib(X\rightarrow Tot_nQH(X)) is $n+1$ connected
+     for every $n$.
+
+     #+BEGIN_SRC latex :file 2011-09-19.8.svg
+       \begin{diagram}
+         &&Tot_2&\lTo^{2-con}&hFib\\
+         &\ruTo(2,4)^{4-con}&\dTo_{3-con}\\
+         &&Tot_1&\lTo^{1-con}&hFib\\
+         &\ruTo^{3-con}&\dTo_{2-con}\\
+         X&\rTo^{2-con}&Tot_0(QH(X))&=QH(X)\\
+        \end{diagram}
+     #+END_SRC
+     The proof proceeds by calculating the connectivity of the maps
+     $X\rightarrow Tot_n$, from which the rest of the connectivity
+     claims follow.
