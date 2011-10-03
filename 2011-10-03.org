@@ -1,0 +1,105 @@
+#+AUTHOR: Graham Denham
+#+TITLE: Tropical Construcion of de Concini Procesi's wonderful models
+
+* Introduction
+- $\mathscr{A}=\mathbb{C}^d$
+- $Y_{\mathscr A}$ de Concini-Procesi model
+- linear hyperlanes $M=\mathbb{C}^d=\cup_{H\in\mathscr{A}}$
+  - $Y_{\mathscr A}=\overline M$
+  - $\overline{Conf_{d}(\mathbb{R}^d)}
+  - $\overline{M}_{g,d+1}$ - Deligne-Mumford compatification
+- combinatorics -> Feichtner-Yuzvesky
+  - toric variety $X_{\Sigma(A)}\supset(\mathbb{C}^*)^n)$
+  - $H^{\Sigma*}(Y_A,\mathbb{Z})\conj A^*(X_{\Sigma(A)})$
+  - Q: why? A: there is a map
+    - for $H\in\mathscr{A}$
+    - $H=ker f_{H}$ where $f_H:\mathbb{C}^d\rightarrow\mathbb{C}^n$
+    - $\underline{f}:\mathbb{C}^d\rightarrow \mathbb{C}^n
+    #+BEGIN_SRC latex :file 2011-10-03.svg
+      \begin{diagram}
+        \mathbb{C}^d&\rTo&\mathbb{C}^n\\
+        \uInto&&\uInto\\
+        M\&\rightarrow&(\mathbb{C}^\times)^n\\
+        \dInto&&\dInto\\
+        Y_A&\rInto X_{\Sigma(A)}
+      \end{diagram}
+    #+END_SRC
+
+* de Corcini-Procesi Construction
+- Given $A=\{H_1,\dotsc,H_n\}$ in $\mathbb{C}^d=V$.
+- $L$ lattice of intersections
+- Notation
+  - where $[X,Y]$ interval $X\le Y$
+  - If $\mathscr{G}\subset L(A)$, let $\mathscr{G}_\{\le
+    X}=\mathscr{G}\cap[\hat 0, X].
+- Say a set $\mathscr{G}\subset L(A)$ is a *building* set if
+  - $\forall X\in L_{\ge1}(A)$ (rank $\ge 1$)
+    - $[\hat 0,X]\conj\prod_{y\in\max G_{\le X}}[\hat 0,Y]$
+- Examples
+  1) $\mathscr{G}=L_{\ge 1}(A)
+  2) Say $X$ is *irreucible$ if $[\hat 0,X]$ isn't isomorphic to a
+     cartesian product of $\ge2$ intervals.
+     - *Theorem* $\mathscr{G}=\mathscr{G}_{min}=\{X\in
+       L_{\ge1}(A)\|L\text{ irreducible}\}$
+  3) $A_d$, $H_{ij}:x_i-x_j$ where $1\le i\le j\le d+1$
+     $V=\mathbb{C}^{d+1}$
+     - then $X\in L(A)$ is equivalent to a partition of $\{1,2,\dotsc,d+1\}$
+     - $X$ is irred iff partition has only one block of size $\ge 2$.
+- *Definition:* $N\subset\mathscr{G}$ is a *nested set* if for
+  $\{X_1,\dotsc,X_k\}\subset N$ pairwise incomparable, then $\cup
+  X_i\nin\mathscr{G}$.
+  - Examples
+    1) If $\mathscr{G}=L_{\ge1}(A)$, then $N must be a chain in
+       $L(A)$.
+    2) For $d=3$ in $\mathscr{A}_3$, then $\{12,34,1234\}$ is a nested set
+- The set of nested sets $NS(\mathscr{G}$ forms a simplicial complex.
+  - Examples
+    1) $\mathscr{A}_3$, $\mathscr{G}=\mathscr{G}_{min}$
+       {{cone over peterson graph}}
+- Construction
+  - For any $\mathscr{A}$, building set $\mathscr{G}$
+#+BEGIN_SRC latex
+  \begin{diagram}
+    \rho:&V&\rTo& V\times\prod_{X\in\mathscr{G}}\mathscr{P}(V/X)\\
+    \uTop&\ruTop\\
+    M
+  \end{diagram}
+#+END_SRC
+  - Let $\Y_{A,\mathscr{G}}=\overline{\rho(M)}$
+  - *Theorem* (de Corcini-Procesi, 1995)
+    - $Y_{A,\mathscr{G}) is a union of smooth divisors indexed by
+      $\mathscr{G}$
+    - divisors $\{E_X\}_{X\in N}$
+    - $\cup_{X\in N}E_x\ne \emptyset$ iff $N$ is a nested set (normal
+      crossings)
+* A toric variety from $\mathscr{A}$, $\mathscr{G}$
+- Construct a *fan* $\Sigma_{\mathscr{A},\mathscr{G}}\in\mathbb{Z}^n$
+- primitive vectors
+  - for $X\in\mathscr{G}$, $v_X\in\mathbb{Z}^n$
+  - $(v_X)_H=\begin{cases}1&\text{if }$H\le X\\0&\text{otherwise}\end{cases}$
+- cones: $\sigma_N=\mathbb{Z}_{\ge0}\{v_X | X\in N\}$
+  - forall nested sets $N\subset\mathscr{G}$
+- Feichtner-Yuzvesky: $X_{\mathscr{A},\mathscr{G}}$ is smooth
+- Cox Ring
+  - $R=\mathbb{C}[y_X | x\in\mathbb{G}]$
+  - $\mathbb{Z}^{|\mathscr{G}|-|\mathscr{A}|}$ - grading!
+  - $deg y_H=\sum_{X\ge} e_x$ for $H\in\mathscr{A}$
+  - $deg y_X=-e_x$ for $X\nin\mathscr{A}$
+  - $T^{|\mathscr{G}|-|\mathscr{A}|}$ action on
+    $\mathbb{A}^{|\mathscr{G}|}$ and $\mathbb{A}^{|\mathscr{G}|}-V(B)$
+    where $B$ is "toric irrelevant ideal"
+  - Cox:
+    $X_{\Sigma(\mathscr{A},\mathscr{G})}=\mathbb{A}^{|\mathscr{G}|}-V(B)//G=Proj R$
+  - *Proposition* (D, Tevelev)
+    - $Y_{\mathscr{A},\mathscr{G}}\conj \overline{f(M)}\subset
+      X_{\Sigma(A,\mathscr{G})}\conj Proj(R/I)$
+* Intersection rings
+- $A^*(Y_{\mathscr{A},\mathscr{G}})\conj H^2(Y_{\mathscr{A},\mathscr{G},\mathbb{Z}})$
+- Fulton-Stamfels $A^*(X_{\mathscr{A},\mathscr{G}})$ additively
+  - Danilov-Jurkienkz
+    - $A^*(X_\Delta)=\mathbb{Z}[\Delta]/J=H^2(X,\mathbb{Z})$ if $X_\Delta$ is smooth and complete.
+    - turns out the first equality holds even without complete
+- $j:Y_{A,\mathscr{G}}\rightarrow X_{\Sigma(A,\mathscr{G}}$
+- *Theorem* (D)  $j^*:A^*(X_{\Sigma(A,\mathscr{G})}\rightarrow
+  A^*(Y_{A,\mathscr{G}})$ is an isomorphism.
+  - $j^*[D_{\{y_x\}}] = [D_{\{v_x\}}\cup Y]=E_x$

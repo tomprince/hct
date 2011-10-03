@@ -969,6 +969,9 @@ $L^H\mathscr{C}(X,Y)$ is a simplicial set.
 
      Claim $hocolim M(-,Y)\rightarrow Map^h(X,Y)$
 * Notes for 2011-09-30
+:PROPERTIES:
+:ID: e6d8a7f4-42a0-4550-8c76-81c768791618
+:END:
 ** Review
 - $H\xrightarrow{L^H}L^H(M)$ simplical category
 - Spaces $L^H(M)(X,Y) = Map^{h}(X,Y)$

@@ -11,13 +11,13 @@ transformation.
 
 - $\Gamma < SL_@{\mathbb{Z})$
 - congruence subgroup
-  $\exists M\ge1$ st $\Gamma\superset\Gamma(M) = \{\gamma | \gamma =
+  $\exists M\ge1$ st $\Gamma\supset\Gamma(M) = \{\gamma | \gamma =
   id (mod n)\}$
 
 - quotient $M_\Gamma = \Gamma\\ \mathscr{h}$ complex orbifold (manifold) of dim
   1
   - non-compact Rieman surface
-  - $\overline{M_\Gamma}\superset M_\Gamma$ compact Rieman surface
+  - $\overline{M_\Gamma}\supset M_\Gamma$ compact Rieman surface
 
 ** Over quadratic field
 - $F$ real quadratic field $\mathbb{Q}(\sqrt d)=\{a+b\sqrt d | a,

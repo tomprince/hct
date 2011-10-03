@@ -91,7 +91,7 @@ Can we find $M_{\tilde{D^b(X)}}$?
 - Under this map, $M_{Coh(X)}: Sch \rightarrow\text{2-truncated
   spaces}$.
 
-- $N(Coh(X)\superset N(Iso(X))$
+- $N(Coh(X)\supset N(Iso(X))$
 
   - $N(Iso(X))$ is the largest Kan complex in $N(Coh(X))$.
 - $M_{D^b(X)}(Y)\coloneq\text{largest Kan complex}\subset
