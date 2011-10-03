@@ -968,3 +968,168 @@ $L^H\mathscr{C}(X,Y)$ is a simplicial set.
      3) 1+2 = $hocolim$
 
      Claim $hocolim M(-,Y)\rightarrow Map^h(X,Y)$
+* Notes for 2011-09-30
+** Review
+- $H\xrightarrow{L^H}L^H(M)$ simplical category
+- Spaces $L^H(M)(X,Y) = Map^{h}(X,Y)$
+  - $\pi_0L^H(M)(X,Y)=[X,Y]$ homotopy classes
+  - $\pi_1L^H(M)(X,Y)$ homotopies of maps between homotopies
+** Monoidal model categories
+- Model category with $\otimes$ so that $M$ is a closed monoidal
+  category (in a homotopy coherent way).
+  - then $M$ is a monoidal model category
+- Monoidal model categories are to homotopy theory what rings are to
+  an algebra
+  - $M$ Spaces
+    - is a monoidal model category
+    - *modules* over spaces are simplicial model categories
+    - a simplicial model category is an $S$-category, and the internal
+      homs can be identified with $Map^h$ when $X$ is cofibrant and
+      $Y$ is fibrant.
+- Any monoidal model category has the the same properties as a
+  simplicial properties
+  - through the theory of homotopy function complexes
+  - theory of framings/coframings (Hovey, Ch 5)
+** Models of Hammock Localization
+- $M$ a model category
+- construct a $S$-category $L^H(M)$ with
+  - $obj L^H(N)=obj M$
+  - $L^(H)(M)(X,Y)$ have $k$-simplicies like
+    {{diagram}}
+    - pretty, but impossible to work with
+- will build models that are easier to work with
+  1) $Map^h(X,Y)$ is weakly equivalent to the nerve of $[X\xleftarrow{~}Q\rightarrow Y]$
+  2) $Map^h(x,y)$ is equivalent to
+     - $[n]\mapsto Hom(Q^n,Y_f)$ where
+       - $Y_f\rightarrow Y$ is a fibrant replacement of $Y$
+       - $Q^*X\rightarrow X$ is a cosimplicial resolution of $X$
+  3) $[n]\mapsto Hom_M(X_c,R_nY)$ where
+     - $X_c$ is a cofibrant replacement
+     - $R_*Y\rightarrow Y$ is a simplicial resolution.
+  4) $M$ is a simplicial model category - $Hom_M(X_c,Y_f)$
+  5) $M$ is Morita model category, $M(X-Y-bimodule)$
+*** Nerve of .
+- The nerve of a category $C$ is the simplicial set $N(C)_*$ where
+  - $N(C)_n$ is $n$-composable chains of morphisms
+    - $C_0\rightarrow C_1\rightarrow\cdots\rightarrow C_n$
+  - \(d_i(C_0\rightarrow\cdots\rightarrow C_n)=
+    \begin{cases}
+       C_0\rightarrow\cdots C_{i-1}\xrightarrow{a_{i+1}a_i}C_{i+1}\rightarrow\cots C_n \\
+       C_0\rightarrow\cdots\rightarrow C_{n-1}&\text{where} i=n\\
+       C_1\rightarrow\cdots\rightarrow C_n\text{where }i=0
+    \end{cases}\)
+  - $s_i$ is inserting and identity before the $i$th map.
+**** Simplicial replacement
+- $F:C\rightarrow Spaces$, we can replace $F$ by a a simplicial object.
+- $(\coprod F)_n=\coprod_{C_0\cdots C_n\in N(C)_n} F(c_0)$
+- Let $F(c_0)_\sigma$ to be the copy of $F(c_0)$ corresponding to
+  the chain $\sigma\in N(C_0)_n$.
+- we have an $(n+1)$-chain $s_1(\sigma)$ whose first element is
+  again $c_0$, therefore we have another copy of $F(c_0)$
+  corresponding to $s_1\sigma$ in $(\coprod F)_{n+1}.
+  - $s_i:F(c_0)_\sigma\mapsto F(c_0)_{s_1\sigma}$
+**** $[X\xleftarrow{~}Q\rightarrow Y$
+- denotes the category where
+  - an objects is a zig-zag of objects where $X\leftarrow U$ is a
+    trivial fibration and $V\leftarrow Y$ is a trivial cofibration.
+  - morphism
+#+BEGIN_SRC latex :file diag23.svg
+  \begin{diagram}
+    &&U&\rightarrow&V \\
+    &\ldTo&&&&\luTo \\
+    X&&\dTo&&\dTo&&Y \\
+    &\luTo&&&&\ldTo \\
+    &&U&\rightarrow&V \\
+  \end{diagram}
+#+END_SRC
+- $N([X\xleftarrow{~}U\rightarrow V\xleftarrow{~} Y])$
+  - $k$-simplicies
+    {{diagram}
+    - is clearly a $k$-simplex of $L^H(M)(X,Y)$
+    - Theorem (DK 1979)
+      - $N([X\xleftarrow{~}U\rightarrow V\xleftarrow{~} Y])$ is
+        w.e. to $Map^h(X,Y)$
+- Problem: this is not much nicer
+  - Claim
+    - $Map^h(X,Y)\simeq N([X\xleftarrow{~}Q\rightarrow Y])$ where
+      $Q$ is cofibrant and $Y$ is fibrant.
+  - Why is $[X\xleftarrow{~}Q\rightarrow Y]$ any nicer?
+    - The nerve is w.h.e. to the hocolim of a functor.
+    - Explicitly.
+      - $x\in M$, let $Q(x)$ be the category with
+        - objects $(Q,Q\rightarrow x$ where Q$ is cofibrant and
+          $Q\xrightarrow{~}X$.
+      - for any object $Y$ in $M$,
+        - $M(-,Y):Q(X)^{op}\rightarrow Set\hookrightarrow sSet$ where $(Q,Q\rightarrow
+          X)\mapsto Hom(Q,Y)$
+      - we can take $hocloim_({Q(x)^{op}M(-,Y)$
+        1) take simplicial replacement of $M(-,Y)$
+           - $n$-simplices are {{diagram from last class}}
+             = $N([X\xleftarrow{~}Q\leftarrow Y])$
+        2) take geometric realization
+  - *Proposition* When $Y$ is fibrant, the maps in the following diagram are w.h.e
+    on nerves
+    #+BEGIN_SRC latex :file diag24.svg
+      \begin{diagram}
+        M(wfib)^{-1}(X,Y)&\rInto^{j_3}&M(wfib)^{-1}M(x,y)\\
+        \dInto^{j_1}&&\dInto_{j_2}\\
+        MW^{-1}(X,Y)&\rInto_{j_4}&MW^{-1}M(X,Y)
+      \end{diagram}
+    #+END_SRC
+    - $(wcof)^{-1}M(wfib)^{-1}(X,Y)$ is $[X\xleftarrow{~}U\rightarrow
+      V\xleftarrow{~}Y]$
+    - similarly for other $M(wfib){^-1}$, etc.
+    - $(wfib)\subseteq W$, $id\in M$, so all maps are inclusions
+    - Proof
+      1) Prove $j_1$ induces a w.e. of nerves
+         - $[X\xleftarrow{~}U\rightarrow
+           Y]\xrightarrow{j_1}[X\xleftarrow{~}Q\rightarrow Y]$
+         - construct a functor back $F_1$
+           - functorialy factor $A\rightarrow X\times Y$ as
+             $A\hookrightarrow P\rightarrow X\times Y$
+           - because $Y$ is fibrant $Y\rightarrow *$ is a fibration
+             - *Fact$ fibrations are closed under pullback and
+               cofibrations are closed under pushout.
+             - closed under pullback, so $X\times Y\rightarrow X$ is a
+               fibration
+             - hence $P\rightarrow X$ is a fibration, and w.e. by 2-of-3
+         - *Fact* if we have adjoint functors $(F,G)$ then the induced
+           map $N(G)$ is a homotopy inverse to $N(F)$
+      2) Prove $j_2$ induces a w.e. of nerves
+         - $[X\rightarrow U\xleftarrow{~}V\rightarrow Y]\xrightarrow{j_1}[X\rightarrow U\xleftarrow{~}V\rightarrow Y]$
+         - functorially factor $V\rightarrow U\times Y$
+      3) $j_3$ (Don't need $Y$ fibrant
+         - $[X\xleftarrow{~}P\rightarrow Y]\xrightarrow{j_1}[X\rightarrow U\xleftarrow{~}V\rightarrow Y]$
+         - Let $P$ be the pullback of $X$ and $V$ over $U$.
+      4) $j_4$ w.e by 2-of-3
+         - $MW^{-1}(X,Y)\rightarrow MW^{-1}M(X,Y)$
+    - Point: The nerve of any of these 4 categories of zigzags is
+      w.e. to $Map^h(X,Y)$
+**** $Hom(QX^*,X$ and $Hom(X,R_*Y)$
+Leads naturally to models 2 and 3.
+- Outline
+  1) $QX^*\rightarrow X$ of $X$ in cM (Reedy model category associated
+    to M.
+     - $QX^*$ is bar resolution
+    #+BEGIN_SRC latex :file diag25.svg
+      \begn{diagram}
+        X\otimes X\otems X
+        \dLine\\
+        X\otimes X &\rLine& X\\
+        \dLine\\
+        X
+      \end{diagram}
+    #+END_SRC
+  2) For any simplicial set $K$ we have $\Delta K$ the category of
+     simplicices
+     - $\Delta K$ is overcategory $S\downarrow K$ where
+       $S:\Delta\rightarrow sSet: [n]\mapsto \Delta^n$
+     - The nerve of $\Delta K$ is w.h.e $K$
+  3) We set up a function
+     $\Delta Hom_M(QX^*,Y\rightarrow M(wfib)^{-1}(X,y)$ where
+     $([n],QX^n\rightarrow Y)\mapsto[X\xleftarrow{~}QX^n\rightarrow Y]
+- *Proposition* (DK, 1980)
+  - Let $QX^*$ be a Reedy cofbirant replacement of $X$. Then
+    - $\Delta Hom_M(QX^*,Y\rightarrow M(wfib)^{-1}(X,y)$
+      is a w.h.e on nerves when $Y$is fibrant.
+    - therefore $N(\Delta Hom_M(QX^*,Y))\simeq Hom_M(QX^*,Y)\simeq Map^h(X,Y)$.
