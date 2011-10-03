@@ -1,0 +1,215 @@
+#+TITLE: Problem Set One
+
+Due: <2011-09-26>
+
+* Equivalence of categories
+Prove that a functor $F:C\rightarrow D$ is an equivalence if and
+only iff $F$ is full, faithful and essentially surjective.
+** Answer :NOEXPORT:
+
+- A functor is full if it is surjective on $Hom$ sets and faithful if
+it is injective on $Hom$ sets, so it is full and faithful iff it is
+bijective on $Hom$ sets.
+
+- Let $F:C\rightarrow D$ be an equivalence. Then there is a functor
+  $G:D\rightarrow C$ and natural isomorphisms $h:FG\rightarrow id_D$ and
+  $j:GF\rightarrow id_C$.
+
+  - Given $f:x\rightarrow y$ in $C$, we have that the diagram
+    #+BEGIN_SRC latex :file problems1.1.svg
+      \begin{diagram}
+        x&\rTo^f&y \\
+        \uTo^{j_x}&&\uTo_{j_y}\\
+        GFx&\rTo^{GFf}&GFy \\
+        \dEqual&&
+      \end{diagram}
+    #+END_SRC
+    commutes. Thus, $(GF)_{xy}:Hom(x,y)\rightarrow Hom(GFx,GFy)$ can be
+    given by the isomorphism $Hom(j_x,j^{-1}_y)$, so that $F_{xy}$ is
+    injective and $G_{xy}$ is surjective. Since the assumptions are
+    symmetric in $F$ and $G$, we have that both functions are
+    isomorphims, so $F$ and $G$ are full and faithful.
+  - Given an object $d\in D$, we have $FGd\xrightarrow{h}d$, so that
+    $Gd$ is an object of $C$ whose image under $F$ is isomorphic to
+    $d$. Hence $F$ is essntially surjective.
+- Let $F:C\rightarrow D$ be full, faithful and essentially surjective.
+  - Since $F$ is essentially surjective, we can choose a function
+    $G_0:obj D\rightarrow obj C$, such that $G_0d$ is an object of $C$
+    whose image under $F$ is isomorphic to $d$.
+    Let $h_d:FGd\rightarrow d$ be the witness.
+  - Let $G_{xy}$ be the composite
+    $Hom_D(x,y)\xrightarrow{Hom(h_x,h^{-1}_y)}Hom_D(FGx,FGy)\xrightarrow{F_{xy}^{-1}}Hom_C(Gx,Gy)$.
+    - Both maps clearly preserve $id$.
+    - $F^{-1}_{xy} preserves composition.
+    - $Hom(h_x,h^{-1}_{z})(gf)=h^{-1}_zzgfh_x=h^{-1}zgh_yh^{-1}_yfh_x=Hom(h_y,h^{-1}_{z})(g)Hom(h_x,h^{-1}_y)$
+    Thus $G$ is a functor, and clearly $h:FG\rightarrow id$ is natural.
+  - $j=F^{-1}_{GFx,x}(h_{Fx})$ where $h_{Fx}:FGFx\rightarrow
+    Fx$. Given $f:x\rightarrow y$, we have
+    #+BEGIN_SRC latex :file problems1.1.svg
+      \begin{diagram}
+        x&\rTo^f&y \\
+        \uTo^{F^{-1}h_{Fx}}&&\uTo_{F^{-1}h_{Fy}}\\
+        GFx&\rTo^{GFf}&GFy \\
+        \dEqual&&
+      \end{diagram}
+    #+END_SRC
+    and
+    $(F^{-1}h_{Fy})^{-1}(GFf)(F^{-1}h_{Fx})=F^{-1}(h^{-1}_{Fy}(FGFf)h_{Fx})=F^{-1}(Ff)$
+    since $h$ is natural, so $j$ is natural.
+
+* Simplicial Sets
+Provide an example that proves that morphisms of simplicial sets are
+not purely determined by what happens on the vertices.
+** Answer :NOEXPORT:
+* Abelian Groups
+(see page 29 of DS)
+
+Let $Ab$ be the category of Abelian groups and let $W$ denote the
+class of morphisms $f:A\rightarrow B$ such that $ker(f)$ and
+$coker(f)$ are torsion groups. Let $D$ denote the category which has
+the same objects as $Ab$ but
+$Hom_D(A,B)=Hom_{Ab}(A\otimes\mathbb{Q},B\otimes\mathbb{Q})$. Define a
+functor $F:Ab\rightarrow D$ which is the identity on objects, but
+sends a morphism $f$ to $f\otimes\mathbb{Q}$. Verify, directly from
+the definitions that $F$ is a localization of $Ab$ with respect to
+$W$.
+** Answer                                                         :NOEXPORT:
+- An element of $A\otimes\mathbb{Q}$ can be thought of as a pair
+  $(a,q)\in A\times\mathbb{Z}$, where $(a,q)\sim(a',q')$ if
+  $naq'=na'q$ for some $n\in\mathbb Z$ (since
+  $a\tensor(p/q)=pa\tensor(1/q)$).
+- A map $A\otimes\mathbb{Q}\rightarrow B\otimes\mathbb{Q}$ is
+  similarly, a pair $(f,q)$ with the same equivalence relation.
+- Let $f$ be map in $W$. We need to show that $(f,1)$ has an inverse
+  in $D$. Let $b\in B$.
+  - If there is some $a\in A$ such that $f(a)=nb$ for some $n\in
+    \mathbb{Z}$, $f^{-1}(b,1)=(a,n)$.
+  - If $f(a)=nb$ and $f(a')=n'b$ then $f(n'a-na')=0$. Since $ker(f)$
+    is torsion $m(n'a-na')=0$, so $mn'a-mna')$, so
+    $(a,n)\sim(a,'n')$. Hence $f^{-1}$ is well defined.
+  - If there is no $a\in A$, such that $f(a)=nb$, then $b$ is in the
+    cokernel of $f$, so there is $m$ such that $mb=0$. Then
+    $(b,1)\sim(0,1)$, so $f^{-1}$ is defined everywhere.
+  - $ff^{-1}(b,1)=f(a,n)=(f(a),n))\sim (b,1)$ since $f(a)=nb$.
+  - $f^{-1}f(a,1)=f^{-1}(f(a),1)=(a,1)$.
+- Let $n:A\rightarrow A$, given by multiplication by $n$. Then $n$
+  is in $W$. The inverse of $n=(n,1)$ in $D$ is given by $(1,n)$. And
+  every $(f,q)$ can be written as
+  $(f,q)=(1,q)(f,1)=(f,1)(1,q)$. Equivalently,
+  $(f,q)=q^{-1}f=fq^{-1}$.
+  (Note that $n$ is a natural transformation $id\rightarrow id$)
+- Let $M$ be a category, and $G:Ab\rightarrow M$ be a functor that takes
+  elements of $W$ to isomorphisms.
+  - Given a morphism $(f,q)$ in $D$, Define
+    $G'(f,q)=G(q)^{-1}G(f)$. If $(f,q)\sim(f',q')$, then
+    $mq'f=mf'q$. Then $G(m)G(q')G(f)=G(m)G(q)G(f)$. Since $Q(m)$,
+    $G(q)$ and $G(q')$ are isomorphisms (and $G(q)$ and $G(q')$
+    commute), $G(q)^{-1}G(f)=G(q')^{-1}G(f')$. Hence $G'$ is well
+    defined.
+  - $G'$ clearly preserves identities and preserves composition since
+    $G(q)$ is a natural transformation (in particular a natural
+    isomorphism.
+  - $G'$ is a factorization of $G$, since $G'(f,1)=G(f)$.
+  - Since $(f,q)(q,1)=(f,1)$,
+    $G'(f,q)G'(q,1)=G'(f,q)G'(q,1)=G(f)G(q)^{-1}G(q)=G(f)=G(f,1)$,
+    any other factorization of $G$ must agree with $G'$.
+* Small Categories
+Let $Cat$ denote the category of small categories, i.e. the objects
+are small categories and morphisms are functors between them. Prove,
+directly from the axioms, that this category admits a model category
+structure with $F:G\rightarrow D$ a
+- weak equivalence if $F$ is an equivalence of categories
+- cofibration if $F$ is a monomorphism on objects
+- fibration if for every $c$ in $obj(C)$, and every isomorphism
+  $g:F(c)\rightarrow d$ in $D$ there exists a $c'$ in $C$ and
+  $f:c\rightarrow c'$ in $C$ such that $F(f)=g$.
+** Answer
+*** Existence of Limits
+Limits and colimits in $Cat$ are defined pointwise. That is, $obj(\lim
+C_i=\lim obj(C)$, and for objects $(x_i)$ and $(y_i)$, $Hom_{\lim
+C_i}((x_i),(y_i)=\lim Hom_{C_i}(x_i,y_i)$.
+*** 2-out-of-3
+From question 1, we know that a functor is an equivalence if it
+induces an isomorphism on hom-sets and is essentially
+surjective. Isomorphisms satisfy the 2-out-of-3 property, so
+equivalences satisfy the 2-out-of-3 property if essentially
+surjectivity does, for fully faithful functors.
+- If $F:C\rightarrow D$ and $G:D\rightarrow E$ are essentially
+  surjective, then given an $e\in E$, there is $d\in D$, with
+  $g:e\rightarrow G(d)$, and $c\in C$ with $f:c\rightarrow F(d)$. Then
+  $G(f)g:e\rightarrow F(C)$ is an isomorphism.
+- Let $GF$ be essentially surjective. If $e\in E$, then there
+  is $c\in C$ with $g:e\rightarrow GF(c)$, so $F(c)$ is an object in
+  $d$ with the appropriate properties.
+- Let $G$ and $GF$ be essentially surjective. If $d\in D$, there is
+  $c\in C$ such that $f:G(d)\rightarrow GF(c)$. Since $G$ is fully
+  faithful, $f$ is the image of an isomorphism in $D$.
+*** Retracts of equivalences
+Let
+#+BEGIN_SRC latex :file problems1.2.svg
+  \begin{diagram}
+    A&\rTo^{I}&C&\rTo^P&A\\
+    \dTo^G&&\dTo^F&&\dTo^G\\
+    B&\rTo^J&D&\rTo^Q&B\\
+  \end{diagram}
+#+END_SRC
+be a retract diagram, with $F$ an equivalence. Since $PI$ and $QJ$ are
+the identity, $P$ and $Q$ are essentially surjective and full and $I$
+and $J$ are faithful. Then, since $P$ and $GP=QF$ are essentially
+surjective, so is $G$. Since $GP=QF$ is full, and $JG=IF$ is faithful,
+$G$ is full and faithful.
+*** Factorizations
+- Let $F:C\rightarrow E$. Let $D$ be the category with $obj(D)=\coprod_{c\in
+  C}\coprod_{d\in D}Iso(d,F(c)$, i.e. the disjoint union of isomorphism classes of objects
+  in the image of $F$. $Hom_D(f,f')=Hom_C(c,c')$, where
+  $f:d\rightarrow F(c)$ and $f'=d'\rightarrow F(c')$. $F$
+  factors through $D$, with $c\mapsto (F(c)\rightarrow F(c)$ and
+  $(d\rightarrow F(c))\mapsto d$ and $(g:f\rightarrow f')\mapsto (f')^{-1}F(g)f$. The functor $C\rightarrow $D$ is a
+  clearly an equivalence and monomorphism on objects. The lifting property for
+  fibrations also holds by construction.
+- Let $F:C\rightarrow E$. Let $D$ be the category with
+  $obj(D)=C\coprod D$, where maps between objects in $D$ are the maps
+  between the objects (or their images in) $E$. $F$ factors through
+  $D$ with $C\rightarrow D$ given by the inclusion on objects, and
+  $D\rightarrow E$ given by $F+id$. Then $C\rightarrow D$ is clearly a
+  monomorphism on objects. $D\rightarrow E$ is clearly an equivalence
+  of categories, and the lifting property for fibration holds by
+  construction.
+**** Lifting properties
+- Take
+#+BEGIN_SRC latex :file problems1.3.svg
+  \begin{diagram}
+    C&\rTo^F&X\\
+    \dTo^I&&\dTo^P\\
+    D&\rTo^G&Y
+  \end{diagram}
+#+END_SRC
+  with $I$ a cofibration and $P$ a trivial fibration. We construct
+  $H:D\rightarrow X$, with $obj(D)\setminus obj(C)\rightarrow obj(X)$
+  being given by the essential surjectivity of $P. Since $P$ is fully
+  faithful, the behaviour on maps is thus fully determined by $G$, ad
+  well defined.
+- Take the above diagram with $I$ a trivial cofibration, and $P$ a
+  fibration. Every object of $d\in D$ is isomorphic to some
+  $f:d\rightarrow I(c)$. Let $obj(D)\setminus obj(C)\rightarrow
+  obj(X)$ be given by the lifting of $G(d)\rightarrow GI(d)=PF(c)$ to
+  $x\rightarrow F(c)$. The behaviour on maps is again fully determined
+  by the equivalence $I$.
+* Chain complexes
+  First prove proposition 7.19 in DS. Then. using this proposition,
+  give a complete description of the fibrant objects in $Ch_R$.
+** Answer
+*** Proof of 7.19
+*** Characterization of fibrant objects
+For an object $C$ of $Ch_R$ to fibrant, we need to find a diagonal in
+#+BEGIN_SRC latex :file problems1.3.svg
+  \begin{diagram}
+    0&\rTo&C\\
+    \dTo&&\dTo\\
+    D^n&\rTo&0
+  \end{diagram}
+#+END_SRC
+for every $n$. But since all the maps in the diagram are the unique
+maps between the given objects, any diagonal map will make the diagram
+commute. Since there is a $0$ map between any two objects, every
+object is fibrant.

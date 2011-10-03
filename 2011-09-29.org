@@ -1,0 +1,111 @@
+#+AUTHOR: George Pappas
+#+TITLE: Integral models of Shimura Varieties
+
+* Examples
+** Modular Curves
+$\mathscr{h} =\{z\in\mathbb{C}|IM z>0\}$
+
+$SL_2(\mathbb R)$ acts on $\mathscr{h}$ with
+$\gamma=\begin{matrix}a&b\\c&d\end{matrix}$ act like $\gamma z = \frac{az+b}{cz+d}$
+transformation.
+
+- $\Gamma < SL_@{\mathbb{Z})$
+- congruence subgroup
+  $\exists M\ge1$ st $\Gamma\superset\Gamma(M) = \{\gamma | \gamma =
+  id (mod n)\}$
+
+- quotient $M_\Gamma = \Gamma\\ \mathscr{h}$ complex orbifold (manifold) of dim
+  1
+  - non-compact Rieman surface
+  - $\overline{M_\Gamma}\superset M_\Gamma$ compact Rieman surface
+
+** Over quadratic field
+- $F$ real quadratic field $\mathbb{Q}(\sqrt d)=\{a+b\sqrt d | a,
+  b\in\mathbb{Q}\}\subset \mathbb R$ for $d\ge0$, $d\in \mathbb Z$
+- $D = \mathscr{h}\times\mathscr{h}$
+- $SL_2(F)$ acts on $D$ by $SL_2(F)\hookrigharrow SL_2(\mathbb
+  R)\times SL_2(\mathbb R)$, $\gamma\mapsto(\gamma,\sigma\gamma)$
+  where $\sigma$ is the non-identity imbedding of $F$ in $\mathbb R$.
+
+- $\mathscr{O}_F$ = algebraic integers in $F$
+- $\Gamma < SL_2(\mathscr(O}_F)\subst SL_2(F)$
+- quotient $\Gamma\\\mathscr{h}\times\mathscr{h}$ is Hilbert modular
+  surface (Blumenthal)
+
+** Symplectic Group
+- $g\ge1$ $D=\mathscr{h}_g = \{\Omeag\in M_{g\times\g)(\mathbb{C}| {}^t\Omega=\Omega, Im(\Omega) >> 0 \text(pos def)\}$
+- $Sp(2g,\mathbb R)\coloneq\{\gamma\in SL_{2g}(\mathbb R)| {}^t\gamma
+  J\gamma=J\}$
+  acts on $\mathscr{h}_g$ by linear fractional transformations.
+
+- Siyel modular variety
+* General Shimura variety
+- $D$ hermitian symmetric domain
+- $D'\subset \mathbb{C}^n$  open
+
+- $G$ algebraic group over $\mathbb Q$ such that $G(\mathbb{R})$
+  surjects onto $Aut(D)$.
+- $\Gamma<G(\mathbb Q)$ congruence subgroup
+- $Sh_\Gamma\coloneqq \Gamma\\D$
+** Facts
+*** $Sh_\Gamma\subset\overline(Sh_\Gamma)\hookrightarrow
+   \mathbb{P}^n(\mathbb{C})$
+   - The compactification is a projective algebraic variety.
+   - $Sh_\Gamma=\{f_1=\cdots=f_n=0\}
+   - Buly-Borel
+*** $\Sh_\Gamma$ have canonical models over number fields
+   - i.e. there is a "preferred", unique up to isomorphism choice of
+     system $f_i=0$.
+   - Shimura, Deligne, Milne, ...
+   - Idea of proof
+     - Realize $Sh_\Gamam$ as parameter spaces (moduli spaces) of
+       other algebraic geometric objects
+     - Such things tend to be algebraic varieties
+**** Example
+- $D=\mathscr{h}$, $\Gamma=SL_2(\mathbb Z)$
+- SL_2(\mathbb Z)\\\mathscr{h}$
+- $z\mapsto \Lambda_z= \mathbb{Z}\cdot 1 + \mathbb{Z}\cdot z\subset \mathbb{C}$
+- complex torus $\mathbb{C}/\Lambda_z$
+- well known that a complex torus is an elliptic curve
+  - $\{(x,y,z)|y^2z=x^3+a\lambda z^2 + bz^2\}\subset
+    \mathbb{P}^2_{\mathbb C}$
+- $SL_2(Z)\\ \mathscr{h}$ is in correspondence with isomorphism
+  classes of elliptic curves.
+  - i.e. moduli space of elliptic curves
+- $z\mapsto \Lambda z\mapsto \mathbb{C}/\Lambda_z\mapsto E_z \mapsto
+  j(E_z)= \frac{4a^3}{4a^3+27b^2\in\mathbb{C}$
+  - j-invariant
+- There is the notion of elliptic curve defined over $\mathbb Q$,
+  so the moduli space is also defined over $\mathbb Q$
+
+* Need model of $Sh_\Gamma$ over algebraic integers
+- $f_i$ has integral coefficients
+- Langlands:
+  - construct a canonical(?) integral model of $Sh_\Gamma$
+  - reduce the equations $f_i$ mod $p$ for various primes $p$ to get
+    algebraic varieties over $\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}$
+  - count the number of points of the varieties (also over $\mathbb{F}_{p^n}$
+  - express the answer in terms of automorphic functions
+
+  - If $\Sh_\Gamma$ mod $p$ is *singular*, the count needs to be done
+    with multiplicities depending on the vanishing cycles of the
+    singularities (Kolttutz, Hang-Kottutz) (conjecture)
+** Example
+- $p$ prime $\Gamma=\Gamma_0(p)=\{\begin{matrix}a&b\\ pc&d\end{matrix}$
+- exists integral model
+- "local model" for the integral model of the Shimura variety
+** Explain what is the "local model" in general
+$D,G,\Gamma,p$
+- expect singularities when
+  - $G$ is ramified at $p$
+  - $\Gamma$ is not maximal at $p$
+- assume the ramification is tame
+  - i.e.
+    - $G$ splits over a tame extention of $\mathbb{Q}_P$
+    - $\Gamma$ is parahovic at $p$
+- Theorem (Rapoport-Zink, P, P-Rapoport, Gortz, P-Zhu, P-Kisin)
+  - $Sh_\Gamma$ has an integral model whose singularities module $p$,
+    after a finite union of affine Schubert varieties in an affine
+    flag varieties.
+- Corollary (P-Zhu
+  - partial solution of Kottuitz's conjecture "on multiplicities"
