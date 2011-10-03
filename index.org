@@ -1,4 +1,4 @@
-#+OPTIONS toc:nil LaTeX:mathjax
+#+OPTIONS: toc:nil LaTeX:mathjax
 
 * [[file:notes.org][Notes for Higher Category Theory]]
 ** [[id:f443edc2-532b-4a1f-a90e-9fae0d1cc0fb][2011-09-16]]

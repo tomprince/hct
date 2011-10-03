@@ -3,8 +3,7 @@
 #+LATEX_HEADER: \usepackage{empheq}
 #+LATEX_HEADER: \newtheorem{definition}{Definition}
 #+LATEX_HEADER: \newtheorem{examples}{Example}
-#+MATHJAX mathml:t
-#+OPTIONS LaTeX:mathjax
+#+MATHJAX: mathml:t
 #+LINK_HOME: index
 #+BABEL :exports results
 
@@ -710,7 +709,7 @@ How do you use this proof to
 :ID:       31180905-5bdf-434d-b5d1-16d8e63c2453
 :END:
 ** Reading for [2011-09-28]-[2011-10-10]
-- Ch 1 - Basics in Enriched Category Theory by GM Kelly
+- Ch 1 - [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.144.9438][Basics in Enriched Category Theory]] by GM Kelly
 ** 1
 $\mathscr M$ is a model category then $Ho\mathscr M$ is a category
 
@@ -819,7 +818,7 @@ Note: *closed* monoidal structure necessary
   For 2 $\mathscr{V}-cat$ $A, B$, a $\mathscr V$-functor (enriched
   functor) $T:A\rightarrow B$ consists of
   1) a set map $T:obj A\rightarrow obj B$
-  2) $T_xy:A(x,y)\rightarrow B(Tx,Ty)$ a map of $\mathscr V$-objects
+  2) $T_{xy}:A(x,y)\rightarrow B(Tx,Ty)$ a map of $\mathscr V$-objects
   subject to
   #+BEGIN_SRC latex :file diag20.svg
     \begin{diagram}
@@ -837,20 +836,21 @@ Note: *closed* monoidal structure necessary
    Denote by $\mathscr I$ the unit $\mathscr{V}-cat$ with 1-object $0$
    and $\mathscr{I}(0,0)=I$.
 
-   A $V$-functor $X:\mathscr{I}\]rightarrow\mathscr A$ is just picking
+   A $V$-functor $X:\mathscr{I}\rightarrow\mathscr A$ is just picking
    out an object $X\in\mathscr A$.
 
    A $V$-natural transformation $f:X\rightarrow Y:\mathscr
    I\rightarrow \mathscr A$ consists of a single component
    $f:I\rightarrow A(X,Y)$.
 
- Def: The ordinary category *underlying a $\mathscr{V}-cat$ $\mathscr
+ Def: The ordinary category *underlying* a $\mathscr{V}$-category $\mathscr
  A$ is $A_0=(\mathscr{A})_0=\mathscr{V}-Cat(\mathscr{I},\mathscr(A))$
 
- $A_0$ is the category with $obj A_0=\obj\mathscr{A}$ and a map $f:XY$
- in $\mathscr A_0$ is just an element $f:I\rightarrow A(X,Y)$.
+ $A_0$ is the category with $obj A_0=obj\mathscr{A}$ and a map
+ $f:X\rightarrow Y$ $in $\mathscr A_0$ is just an element
+ $f:I\rightarrow A(X,Y)$.
 
- $A_0(X,y)=\mathscr{V}(I,\mathscr{A}(X,Y))$
+ $A_0(X,Y)=\mathscr{V}(I,\mathscr{A}(X,Y))$
 
 ***** Example
 $\mathscr{V}=Top$ or $sSets$ (write $Spaces$) (pointed)
