@@ -12,7 +12,7 @@ Sheaves & Presheaves
   - $U\subset X$ open, $\mathscr{O}(U)$ is the set of $C^\infty(U,\mathbb{R})$
   - Properties of $\mathscr{O}{U}$
     - Given $V\subset U$, there is a restriction map $\rho_V^U: \mathscr{O}\rightarrow\mathscr{V}$
-    - Given $W\subset V\subset \U$, we have the following commutative
+    - Given $W\subset V\subset U$, we have the following commutative
       diagram
       {{{triangle with O(U), O(V), O(W)}}}
   - $Opens(X)$: category of open sets in $X$
@@ -91,7 +91,7 @@ $X$ a topological space
       - $\mathscr{O}_X$ sheaf of continuous functions
       - $\mathscr{O}_x=\Sigma(X\times\mathbb{R}\xrightarrow{\pi}X)$
     - if $X$ is differentiable
-      - $\mathscr{O}_X=\sigma^{diff}(X\times\mathbb{R}\rightarrow X)$
+      - $\mathscr{O}_X=\Sigma^{diff}(X\times\mathbb{R}\rightarrow X)$
       - also $=\Sigma(Y\rightarrow X)$ (for some $Y$)
 - *Proposition* every sheaf $F$ is of the form $\Sigma(Y\rightarrow
   X)$
@@ -107,7 +107,7 @@ $X$ a topological space
   - $\mathscr{O}_X=\Sigma(X\times R\rightarrow X)$
   - $\mathscr{O}_{X,x}$ is germs of differentiable functions on $X$
   - On $S^1$ there are many(2) non-trivial line bundles $L\rightarrow X$
-    - $\Sigma(L\rightarrow X)_x$=O_{X,x}$
+    - $\Sigma(L\rightarrow X)_x=O_{X,x}$
     - $L|_U\simeq U\times R$ for suitable (small) $U$
     - $\Sigma(X\times\mathbb{R}\rightarrow X)(X)$ has non-vanishing
       functions, but $\Sigma(L\rightarrow X)(X)$ has no non-vanishing sections
