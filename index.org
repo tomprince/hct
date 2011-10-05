@@ -1,4 +1,4 @@
-#+OPTIONS: toc:nil LaTeX:mathjax
+#+OPTIONS: H:1 toc:nil LaTeX:mathjax
 
 * [[file:notes.org][Notes for Higher Category Theory]]
 ** [[id:f443edc2-532b-4a1f-a90e-9fae0d1cc0fb][2011-09-16]]
@@ -8,6 +8,11 @@
 ** [[id:e6d8a7f4-42a0-4550-8c76-81c768791618][2011-09-30]]
 ** 2011-10-04 - No Class
 ** [[file:smallness.org][Notes on smallness]]
-* [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19]
-* [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26]
-*
+* [[file:fag.org][Notes for Foundations of Algebraic Geometry]]
+** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][2011-10-05]] - Aji Dhillon
+* Seminars
+** [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19]
+** [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26]
+
+
+[[https://github.com/tomprince/hct][Document sources]]

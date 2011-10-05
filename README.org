@@ -1,0 +1,5 @@
+Notes from various seminars at the University of Western Ontario,
+Fall 2011.
+
+The files are in [[http://orgmode.org][org-mode]] format, with the patch from
+[[http://patchwork.newartisans.com/patch/975/][here]] for generating svg files from diagrams.
