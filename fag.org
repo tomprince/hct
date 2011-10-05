@@ -1,0 +1,113 @@
+#+TITLE: Foundations of Algebraic Geometry
+
+* Notes for 2011-10-05
+:PROPERTIES:
+:AUTHOR: Aji Dhillon
+:END:
+Sheaves & Presheaves
+
+** Differentiable manifolds
+- $X$ is a differential manifold ($C^\infty$)
+  - in particular, $X$ is a topological space
+  - $U\subset X$ open, $\mathscr{O}(U)$ is the set of $C^\infty(U,\mathbb{R})$
+  - Properties of $\mathscr{O}{U}$
+    - Given $V\subset U$, there is a restriction map $\rho_V^U: \mathscr{O}\rightarrow\mathscr{V}$
+    - Given $W\subset V\subset \U$, we have the following commutative
+      diagram
+      {{{triangle with O(U), O(V), O(W)}}}
+  - $Opens(X)$: category of open sets in $X$
+    - objects are opens $U\subset X$
+    - morphisms are inclusions $V\subset U$
+  - $\mathscr{O}$ is a functor
+    $Opens(X)^{op}\rightarrow\begin{cases}Sets\\Ab\\Rings\end{cases}$
+    - $\mathscr{O}$ is a presheaves of sets, rings, abelian groups
+  - differentiability is checked locally. how to formalize this?
+    - $U=\cup_{i\in I}U_i$ an open cover, $\mathscr{O}$ statisfies
+      1) $f,g\in\mathscr{O}$ s.t. $f|_{U_i}=g|_{U_i}$, $\forall i\in
+         I$ implies $f=g$
+      2) $f_i\in\mathscr{O}(U_i)$ s.t. $f_i|_{U_i\cap
+         U_j}=f_j|_{U_i\cap U_j}$ implies $\exists f\in\mathscr{I}$
+         with $f|_{U_i}=f_i$
+    - categorically,
+      $\mathscr{O}(U)\rightarrow\prod_{i\in
+      I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in
+      I}\mathscr{O}(U_i\cap U_j)$, is an equalizer (exact sequence in SGA)
+  - *Germs* of functions on $X$
+    - fix $x\in X$
+    - $\{(U,f)|f\in\mathscr{O}(U), x\in U\}/\sim$
+    - $(U,f)\sim(V,g)$ iff $\exists x\in W\subset U\cap V$ with $f|_W=g|_W$
+    - a *local* ring, denoted $\mathscr{O}_x$
+    - $\mathscr{O}_{X,x}=\colim_{x\in U}\mathscr{O}(U)$
+    - why is this a local ring?
+      - $ev_x:\mathscr{O}_{X,x}\rightsurjection \mathbb{R}$ with
+        $m_x=\ker(ev_x)$ is maxmial
+      - $f\in\mathscr{O}_{X,x}\setminus m_x$ implies $f(x)\ne0$
+        implies $f\ne0 on $W\ni x$ implies $f$ has inverse on $W$
+  - $(X,\mathscr{O}_X)$ is a (locally) *ringed space*
+  - differential manifold is locally ringed space that looks locally
+    like $U,\mathscr{O}_U$ where $U\subset\mathbb{R}^n$ is open
+
+** Basic Definitions
+$X$ a topological space
+
+- $Opens(X)$ is the category of opens
+- A *presheaf* on $X$ is a functor
+  $F:Opens(X)^{op}\rightarrow \begin{cases}Sets\\Ab\\Rings\\R-mod\end{cases}$, i.e.
+  - $\forall U\subset X$, $\exists F(U)$
+  - $V\subset U$ gives $\rho_V^U: F(U)\rightarrow F(V)$
+  - {{{triangle commutes}
+- A presheaf is a *sheaf* if $\forall$ open covers $U=\cup_iU_i$, the diagram
+  $\mathscr{O}(U)\rightarrow\prod_{i\in I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in I}\mathscr{O}(U_i\cap U_j)$,
+  is an equalizer
+  - i.e.
+    1) $\sigma,\tau\in F(U)$
+       st. $\rho^U_{U_i}(\sigma)=\rho^U_{U_i}(\tau)$ then $\sigma=\tau$
+    2) $\sigma_i\in F(U_i)$ st. $\rho^{U_i}_{U_i\cap
+       U_j}(\sigma_i)=\rho^{U_j}_{U_i\cap U_j}(\sigma_j)$ then
+       $\exists \sigma\in F(U)$ with $\rho^U_{U_i}=\sigma_i$
+- Suppose that $x\in X$, $F is a (pre)sheaf on $X$. Then the stalk at
+  $x$ of $F$ is $F_x=\colim_{x\in U} F(U)$
+** Examples
+- $S\in Set$
+- Constant presheaf on $X$ with value $S$ is the constant functor
+  $F:U\mapsto S$ (except F(\emptyset)=\{*\}, not a *sheaf*
+  - $U=U_1\coprod U_2$, choose $s_1,s_2\in S$, $s_1\ne s_2$
+  - $s_1\in F(U_1)$ and $s_2\in F(U_2)$, but there is no $s\in F(U)$
+    that restricts to both $s_1$ and $s_2$
+- Constant sheaf
+  - put discrete topology on $S$
+  - define $F(U)\coloneqq C^0(U, S)$, i.e. functions which are constant
+    on connected components
+  - $\rho^U_V$ is just restriction
+  - is a sheaf, since $F$ is defined in terms of functions
+- $f:Y\rightarrow X$ continuous
+  - $\Sigma(f)$ sections of $f$
+  - $\Sigma(f)(U)\coloneqq\{\sigma:U\rightarrow Y| \sigma\text{
+    continuous}, f\circ \sigma=id_U\}$
+  - is a sheaf
+  - this example generalizes many examples of sheaves
+    - constant sheaf, take $Y=X\times S\xrightarrow{\pi}X$
+    - $X$ is a topological manifold
+      - $\mathscr{O}_X$ sheaf of continuous functions
+      - $\mathscr{O}_x=\Sigma(X\times\mathbb{R}\xrightarrow{\pi}X)$
+    - if $X$ is differentiable
+      - $\mathscr{O}_X=\sigma^{diff}(X\times\mathbb{R}\rightarrow X)$
+      - also $=\Sigma(Y\rightarrow X)$ (for some $Y$)
+- *Proposition* every sheaf $F$ is of the form $\Sigma(Y\rightarrow
+  X)$
+  - $Y$ is étale space$/X$
+  - How to construct $Y$ from $F$?
+  - $Y$ \coloneq\coprod_{x\in X}F_x$ as sets
+  - consider subsets of $Y$ of the form $\{\sigma|_x| \sigma\in
+    F(U), x\in U\}$
+    - $F(U)\rightarrow F_x:\sigma\mapsto \sigma|_x$ since $F_x$ is a colimit
+    - forms a base of topology
+  - *Claim* $\Sigma(Y)\simeq F$
+- $X=S^1$
+  - $\mathscr{O}_X=\Sigma(X\times R\rightarrow X)$
+  - $\mathscr{O}_{X,x}$ is germs of differentiable functions on $X$
+  - On $S^1$ there are many(2) non-trivial line bundles $L\rightarrow X$
+    - $\Sigma(L\rightarrow X)_x$=O_{X,x}$
+    - $L|_U\simeq U\times R$ for suitable (small) $U$
+    - $\Sigma(X\times\mathbb{R}\rightarrow X)(X)$ has non-vanishing
+      functions, but $\Sigma(L\rightarrow X)(X)$ has no non-vanishing sections

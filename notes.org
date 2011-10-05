@@ -241,7 +241,7 @@ We are interested in $Map_{Ho(\mathscr{C})}(X,Y)$, $\pi_*(X)$,
 $H_*(X)$ in $Ho(\mathscr{C})$. We have various models of what
 happens in $Ho(\mathscr{C})$:
 - Higher Category Theory
-- $(\infinity,1)$-categories
+- $(\infty,1)$-categories
 - Quasi-categories
 - Complete Segal Spaces
 
@@ -267,14 +267,14 @@ $(\mathscr{D},\otimes,1)$ if it has
 
 **** Example							    :EXAMPLE:
 $Ho(\mathscr{C})$ can be transformed into a category enriched in
-"spaces". (This is a $(\infinity,1)$-category)
+"spaces". (This is a $(\infty,1)$-category)
 
 
 Given $\mathscr{C}$ + a model structure, we can form (via
 $\mathscr{L}$ the homotopy category $Ho(\mathscr C)$. From that, we
 can for the Dwyer-Kan localization $\mathscr{LH}$ of
 $Ho(\mathscr{C}$ to get a simplicial category (aka
-$(\infinity,1)$-category).
+$(\infty,1)$-category).
 
 **** Project							    :PROJECT:
 A dg-category $\mathscr{C}$ is a category enriched in chain complexes
@@ -434,7 +434,7 @@ with $I$ (resp. $J$) the set of generating cofibrations (resp. trivial cofibrati
    - Non-example: $Top$
 2) A cofibrantly generated model category $\mathscr C$ which is also
    locally presentable is a *combinatorial* model category
-   ($(\infinity,1)-category).
+   ($(\infty,1)-category).
 
 **** Smallness
 [[file:smallness.org][Alternative presentation]]

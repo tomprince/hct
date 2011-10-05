@@ -64,7 +64,7 @@ $\pi_*\underline{L}Ab(G)=H_{*+1}(BG)$
 #+END_SRC
 
 We are interested in the topological analogy of Quillen Homology
-1) Commutative Ring Spectra ($E_\infinity$)
+1) Commutative Ring Spectra ($E_\infty$)
 2) $E_n$-ring spectra
 2) Any operadic algebra
 

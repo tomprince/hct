@@ -73,7 +73,7 @@ $Perf(X)$ only sees smoothness in $X$.
 Can we find $M_{D^b(X)}$?
 
 - $D^b(X)$ doesn't have finite limits or colimits
-- $D^b(X)$ is the "homotopy" category of some $\infinity$-category
+- $D^b(X)$ is the "homotopy" category of some $\infty$-category
   (or $dg$-category)
   - Exists a simplicial category $\tilde{D^{b}(X)}$ where all
     $Hom(C,D)\coloneqq Map(C,D)$ are kan complexes.

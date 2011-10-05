@@ -47,7 +47,7 @@
      - $X$ is irred iff partition has only one block of size $\ge 2$.
 - *Definition:* $N\subset\mathscr{G}$ is a *nested set* if for
   $\{X_1,\dotsc,X_k\}\subset N$ pairwise incomparable, then $\cup
-  X_i\nin\mathscr{G}$.
+  X_i\notin\mathscr{G}$.
   - Examples
     1) If $\mathscr{G}=L_{\ge1}(A)$, then $N must be a chain in
        $L(A)$.
@@ -84,7 +84,7 @@
   - $R=\mathbb{C}[y_X | x\in\mathbb{G}]$
   - $\mathbb{Z}^{|\mathscr{G}|-|\mathscr{A}|}$ - grading!
   - $deg y_H=\sum_{X\ge} e_x$ for $H\in\mathscr{A}$
-  - $deg y_X=-e_x$ for $X\nin\mathscr{A}$
+  - $deg y_X=-e_x$ for $X\notin\mathscr{A}$
   - $T^{|\mathscr{G}|-|\mathscr{A}|}$ action on
     $\mathbb{A}^{|\mathscr{G}|}$ and $\mathbb{A}^{|\mathscr{G}|}-V(B)$
     where $B$ is "toric irrelevant ideal"
