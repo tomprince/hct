@@ -10,9 +10,14 @@
 ** [[file:smallness.org][Notes on smallness]]
 * [[file:fag.org][Notes for Foundations of Algebraic Geometry]]
 ** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][2011-10-05]] - Aji Dhillon
+** [[id:8845f913-3046-4c8a-9a30-d3f1070fbf54][2011-10-06]] - Aji Dhillon
 * Seminars
-** [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19]
-** [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26]
+** [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19 Mon]
+** [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26 Mon]
+** [[file:2011-09-30.org][Splines approximation and homology]] - Stefan Tohaneanu [2011-09-30 Fri]
+** [[file:2011-10-03.org][Tropical Construcion of de Concini Procesi's wonderful models]] - Graham Denham [2011-10-03 Mon]
+** [[file:2011-10-06.org][Lagrangian immersions, polynomial convexity, and Whitney umbrellas]] - Rasul Shaftikov [2011-10-06 Thu]
+
 
 
 [[https://github.com/tomprince/hct][Document sources]]

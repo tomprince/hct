@@ -1,4 +1,5 @@
 #+TITLE: Splines approximation and homology
+#+AUTHOR: Stefan Tohaneanu
 * Formulas
 - $L(r,d,\Delta)=\choose{d+2}{2}+\choose{d-r+1}{2}f_1^0-(\choose{d+2}{2}-\choose{r+2}{2})f_0^0+\sigma$
   - $\sigma=\sum\sigma_i$

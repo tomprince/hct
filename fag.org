@@ -1,5 +1,5 @@
 #+TITLE: Foundations of Algebraic Geometry
-
+#+HTML: \(\def\coloneqq{:=}\)
 * Notes for 2011-10-05
 :PROPERTIES:
 :AUTHOR: Aji Dhillon
@@ -31,7 +31,7 @@ Sheaves & Presheaves
          with $f|_{U_i}=f_i$
     - categorically,
       $\mathscr{O}(U)\rightarrow\prod_{i\in
-      I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in
+      I}\mathscr{O}(U_i)\rightrightarrows\prod_{i,j\in
       I}\mathscr{O}(U_i\cap U_j)$, is an equalizer (exact sequence in SGA)
   - *Germs* of functions on $X$
     - fix $x\in X$
@@ -58,7 +58,7 @@ $X$ a topological space
   - $V\subset U$ gives $\rho_V^U: F(U)\rightarrow F(V)$
   - {{{triangle commutes}
 - A presheaf is a *sheaf* if $\forall$ open covers $U=\cup_iU_i$, the diagram
-  $\mathscr{O}(U)\rightarrow\prod_{i\in I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in I}\mathscr{O}(U_i\cap U_j)$,
+  $\mathscr{O}(U)\rightarrow\prod_{i\in I}\mathscr{O}(U_i)\rightrightarrows\prod_{i,j\in I}\mathscr{O}(U_i\cap U_j)$,
   is an equalizer
   - i.e.
     1) $\sigma,\tau\in F(U)$
@@ -98,7 +98,7 @@ $X$ a topological space
   X)$
   - $Y$ is étale space$/X$
   - How to construct $Y$ from $F$?
-  - $Y$ \coloneq\coprod_{x\in X}F_x$ as sets
+  - $Y$ \coloneqq\coprod_{x\in X}F_x$ as sets
   - consider subsets of $Y$ of the form $\{\sigma|_x| \sigma\in
     F(U), x\in U\}$
     - $F(U)\rightarrow F_x:\sigma\mapsto \sigma|_x$ since $F_x$ is a colimit
@@ -112,3 +112,127 @@ $X$ a topological space
     - $L|_U\simeq U\times R$ for suitable (small) $U$
     - $\Sigma(X\times\mathbb{R}\rightarrow X)(X)$ has non-vanishing
       functions, but $\Sigma(L\rightarrow X)(X)$ has no non-vanishing sections
+
+* Notes for 2011-10-06
+:PROPERTIES:
+:AUTHOR: Aji Dhillon
+:ID: 8845f913-3046-4c8a-9a30-d3f1070fbf54
+:END:
+
+- *Remark* If $F$ is a sheaf, what is $F(\emptyset)$?
+  - The empty set has a cover containing no open sets.
+  - $F(\emptyset)\rightarrow\prod_{U_i\subset\emptyset}F(U_i)\rightrightarrows\prod_{U_i,U_j\subset\emptyset}F(U_i\cap U_j$
+  - The second to objects are terminal.
+- *Example* $F$ a sheaf on $X$, $U\subset X$
+  - $F|_U$ restricted sheaf
+    - {{{triangle $Open(U)^{op}\hookrightarrow
+      Open(X)^{op}\xrightarrow{F}Sets$ }}}
+- *Example* $f:X\rightarrow Y$ is continuous, $F$ a sheaf on $X$
+  - $f_*F a sheaf on $Y$, push forward of $F$
+  - $U\subset Y$, $f_*F(U)=F(f^{-1}(U))
+  - sheaf conditions follow since a cover of $U$ pulls back to a
+    cover of $f^{-1}(U)$
+  - $y\in Y$, then $(f_*F)_y)=\colim_{U\ni y}f_*F(U)=\colim_{y\in U}F(f^{-1}(U)$
+  - In the case $y=f(x)$, $(f_*F)_{f(x)}=\colim_{x\in
+    f^{-1}(U)}F(f^{-1}(U)\rightarrow\colim_{x\in V}F(V)=F_x$
+- *Definition* A ringed space is a pair $(X,\mathscr{O}_X$, where $X$
+  is a topological space and $\mathscr{O}_X$ a sheaf of rings on $X$.
+- *Definition* A ringed space is locally ringed if
+  $\mathscr{O}_{X,x}$ is a local ring for all $x\in X$.
+- *Definition* $(X,\mathscr{O}_X)$ a ringed space. A sheaf of
+  $\mathscr{O}_X$-modules is a sheaf $F$ of abelian groups together
+  with an action $\mathscr{O}_X\times F\rightarrow F$.
+  - i.e. $\forall U\subset X$, we have maps
+    $a_U:\mathscr{O}_X(U)\times F(U)\rightarrow F(U)$ commuting with
+    restrictions {{{diagram}}
+    making $F(U)$ into a $\mathscr{O}_X(U)$-module
+- *Example* $X$ a differential manifold, $(X,\mathscr{O}_X)$ a ringed space
+  - $V\rightarrow X$ a vector bundle, $\mathscr{E}$ the sheaf of
+    differential sections of $V$
+    - $\mathscr{E}(U)=\{\sigma:U\rightarrow V|\pi\circ\sigma=id\}$
+    - $(\sigma\in)\mathscr{E}(U)$ is a an
+      $(f\in)\mathscr{O}_X(U)$-module
+      - $(f\sigma)(x) = f(x)\sigma(x)$ with $f(x)\in\mathbb{R}$ and
+        $\sigma(x)\in\pi^{-1}(V)$ an $\mathbb{R}$-vector space
+** Morphisms of sheaves and preseaves
+- $G$, $F$ presheaves on $X$
+  - a morphism $\eta:F\rightarrow G$ is a natural transformation, i.e.
+    - $U\subset X$ open, we have $\eta_U:F(U)\rightarrow G(U)$ such
+      that, for $V\subset U$,
+      {{{diagram}}}
+  - a morphisms of sheaves is just a morphism of presheaves
+- *Easy exercises*
+  1) $f:X\rightarrow Y$ continuous, $f_*$ is a functor
+  2) $\eta:F\rightarrow G$, $\forall x\in X$, we have
+     $\eta_x:F_x\rightaroow G_x$
+     #+BEGIN_SRC latex :file fag3.svg
+       \begin{diagram}
+         F_x&=&\colim_{x\in U}F(U)\\
+         \dTo&&\dTo_{\eta_U}\\
+         G_x&=&\colim_{x\in U}G(U)
+       \end{digram}
+     #+END_SRC
+  3) $X=\cup_{i\in I}U_i$, $F and$ $G$ are sheaves of sets on $U$
+     - given $\eta_i:G_i\rightarrow F_i$ and
+       #+BEGIN_SRC latex :file fag4.svg
+         \begin{diagram}
+           G_i|_{U_i\cap U_j&\rTo^{\eta_i}&F_i|_{U_i\cap U_j}&=&F|_{U_i\cap U_j}\\
+           =&&=\\
+           G_j|_{U_i\cap U_j&\rTo^{\eta_j}&F_j|_{U_i\cap U_j}&=&F|_{U_i\cap U_j}\\
+         \end{diagram}
+       #+END_SRC
+     - There exists $\eta:G\rightarrow F$, with $\eta|_{U_i}=\eta_i$
+     - How to define $\eta$? Need to define $\eta_U$, forall $U\in X$ open
+     - For $\eta_X$, $\sigma\in G(X)$, define $F_i\ni
+       \tau_i=\eta_i(\sigma|_{U_i})$
+       - then $\tau_i|_{U_i\cap U_j}=\tau_j|_{U_i\cap U_j$
+       - since $F$ is a sheaf, there exists a unique $\tau$
+         restricting to $\tau_i$.
+       - define $\eta_x(\sigma)=\tau$
+  4) $F,G$ shaves on $X$
+     - $\mathscr{Hom}(F,G)$ sheaf $Hom4
+     - $\mathscr{Hom}(F,G)(U)=Hom(F|_U,G|_U)$ where the $Hom$ denotes
+       sheaf morphims
+     - clearly a presheaf, previous example shows that it is a sheaf
+** Category of preshaves of abelian groups on $X$ is an abelian category
+- What is an abelian category?
+  - addative
+    - $Hom(A,B)$ is an abelian group
+    - composition is bilinear
+      $$A\atop{\xrightarrow{f}}{\xrightarrow[g]{}}B\xrightarrow{h}C$$
+      with $h\circ(f+g)=h\circ g+h\circ f$
+    - the terminal object is equal to the initial object $0$
+    - biproducts exists
+      - An object $a\oplus b$ with maps
+        $$a\atop{\xleftarrow{p_a}}{\xrightarrow[i_a]{}}a\oplus
+        b\atop{\xrightarrow{p_b}{\xleftarrow[i_b]{}}b$$
+        such that
+        - $p_a\circ i_a=id_a$
+        - $p_b\circ i_b=id_b$
+        - $i_a\circ p_a+i_b\circ p_b=id_{a\oplus b}$
+  - kernels and cokernels exists
+  - every monic is a kernel
+  - every epic is a cokernel
+- Write $Pshv(X)$ for the category of abelian presheaves on $X$.
+  - terminal object is $U\mapsto 0$
+  - biproducts: $(F\oplus G)(U)=F(U)\oplus G(U)$
+  - kernels
+    - suppose $\eta:F\rightarrow G$
+    - $\forall U\subset X$
+      #+BEGIN_SRC latex fag4.svg
+        \begin{diagram}
+          \ker(\eta_U)&\rInto&F(U)&\rTo^{\eta_U}&G(U)\\
+          \dDotsto&&\dTo&&\dTo\\
+          ker(\eta_V)&\rInto&F(V)&\rTo^{\eta_V}&G(V)
+        \end{diagram}
+      #+END_SRC
+    - we define $ker(\eta)$ to be the presheaf $U\mapsto ker(\eta_U)$
+    - We need to show that this is a kernel
+      - Given $K\xrightarrow{\tau}F\xrightarrow{\eta}G$ such that
+        $\eta\circ\tau=0$, show $\tau$ factors through $\ker(\eta)$
+      - Just do this pointwise (i.e. for each $U$.
+  - cokernel
+    - Suppose $F\xrightarrow{m}G$ is monic, i.e. $ker(m)=0$
+    - consider $F\xrightarrow{m}G\xrightarrow{coker{m}}Q$
+    - *Claim* $m=ker(coker(m))$
+      - $F(U)\xhookrightarrow{m_U}G(U)\xrightarrow{coker(m)(U)}G(U)/F(U)$
