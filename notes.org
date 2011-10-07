@@ -7,6 +7,8 @@
 #+LINK_HOME: index
 #+BABEL :exports results
 
+#+HTML: \(\def\coloneqq{:=}\)
+
 * Notes for 2011-09-16
 :PROPERTIES:
 :ID:       f443edc2-532b-4a1f-a90e-9fae0d1cc0fb
@@ -1136,3 +1138,188 @@ Leads naturally to models 2 and 3.
     - $\Delta Hom_M(QX^*,Y\rightarrow M(wfib)^{-1}(X,y)$
       is a w.h.e on nerves when $Y$is fibrant.
     - therefore $N(\Delta Hom_M(QX^*,Y))\simeq Hom_M(QX^*,Y)\simeq Map^h(X,Y)$.
+* Notes for 2011-10-07
+:PROPERTIES:
+:ID: cfffda59-52bc-4c4e-8915-767659e589e0
+:END:
+** Hints for HW 2
+- (Q4) $I:sSet{\leftarrow\atop\rightarrow}Cat:\mu$
+  - $C\mapsto\mu(C)$ Nerve of $C'$, category with same objects as $C$,
+    and only isomorphisms
+  - $\tau(K)$ fundamental groupoid on $K$
+  - *Hint* $\tau\Delta[n]$ is groupoid with $n$ objects and trivial
+    automorphisms
+** 1
+- $Map^h(X,Y)\simeq Hom(Q^*X,Y)\simeq N[X\xleftarrow{~}Q\rightarrow Y]$
+- $Q^*X$ cosimplicial resolution of $X$
+*** Background
+- $\Delta$ category
+  - objects: $[n]\coloneqq\{0<1<\cdots<n\}$ for $n\ge0$
+  - morphisms: non-decreasing monotone functions
+- *Definition$ Given a category $\mathscr{A}$ a simplicial object in
+  $\mathscr{A}$ is a functor
+  $$X:\Delta^{op}\rightarrow A$$
+  Dually, a cosimplicial object in $\mathscr{A}$ is a functor
+  $$X:\Delta\rightarrow\mathscr{A}$$
+*** Reedy Model category
+Let $C$ be model category, and let $sC$ denote the category of
+*simplicial objects* in $C$ (i.e $sC\coloneqq Funct(\Delta^{op},C)$)
+1) $sC$ is enriched over $sSet$
+   - Let $S\in Set$, $X\in C$, then $$X\cdot S\coloneqq\coprod_{s\in S}X$$.
+     - If $S=\{0,1\}$, then $X\cdot S=X\coprod X$.
+   - For $X\in sC$ and $K\in sSet$, $X\otimes K\in sC$
+     - $(X\otimes K)_n\coloneqq X_n\cdot K_n=\coprod_{k\in K_n}X_n$
+   - *Definition* Internal simplicial mapping space in $sC$ is
+     $$Map(X,Y)_n = sC(X\otimes\Delta[n], Y)$$
+   - $Map(X,Y)$ gives an enrichment of $sC$ over $sSet$.
+2) We have *Latching* and *Matching* objects in $sC$
+   - Let $L_n$ be the category with
+     - objects $[j]\rightarrow[n]$ in $\Delta^{op}$ for $j<n$
+     - morphisms, for $i\le j<n$ strictly increasing maps
+       #+BEGIN_SRC latex :file diag26.svg
+         \begin{diagram}
+           [j]\\
+           &\rdTo\\
+           \uTo&&[n]\\
+           &\ruTo\\
+           [i]
+         \end{diagram}
+       #+END_SRC
+   - Let $\ell:L_n\rightarrow \Delta^{op}$ be the forgetful functor.
+   - Given a simplicial object $X$ in $sC$, the n^{th} *Latching
+     object* is
+     $$L_nX=\colim_{L_n}\ell^*X$$
+   - $L_nX$ "is" the object of degenerate $n$ simplicies sitting
+     inside $X_n$.
+   - Recursive Definition
+     1) $L_0X=\emptyset$ where $\emptyset$ is the initial object
+     2) $L_1X\simeq X_0$ (constant object)
+     3) For $n>1$, $L_n$ is a coequalizer
+        #+BEGIN_SRC latex :file diag27.svg
+          \begin{diagram}
+            \coprod_{a\le i<j\le n-1}X_{n-2}&\pile{\rTo^{F}\\\rTo_g}\coprod_{i=0}^{n-1}X_n-1&\rTo L_nX \\
+            f:&X_n-2\rTo^{s_i}&X_{n-1}&\rInto^{inj}&\coprod_{i=0}^{n-1}X_{n-1} & \text{for }i<j\\
+            g:&X_n-2\rTo^{s_{j-1}}&X_{n-1}&\rInto^{inj}&\coprod_{i=0}^{n-1}X_{n-1} & \text{for }i<j
+          \end{diagram}
+        #+END_SRC
+        (Goerss-Jardine pg 356)
+   - In some cases, $L_nX=sk_{n-1}X_n$
+   - Dually, Let $M_n$ be the category with objects
+     - objects $[n]\rightarrow[j]$ in $\Delta^{op}$ for $j<n$
+     - morphisms, for $i<j<n$  {{{condition on morphisms}}}
+       #+BEGIN_SRC latex :file diag28.svg
+         \begin{diagram}
+           [j]\\
+           &\luTo\\
+           \uTo&&[n]\\
+           &\ldTo\\
+           [i]
+         \end{diagram}
+       #+END_SRC
+   - Let $m:M_n\rightarrow\Delta^{op}$ be the forgetful functor
+   - *Definition* Given a simplicial object $X$ the n^{th} matching
+     object of $X$ is $$M_nX\coloneqq \lim_{M_n}m^*X$$
+   - *Definition* A map $f:X\rightarrow Y$ in $sC$ is
+     - a level weak equivalence if $X_n\rightarrow^{f_n}Y_n$ is a weak
+       equivalence in $C$, for each $n\ge0$
+     - $f:X\rightarrow Y$ i a Reedy cofibration if the induced map
+       $$ X_n\coprod_{L_nX}L_nY\rightarrow^{q}Y_n$$ is a cofibration in
+       $C$
+       #+BEGIN_SRC latex :file diagram29.svg
+         \begin{diagram}
+           L_nX&\rTo^f&L_nY\\
+           \dTo&&\dTo&\rdTo(2,4)\\
+           X_n&\rTo&\NEpbk P=X_n\coprod_{L_nX}L_nY\\
+           &\dTo(4,2)_{f_n}&&\dDotsto{q}
+           &&&&Y_n
+         \end{diagram}
+       #+END_SRC
+     - $f$ is a Reedy fibration if
+       $$X_n\rightarrow Y_n\times_{M_nX}M_nX$$
+       is a fibration in $C$ for all $n\ge0$.
+   - *Theorem* (Reedy) The category $sC$ with the above classes of
+     maps is a model category.
+   - *Definition* A simplicial resolution of an object $X$ in $C$ is a
+     *Reedy fibrant replacement* of $X$ considered as a constant
+     simplicial object in $sC$.
+     - $cX=X\otimes\Delta[0]$ = constant simplicial object
+     - $X\rightarrow^{n}X_*\twoheadrightarrow *$
+   - *Definition* a cosimplicial resolution of $X$ in $C$ is a Reedy
+     cofibrant replacement of $cX$.
+   - "If we have a Reedy Model Structor on sC$, for _good_ $C$, $Map_sC(X,Y)=Map_C^h(X,Y)$"
+
+*** Good $C$
+- *Definition* A simplicial model category is a model category $C$
+  that is enriched over $sSet$, s.t.
+  - [SM7] If $f:A\hookrightarrow B$ is a cofibration of $C$ and
+    $i:K\hookrightarrow L$ is a cofibration of $sSet$, then
+    #+BEGIN_SRC latex :file diagram30.svg
+      \begin{diagram}
+        A\otimes K&\rTo&B\otimes K\\
+        \dto&&\dTo&\rdTo(2,4)\\
+        A\otimes L&&\NWpbk P\\
+        &\rdTo(4,2)&&\rdTo^{q}\\
+        &&&&B\otimes L
+      \end{diagram}
+    #+END_SRC
+    $q$ is a cofibration and if  either $f$ or $i$ is weak
+    equivalence, $q$ is also a weak equivalence.
+- $sC$ is enriched over $sSet.
+- Q: When can a Reedy model category $sC$ be "rectified" into a
+  simplicial model category
+- *Theorem* (Shipley-Sehwede-Rezk) Let $C$ be a model category.
+  - Then there exists at most one model category structure on $sC$
+    such that
+    1) Every level equivalence is a weak equivalence
+    2) cofibrations are Reedy cofibrations
+    3) The fibrant objects are *homotopically constant* Reedy fibrant objects
+  - When this model structure exists, it is called the canonical model structure
+- *Definition* An object in $sC$ is *homotopically constant* if
+  each of the face an degeneracy maps are weak equivalences in
+  $C$.
+  - In particular, any constant object is homotopically constant.
+- *Definition* $f:X\rightarrow Y$ in $sC$ is an equifibered Reedy
+  fibration, if $f$ is a Reedy fibration and
+  $$X_{m+1}\rightarrow^{(d_i,f_{m+1})}X_m\times_{Y_m}Y_{m+1}$$
+  is a weak equivalence for each $m$ and $0\le i\le m+1$.
+- The Realization/Rectification Axiom
+  - If $f:X\rightarrow Y$ is a equifibered Reedy fibration in $sC$,
+    and for each $Z\in C$,
+    $$[X,cZ]_{Ho(sC)}\rightarrow[Y,cZ]_{Ho(sC)}$$
+    is an isomorphism, then $f$ is a weak equivalence.
+- *Theorem* (Shipley-Sehwede-Rezk)
+  - If $C$ is left proper, cofibrantly generated, model category that
+    satisfies the rectification axiom, then
+    1) The canonical model structure
+       - exists
+       - is cofibrantly generated
+       - has fibrations the equifibered Reedy fibrations
+    2) The model structure satisfies SM7
+    3) $c:C{\leftarrow\atop\rightarrow}SC:Ev_n$
+       is Quillen equivalence.
+  - *Remarks*
+    - $sC$ has a model structure
+    - $Ho(sC)(X,Y)\leadsto^{L_H} Map^h(X,Y)$ with
+      $Map^h(X,Y)_n=Map(X\otimes\Delta[n],Y)$
+    - $Ho(sC)\xrightarrow{ev_n}Ho(C)$ and the mapping spaces are
+      weakly homotopy equivalent
+  - Let $D$ be the category of differential graded $A-mod$ for $A$ a dga.
+    - *Definition* A is a differential graded algebra if
+      1) $A$ is a chain complex of $k$-modules ($k$ a field)
+      2) $\mu:A\otimes A\rightarrow A$ given by graded tensor product
+      3) Leibniz rule
+    - If $A(n)=0$ except at $n=0$ then a dg-$A$-module is a chain
+      complex of $A$-modules.
+    - (On differential graded categories - Keller)
+    - has a model structure where weak equivalences are
+      quasi-isomorphisms, fibration are surjective (projective model structure)
+    - Let $X\in sD$ be a simplicial dg-$A$-module.
+      - Let $X_{s,t}$ be the group in simplicial level $s$ and chain
+        degree $t$.
+      - The total complex $TX$ is the chain complex with levels
+        $TX_n=\bigoplus_{s+t=n}X_{s,t}$ and
+        $d_{tot}=(-1)^sd+\underbrace{\sum(-1)^id_i}_{\text{Dold-Kan}}$
+    - *Theorem* ("Shipley") The canonical model structure exists on
+      $sD$.
+      - $f$ is a w.e. of $sD$ iff $Tf$ is a quasi-isomorphism
+      - $sD$ is a quillen equivalent to $D$.

@@ -7,6 +7,7 @@
 ** [[id:31180905-5bdf-434d-b5d1-16d8e63c2453][2011-09-27]]
 ** [[id:e6d8a7f4-42a0-4550-8c76-81c768791618][2011-09-30]]
 ** 2011-10-04 - No Class
+** [[id:cfffda59-52bc-4c4e-8915-767659e589e0][2011-10-07]]
 ** [[file:smallness.org][Notes on smallness]]
 * [[file:fag.org][Notes for Foundations of Algebraic Geometry]]
 ** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][2011-10-05]] - Aji Dhillon
