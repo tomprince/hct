@@ -1,0 +1,83 @@
+#+AUTHOR: Rasul Shaftikov
+#+TITLE: Lagrangian immersions, polynomial convexity, and Whitney umbrellas
+
+#+HTML: \(\def\R{\mathbb{R}}\def\C{\mathbb{C}}\def\O{\mathscr{O}}\)
+
+* Introduction
+- $(M^4,\omega)$ a symplectic manifold
+  - $\omega$ non-degenerate closed 2-form
+  - e.g. $(\C^4,\omega)\simeq\C^2$ where $\omega=dx\wedge dy+du\wedge
+    dw$
+
+  - $X^2\subset M^2$ os called Lagrangian if $\omega|_{X^2}=0$
+
+  - An endomorphism $\phi$ of $(M,\omega)$ is called symplectic if $\omeaga=\phi^*\omega$
+
+  - $S$ smooth surface, $\iota:S\rightarrow(M,\omega)$ is called
+    isotropic, if $\iota^*\omega=0$
+    - If $\iota(S)\subset M$ submanifold, then $\iota(S)$ is a
+      Lagrangian submanifold.
+  - *Definition* A holomorphic disc is a map
+    $f:\overline\Delta\rightarrow\C^2$, where $\Delta$ is the open unit
+    disc in $\C$ and $f\in C(\overline\delta)$ and $f\in\O(\Delta)$
+  - *Theorem* (Gromov, 1985)
+    - $X\subset C^n$ is a compact Lagrangian submanifold
+    - Then there exists a holomorhpic disc attached to $X$,
+      i.e. $f(\partial\Delta)\subset X$
+    - This gives a topological condition on $X$: $H^1(X,\R)\ne0$.
+      - for $C^2$:
+        $\lambda=\frac{1}{2}xdy-\frac12ydx+\frac12udv-frac\12vdu$
+        and $d\lambda=w$
+      - $\int_{\partial u)\lambda \stackrel{stokes}{=}\int_U d\lambda = vol(U)>0$
+      - $\lambda$ is closed, $d\lambda|_X=\omega|_x=0.
+  - Arnold (1983)
+    - $X\subset(M^4,\omega)$ a Lagrangian submanifold, Then $X\cdot X=\chi[X]$
+    - Thus, the torus is the only (compact oriented) Lagrangian submanifold of $\C^2$
+- May consider more generally, isotropic maps $\iota:S\rightarrow\R^4$
+  which aren't embeddings
+  - Whitney (1943) - umbrella
+    - $f:\R^2\rightarrow\R^3$ will generically have isolated
+      singularities of the type
+      - $(t,s)\mapsto(t^2,s,ts)$, surface described by $xy^2=z^2$
+      - extending to $(t,s)\mapsto(t^2,s,ts,t^3)$ unfolds surface,
+        with isolated singularity at $0$. (unfolded Whitney umbrella)
+        - $\pi^*\omega$, homeomorphism onto its image,
+          non-degenerate, except at $0$, $d\pi(0)$ has rank 1
+        - so $\pi(\R^2)\setminus\{0\}$ is Lagrangian
+    - *Definition* $\phi:S^2\rightarrow\R^4$ a Givental map if
+      singularities of $\phi$ are only self-intersections and Whitney
+      umbrellas, and $\phi^*\omega=0$
+  - *Theorem* (Givental, 1986)
+    - Givental maps form a non-empty open subset in the space of all
+      isotropic maps $\iota:S^2\rightarrow\R^4$ (conjecture: these are dense)
+    - $S\cdot S=
+* Polynomial Convexity
+- *Definition* $k\subset \C^n$ compact, $n\ge 1$
+  - $\hat{K}=\{z\in\C^n: \forall P\text{ holomorphic polynomial},|P(z)|\le\max_K|P|\}$
+  - $K$ is polynomical convex if $K=\hat K$
+    1) $K=\hat K$ on $\C$ iff $\C\setminus K$ is connected
+    2) on $\C^2$, $K=\{(z,w)|z=0,|w|=1\}$
+- $K\subset\C^n$, if there exists a disc $U$ attached to $K$, and
+  $U\ne K$, then $\overline(U)\subset\hat{K}$, so $K\ne\hat{K}$
+- *Fact* any totally real surface $S$ (in particular, Lagrangian
+  submanifolds in $\C^2)$ are locally polynomial convex.
+  - therefore, Gromov's disc is "large"
+- $\Sigma=\{(z,w)\in\C^2| x=ts, u=\frac{2t^3}3, y=t^2, v=s\}$ and
+  $\phi:\C^2\rightarrow\C^2$ a local symplectomorphism, with $\phi(0)=0$
+  - *Theorem* (Sikhov-S)
+    - if $\phi$ is generic real analytic, then $\phi(\Sigma)$ is
+      locally polynomially convex at $0$.
+    - *idea of proof*
+      - $\Sigma'=\phi(\Sigma)\subset M^3$ a real hypersurface,
+        singular at 0
+      - Construct a characteristic foliation on $\Sigma'$
+      - $T_P\Sigma'\cap H_pM^3=\{\ell_P\}$ where $\ell_p$ is of real
+        dimension 1
+      - So this gives a field of lines on $\Sigma'$. The characteristic
+        foliation is tangent to $\{\ell_p\}$
+      - If $K\subset\Sigma$ is compact, then $\hat K\setminus K$ cannot
+        touch any leaf of the characteristic foliation.
+      - The system of ODE's that describe the phase portrait of the
+        characteristic foliation on $\Sigma'$ is
+        $$\dot{y}=a_{11}xy+a_{02}y^2+a_20)x^2+\cdots$$
+        $$\dot{y}=b_{21}x^2y+b_{12}xy^2+b_{03}y^3+b_{40}x^4+\cdots$$

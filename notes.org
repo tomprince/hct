@@ -1323,3 +1323,135 @@ Let $C$ be model category, and let $sC$ denote the category of
       $sD$.
       - $f$ is a w.e. of $sD$ iff $Tf$ is a quasi-isomorphism
       - $sD$ is a quillen equivalent to $D$.
+* Notes for 2011-10-11
+** Review
+- Reedy Model Structures
+- $C$ model cat
+- $C^{\Delta^{op}}=sC=Funct(\Delta^{op},C)$
+- $sC$ has a model structure where
+  - weak equivalence if it is a weak equivalence level-wise.
+  - cofibration if
+    $$X_m\coprod_{L_mX}L_mY\rightarrow Y_m$$ is a cofibration in $C$
+    for all $m$.
+** 1
+- in $sC$
+  - $L_0A=\emptyset$ is the initial object
+  - $L_1A=A_0$
+  - $M_0A=*$ is the terminal object
+  - $M_1A=A_0\times A_0$
+  - $0\rightarrow A_0\rightarrow A_0\times A_0$
+- in $C^\Delta$
+  - $L_0A=\emptyset$ is the initial object
+  - $M_0A=*$ is the terminal object
+  - $L_1A=A_0\coprod A_0$
+  - $M_1A=A_0$
+  - $0\leftarrow A_0\coprod A_0\leftarrow A_0$
+- There exists a natural transformation from $L_nX\xrightarrow{\eta} M_nX$
+  for all $X$ in $C$, where $X$ is viewed in $sC$
+  - $\eta[0]:\emptyset\rightarrow *$
+  - $\eta[1]=diag:X_0\rightarrow X_0\times X_0$  ($\eta[1]=fold$ in
+    $C^\Delta$)
+- Given an object $X\in C$ viewed as a constant object in $sC$, can we
+  "extend" $X$ to a functor $X':\Delta^{op}\rightarrow sC$?
+  - Yes, via framings
+  - $X'$ is equivalent to factorizations (in the Reedy model structure)
+  #+BEGIN_SRC latex :file diagram31.svg
+    \begin{diagram}
+      L_i&&\rTo^{\eta[i]}&&M_i\\
+      &\rdTo&&\ruTo\\
+      &&X'_i
+    \end{diagram}
+  #+END_SRC
+  and the maps $X'_i\rightarrow X'_j$ are composites
+  $$X_i'\rightarrow M_iX\rightarrow \underbrace{X_k}_{=X}\rightarrow L_jX\rightarrow X'_j$$
+    - *Note* $L_iX$ for $X$ constant is $(*,\cdots,*,X,X,\cdots)$
+- *Definition*
+  - Let $A\in C$, define the functor $A^\cdot:\Delta\rightarrow C$
+  - $A^*[0]\coloneqq A$
+  - Two choices for $A^*[n]$
+    - $A^\cdot[n]\coloneq L_nA$ - cosimplical object
+      $(\ell^*A)^n=\underbrace{A\coprod A\coprod\cdots\coprod A}_{A^{\otimes n+1}$
+    - $A^\cdot[n]\coloneq M_nA$ - simplical object $(r^*A)^n=A$
+  - $\ell: C\rightarrow C^\Delta$ (for each $n$) is a functor which is
+    left adjoint to $$Ev_0:C^\Delta\rightarrow C:X^*\maspto X[0]$$
+  - $r: C\rightarrow C^\Delta$ (for each $n$) is a functor which is
+    right adjoint to $$Ev_0:C^\Delta\rightarrow C:X^*\maspto X[0]$$
+  - There is an obvious natural transformation $\eta:\ell^*\rightarrow
+    r^*$ with $\eta[o]=id_A$
+  - A *cosimplicial frame* on $A\in C$ is a factorization in the Reedy
+    model structure
+      $$\ell^*A \hookrightarrow A^*\xdoublerightarrow{~} r^*a$$ which
+    is an isomorphism in degree 0
+  - Dually, a simplicial framing
+      $$\ell^*A \xhookrightarrow{~} A^*\doublerightarrow r^*a$$ which
+    is an isomorphism in degree 0
+  - If $A$ is cofibrant, there exists a functor induced by the
+    cosimplicial framing
+    $$C_{cof}\rightarrow C^\Delta:A\mapsto A^*$$
+  - If $A\mapsto A^*$ exists, then there exists an adjoint pair
+    $$A^*\otimes -:sSets\rightarrow C$$
+    $$C(A^*,-):C\rightarrow sSets$$
+  - Dually, if $A$ is fibrant, there exits an adjoint pair
+    $$C(_, A^*):C^{op}\rightarrow sSets$$
+    $$Hom(_, A^*):sSets^{op}\rightarrow C$$
+  - *Remark* In general, these adjoint pairs are not Quillen functors,
+    but if $C$ is cofibrantly generated and left proper, then we can
+    talk about the total right derived functors
+    $Map_\ell(A,Y)$ and $Map_r(A,Y)$ and when
+    $$[X,RMap_r(A,Y)]\conj[X,RMap_\ell(A,Y)]$$ we get
+    $$Ho(C)\times Ho(sSet)\rightarrow Ho(C)$ and this is a *module structure*.
+
+
+*** Preview
+- Every $Ch(\mathbb{Z})$-model category, we can write this down explicitly.
+- Let $S$ a unit in $(Ch(\mathbb{Z},\otimes,S)$
+- Construct a cosimplicial frame of $S$.
+- $S^*[m]_k$ is free abelian groun on non-degenerate $k$-simplicies of
+  $\Delta[m]$ and boundaries are the alternating sum of face maps.
+  - $S^*[1]: \mathbb{Z}\rightarrow\mathbb{Z}\otimes \mathbb{Z}$
+  - $S^*[m]\otimes S^*[n]\rightarrow S^*(\Delta[n]\times\Delta[n])$
+    gives the $Ho(sSet)$ action (Eilenberg-Zilber map)
+*** Diversion on "Modules"
+- A graded $k$-module ($char k=0$) $V=\bigoplus_{p\in\mathbb{Z}}V^p$ and $V[1]^p=V^{p+1}$
+- A morphism $f:V\rightarrow V'$ of degree n, $f(V)\subset V^{p+n}$
+- The tensor product of two graded $k$-modules
+  (V\otimes)^n\coloneqq\bigoprod_{p+q=n}V^p\otimes W^q$$
+- The tensor product of two maps
+  $(f\otimes g)(v\otimes w)=(-1)^pqf(w)\otimes g(w)$
+- A graded $k$-algebra
+  - $A\tensor A\xrightarrow{\mu} A$ ($\mu$ is graded degree 0)
+  - $S\in A^0$ a unit map
+  - *Example A $k$-algebra is a degree 0 object
+- A dg-$k$-module is a $k$-module $V$ that has $d_V:V\rightarrow V$ of
+  degree 1 st. $d_v^2=0$
+- $V\otimes W$ has the differential $d_v\otimes 1 + 1\otimes d_w$
+- $DG_k$ is the category of dg-$k$-modules
+- What are categories enriched in $(DG_k,\otimes,S)$?
+  - $A$ a category, with $A(X,Y)$ a dg-$k$-module
+  - composition $A(X,Y)\otimes A(Y,Z)\rightarrow A(X,Z)$ commuting
+    with differentials.
+- *Example* Let $A$ be a $DG_k$ category with 1 object.
+  - $A(x,x)\tensor A(x,x)\rightarrow A(x,x)$ is a some graded
+    dg-$k$-module with a multiplication
+  - is a dga (dg-algebra)x
+- *Example* Let $B$ be a $k$-algebra, $C(B)$ the category of complexes
+  of right $B$-modules.
+  - Let $L,M\in C(B)$, then $Hom(L,M)^n$ be the $k$-module of degree $n$ maps
+    $f^n:L^*\rightarrow M^{*+n}$
+  - $Hom(L,M)^*$ is a dg-$k$-module, where $d(f)=d_M\circ f - (-1)^nf\circ d_L$
+  - The dg-$k$-category $C_dg(B)$ is a category of complexes over $B$
+    and has morphism complexes $C_dg(B)(L,M)=Hom(L,M)^*$.
+- *Definition* Let $A$ be a dg-category. A *dg-$A$-module* $M$
+  consists of
+  - a dg-$k$-module $M(X)$ for every $X\in A$
+  - $A(X,Y)\otimes M(X)\rightarrow M(x)$
+- $A$ a dg-category, $A^{op} the opposite category where
+  - objects $A^{op}$
+  - $A^{op}(Y,X)=A(X,Y)$
+- *Definition* A dg-$A$-module is a dg-functor
+  - $A^{op}\rightarrow DG_k$.
+  - *Example* If $A$ is a dga, then a dg-$A$-module is $M\in DG_k$
+    with $A\otimes M\rightarrow M$ a module over $A$.
+
+- $Ho(Ch_{\mathbb Z}(B))\otimes Ho(sSet)\rightarrow Ho(Ch_{\mathbb Z}(B))$
+  this module structure is a derived version of Morita theory

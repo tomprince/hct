@@ -236,3 +236,80 @@ $X$ a topological space
     - consider $F\xrightarrow{m}G\xrightarrow{coker{m}}Q$
     - *Claim* $m=ker(coker(m))$
       - $F(U)\xhookrightarrow{m_U}G(U)\xrightarrow{coker(m)(U)}G(U)/F(U)$
+
+* Notes for 2011-10-12
+:PROPERTIES:
+:ID: eafdcd42-b91a-4803-ad5f-6a1072fa6aa5
+:END:
+
+- We want to find which properties are determined at the level of stalks
+- section of a sheaf is determined by stalks
+  - $F$ a sheaf, then $F(U)\xrightarrow{\iota} \prod_{p\in U}F_p$ is an injection
+  - let $s_1$, $s_2$ in $F(U)$, and $f(s_1)=f(s_2)$. i.e. $\forall
+    p\in U, s_1p = s_2p$
+  - For each $p\in U$, there is a neighbourhood $U_p\subset U$ of $p$, such that $s_1|_{U_p}=s_2|_{U_p}$.
+  - Since $U=\cup_pU_p$, $s_1=s_2$
+- *Definition*
+  - We say that $s=\prod_{p\in U}s_p$ consists of *compatible germs* if
+    for all $p\in U$, there exists $p\in U_p\subset U$ and $s'_p\in
+    F(U_p)$ such that for all $y\in U_p$, $s(y)=s'_p(y)$
+
+- *Exercise* Prove that any choice of compatible germs from a sheaf
+  of set over $U$ is the image of a section of $F$ over $U$.
+  - Let $s=\prod_Ps_P$ consist of compatible germs.
+  - By the definition, there exists $U_p$ and $s_p\in F(U_p)$ such
+    that for all $y\in U_p$, $s(y)=s'_p(y)$.
+  - Since $F$ is a sheaf, there exists $s''\in F(U)$ s.t.
+    $$s''|_{U_p}=s'_p|_{U_p}$$
+    and so $s''(p)=s'_p(p)=s_p$.
+- Let $\phi:F\rightarrow G$ is a morphism between (pre)sheaves
+  - We then have a map
+    $$\phi_p:F_p=\colim_{U\ni p}F(U_p)\rightarrow\colim_{U\ni p}G_{U_p}=G_p$$
+- *Exercise* morphisms are determined by stalks.
+  - Let $\phi_1,\phi_2:F\rightarrow G$, where $F$ is a presheaf and
+    $G$ is a sheaf, and such that $\phi_1$ and $\phi_2$ agree on stalks.
+  - Let $s\in F(U)$ be a section of $f$. Then $\iota \phi_1(s)=\iota \phi_2(s)$.
+  - Since $\iota$ is an injection, $\phi_1(s)=\phi_2(s)$
+- *Exercise* Let $\phi:F\rightarrow G$ is a morphism of sheaves.
+  - $\phi$ is an isomorphism iff $\phi_p$ is an isomorphism
+- Beatification
+  - Let $F$ be a presheaf.
+  - A morphism $F\xrightarrow{sh}F^{sh}$ is a sheafififcation if
+    - $F^{sh}$ is a sheaf
+    - for any sheaf $G$ and presheaf morphism $F\xrightarrow{g} G$, there
+      exists a unique factorization $F^{sh}\xrightarrow{f}G$ such that
+      $g=f\circ sh$
+  - *Exercise* sheafification is unique up to isomorphism
+    - Given $F^{sh_1}$ and $F^{sh_2}$, there exists a unique map each
+      way, and the composition must be equal to the identity on each one.
+  - *Exercise* If $F$ is a sheaf, $F\xrightarrow{id}F$ is a sheafification.
+    - Every map factors uniquely through the identity
+  - Explicit definition
+    $$F^{sh}(U)=\{(f_u\in F_u)_{u\in U}|\forall u\in U, \exists u\in
+    V\subset U\text{ s.t. }s\in F(v)\text{ and }\forall y\in V, s(y)=f_u(y)\}$$
+    i.e. sets of compatible germs of the presheaf $F$ over $U$
+    - Given a morphisms of sheaves, $F\rightarrow G$, and a compatible set of germs in $F$, the image in $G$ will be
+      compatible, so determine a section of $G$, hence
+  - *Exercise* $sh$ is a functor from presheaves to behaves
+    - morphisms
+      #+BEGIN_SRC latex :file fag5.svg
+        \begin{digram}
+          F&\rTo^{sh}&F^{sh}\\
+          \dTo&&\dDotsto^{\exits!}\\
+          G&\rTo^{sh}&G^{sh}
+        \end{diagram}
+      #+END_SRC
+  - sheafififcation is right adjoint to the forgetful functor ($\tau$) from
+    sheaves to preshaves
+    $$Hom_{sheaf}(sh(F),G)\conj Hom_{presheaf}(F,\tau(F))$$
+  - *Exercise* $F\xrightarrow{sh}F^{sh}$ is an isomorphism on the
+    level of stalks
+    - $\colim_{U\ni x}F^{sh}(U)\rightarrow F_x$ is given by
+      $(s_p)_{p\in U}\mapsto s_x$
+    - Given at germ $(t,V)$, we have $t\in F(V)$, which gives a
+      compatible set of germs on $V$, so an element of $F^{sh}(V)$
+  - subsheaf and quotient sheaf
+    - TFAE
+      1) $\phi:F\rightarrow G$ is a monomorphism of sheaves
+      2) $\phi_p:F_p\rightarrow G_p$ is injective for every $p\in X$
+         and $\phi:F(U)\rightarrow G(U)$ is injective
