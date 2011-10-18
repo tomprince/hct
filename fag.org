@@ -1,4 +1,5 @@
 #+TITLE: Foundations of Algebraic Geometry
+#+HTML: \(\def\coloneqq{:=}\)
 
 * Notes for 2011-10-05
 :PROPERTIES:
@@ -31,7 +32,7 @@ Sheaves & Presheaves
          with $f|_{U_i}=f_i$
     - categorically,
       $\mathscr{O}(U)\rightarrow\prod_{i\in
-      I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in
+      I}\mathscr{O}(U_i)\rightrightarrows\prod_{i,j\in
       I}\mathscr{O}(U_i\cap U_j)$, is an equalizer (exact sequence in SGA)
   - *Germs* of functions on $X$
     - fix $x\in X$
@@ -58,7 +59,7 @@ $X$ a topological space
   - $V\subset U$ gives $\rho_V^U: F(U)\rightarrow F(V)$
   - {{{triangle commutes}
 - A presheaf is a *sheaf* if $\forall$ open covers $U=\cup_iU_i$, the diagram
-  $\mathscr{O}(U)\rightarrow\prod_{i\in I}\mathscr{O}(U_i)\doublerightarrow\prod_{i,j\in I}\mathscr{O}(U_i\cap U_j)$,
+  $\mathscr{O}(U)\rightarrow\prod_{i\in I}\mathscr{O}(U_i)\rightrightarrows\prod_{i,j\in I}\mathscr{O}(U_i\cap U_j)$,
   is an equalizer
   - i.e.
     1) $\sigma,\tau\in F(U)$
@@ -98,7 +99,7 @@ $X$ a topological space
   X)$
   - $Y$ is étale space$/X$
   - How to construct $Y$ from $F$?
-  - $Y$ \coloneq\coprod_{x\in X}F_x$ as sets
+  - $Y \coloneqq\coprod_{x\in X}F_x$ as sets
   - consider subsets of $Y$ of the form $\{\sigma|_x| \sigma\in
     F(U), x\in U\}$
     - $F(U)\rightarrow F_x:\sigma\mapsto \sigma|_x$ since $F_x$ is a colimit
