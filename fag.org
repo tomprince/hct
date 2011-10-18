@@ -1,5 +1,6 @@
 #+TITLE: Foundations of Algebraic Geometry
 #+HTML: \(\def\coloneqq{:=}\)
+
 * Notes for 2011-10-05
 :PROPERTIES:
 :AUTHOR: Aji Dhillon
@@ -98,7 +99,7 @@ $X$ a topological space
   X)$
   - $Y$ is étale space$/X$
   - How to construct $Y$ from $F$?
-  - $Y$ \coloneqq\coprod_{x\in X}F_x$ as sets
+  - $Y \coloneqq\coprod_{x\in X}F_x$ as sets
   - consider subsets of $Y$ of the form $\{\sigma|_x| \sigma\in
     F(U), x\in U\}$
     - $F(U)\rightarrow F_x:\sigma\mapsto \sigma|_x$ since $F_x$ is a colimit

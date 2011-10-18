@@ -175,7 +175,7 @@ $G$ is full and faithful.
   monomorphism on objects. $D\rightarrow E$ is clearly an equivalence
   of categories, and the lifting property for fibration holds by
   construction.
-**** Lifting properties
+*** Lifting properties
 - Take
 #+BEGIN_SRC latex :file problems1.3.svg
   \begin{diagram}
@@ -213,3 +213,5 @@ for every $n$. But since all the maps in the diagram are the unique
 maps between the given objects, any diagonal map will make the diagram
 commute. Since there is a $0$ map between any two objects, every
 object is fibrant.
+* Bonus: Show that Cat is cofibrantly generated
+[2011-10-17 Mon 12:08]
