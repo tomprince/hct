@@ -1455,3 +1455,592 @@ Let $C$ be model category, and let $sC$ denote the category of
 
 - $Ho(Ch_{\mathbb Z}(B))\otimes Ho(sSet)\rightarrow Ho(Ch_{\mathbb Z}(B))$
   this module structure is a derived version of Morita theory
+* Notes for 2011-10-18
+** Derived categories
+- $A$ and abelian category
+  - addative + kernels/cokernels
+- Bounded $A$-chain complexes, $(C_*,d)$ with $C_i$ non-zero for
+  finitely many $i$
+- A map $f_*:C_*\rightarrow D_*$ is a collection of maps $f_i$ with $fd=df$
+- *Definition* A chain map is a *quasi-isomorphism* if it induced an
+  isomorphism on homology
+- $D^b(A)$ the bounded derived category of $A$ is
+  - objects $C_*$ bounded chain complexes
+  - morphisms chain maps plus formal inverses of quasi-isomorphisms
+  - addative but not abelian
+- There is no notion of kernels or cokernels in $Ho(Top)$
+  - every map $f:X\rightarrow Y$ is homotopic to an inclusion
+    $X\hookrightarrow M_f$ where
+    $$M_f=(X\times I)\coprod Y/(f(x)\sim(x,0))$$
+- *Definition* A fiber bundle $E/B$ with fiber $F$ is a surjective map
+  $E\rightarrow B$ such that for $b\in B$, there is a neighbourhood
+  $U\ni b$ such that $H:p^{-1}(U)\rightarrow U\times P$ is a
+  homoeomorphism commuting with the projections
+- A fiber bundle is *trivial* if $E\conj F\times B$
+- *Example* Hopf fibration (showing we have non-nullhomotopic maps
+  $S^n\rightarrow S^m, for $n>m$
+  - $S^0\hookrightarrow S^1 \rightarrow S_1$
+  - $S^1\hookrightarrow S^3 \rightarrow S_2$
+  - $S^3\hookrightarrow S^7 \rightarrow S_4$
+  - $S^7\hookrightarrow S^{15} \rightarrow S_8$
+- A *Serre fibration* is a map $f:X\rightarrow Y$ such that it has the
+  HLP (homotopy lifting propery) with respect to all disks
+  #+BEGIN_SRC latex :file diagram32.svg
+    \begin{diagram}
+      D^{k}\times 0&\rTo&X\\
+      \dTo&\ruDotsto&\dTo\\
+      D^k\times I&\rTo&Y
+    \end{diagram}
+  #+END_SRC
+- Kernels and cokernels
+  - Given $f:X\rightarrow Y$
+    $$C_f=Y\coprod(X\times I)/(f(x)\sim(x,0), (x,1)\sim(x',1))$$
+  - This acts like a cokernel: suppose $X\hookrightarrow is a
+    cofibration, then $C_f\simeq Y/X$
+  - $X\xrightarrow{f}Y\xhookrightarrow{i}C_f\hookrightarrow C_i\simeq
+    \Sigma X$
+- Mapping cone of chain map $f_*:X_*\rightarrow Y_*$
+  - $C_{f_*}\coloneqq X_*[1]\oplus Y_*$ with
+    $$d_{C_{f_*}}=\begin{pmatrix}d_X[1]&0\\ f&d_Y\end{pmatrix}$$
+  - $C_{i_*}$ is quasi-isomorphix to $X_*[1]$.
+- These sequences are called "triangles"
+  - It turns out that if we consider the sequence
+    $$C_{f_*[-1]\rightarrow X_*\rightarrow Y_*\rightarrow
+    C_f\rightarrow X_*[1]$$
+    that the first and third map act like homotopy kernels and cokernels.
+  - *Remark* Stabel homotopy categories are "well-behaved"
+    triangulated categories
+*** Remarks
+- $X\rightarrow Y$, its cokernel is
+  #+BEGIN_SRC latex :file diagram33.svg
+    \begin{diagram}
+      X\SEpbk&\rTo&Y\\
+      *&\rTo&coker
+    \end{diagram}
+  #+END_SRC
+  and kernel
+  #+BEGIN_SRC latex :file diagram34.svg
+    \begin{diagram}
+      ker&\rTo&X\\
+      *&\rTo&\NEpbk Y
+    \end{diagram}
+  #+END_SRC
+  these are not homotopy invariant.
+  - If $X\rightarrow Y$ is a fibration, then the pullback $X\times_Y *$
+    *is* homotopy invariant. Similarly $Y\coprod_X *$ is homotopy
+    invariant if $f$ is a cofibration.
+- In a "good" caregory, triangles come from
+  #+BEGIN_SRC latex :file diagram35.svg
+    \begin{diagram}
+      X\SEpbk&\rTo^f&Y&\rTo&*\\
+      \dTo&&\dTo&&\dTo\\
+      *&\rTo&Z&\rTo&W
+    \end{diargam}
+  #+END_SRC
+  where $Z\simeq Y/X$ and $W=\Sigma X$
+** Morita Theory
+When are two module categories equivalent.
+- $A$ an abelian category with infinite sums
+- *Definition* An object $M$ of $A$ is *small* if the hom functor
+  $A(M,-)$ if it preserves sums
+- *Definition* An object $M$ is a *generator* if every object of A$ is
+  the epimorphic image of a sum of copies of $M$.
+- Every finitely generate module is small, and for projective modules
+  these are equivalent.
+- *Definition* A small projective generator is called a *pro generator*
+  - *Example* Free modules of rank one in $R-Mod$
+- *Theorem* For two rings $R$ and $S$, the following conditions are equivalent
+  1) The category of right $R$-modules and right $S$-modules are equivalent
+  2) The category of right $S$-modules has a small pro-generator whose
+     endomorphism rings is isomorphic to $R$
+  3) There exists a $R$-$S$-bimodule $M$ such that the functor
+     $-\otimes_R M: R-Mod\rightarrow S-Mod$ is an equivalence of categories.
+- Any Free $R$-module of rank $n\ge 1$ is a small pro-generator of $R-Mod$
+  - $End_R(R^n)\conj M_n(R)$, therefore $R$ and $M_n(R)$ are Morita
+    equivalent.
+- *Example* Let $R$ be a commutative ring. An $R$-module $Q$ is
+  invertable if there is $Q'$ such that $Q\otimes_R Q'=R$. Then
+  $-\otimes Q$ is an equivalence of $R-Mod$ with it self.
+  - $P=R\oplus Q$ is a small pro-generator.
+
+*** Remarks
+Have functor $-Mod:Rings\rightarrow AbCat$
+- Is faithful on commutative rings
+- Morita theory measures the failure of faithfulness.2
+* Notes for 2011-11-01
+
+** Homework #3
+From weibel
+1) 8.4.1
+2) 8.4.2
+3) 8.4.3
+4) 8.4.4
+5) 8.5.5
+Relates simplicial abelian groups with non-negatively graded chain
+complexes
+- Ieke Moerdijk
+  - [[www.staff.science.uu.nl/~lukac101/homology2007.pdf][Notes on Homological algebra]] Chapter 3
+** Outline
+[2011-11-01 Tue 12:05]
+Next semester - Lurie's Higher Algebra
+
+We need to cover
+1) Stable Homotopy Category (due Boardman)
+   - as being quillen equivalent to symmetric spectra
+     - Hovey, Shipley, Smith
+     - Schwede
+   - symmetric spectra <-> abelian groups up to homotopy
+   - rings up to homotopy <- triangulated categories that come from stable model category
+   - localization and completion of ring spectra
+   - homology theories of these algebraic up to homotopy objects
+
+** Intro to Stable Homotopy
+[2011-11-01 Tue 12:16]
+
+- Example of stable phenomenon
+  - Freudenthal suspension theorem (1938)
+    - If $X$ has dimension $d$ and $Y$ is $(n-1)$ connected, then
+      $$[X,Y]\rightarrow[\Sigma X,\Sigma Y]$
+      is an isomorphism for $d\le 2n-2$.
+    - *Corollary* If $X$ and $Y$ are finite $CW$-complexes, then
+      $$[X,Y]\rightarrow[\Sigma X, \Sigma Y]\rightarrow[\Sigma^2X, \Sigma^2Y]\rightarrow\cdots$$
+      are eventually isomorphism
+    - *Corollary* We use this to define the stable homotopy groups of
+      spheres:
+      $$\pi^S_n=\colim_k\pi_{n+k}(S^n)$$
+  - Leads to a definition of the stable homotopy category.
+    - Objects of the stable homotopy category
+      - *Definition* A *Spectrum* $X$ consists of
+        1) a sequence of (pointed) spaces $X_0, X_1,\dotsc,X_n,\dotsc$
+        2) a map $\sigma:S^1\wedge X_n\rightarrow X_{n+1}$ such that
+           the adjoint $X_n\rightarrow\Omega X_{n+1}$ is a weak
+           homotopy equivalence
+      - A map of spectra $f:X\rightarrow Y$ is a sequence of maps
+        $$f_n:X_n\rightarrow Y_n$$ such that
+        #+BEGIN_SRC latex :file diagram36.svg
+          \begin{diagram}
+            S^1\wdege X_n&\rTo^\sigma&X_{n+1} \\
+            \dTo&&\dTo \\
+            S^1\wedge Y_n&rTo^\sigma&Y_{n+1}
+          \end{diagram}
+        #+END_SRC
+      - definition due to Bousfield-Friedlander
+      - often people ignore adjoin-w.e. condition and define an
+        $\Omega$-spectrum to be one satisfying it
+        - In this case, the define a model structure on spectra, such
+          that $\Omega$-spectra are the fibrant objects
+        - $\Omega$-spectra are most space-like
+    - *Example* Cobordism
+      - Given two $k$-dimensional manifolds $M$ and $N$, we say that
+        $M$ is coboardant to $N$ ($M\equiv N$) if there is some $(k+1)$-dimentional
+        manifold $W$ such that $\partial W=M\coprod N$
+      - *Theorem* (Thom, 1954)
+        - There is a sequence of spaces $MO(n)$ and maps
+          $$\Sigma MO(n)\rightarrow MO(n+1)$$
+          such that the equivalence classes of coborisms $M^n\equiv N^n)$
+          are equivalent to the stable homotopy groups
+          $$\pi_S_n(MO(m))=\colim_k\pi_{n+k}(MO(m))$$
+        - i.e. $MO$ is an object in the stable homotopy category which
+          captures the information of cobordisms between manifolds
+    - $\pi_*X$ is a group for $*\ge1$
+      - $\pi_1(X,*) \sim Hom((S^1,*),(X,*)) \sim \Omega X$
+    - Adams (1940s): The SHC (Stable Homotopy Category) should look
+      like the following
+      1) We should have spectra which are "finite", i.e. we should
+         have something like Whiteheads theorem
+         - Whiteheads Theorem: Every space can be approximated by a CW-complex
+      2) should be addative: $X\vee Y\conj X\times Y$
+      3) Given a space $X$, $\Sigma^\infinity X$ should be an
+         approximation for $X$, i.e.
+         $$\pi^S_n\Sigma^\infinity X =\colim_k\pi_{n+k}\Sigma^nX$$
+         where $\Sigma^\infinity X=(X,\Sigma X, \Sigma^2X,\dotsc)$
+      4) A form of Brown representability should hold.
+         - cohomology theory should be represented by a spectrum
+      5) $E^m(X)\tensor E^n(x)\rightarrow E^{m+n}(X)$
+         - cohomology theories often have a product, so objects in
+           SHC should also have a product
+    - It took about 30 (40) years to make SHC a symmetric monoidal category
+      - EKMM the model for SHC in terms of $\mathbb{S}$-modules
+        - disadvantage - really difficult
+        - advantage - good for computing stable homotopy groups, since
+          $\mathbb{S}$-modules are all fibrant
+      - HSS - symmetric spectra
+        - easy, algebraic
+** Symmetric spectra
+[2011-11-01 Tue 12:55]
+- $\Sigma_p$ = group of permutations of $\overline{p}=\{1,\dotsc,p\}$
+- $\overline{0}=\emptyset$
+- $\Sigma_p\times\Sigma_q\subset $\Sigma_{p+q}$ with $\Sigma_p$ acting
+  on first $p$ elements and $\Sigma_q$ act on last $q$ elements of
+  $\overline{p+1}$.
+
+- Let $\mathscr{S}_*$ be pointed simplicial sets
+- $G$ discrete group = category with one object
+- $\mathscr{S}_*^{G}$ = $G$-simplicial sets (with left $G$ action or functors
+  $G\rightarrow S_*$)
+- *Definition* A *symmetric spectra* is
+  1) A sequence of pointed simplicial sets $X_0,\dotsc,X_n,\dotsc$
+  2) A pointed map $\sigma:S^1\wedge X_N\rightarrow X_{n+1}$ (where $S^1=\Delta[1]/\partial\Delta[1]$)
+  3) A basepoint preserving left action of $\Sigma_n$ on $X_n$ such that
+     $$\sigma^p=\sigma\circ(S^1\wedge\sigma)\circ\cdots(S^{p-1}\wedge\sigma):S^p\wedge X_n\rightarrow X_{n+1}$$
+     are $\Sigma_p\times\Sigma_n$ equivariant
+     - $S^i\wedge S^1\wedge X_{n+p-i-1}\xrightarrow{S^i\wedge
+       \sigma}S^i\wedge X_{n+p-i}$ where $S^k=(S^1)^{\wedge k}$
+- A map of symmetric spectra $X\rightarrow Y$ consist of
+  1) $f_n:X_n\rightarrow Y_n$ which are $\Sigma_n$ equivariant
+  2) The following commutes
+    #+BEGIN_SRC latex :file diagram37.svg
+      \begin{diagram}
+        S^n\wedge X_n&\rTo X_{n+1}\\
+        \dTo&&\dTo\\
+        S^1\wedge Y_n&\rTo& Y_{n+1}
+      \end{diagram}
+    #+END_SRC
+- *Example* Suspention spectrum
+  - Let $K$ be a simplicial set. Then
+    $$\Sigma^{\infinity)K=\{K,S^1\wedge K, S^1\wedge S^1\wedge
+    K,\dotsc\}$$
+    and
+    $$\sigma:S^1\wedge S^n\wedge K\rightarrow S^{n+1}K$
+  - The $\Sigma_n$ action is the diagonal of the left
+    $\Sigma_n$-action on $S^n$ permuting the coordinates, and the
+    trivial action on $K$
+  - Sphere spectrum $\Sigma^\infinity S^0=\mathbb{S}=(S^0,S^1,S^2,S^3,\dotsc)$
+- Smash product of $Sp^\Sigma$ (symmetric spaces)
+  - *Definition* $\mathscr{S}_*^\Sigma$ is the category of symmetric sequences
+    - objects sequences of pointed simplicial sets where each $X_n$
+      has a $\Sigma_n$ action
+  - *Definition* The tensor product of symmetric sequences $X$ and $Y$ is
+    $$(X\tensor Y)_n=\bigwedge_{p+q=n}(\Sigma_n)_+\wedge_{\Sigma_p\times \Sigma_q}(X_p\wedge X_q)$$
+    where $(\Sigma_n)_+$ is the simplicial nerve of $\Sigma_n$ with a
+    disjoint basepoint
+  - Unit of tensor product is $(S^0,*,*,\dotsc)$
+- *Fact* $\Sigma^\infinity S^0=\mathbb{S}$ is a commutative monoid
+  with respect to the tensor product of symmetric sequences
+  $$(\mathbb{S}\tensor\mathbb{S})_n=\bigwedge_{p+q}(\Sigma_n)_+\wedge_{\Sigma_{p+q}}(S^p\wedge S^q)=\bigwedge_{p+q}(\Sigma_n)_+\wedge_{\Sigma_{q+p}}(S^q\wedge S^p)$$
+- *Proposition* The category of $Sp^\Sigma$ is naturally equivalent to
+  the category of left $\mathbb{S}$-modules
+  - Let $X$ be a symmetric sequence with a left $\matbb{S}-action
+    $\eta:\mathbb{S}\tensor X\rightarrow X$
+  - $\eta$ is the same as the collection of
+    $\Sigma_p\times\Sigma_q$-equivariant maps
+    $M_{p,q}:S^p\wedge X_q\rightarrow X_{p+q}$
+  - If $X$ is a left $\mathbb{S}$ module, then $\exists$ a $Sp^\Sigma$
+    which has $X$ as its underlying symmetric sequence and structure
+    maps
+    $$\sigma=M_{1,n}:S^1\wedge X_n\rightarrow X_{n+1}$
+  - If $X\in Sp^\Sigma$, then the iterated maps $\sigma^p:S^p\wedge
+    X_q\rightarrow X_{p+1}$ is a left $\mathbb{S}$ module structre on $X$.
+- *Definition* The smash product $X\wedge Y$ of $X,Y\in Sp^\Sigma$ is
+  the left $\mathbb{S}$ module $X\tensor_{\mathbb{S}$ Y$ given by the coequalizer
+  $$X\tensor\mathbb{S}\tensor Y\xdoublerightarrow[1\tensor m]{m\tensor 1}X\tensor Y\rightarrow X\tensor_{\mathbb{S}}Y$$
+- Remarks
+  1) The category $(Sp^\Sigma,\wedge,\mathbb{S})$ is a symmetric
+     monoidal category
+  2) $Ho(Sp^\Sigma)$ is isomorphic to SHC
+  3) tensor products on cohomology theories agree with the smash product
+- $R$ is a ring spectrum if $R$ is a monoid in
+  $(Sp^\Sigma,\wedge,\mathbb{S})$, i.e.$ if $R$ is an $\mathbb{S}$-algebra
+- *Fact* (Dugger-Shipley)
+  - DGAs are $H\mathbb(Z)$-module spectra
+* Notes for 2011-11-04
+** The rules for permutations
+1) We are given associativity of addtion and multiplication of
+   natural numbers
+2) for $n+m=m+n$ add shuffle $\chi_{n+m}\in\Sigma_{n+m}$
+3) for $nm=mn$ us multiplicative shuffle product
+4) $p(n+m)= pn+pm$ needs permuation
+5) $(n+m)q=nq+mq$ requires $(\chi^\times_{q,n}\times\chi^\times)\circ\chi^\times_{n+m,q)\in\Sigma_{(n+m)q}$
+
+
+** Ring Spectra
+
+- Recall: $\mathbb{S}$ sphere specrum
+  $$(S^0, S^1\wedge S^0,\dotsc)$$
+  is a commutative monoid in the category of symmetric sequences $\mathscr{S}^{\Sigma_*}$
+  - i.e. $\mathbb{S}\otimes\mathbb{S}\rightarrow\mathbb{S}$ and $S^0\hookrightarrow\mathbb{S}$.
+  - $Sp^\Sigma$ is left $\mathbb{S}$-modules
+  - $Sp^\Sigma$ is a symmetric monoidal category with
+    $$X\otimes\mathbb{S}\otimes Y\doublerightarrow X\otimes
+    Y\rightarrow X\wedge Y$
+    and $\mathbb{S}$ is the unit
+  - The homotopy groups $\pi_k\mathbb{S}=\colim_{n+k)\pi_{n+k}S^n$ is
+    the k^{th} stable stem/homotopy group
+- *Definition* A (symmetric) ring specrum $R$ is a (symmetric)
+  spectrum with
+  - $\mu:R\wedge R\rightarrow R$
+  - $\iota:\mathbb{S}\hookrightarrow R$
+  - associative and unital
+- Equivalent definition
+  - a sequence of pointed spaces $R_n$, $n\ge 0$
+  - base point preserving left action
+    $\Sigma_n$ on $R_n$
+  - $\Sigma_m\times\Sigma_n$-equivariant multiplication
+    $$\mu_{m,n}:R_n\wedge R_m\rightarrow R_{n+m}$$
+  - $\iota_0:S^0\hookrightarrow R_0$ and $\iota_1:S^1\rightarrow R^1$
+  -
+                        #+BEGIN_SRC latex :file diagram38.svg
+                          \begin{diagram}
+                            R_n\wedge R_m\wedge R_p&\rTo&R_{n+m}\wedge R_p\\
+                            \dTo&&\dTo\\
+                            R_n\wedge R_{m+p}&\rTo&R_{n+m+p}
+                          \end{diagram}
+                        #+END_SRC
+  - Unital
+    $$R_n\simeq R_n\wedge S^0\rightarrow R_n\wedge R_0\rightarrow R_n$$
+    $$R_n\simeq S^0\wedge R_n\rightarrow R_0\wedge R_n\rightarrow R_n$$
+  - Centrality
+    #+BEGIN_SRC latex :file diagram39.svg
+      \begin{diagram}
+        R_n\wedge S^1&\rTo&R_n\wedge R_1&\rTo R_{n+1}\\
+        \dTo^{twist}&&  &&\dTo^{\chi_{n+1}}\\
+        S^1\wedge R_n&\rTo&R_1\wedge R_n&\rTo R_{1+n}\\
+      \end{diagram}
+    #+END_SRC
+- (Equivalent) *Defition* A morphism $f:R \rightarrow S$ of ring
+  spectra consists of $f_n:R_n\rightarrow S_n$ of
+  $\Sigma_n$-equivariant based maps such that
+  - $f_{n+m}\circ\mu_{n,m}=\mu_{n,m}\circ(f_n\wedge f_m)$
+  - $f_0\circ\iota_0=\iota_0$
+  - $f_1\circ\iota_1=\iota_1$
+- *Definition* A (right) module $M$ over $R$ consists of
+  1) A sequence of pointed spaces $M_n$
+  2) $\Sigma_n$ action on $M_n$
+  3) $\Sigma_n\wedge\Sigma_n$-equivariant action maps
+     $$\mu_{n,m}:M_n\wedge R_M\rightarrow M_{n+m}$
+  4) Associativity
+     #+BEGIN_SRC latex :file diagram40.svg
+        \begin{diagram}
+           M_n\wedge R_n\wedge R_p&\rTo M_n\wedge R_{m+p}\\
+           \dTo&&\dTo\\
+           M_{n+m}\wedge R_p&\rTo&\M_{n+m+p}
+         \end{diagram}
+     #+END_SRC
+  5) Unital
+     $$M_n\simeq M_n\wedge S^0\rightarrow M_n\wedge R_0\rightarrow M_n$$
+- General facts
+  - $X\in Sp^\Sigma$, then $\pi_kX$ are all abelian groups
+    - why?
+    - colim is taken over the maps
+      $$pi_{k+n}X_n\xrightarrow{-\wedge S^1\pi_{k+m+1}(X_n\wedge S^1)\xrightarrow{\sigma^*}\pi_{k+n+1}{X_n+1}$$
+  - In many nice cases, $\pi_*R$ is a graded ring
+    - "nice" = $R$ is "semi-stable"/"injective", e.g. $R$ is cofibrant/fibrant
+- Where do ring spectra come from?
+  - If a spectrum represents a cohomology theory (or infinite loop
+    space or object in stable category)
+  - What kind of cohomology theories gives us ring spectra.
+    - Eilenberg-Maclane spectra
+    - K-theory
+      - Algebraic K-theory
+      - Topological K-theory
+    - Complex Cobordism
+- Eilenberg-Maclane Spectra
+  - For an abelian group $A$, we can form a spectrum
+    $HA$, where $(HA)_n=A\otimes\tilde{\mathbb{Z}}[S^n]$
+    - $\tilde{\mathbb{Z}}[S^n]$ the reduced free abelian group generated on
+      the non-degenerate simplicies
+  - Idea: $(HA)_n$ is a simplicial object.
+    - $\|(HA)_n)|=K(A,n)$ an Eilenberg-MacLane space
+    - *Definition* A $K(G,n)$ for a given abelian group $G$, $n\ge 0$
+      is a topological space characterized by
+      $$\pi_IK(G,n)=\begin{cases}G& *=n \\ 0\end{cases}$$
+    - Examples
+      - $S^1=K(mathbb{Z},1)$
+      - $\matbb{C}P^\infty=K(\mathbb{Z},2)$
+      - $\mathbb{R}P^\infinity=K(\mathbb{Z}/2\mathbb{Z}, 1)$
+    - How do you construct $KG,n)$?
+      1) Write a presentation for $G=\{g_i|r_j\}$
+      2) Take a wedge of $S^n$ indexed by $g_i$
+      3) Glue on $(n+1)$-cells with attaching maps given by $r_j$
+      4) Glue higher cells to kill all $\pi_m$ for $m>n$
+    - $K(G,n)\times K(H,n)\simeq K(G\times H,n)$
+    - $K(G,n)\simeq\Omega K(G,n+1)$ homotopic
+    - $H^n(X,g)\conj [X,K(G,n)]$
+      - Eilenberg Maclane spectra are $\Omega$-spectra
+  - *Claim* For $A$ an abelian group, $HA$ is a ring spectrum
+    - multiplication
+      $$\mu_{n,m}:(HA)_n\wedge(HA)_m=(A\otimes\tilde{\mathbb{Z}}[S^n])\wedge(A\otimes\tilde{\mathbb{Z}}[S^m])\rightarrow
+      A\otimes\tilde{\mathbb{Z}}[S^{n+m}]=(HA)_{n+m}$$
+      is given by
+      $$(\sum_ia_ix_i)\wedge(\sum_jb_jy_j)\mapsto\sum_{i+j}(a_ib_j)(x_i\wedge y_j)$$
+    - $S^m\hookrightarrow(HA)_m$ inclusion of generators
+  - *Claim* there exists a lax symmetric monoidal function
+    $H:Ab\rightarrow Sp^\Sigma$ that takes rings to ring spectra.
+    - $H(A\otimes B)\simeq HA\wedge HB$
+    - There exists a natural map of $Sp^\sigma$
+      $$HA\wedge HB\rightarrow H(A\otimes B)$$
+  - Do rings have homotopy theory?
+    - no, but $Ch_{\mathbb{Z}}(R)$ is a cofibrantly generated model category.
+    - $X$ st. $X$ is a dga
+    - $D(X)$ is X-modules/w.e.
+    - *Theorem* (Shipley)
+      - There exists a Quillen equivalence between
+        the categories of unbounded dga's and $H\mathbb{Z}$-algebras.
+      - There exists a Quillen equivalence between
+        dg-modules and $R$-modules where $R$ is some specified
+        $H\mathbb{Z}$-module
+    - Using this, Dugger-Shipley should that there are triangulated
+      equivalences between $D(R)$ and $D(S)$ that do not come from algebra.
+    - $\mathbb{S}\rightarrow H\mathbb{Z}$
+    - Important Constructions
+      - Free spectra
+        - $K$ a pointed space, fix $m>0$
+        - $F_mK$ "symmetric spectra freely generated by $K$ in level $m$"
+        - $F_m$ should be the left adjoint to taking the $m$-th level
+        - $(F_mK)_n = (\Simga_n)_+\wedge_{1\times \Sigma_{n-m}}
+          K\wedge S^{n-m}$
+        - $\sigma_n:(F_mK)_n\wedge S^1\rightarrow(F_mK)_{n+1}$
+        - $F_0K=\Sigma^\inftyK$
+        - $(F_1S^1)_n$ is wedge of n copies of $S^1$.
+      - Smash $Sp^\Sigma$ with a space
+        - want mapping spaces $Map(X,Y)$ for $X,Y\in\Sp^\Sigma$
+        - Let $K$ be a space, and $X$ a spectrum
+        - $(K\wedge X)_n=K\wedge X_N$
+        - $(K\wedge X)_n\wedge S^1=K\wedge X_n\wedge S^1\rightarrow
+          K\wedge X_{n+1}=(K\wedge X)_{n+1}$ (prolongation functor)
+        - Construct the suspention of a spectrum $S^1\wedge X$,
+          applying $S^1\wedge -$ to $X$ levelwise
+          - Suspension of $Sp^\Sigma$ have the property that
+            $$S^1\wedge -:\pi_kX\rightarrow\pi_{1+k}(S^1\wedge X)$$
+
+
+* Notes for 2011-11-08
+- December 7 - Brouer Groups for Ring Spectra (David Gepner/Tyler
+  Lauson)
+  - Ideals for Ring Spectra - Jeff Smith (also Jacob Lurie)
+
+** More constructions with ring spectra
+- Function spectra
+  - Given $X\in Sp^\Sigma$ and $K$ a pointed space,
+  - $X^K$ function spectra
+  - $(X^K)_n\coloneqq X^k_n=Map(K,X_n)$
+    - $\Sigma_n$ action on $X_n$
+    - $$\sigma:X^k_n\wedge S^1\xrightarrow{f}(X_n\wedge
+      S^1)^K\xrightarrow{g} X_{n+1}^K$$ where
+      - $f:X^K_n\wedge S^1\rightarrow( X_n\wedge S^1)^K$ is adjoint to
+        the evalutaion map
+        $$X_n^K\wedge S^1\wedge K\rightarrow X_n\wedge S^1$
+      - $g=Map(k,\sigma)$
+  - *Prop* If $X$ is a $\Omega$-spectrum, than so is $x^K$ if either
+    1) $K$ is a CW complex/retract of cofibrant simplicial set
+    2) $X$ is a levelwise Kan complex
+    *Proof*
+    - $Map(K,-)$ applied to the weak-equivalence
+      $\hat\sigma_n:X_n\xrightarrow{~}\Omega X_{n+1}$ is a weak
+      equivalence (since spaces form a simplicial model category).
+    - $X_n^k=Map(K,X_n)\xrightarrow{Map(k,\hat\sigma_n)Map(K,\Omega
+      X_{n+1})=\Omega X^K_{n+1}$ is a weak equivalence, hence $X^K$ is
+      an $\Omega$-spectrum
+  - Why is this proposition important?
+    - If $X$ is semi-stable, the homotopy groups of $X^K$ are values
+      of the reduced cohomology theory represented by $K$ on $X$
+      (i.e. these are the objects of Brown Representablility)
+    - *Example* $HA^K$ is semi-stable
+      - $\pi_n(HA^k)\conj \tilde H^{-n}(K, A)$
+      - If $A$ is a ring, $HA$ is a ring spectrum
+        - $HA$ induces a graded ring structure on
+          $\pi_nHA^K\conj\tilde H^{-n}(K,A)$ where the ring structure
+          is mapped to cup products
+- Loops
+  - The loop spectrum $\Omega X$
+  - $\Omega=Map(S^1, -)$ (levelwise)
+  - $(\Omega X)_n=Map(S^1,X_n)$
+  - The structure maps of $X$ *do not* interact with the loop coordinate.
+  - *Lemma* $\alpha:\pi_{k+n}(\OmegaX)\conj \pi_{1+k+n}X$
+    - $f:S^{k+n}\rightarrow \Omega X$ maps to the (class of) adjoints
+      $\hat f:S^{1+k+n}\rightarrow X$ given by
+      $$\hat f(s\wedge t)=f(t)s$$ for $s\in S^1, t\in S^{k+n}$$
+    - All $f$ are independent of structure maps of $X$, therefore
+      - they commute with colimits so
+      - $\alpha:\pi_*(\Omgea X)\xrightarrow{\conj}\pi_{1+k}(X)$ is an
+        isomorphism of groups.
+- Mapping Spaces
+  - We want to define a space $f:X\irghtarrow Y$ for $X,Y\in Sp^\Sigma$
+  - $f:X\rightarrow Y$ is a family of $\Sigma_n$-equivariant based
+    maps + some diagrams
+  - The mapping space $Map_{Sp^\Sigma}(X, Y)$ is the simplicial set
+    with $n$-simplicies given by morphisms
+    $\Delta[n]^+\wedge X\rightarrow Y$,
+  - Given $[n]\xrightarrow{\alpha}[m]$ in $\Delta$, gives
+    $\alpha^*:Map(X,Y)_m\rightarrow Map(X,Y)_n$ by precomoposition
+    $$\aplha_*\wedge id_X:\Delta[m]^+\wedge X\rightarrow
+    \Delta[n]^+\wedge X$
+  - $\Delta[0]^+\X=X\rightarrow Y$ so the vertices of $Map(X,Y)$
+    correspond to maps $f:X\rightarrow Y$
+  - *Example* $Map(F_mS^0, Y)\conj Y_m$
+  - We have an associative and unital composition
+    $Map(Y,Z)\wedge Map(X,Y)\rightarrow Map(X,Z)$
+    given by
+    $$Sp^\Sigma(\Delta[n]^=\wedge Y,Z)\wedge
+    Sp^\Sigma(\Delta[n]^+\wedge X, Y)\rightarrow
+    Sp^\Sigma(\Delta[n]+\wedge X, Z)$$
+    and $g\wedge f\mapsto g(id_{\Delta[n]}\wedge f)$
+- What do we know now?
+  - $X\wedge X$ smashing a $Sp^\Sigma$ with a space
+  - $X^K$ - cotensoring a $\Sp^\Sigma$ with a space
+  - $Map(X,Y)$ an enrichment over spaces
+  - Then, $Sp^\Sigma$ is a simplicial model category and
+    $Map(X,Y)=Map^h(X,Y)$ for $Y$ an $\Omega$-spectrum
+- Internal Hom spectra
+  - Shift
+    - $x\in Sp^\Sigma$, the shift of $X$  $(sh X)_n=X_{1+n}$
+    - $\Sigma_n$ action is given by
+      $(1\times -):\Sigma_n\rightarrow \Sigma_{n+1}$
+      - $(1\times y)(1)=1$
+      - $(1\times y)(i)=y(i-1)$
+    - *Warning!* There does not exists a morphism between suspention
+      $S^1\wedge X\rightarrow sh X$ which is an isomorphism on
+      homotopy groups!
+      - There exists a morphism $\lamgda S^1\wedge X\rightarrow X$
+        given by
+        $$\lambda_n:S^1\wedge X\xrightarrow{\tau}X_n\wedge S^1\xrightarrow{\sigma_n}X_{n+1}\xrightarrow{\Chi_{n,1}X_{1+n}$$
+      - without $\tau$ and $\Chi_{n,1}$ this is not a morphism in $Sp^\Sigma$
+      - *Definition* If $\lambda$ induces an isomorphism on $\pi_*$
+        then $X$ is called semi-stable
+      - *Example* $\Sigma^\infty K$ is semi-stable
+  - $\underline{Hom}(X,Y)_n=Map(X,sh^n Y)$
+  - $\Sigma_n$-action is on $sh^n Y$, $sh^n(Y)_m)=Y_{n+m}$
+  - structure maps $\sigma_n:\underline(Hom}(X,Y)_n\wedge
+    S^1\rightarrow Hom(X,Y)_n$
+    - $$Map(X,sh^n Y)\wedge S^1\xrightarrow{\text{adjoint to
+      ev}}Map(X,S^1\sh^nY)\xrightarrow{Map(X,\lambda_{sh^*}Y)}
+      \rightarrow Map(X, sh^{1+n}Y)\xrightarrow{Map(X,\Chi_{1,n})}
+      Map(X,sh^{n+1}Y$)$$
+    - $\lambda_{sh^n}(Y):S^1\wedge sh^nY\rightarrow sh(sh^n Y)$
+  - *Thoerem* $\underline{Hom}(-,-)$ is adjoint to $-\wedge -$ in $Sp^\Sigma$
+    $$Sp^\Sigma(X\wedge Y, Z)=\Sp^\Sigma(X,\underline{Hom}(Y,Z))$
+  - *Example* $$\underline{Hom}(F_mS^0, Y)_n=Map(F_mS^0,sh^n y)=(sh^nY)_m=Y_{n+m}\xrightarrow{\Chi_{n,m}}Y_{m+n}=(sh^mY)_n$$
+    - $F_0S^0=\mathbb{S}$ therefore $Hom(\mathbb{S}, Y)=Y$
+  - *Side note* What should the model structure look like?
+    - $f$ weak equivalence then $f_n:Y_n\rightarrow Y_n$ should be we for $n\ge0$
+    - similarly for fibrations
+    - $F_m(f_n)$ is a generating cofbiration when ever f_n$ is in spaces.
+    - left Bousfield localize this model structure along $\tilde
+      E^s(f)$ (stable reduced cohomology theories)
+- *Example* Endomorphism ring spectra $X\in Sp^\Sigma$
+  - The spectrum $\underline{Hom}(X,X)$ has a ring spectrum structure
+    ($G\in Ab$, $Hom(G,G)$ is a ring.
+  - $\mu_{m,n}:Hom(X,X)_n\wedge Hom(X,X)_m\rightarrow Hom(X,X)_{n+m}$
+  - $Map(X,sh^n X)\wedge Map(X,sh^m X)\xrightarrow{sh^m\wedge
+    id}Map(sh^m,X,sh^{n+n} X)\wedge Map(X,sh^m
+    X)\xrightarrow{\circ}Map(X,sh^{m+n} X)\xrightarrow{Map(X,\Chi_{m,n})}Map(X,sh^{n+m}X)$
+  - In a similar manner, we define modules
+    - *Exercise*
+      - left $Hom(X,Z)_n\wedge Hom(X,X)_m\rightarrow Hom(X,Z)_{n+m}$
+      - right $Hom(X,X)_n\wedge Hom(Z,X)_m\rightarrow Hom(Z,X)_{n+m}$
+- *Example* (Matrix Ring Spectra)
+  - $M_n(R)=End(R^n)$
+  - Given $R$ a ring spectrum, $M_n(R)$ the ring of $k\times
+    k$-matrices over $R$
+    $$M_k(R)\coloneqq Map(\overline{k}^+,\overline{k}^+\wedge R)$$
+    - where $\overline k=\{0,\dotsc,k\}$
+  - $M_k(R)$ "looks like" $\prod_k(\bigwedge_k R)$ or matrices with
+    entry in each row
+  - $R$ is Morita equivalent to $M_n(R)$
+    - similar idea of Morita theory in Stable Homotopy theor
+  - *Theorem* (Schewede-Shipley)
+    1) Let $R$ be a "flat" ring spectrum, then $Mod_R$ admits a model
+       category structure and all "colimit preserving" functions
+       $Mod_R\rightarrow Mod_R$ are of the form $\wedge R M_n(-)$
+    2) Every stable modules category is Quillen equivalent to modules
+       over $End(R)$ ($R$ possibly having multiple objects)
