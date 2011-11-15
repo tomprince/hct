@@ -2044,3 +2044,149 @@ We need to cover
        $Mod_R\rightarrow Mod_R$ are of the form $\wedge R M_n(-)$
     2) Every stable modules category is Quillen equivalent to modules
        over $End(R)$ ($R$ possibly having multiple objects)
+* Notes 2011-11-11
+** Examples of Stable Model Categories
+*** Topological
+- $Sp^\Sigma$ cofibrantly generated, monooidal model category
+  (simplicial, proper)
+  - $\mathbb{S}$ is compact object
+- Equivariant Stable homotopy categories (May-Krie, Shipley-Greenleese)
+  - $G$ compact Lie group
+  - $G-Sp^\Sigma$ is $G$-equivariant (coordinate-free) symmetric spectra
+  - stable, cofibrantly generated monoidal model category
+- Presheaves of Spectra (Jardine, Haesemeter-Weibel (descent),
+  Voevodesky)
+- $\mathbb{A}^1$-local model category of schemes (Morel-Voevodsky)
+*** Algebraic
+- Let $A$ be a dga, $A$-modules with the projective model structure
+- Category of $dg$-categories with fixed object sets
+- Quasi-coherent sheaves  (Hovey model categories of chain complexes
+  of sheaves)
+  - compact objects are the perfect complexes
+- Stable model categories of Frobenius ring (Hovey, ch 2)
+  - compact objects are finitely generated objects
+** Summary
+- $C$ a modle category
+  - $C$ is simplicila then $C$ admits a framing
+  - $\mathscr{L}^H(C)$ is a simplical category
+  - $Ho(C)$ as $Ho(sSet)$-modules
+- Stable model categories $C$
+  - $Ho(C)$ is a triangulated category (meant to look like bounded
+    derived category)
+  - symmetric spectra are our "simplicial sets" (spaces in the stable world)
+- *Theorem* (Shipley-Schwede)
+  - $Ho(C)\conj_{QE}Sp^\Sigma$-modules
+- *Definition*
+  - A stable model category is a *pointed* ($\exists1\rightarrow 0$)
+    model category for which $\Omega$ and $\Sigma$ are inverse equivalences
+  - Then fibers are cofibers
+- *Definition*
+  - Let $T$ be a triangulated category with infinite coproducts. A
+    full subcategory $S\subset T$ is called *localizing* if $S$ is
+    closed under coproducts in $T$.
+  - set $P$ of objects of $T$ is called a *set of generators* if the
+    only localizing subcategory of $T$ containing $P$ is $T$ itself.
+  - An object $X$ of $T$ is called *compact* if for any family of
+    objects $A_i$$
+    $$\oplus[X,A_i]^T\rightarrow [X,\coprod A_i]^T$
+  - If $T$ is $Ho(C)$, we use the same definitions
+  - *Lemma* (Bass, Neeman)
+    - Let $T$ be a triangulated category with infinite coproducts.
+    - Let $P$ be a set of compact objects in $T$
+    - Then the following are equivalent
+      1) $P$ generates $T$
+      2) An object $X$ of $T$ is trivial iff $[p,X] = 0$ fora all
+         $p\in P$
+- *Examples*
+  - $Ho(Sp^\Sigma)$ is triangulated, and $\mathbb{S}$ is the compact
+    generator
+    - (think that $Sp^\Sigma=\mathbb{S}-Mod$)
+- Given $C$ a stable model category, with a single compact generator
+  $P$, pointed, cofibrantly generated, (simplicial, monoidal)
+
+  - *Theorem* (Shipley-Schwede)
+    - $C$ is quillen equivalent to the category of left modules over
+      then endomorphism spectrum $End(P)$
+  - How do we construct $End(P)$?
+    - If $C$ is simplicial,
+    - $\underline{Hom}_C(P,P)$ simplicial set of maps $P\rightarrow P$
+    - $P$ cofibrant and fibrant (replacments)
+    - Then $\underline{Hom}_C(P,P)\simeq Map^h(P,P)=End P$
+    - we can take the suspention spectrum $\Sigma^\infty End P$
+      - ring spectrum
+    - $End(P)$-modules are modules over ring spectrum $End(P)$
+    - Recall
+      - $\pi_*End(P)$ is graded ring of self maps $[P,P]_*$ in the
+        homotopy category
+      - $P$ is a compact object if $[P,X]_*=0$ iff $X=0$.
+  - *Definition* A *spectral category* (or a $Sp^\Sigma$ category) is
+    a category $C$ enriched in $Sp^\Sigma$
+    - $C$ has a set of objects
+    - $C(x,y)$ is a symmetric spectrum
+    - $C(x,y)\wedge C(y,z)\rightarrow C(x,z)$
+  - $Sp^\Sigma$ forms a spectral category (over itself)
+  - *Definition* A (right) module over a $Sp^\Sigma$-category $C$
+    - $M: C\rightarrow Sp^\Sigma$
+    - $M(x)\wedge C(y,x)\rightarrow M(y)$
+  - *Example*
+    - Let $R$ be a ring spectrum.
+    - The category of $R$-modules is a spectral category.
+    - $End(P)-Mod\simeq_{QE} C$
+    - *Recall*
+      - Quillen equivalence means we have an adjoint pair of functors
+       $End(P)-Mod\xleftrightarrow[G]{F} C$
+      - $F$ preserves cofibrations and weak equivalences between
+        cofibrant objects
+      - $G$ preserves fibrations and weak equivalences between
+        fibrant objects
+      - Given a fibrant $C\in \mathscr{C}$, $GC\xrightarrow{~}M$ in
+        $End(P)-mod$ iff there exists a cofibrant $M$ in $End(P)-mod$
+        and $FM\xrightarrow{~}C$ in $C$.
+  - What is the model structure on the category of modules?
+    - Let $R$ be a ring spectrum
+    - $f:M\rightarrow N$ of $R$-modules
+      - is a weak equivalence (fibration) if $f$ is a weak equivalence
+        (fibration) of spectrum (forget $R$-action)
+      - (in projective model structure)
+    - [[http://www.math.uni-bonn.de/~schwede/][Schewede]] untitled book project on symmetric spectra
+      - ch 4 - covers modules/ring spectra
+  - Let $R$ be a spectral category
+    - $R-mod$ is category of functors $R\rightarrow Sp^\Sigma$
+    - has a cofibrantly generated model structure.
+    - A map $F:M\rightarrow N$ is a weak equivalence/fibration if
+      - For each $x\in R$, $M(x)\rightarrow N(x)$ is a weak
+        equivalence/fibration in $Sp^\Sigma$
+    - *Warning* $Sp-Cat$ - category of all small spectral categories
+      - is enriched on $Sp^\Sigma$
+      - but above modle strucutre does not hold
+      - Tabuada/Cisinsky/Lurie
+- *Definition*
+  - A *spectral* model category is a model category $C$ which is enriched
+    in $Sp^\Sigma$ such that given
+    - $A\xrightarrow{i} B$ cofibration of $C$ and $X\xrightarrow{p} Y$
+      fibration of $C$, then
+      $$\underline{Hom}_C(B,X)\rightarrow\underline{Hom}(A,X)\times_{\underline{Hom}(A,Y)}\underline{Hom}(B,Y)$$
+      is a fibration, which is trivial if either $i$ or $p$ is.
+    - + adjoint
+  - *Fact(HW)* Given a spectral model category $C$, show that $C$ is a
+    simplicial model category
+- *Lemma*
+  - Given a spectral model category $C$, and a cofibrant $X$ and
+    fibrant $Y$, there is a natural isomorphism of graded abelian groups
+   $$\pi_*^s\underline{Hom}_C(X,Y)=[X,Y]_*$ (homotopy classes of maps
+  - Ideas, $X$ cofibrant, $Y$ fibrant
+    1) $Map^h(X,Y)=Hom(X,Y)=Sp^\Sigma(F_*S^0,\underline{Hom}(X,Y))$
+    2) $\underline{Hom}_C(X,Y)$ - hom spectra are modules over
+       endomorphism ring spectrum
+       - $\pi_*^s$ of a ring spectrum are graded rings
+       - $R$-modules spectra are characterized by the fact that that
+         $\pi^*^sM$ are graded modules over $\pi_*^sR$
+  - Proof
+    - Given $X$ cofibrant and $Y$ fibrant then $C$ being a $Sp^\Sigma$
+      category, then $\underline{Hom}_C(X,Y)$ is fibrant. (SM7 + pointed)
+    - *Exercises* Let $M$ be a simplicial model category. Assume $M$
+      is pointed. Given $X$ cofibrant, $Y$ fibrant, show $Hom(X,Y)$ is
+      a kan complex.
+    - $\underline{Hom}(X,Y)$ begin fibrant implies
+      $\underline{Hom}(X,Y)$ is an $\Omega$-spectrum
+      - $$\pi_n\underline{Hom}(X,Y)\conj \pi_nMap^h(X,Y)\conj \pi_0Map^h(X,\Omega^nY)\conj[X,\Omega^n]\conj[\Sigma^nX,Y]$$
