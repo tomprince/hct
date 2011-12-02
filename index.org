@@ -15,8 +15,8 @@
 #+BEGIN_COMMENT
 ** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][[2011-10-05]]] - Aji Dhillon
 ** [[id:8845f913-3046-4c8a-9a30-d3f1070fbf54][[2011-10-06]]] - Aji Dhillon
-#+END_COMMENT
 ** [[id:eafdcd42-b91a-4803-ad5f-6a1072fa6aa5][[2011-10-12]]]
+#+END_COMMENT
 * Seminars
 ** [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19 Mon]
 ** [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26 Mon]
