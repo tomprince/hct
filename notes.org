@@ -2682,21 +2682,88 @@ We need to cover
 * Notes for 2011-12-02
 [2011-12-02 Fri 12:10]
 - Q: Why are simplicial algebras better than dgas?
-- *Recall*
-  - *Theorem*
-    - Let $F:C\leftrightarrow D:G$ and $C$ is a cofibrantly generated
-      model category, $I$ and $J$ the generating (acyclic) cofibration.
-    - Given $f:x\rightarrow y$ in D$ say that $f$ is a weak
-      equivalence/fibration in $D$ if $Gf$ is in $C$.
-    - If
-      1) $G$ commutes with sequential colimits
-      2) $F(i)$, $i$ a cofibration in $C$ has the LLP wrt all
-         fibrations in $D$
-    - Then $D$ has a cofibrantly generated model structure
-      with $FI$ and $FJ$ generation (acyclic cofibrations
-  - If the theorem hold, i.e. $D$ has the indicated model structure,
-    then $F$ preserves all weak equivalences between cofibrant objects.
-- $DGA_k{\xleftarrow{S}\atop\xrightarrow{\mathscr{O}}Ch_k$ where $S$
-  symmetric algebra functor with differential extended by Leibniz rule
-- $Alg_k$ category of commutative $k$-algebras
--
+  - *Recall*
+    - *Theorem*
+      - Let $F:C\leftrightarrow D:G$ and $C$ is a cofibrantly generated
+        model category, $I$ and $J$ the generating (acyclic) cofibration.
+      - Given $f:x\rightarrow y$ in D$ say that $f$ is a weak
+        equivalence/fibration in $D$ if $Gf$ is in $C$.
+      - If
+        1) $G$ commutes with sequential colimits
+        2) $F(i)$, $i$ a cofibration in $C$ has the LLP wrt all
+           fibrations in $D$
+      - Then $D$ has a cofibrantly generated model structure
+        with $FI$ and $FJ$ generation (acyclic cofibrations
+    - If the theorem hold, i.e. $D$ has the indicated model structure,
+      then $F$ preserves all weak equivalences between cofibrant objects.
+  - $DGA_k{\xleftarrow{S}\atop\xrightarrow{\mathscr{O}}Ch_k$ where $S$
+    symmetric algebra functor with differential extended by Leibniz rule
+  - $Alg_k$ category of commutative $k$-algebras
+    - $S_k(A)$ free commutative $k-Alg$ functor extending from $Alg_k$
+      to $Ch_k$ doesn't preserve weak-equivalences
+  - *Example*- $char_k=2$, $D=DGA_k$ category of non-negatively graded
+      commutative dg-$k$-algebras
+      $$S:C{\rightarrow\atom\leftarrow:O$$
+    - Every object of $C$ is cofbirant when $char k = 2$
+    - If we look at $D(n):0\rightarrow k\rightarrow k\rightarrow 0$
+      - $D(n)$ is acyclic
+      - but $S(0)=k\rightarrow S(D(n))$ is not a weak-equivalence
+        - $y\in D(n)_n$ is a non-zero element
+        - $y^2\in SD(n)$ is a cycle in degree $n$ which is not a boundary.
+  - *Note* If $char_k=0$ then $S$ does preserve weak equivalences
+    between cofibrant objects
+  - In general, $DGA$ does not inherit a model structure via Kan's theorem
+  - From the example
+    - The free commutative $k$-algebra functor extending to $Ch_k$
+      does not preserve weak-equivalences
+    - But the free commutative $k$-algebra functor does preserve
+      weak-equivalences between cofibrant objects in $sAlg_k$
+
+** Simplicial $R$-modules (again)
+- $R$ commutative ring
+- Let $sMod_R$ be the category of simplicial objects in $Mod_R$.
+- $X\in SMod_R$, $NX_n=\frac{X_n}{s_0X_{n-1}+\cdots+s_nX_{n-1}}$ with
+  $\partial=\sum_0^n(-1)^id:NX_n\rightarrow NX_{n-1}$
+- *Theorem* (Quillen)
+  - The category $sMod_R$ admits a model category strucutre where a
+    morphism $f:X\rightarrow Y$ is
+    1) a weak equivalence if $\pi_*X\rightarrow\pi_*Y$ is an iso.
+    2) a fibration if $NX_n\rightarrow NY_n$ is onto for $n\ge 1$
+    3) a cofibration if the underlying morphism on underlying
+       degeneracy diagrams is isomorphic to
+       $X_n\rightarrow
+       Y_n=X_n\oplus\bigoplus_{\phi:[n]\twoheadrightarrow[m]}\phi^*P_k$
+       where $P_k$ is projective as an $R-module$
+  - *Lemma* TFAE
+    1) $f$ is a fibration of $sMod_R$
+    2) $f$ is a fibration of $sSet$
+    3) $X\rightarrow \pi_0X\times_{\pi_0Y}Y$ is surjective
+- Q: Is the category of simplicial $R$-modules stable?
+*** Resolutions of $Mod_r$
+- *Definition 1*
+  - Given $M\in Mod_R$ a simplicial resolution of $M$ is a cofbirant
+    replacement of $M$ in $sMod_r$
+- *Definition 2*
+  - Let $M\in Mod_R$. Then a simplicial resolution for $M$ is an
+    augmented simplicial $R$-module $X\rightarrow M$ s.t.
+    1) $X_n$ is a projective $R$-module for $n\ge0$
+    2) The augmentation map $c:X\rightarrow M$ induces an isomorphism
+       of $R$-modules
+       $$\pi_kX=\begin{cases} M&\text{if }k=0\\0&\text{if }k\ne0\end{cases}$$
+- Given $X$ a simplicial object in any category $C$, an augmentation
+  is a morphism $d_0X\rightarrow A$,
+  s.t. $d_0d_0=d_0d_1:X_1\rightarrow A$
+  - *Exercises/Note* If $X$ is a simplicial $R$-module an augmentation
+    induces a map $\pi_0X\righarrow A$
+- *Lemma*
+  - If $X\rightarrow M$ is an augmented $R$-module, then
+    $NX\rightarrow M$ is an augmetned chain complex
+  - If $X\rightarrow M$ is a simplical resolution of $M$ then
+    $NX\rightarrow M$ is a projective resolution of $M$.
+- $Alg_R$ category of commutative $R$-algerbras
+  - The obvious choice for a class of projective objects are the free
+    commutative algebras $S_R(P)$ on projective $R$-algberas $P$.
+  - *Example* $P=R^n$ with basis $\{x_i\}
+    - $S_R(P)=R[x_i]$
+- *Goal* To build resolutions of commutative $R$-algebras in $sMod_R$
+  instead of $Ch$

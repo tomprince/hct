@@ -1,0 +1,136 @@
+#+TITLE: Cyclotomic Spectra and Computations in Algebraic K-Theory
+
+joint with Angeltiveit, Hill, Lindenstrauss
+
+
+- For a ring $A$, compute $K_q(A)$.
+- *Goal* Compute $K_q(\mathbb{F}_p[x,\dotsc,x_n]/(x_1^_{a_1},\dotsc,x_n^{a_n})$
+- *Recall*
+  - *Definition* (Quillen 1972)
+    - $K_n(A)=\pi_n(BGL(A)^+)$ for $n\ge 0$
+    - $+$ Quillen's plus construction
+  - Quillen computed $K_n(\mathbb{F}_p)$
+  - *anecdote*
+    - Peter May --> thesis project for student $K_n(\mathbb{Z}/p^k)$, $K_n(\mathbb{Z}/p^2$
+    - still unknown
+  - Maybe not a good invariant?
+  - but K-theory arises
+    - homotopy theory
+    - algebraic geometry - through motivic homology
+    - geometric topology
+    - number theory
+- History of goal
+  - Generalize Hesselholt-Madsen (~ '95)
+    - Computed $K_q(\mathbb{F}_p[x]/(x^n))$
+    - $K_q(\mathbb{F}[x]/x^n, x)\rightarrow
+      K_q(\mathbb{F}[x]/x^n)\rightarrow K_q(\mathbb{F}_p)$
+    - $K_q(-,-)$ relative $K$
+  - *Today* generalize this to $n$ variables
+  - need tools from equivalent stable homotopy
+    - (compare work on Kervaire invariant 1 Hill-Hall-Ravenel)
+- Equivariant stable homotopy
+  - $G$ compact Lie group
+  - $X$ genuine $G$-spectra
+    - built form $G$-spaces $X_V$ for $V$ finite dimensional
+      $G$-representation
+  - $H\subset G$, stufy fixed points
+    - (ordinary) $X^H$, $X^H(V)=X(V)^H$ for $V$ a $G$-representation fixed by $H$
+      - $G/H$-spectrum
+      - but $(X\wedge Y)^H\ne X^H\wedge Y^H$
+    - geometric fixed points $\Phi^HX$, $G/H$ spectrum
+      - $\mathscr{F}_H$ family of subgroups of $G$ not containing $H$
+        - (closed under subconjugacy, ...)
+      - $E\mathscr{F}_h$ classifying sapce of $\mathscr{F}_H$
+        - want $(E\mathscr{F}_{H+})^K=\begin{cases}
+             S^0 &\text{if }K\in \mathscr{F}
+             *&\text{if }K\nin \mathscr{F}
+          \end{cases}$
+      - $E\mathscr{F}_H\rightarrow S^0\rightarrow \tilde{E\mathscr{F}}_H$
+      - $\rho^HX=(\tilde{E\mathscr{F}_H\wedge X)^H$
+    - How are these related?
+      - $(E\mathscr{F}_H\wedge X)^H\rightarrow (S^0\wedge X)^H= X^H\rightarrow
+        (\tilde{E\mathscr{F}}_H\wedge X)^H$
+        - always have $X^H\rightarrow \phi^HX$
+- *Definition*
+  - A cyclotomic spectrum $X$ is a genuine $S^1$-sepctrum together
+    with compatible equivalences
+    - $\rho^*_N\Phi^{C_n}X\xrightarrow{\simeq}X$ for all $n$ where $\rho_n:S^1\xrightarrow{~}S^1/C_n$
+  - *Example* for a ring $A$
+    - topological Hochschild homology $THH(A)$ is cyclotomic
+      - Hochschild homology
+        - $HH(A)_k= A^{\otimes{k+1}$
+        - $\pi_n|HH(A)_*|=HH_n(A)$
+      - topological Hochschild homology
+        - replace $A$ with Eilenberg-MacLane spectra of $A$,
+          $\otimes$ with $\wedge$
+  - Why we care about cyclotomic things?
+    - For a cyclotomic $X$, we have a notion of topological cyclic
+      homology $TC(X)$
+    - for any $S^1$-spectrum $F:X^{C_n}\rightarrow X$ Frobenius
+      (inclusion of fixpoints)
+    - For cyclotomic $X$, $R: X^{C_n}\rightarrow X$ (restriction)
+      - $X^{C_n}\rightarrow \Phi^{C_n}X\xrightarrow{\simeq}X$
+    - $TC(X)=holim_{F,R} X^{C_n}$
+  - Find cyclotomic things?
+    - $THH$ is cyclotomic
+    - If $f:X\rightarrow$ is a cyclotomic map of cyclotomic spectra
+      then $hocofib(f)$ is cyclotomic, and
+      $$TC(hocofib(f))\simeq hocofib(TC(X)\rightarrow TC(X))$$
+    - By hand
+      - Suppose we have based $S^1$-spaces $\{A(s)}_{s\ge1}$ such that
+      - $\rho^*_nA(S)^{C_n}\simeq\begin{cases}
+             A(s/n) &\text{if }n\mid s
+             *&\text{else}
+          \end{cases}$
+      - then $\Sigma^\infty_{S^1}\wedge_{s\ge1}A(s)$ is cyclotomic
+- Bokstadt-Hsiang-Madsen
+  - $tr: K(A)\rightarrow TC(A)$ cyclotomic trace
+    - $TC(A)=TC(THH(A))$
+    - often close to an equivalnce
+      - [McCarthy-Dundas, ...]
+- Compute K-theory
+  1) Compute $THH(A)$
+  2) Compute $THH(A)^{C_n}$
+  3) Compute $R, F$
+  4) Compute $TC_q(A)$
+  5) Compute $K_q(A)$
+- $K_Q(\mathbb{F}_p[x_1,x_2]/(x_1^{a_1},x_2^{a_2})$
+  - $THH(\mathbb{F}_p[x_1,x_2]/(x_1^{a_1},x_2^a{_2})$
+    - *key* for any pointed monoid algebra $A(\pi}$
+      $$THH(A(\pi))\simeq THH(A)\wedge N^{cyc}(\pi)$$
+      where $N^{cyc}$ is a cyclotomic bar construction
+      - *example* $\mathbb{F}_p[x]/x^n=\mathbb{F}_p(\pi_n)$
+        - $THH(\mathbb{F}_p[x]/x^n)\simeq THH(\mathbb{F}_p\wedge N^{cyc}(\pi_n)$
+        - $THH(\mathbb{F}_p[x_1,x_2]/(x_1^{a_1},x_2^{a_2}))\simeq
+          THH(\mathbb{F}_p\wedge N^{cyc}(\pi_{a_n}\wedge \pi_{a_2})$
+          - need to understand the $S^1$-equivariant homtopy type of $N^{cyc}(\pi_n)$
+      - Hesselholt-Madsen
+        - $X_\emptyset\rightarrow X_{\{1\}}\rightarrow N^{cyc}(\pi_n)$
+        - $X_I$ are $S^1$-spaces
+        - $N^{cyc}(\pi_{a_1}\wedge\pi_{a_2})$ is the homotopy cofiber
+          of
+          #+BEGIN_SRC latex :file 2011-11-21.svg
+            \begin{diagram}
+              X_\emptyset&\rTo&X_{\{1\}} \\
+              \dTo&&\dTo\\
+              X_{\{2\}}&\rTo&X_{\{1,2\}} \\
+            \end{diagram}
+          #+END_SRC
+          larger wedges are obtained from higher-dimensional cubes
+        - smash with $T=THH(k)$
+          - $TC(k[x_1,x_2]/(x_1^{a_1},x_2^{a_2}))=TC(hocofib(X\wedge T)
+             \simeq hocofib(\{TC(X_I\wedge T)\}_{I\subset\{1,2\}})$
+          - $X_I$s are built from a family of type $\{A(s)\}$
+        - Compute $TC(X_I\wedge T)$ for all $I\subset\{1,\dotsc,n\}$
+          - Computation of $RO(S)$-graded equivariant homotopy of $THH(k)$
+          - If $k=\mathbb{F}_p$ we can compute all of these
+          - If $p\nmid a_i$ we can compute maps $TC(X_I\wedge
+            T)\rightarrow TC(X_J\wedge T)$
+- *Theorem* [AGHL]
+  - If $p\nmid a_i$ then
+    $$K_{2q}(\mathbb{F}_p[X_1,\dotsc,x_n]/(x_1^{a_1},\dotsc,x_2^{a_2}),
+    (x_1), \dotsc, (x_2))\conj\oplus_{s_1,\dotsc s_n\ge1\\ p\nmid
+    gcd(s_i}\\ a_i\nmid s_i}\oplus_{0\le
+    \ell<q}(\mathbb{Z}/p^m)^{\oplus\choose{n-1}{s\ell+1}$$
+    $m$ is the unique integer such that (...)
+  - $$K_{2q-1}(-)\cong\oplus\oplus(\mathbb{Z}/p^m)^{\oplus\choose{n-1}{2\ell}}$$
