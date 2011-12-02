@@ -1,19 +1,19 @@
 #+OPTIONS: H:1 toc:nil LaTeX:mathjax
 
 * [[file:notes.org][Notes for Higher Category Theory]]
-** [[id:f443edc2-532b-4a1f-a90e-9fae0d1cc0fb][2011-09-16]]
-** [[id:d7138a37-7cbf-4862-aadd-18f0ba7596ef][2011-09-20]]
-** [[id:542fb78e-5cde-4a19-9eef-b781940dfc3a][2011-09-23]]
-** [[id:31180905-5bdf-434d-b5d1-16d8e63c2453][2011-09-27]]
-** [[id:e6d8a7f4-42a0-4550-8c76-81c768791618][2011-09-30]]
+** [[id:f443edc2-532b-4a1f-a90e-9fae0d1cc0fb][[2011-09-16]]]
+** [[id:d7138a37-7cbf-4862-aadd-18f0ba7596ef][[2011-09-20]]]
+** [[id:542fb78e-5cde-4a19-9eef-b781940dfc3a][[2011-09-23]]]
+** [[id:31180905-5bdf-434d-b5d1-16d8e63c2453][[2011-09-27]]]
+** [[id:e6d8a7f4-42a0-4550-8c76-81c768791618][[2011-09-30]]]
 ** 2011-10-04 - No Class
-** [[id:cfffda59-52bc-4c4e-8915-767659e589e0][2011-10-07]]
+** [[id:cfffda59-52bc-4c4e-8915-767659e589e0][[2011-10-07]]]
 ** [[file:smallness.org][Notes on smallness]]
 * [[file:fag.org][Notes for Foundations of Algebraic Geometry]]
-** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][2011-10-05]] - Aji Dhillon
-** [[id:8845f913-3046-4c8a-9a30-d3f1070fbf54][2011-10-06]] - Aji Dhillon
+** [[id:46b58b06-61c6-4493-ae57-6ef6bf75d409][[2011-10-05]]] - Aji Dhillon
+** [[id:8845f913-3046-4c8a-9a30-d3f1070fbf54][[2011-10-06]]] - Aji Dhillon
 
-** [[id:eafdcd42-b91a-4803-ad5f-6a1072fa6aa5][2011-10-12]]
+** [[id:eafdcd42-b91a-4803-ad5f-6a1072fa6aa5][[2011-10-12]]]
 * Seminars
 ** [[file:2011-09-19.org][André-Quillen Homology]] - John Harper [2011-09-19 Mon]
 ** [[file:2011-09-26.org][Classifying stack for the Bounded Dervied Category]] - Parker Lowrie [2011-09-26 Mon]
