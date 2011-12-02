@@ -7,6 +7,7 @@
 (defun face-attribute (&rest arg) 0)
 
 (setq org-agenda-text-search-extra-files (file-expand-wildcards "*.org"))
+(setq org-id-locations-file (file-name-non-directory org-id-locations-file))
 (org-id-update-id-locations)
 
 (setq org-confirm-babel-evaluate nil)
