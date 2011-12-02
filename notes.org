@@ -2767,3 +2767,43 @@ We need to cover
     - $S_R(P)=R[x_i]$
 - *Goal* To build resolutions of commutative $R$-algebras in $sMod_R$
   instead of $Ch$
+- In the category $sAlg_r$, every $R$-algebra $Y$ has a natural
+  augmentation over $\pi_0Y$
+  - $\pi_0Y=Y_0/(Im(d_0-d_1))$
+  - all $d_i$'s in $sAlg_k$ are algebra maps, and $d_{i+1}s_i=d_is_i=1$.
+- *Definition* of a $A\in Alg_R$ is an augmented simplicial
+  $R$-algebra st
+  1) there exists a functor $P:\Delta^{op}_+\rightarrow Mod_R$ s.t.
+     $P_n$ is projective as an $R$-module and $X_+\cong S_R(P)$ is an
+     isomorphism in $Alg_R$
+  2) The augmentation induces an isomorphism
+     $$\pi_kX=\begin{cases} A&\text{if }k=0\\0&\text{if}k\ne0\end{cases}$$
+     of $R$-algebras
+- *Theorem* $S_r:sMod_R\rightleftarrows sAlg_R:\mathscr{O}$ is a
+  Quillen adjunction.
+  - *Point* $S_R$ preserves weak equivalence between cofibrant objects
+
+- Rezk - Every category of simplicial algebras has a left proper model structure
+  - Best proof of model structure on $sAlg_R$
+- Let $X$ be an $R$-algebra, and $\Omega_{X/R= I/I^2$ with
+  $$\partial:X\rightarrow \Omega_{X/R}:g\mapsto [(y\otimes 1-1\otimes y)]$$
+  - We have a natural map
+    $$Mod_X(\Omega_{X/R}, M)=Hom_X(\Omega_{X/R}\rightarrow Der_R(X,M)$$
+- Let $A$ be an $R$-algebra and let $Alg_R/A$ be the category of
+  commutative $R$-algebras over $A$
+- We have a functor $ab(A)=A\ltimes: Mod_R\rightarrow Alg_R/A$
+  - $M\in Mod_R$, $A\ltimes M=A\oplus M$ with multiplication
+    $$(a,x)\cdot(b,y)=(ab,ay+bx)$$
+- *Facts*
+  - $Alg_R/A(X,A\ltimes M)=Der_R(X,M)$
+  - $Der_(X,M)=Mod_A(A\otimes\Omega_{X/R},M)$
+- *Prop* The functor $X\maspto A\otimes_X\Omega_{X/R}$ is left adjoint
+  to the functor $M\maspto A\ltimes M$
+- $M\mapsto A\ltimes M$ extends levelwise (prolongs) to simplicial algebras.
+  - $sMod_A\mapsto sAlg_R/A$
+  - preserves weak equivalences and fibrations
+  - i.e. we have a Quillen adjunction $\Omega_{-/R}:sAlg_R/A\rightleftarrows sMod_R:A\ltimes-$
+- $L_{A/R}=A\otimes_X\Omega_{X/R}$ the cotangent complex
+  - is used to construct the derived functor of $A\ltimes-$ when
+    $X\rightarrow A$ is a cofibrant resolution of $A$ in $sAlg_R/A$
+  - $\pi_nL_{A/R}=H_qNL_{A/R}$ André-Quillen homology
