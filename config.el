@@ -7,6 +7,7 @@
 (defun face-attribute (&rest arg) 0)
 
 (setq org-confirm-babel-evaluate nil)
+(setq org-publish-use-timestamps-flag nil)
 
 (defvar hct-dir "~/hct/")
 (defvar hct-publish-dir "~/public_html/hct")
