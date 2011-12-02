@@ -542,7 +542,7 @@ category}$.
 ** Example (Digression on $D(R)$
 $D(R)=Ho(Ch_(\ge0))
 - objects are $M^\bullet$
-- $D(R)(M^\bullet,N^\bullet) = [QM^\buulet, N^\bullet]$
+- $D(R)(M^\bullet,N^\bullet) = [QM^\bullet, N^\bullet]$
   - where $Q$ is projective resolution, every object is fibrant.
 - $Hom(M^{\triangle},N^\bullet)\eqqcolon Map^h(M^\bullet,N^\bullet)$
 ** Example ($Top$) (Quillen 1967)
@@ -632,7 +632,7 @@ Where
   2) Classify fibrations
 	   $p:X\rightarrow Y$ is a fib iff $p$ has the RLP wrt $\overline J$.
   3) Classify trivial fibrations
-	   $p:X\rightarrow Y$ is a fib iff $p$ has theRLP wrt $\overline I$
+	   $p:X\rightarrow Y$ is a fib iff $p$ has the RLP wrt $\overline I$
   4) (Hard) If $f\in \overline J$ then $f$ is a weak homotopy
      equivalence.
 
@@ -2587,8 +2587,7 @@ We need to cover
   - Given
       $$0\rightarrow N\rightarrow N'\rightarrow N''\rightarrow 0$$
     we want to know when
-      $$S\otimes_R N\xrightarrow{*} S\otimes_R N'\rightarrow
-    S\otimes_R N''\rightarrow 0$$
+      $$S\otimes_R N\xrightarrow{*} S\otimes_R N'\rightarrow S\otimes_R N''\rightarrow 0$$
     $*$ is injective - when $S$ is *flat*
     - A ring spectrum $S$ is *flat* as an $R$-module if $S$ is
       cofibrant as an $R$-module or if $S$-mod and $R$-mod are Morita equivalent
@@ -2596,3 +2595,108 @@ We need to cover
     be the object that satisfies
     $$H_0(\mathscr{L}_\phi\otimes_S N)=\Omega_\phi\otimes_S N$$
     - Goerss-Hopkins Trilogy
+
+** Notes for 2011-11-29
+- Given a sequence of rings $Q\xrightarrow{\psi}R\xrightarrow{\phi}S we
+  have
+  $$\Omega_\psi\otimes_RS\rightarrow \Omega_{\phi\psi}\rightarrow
+  \Omega_\phi\rightarrow 0$$ is exact.
+- Andre-Quillen homology is left derived functor of $\Omega$
+- *Example
+  - $\phi:R\rightarrowS$ a map of rings ($k$-algebras, $char k =0$
+  - we consider the (left-exact) functor $S\otimes_R:Mod-S\rightarrow
+    Mod-S$
+  - Each exact sequence
+    $$0\rightarrow N\rightarrow N'\rightarrow N''\rightarrow 0$$
+    gives
+    $$S\otimes_R N\xrightarrow{*} S\otimes_R N'\rightarrow S\otimes_R N''\rightarrow 0$$
+    $*$ is injective - when $S$ is *flat* as an $R$-module
+  - To fix this (when $S$ is not flat) we derived the functor
+    $S\otimes_R-$
+    1) Construct a projective resolution $F\rightarrow S$ of $S$ as an $R$-module
+    2) Show that $F$ is unique up to chain-homotopy of complexes of $R$-modules
+    3) Set $T_\ohi=F\otimes_R S$ and $H^\phi_n(N)=H_n(T_\phi\otimes N)$.
+       - $H_0^\phi(N)=S\otimes_R N$
+       - $H_i^\phi(N)$ for $i>0$ extends * to an long exact sequence
+- We want to adapt this process to the functor $\Omega$.
+  - Plan: Attach a complex of projective $S$-modules to $\Omega$
+    - $\mathscr{L}_\phi$ is cotangent complex
+    - $H_0(\mathscr{L}_\phi\otimes N)=\Omega_\phi\otimes_SN$
+  - What do we need to do to construct $\mathscr{L}_\phi$
+  - We need a suitable category of $R$-algebras, so that our
+    projective resolution of $S$ is a complex of projective $S$-modules.
+  - This resolution needs to satisfy the following properties
+    1) Any resolution of $S$ must reflect the structure of $S$ as an $R$-module
+    2) $\mathscr{L}_\phi$ needs to be unique up to homotopy.
+    3) $\Omega$ must preserve homotopies
+  - First guess of how to do this would be to replace $R$ (a ring) by
+    $R$ a dga
+    - This doesn't work.
+    - Q: Why is the category of dg-$R$-algebras not a good place to
+      construct $\mathscr{L}_\phi$?
+  - The right category is the category of simplicial $R$-algebras
+  - *Definition*
+    - Let $R$ be a commutative ring. A simplicial $R$-module is a
+      simplicial object in the category of $R$-modules
+    - $sR-Mod$
+  - Simplicial resolutions
+    - We know that *if* $R$-mod is a cofibrantly generated model
+      category, then $s(R-mod)$ admits the Reedy model structure.
+    - A simplicial resolution of $a\in R-mod$is a cofibrant
+      replacement of $A$ viewed as the constant simplicial object in $sR-mod$
+  - *Free simplicial extensions* $R$ A commutative ring
+    - Let $A$ be a simplicial $R$-algebra, then given a graded set
+      $X=\{X_n\}$ of indeterminates, a free extension of $A$ by $X$ is
+      a simplicial $R$-algebra $A[X]$ satisfying
+      1) $A[X]_n=A_n[X_n]$ polynomial ring of $A_n$ in inderminates x_n$
+      2) $s_j(X_n)\subset X_{n+1}$
+      3) $A\hookrightarrow A[X]$ is a morphism of simplicial algebras
+    - *Example* $S=R[Y]$, $S$ is a free extension, with $x_n=y$
+    - How do we know these extensions exists?
+      - Given $\phi:A\rightarrow B$ A morphism of simplicial
+        $R$-algebras, there exists a simplicial resolution of $B$ over
+        $A$ given by a factorization $A\hookrightarrow A[X]\rightarrow B$
+      - in the category of simplicial $R$-algebras under $A$
+        - this category admits a cofibrantly generated model structure
+    - *Remark*
+      - Let $S$ be an $R$-algebra and let $M$ be an $R$-module. Let
+        $R[X]$ be a simplicial resolution of an $R$-algebra $S$. The
+        complex underlying $R[X]$ is an $R$-free resolution of $S$ and
+        $\forall n>0$
+        $$\pi(R[X]\otimes_R M)=Tor^R_n(S,M)$
+  - Resolution of Modules over Rings
+    - Let $M$ be an $R$-module.
+    - A free resolution of $M$ over $R$ may be built as follows.
+    - sequence of free $R$-modules
+    - ...
+  - We can now define the cotangent complex
+    - $\Omega_{-/R}$ is a functor on the category of $R$-algebras
+    - $\Omega_\phi=\Omega_{S/R}
+    - $S\in sR-alg/R$
+    - Why is $\Omega_{-/R}$ a functor?
+      - Given a simplicial algebra $S$, we have a simplicial
+        $S$-module $(\Omega_{S/R})_n=\Omega_{S_n/R}$
+    - Let $\mathscr{L}^\psi\coloneqq \Omega_{A/R}\otimes_AS$
+      - simplicial $S$-module
+      -
+* Notes for 2011-12-02
+[2011-12-02 Fri 12:10]
+- Q: Why are simplicial algebras better than dgas?
+- *Recall*
+  - *Theorem*
+    - Let $F:C\leftrightarrow D:G$ and $C$ is a cofibrantly generated
+      model category, $I$ and $J$ the generating (acyclic) cofibration.
+    - Given $f:x\rightarrow y$ in D$ say that $f$ is a weak
+      equivalence/fibration in $D$ if $Gf$ is in $C$.
+    - If
+      1) $G$ commutes with sequential colimits
+      2) $F(i)$, $i$ a cofibration in $C$ has the LLP wrt all
+         fibrations in $D$
+    - Then $D$ has a cofibrantly generated model structure
+      with $FI$ and $FJ$ generation (acyclic cofibrations
+  - If the theorem hold, i.e. $D$ has the indicated model structure,
+    then $F$ preserves all weak equivalences between cofibrant objects.
+- $DGA_k{\xleftarrow{S}\atop\xrightarrow{\mathscr{O}}Ch_k$ where $S$
+  symmetric algebra functor with differential extended by Leibniz rule
+- $Alg_k$ category of commutative $k$-algebras
+-
