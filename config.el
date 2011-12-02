@@ -6,6 +6,9 @@
 (defun org-dvipng-color (&rest arg) 0)
 (defun face-attribute (&rest arg) 0)
 
+(setq org-agenda-text-search-extra-files (file-expand-wildcards "*.org"))
+(org-id-update-id-locations)
+
 (setq org-confirm-babel-evaluate nil)
 (setq org-publish-use-timestamps-flag nil)
 
