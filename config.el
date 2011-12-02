@@ -3,6 +3,7 @@
 (require 'org)
 (require 'org-id)
 
+(defun org-dvipng-color (&rest arg) 0)
 (defun face-attribute (&rest arg) 0)
 
 (setq org-confirm-babel-evaluate nil)
