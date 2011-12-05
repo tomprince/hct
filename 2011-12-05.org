@@ -1,0 +1,128 @@
+#+AUTHOR: Sean Tilson
+#+TITLE: Power operations in the Kunneth Spectral Sequence
+
+* Pre-talk
+- Bockstein Spectral Sequence
+  - $H^*(X;\Z/2)\Rightarrow H^*(X; \Z)$
+  - differentials are the Bocksteins
+    - $0\rightarrow\Z\rightarrow\Z\rightarrow\Z/2\rightarrow0$
+      gives a long exact sequence on $H^*$
+    - $\partial$ of that sequence is the Bockstein
+    - $\overline{X}\in H^*(X;\Z/2)$ then $x\in C^*(X;\Z/2)$
+      - lift $x$ to $\tilde x\in C^*(X;\Z)$
+      - know $\partial \tilde x=0 \mod 2$
+      - $\alpha=\frac12 \partial\tilde x$ is the first integral Bockstein
+  - Example
+    - $H^*(\R P^\infty;\Z/2)\Rightarrow H^*(\R P^\infty;\Z)$
+- Kunneth Spectral Sequence
+  - $R$ commutative ring spectra
+  - $Tor^{R_*}_p(A_*,B_*)_q\Rightarrow \pi_{p+q}(A\wedge_R B)$
+  - $A_*\leftarrow \F_0\leftarrow \F_1\leftarrow \F_2\leftarrow \cdots$
+    free $R_*$ resolution
+ #+BEGIN_SRC latex :file 2011-12-05.1.svg
+   \begin{diagram}
+     A&&\lTo && F_0=A_0 && \lTo && F_2 && \lTo && F_3 \\
+     &\luTo&&\ldTo&&\luto&&\ldTo&&\ldTo&&\luTo\\
+     \uTo&&A_1&& && K_0&& && K_1 && && K_2 \\
+     &\ldTo&&\luTo&&\ldto&&\luTo\\
+     A_2 && && \SigmaK_1 && \lTo && \Sigma^{-1}A\\
+     &\luTo&&\ldTo && &\ldTo(6,2) \\
+     && \Sigma^2K_2
+   \end{diagram}
+  #+END_SRC
+- Important to have filtration
+- connective K-theory
+  - $\pi_*ku=\Z[v]$ with $|V|=2$
+  - $H^*(ku)=A\otimes_{E(1)}\F_2$
+    - $E(1)=E_{\F_2}[Sq^1,Q^1]$
+  - $H_*(ku)=\F_2[\xi_2^2, \xi_2^2,\xi_3,\dotsc]$
+  - $H_*H=\F_2[\xi_1,\xi_2,\dotsc]$
+  - $H_*H\Z=\F_2[\xi_1^2,\xi_2,\xi_3,\dotsc]$
+- Adams Spectral sequence
+  - $Ext_A^{s,t}(\F_2,\F_2)\Rightarrow\pi_{t-2}^S(S^0)^{\hat}_2$
+  - $Ext_A(H^*Y,H^*X)\Rightarrow[X,Y]^{\ha}_2$
+  - $Ext_A(H^*ku,H^*)\Rightarrow[X,ku=ku^*X$
+  - $Ext_A(A\otimes_{E(1)}\F_2; H^*(X))\cong Ext_{E(1)}(\F_2,H^*X)$
+* Talk
+- Outline
+  1) Idea / Early Examples
+  2) Construction of Kunneth Spectral Sequence
+  3) Computations
+** Idea
+- Operation in spectral sequence tell you about differentials
+- Highly Structured ring spectra
+-
+      #+BEGIN_SRC latex :file 2011-12-05.2.svg
+        \begin{diagram}
+          X\wedge X&\rTo&X\\
+          &\dlTo&&\duTo\\
+          &&D_2X&=&E{C_2}_+\wedge_{C_2}(X\wedge X}
+        \end{diagram}
+      #+END_SRC
+- operations:
+  1) propagate differentials
+  2) produce new differentials
+- Araki & Vázquez 1957 - Serre SS
+- Nakamura 1973 - May SS
+  - May 1964 - $H^*E^0A\Rightarrow H^*A$
+  - $Ext^*_{E^0k)(\F_2,\F_2)\Rightarrow Ext_A^*(\F_2, \F_2)$
+  - *Theorem* (Nakumura)
+    - $sq^id_r(X)=d_{2r}(sq^ix)$
+- Bill Singer 1971
+  - Change of rings spectral sequence
+  - EM SS
+  - Serre SS
+- Brunner 1977
+  - ops in $E_2$ of Adams SS to differentials homotopy operation in
+    the target
+  - If $X$ is $H_\infty$, $D_2X\xrigharrow{\xi}X$
+  - $\alpha\in\pi_kD_2S^n$, $x\in\pi_nX$
+    - $S^n\xrighttarrow{x}X$ gives
+    #+BEGIN_SRC latex :file 2011-12-05.3.svg
+      \begin{diagram}
+        &&D_2S^n&\rTo^{D_2x}&D_2X \\
+        &\luTo^{\alpha}&& &&\ldTo^\Xi \\
+        S^k && \rTo^{\alpha_*(x)}&& X\\
+      \end{diagram}
+    #+END_SRC
+  - Example: Hopf invariant 1 differentials
+  - $d_2(H_n)=h_0h_n^2\ne 0$ for $n\ge3$
+  - $d_2(\underbrace{sq^0h_n}_{h_{n+1}})=H_0\underbrace{sq^1h_n}_{h_n^2}$
+  - Generically, half of the $d_2$'s are of this form.
+  - $D_2S^n=\Sigma^n\R P^\infty_n$
+** Kunneth Spectral Sequence
+- $R$ an $S$-algebra, $A,B$ commutative $R$-algebras
+- $Tor^{R_*}(A_*, B_*)\Rightarrow \pi_*(A\wedge_R B)$
+- *Fact/Idea* Baker-Lazerev
+  - Spectral Sequence is multiplicative, if the filtration is.
+  - Resolutions -> $E_2$
+  - Filtrations -> $E_\infty$
+    - $A_i$ is some filtration of $A$ then it is multiplicative if
+      $$ \cup_{i+j\=n}A_i\wedge A_j\rightarrow A_n$
+- How to get product on the filtration
+  - Filtration (see above)
+  - Filtration to Resolution, easy
+  - Resolution to filtration, not hard
+    - let $\Gamma_n=\cup_{i+j=n}A_i\wedge A_j$
+    #+BEGIN_SRC latex :file 2011-12-05.4.svg
+      \begin{diagram}
+        D^2^i\Gamma_n&\rInto&D_2(A\wedge A \\
+        \dTo&&\dTo \\
+        A_{n+i}&\lTo&A
+      \end{diagram}
+    #+END_SRC
+  - $HH^{E_*R}(E_*A)\Rightarrow E_*(THH^R(A))$ (if $E_*A$ is flat over
+    $E_*R)$
+- When does $H_*k$ have operations (May '70)
+  - $K$ should be a homotopy associative dga.
+  - $\Theat:EC_2\otimes_{C_2}K^{\oitmes2}\rightarrow K$,
+    s.t. $\theta(e_0\otimes x\otimes y) = xy$
+  - Fact: we can do this
+  - Sad Fact: They are all 0, (except for the square)
+  - *Theorem* (Tate 1957)
+    - $R$ commutative algebra, $I\lhd R$. Then there exists $X$ a
+      graded commutative dga that is a $R$-free resolution of $R/I$
+  - Really, theses operations are 0 modulo filtration
+  - Steinberger (1977) Action of Dyer-Lashof
+    - $Tor^(\F_2,H_*H\Z)\Rightarrow H_*H=\pi_*(H\wedge H) =
+      \pi_(H\wedge_{H\Z}H\Z\wedge H)$
