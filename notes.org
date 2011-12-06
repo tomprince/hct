@@ -2807,3 +2807,99 @@ We need to cover
   - is used to construct the derived functor of $A\ltimes-$ when
     $X\rightarrow A$ is a cofibrant resolution of $A$ in $sAlg_R/A$
   - $\pi_nL_{A/R}=H_qNL_{A/R}$ André-Quillen homology
+* Notes for 2011-12-06
+- $L_{A/R}$ a functor of arrows $R\rightarrow A$ or a functor of pairs $(A,R)$
+- $B\otimes_A L_{A/R}\rightarrow L_{B/S}$
+-
+  #+BEGIN_SRC latex :file diagram43.svg
+    \begin{diagram}
+      X&\rTo&S\otimes_RX&\rInto^i& Y\\
+      \dOnto^p&&\dTo&&\dTo^q\\
+      A&\rTo&B&\rTo&B
+    \end{diagram}
+  #+END_SRC
+** Toplogical André-Quillen Homology
+- André-Quillen homology of a commutative ring spectrum
+- "the derived version of André-Quillen"
+
+- $Sp^\Sigma$ - $\mathbb{S}$-modules
+- Ring spectrum is 1) monoid in $Sp^\Sigma$ 2) $\mathbb{S}$-algebra
+- Commutative ring spectrum is a commutative monoid in $Sp^\Sigma$
+  ($E_infty$-ring spectrum)
+- Let $R$ be a commutative ring spectrum
+  - $\pi^s_*$ is a graded commutative ring
+  - modules over $R$ ($Mod_R$)
+    - $\pi^s_*M$ is graded module over $\pi^s_*R$
+- TAQ (Basterra)
+  - $R$ a fixed commutive ring spectrum
+  - $Alg_R$ category of commutative $R$-algebras
+  - $R\ltimes M:Alg_R/R\rightarrow Mod_R$
+  - The changes for ring spectra include
+
+    1) $R$ is connective
+       - *Definition* A symmetric spectra is *connective* if
+         $\pi_nX=0$ when $n<0$
+    2) We have to restrict to connective, non-unital ring spectra
+       - $I_R:Alg_R/R\rightarrow Rng$ we define an augmentation functor
+         #+BEGIN_SRC latex :file diagram44.svg
+           \begin{diagram}
+             I_R(A)\wedge_R I_RA && & \rTo& A\wedge_R A \\
+             &\dTo(2,4)\dTo && && \dTo\\
+             &&I_R(A)\rTo& A\\
+             && \dTo && \dTo\\
+             && * &\rTo& R\
+           \end{diagram}
+         #+END_SRC
+       - $I_R(A)\wedge_R I_R(A)\rightarrow I_R(A)$ is unique!
+         - therefore $I_R(A)$ has a connective non-unital $R$-algebra structure
+       - $\Omega_{A/R} =^? I/I^2$
+    3) We have $Ab^\Delta_R=A\ltimes M: Alg_R/A\rightarrow Mod_A$ for
+       simplicial algebras
+       - We want this same functor on ring spectra (replace abelian
+         with abelian up to homotopy):
+         $$ Ab_R^A=A \ltimes: Ho(Alg_{R/A})\rightarrow Ho(Mod_A) $$
+       - Take a derived functor of
+         $$Ab^A_R(B)=A\ltimes B \coloneqq LO_B RI_B(p_*B\wedge_R A)$$
+         where $p$ is cofibrant replace and $Q$ is $I$'s left adjoint
+         - $I_R:Alg_{R/A}\leftrightarrow Rng:Q_A$ ($Q_A$ is square 0 extension)
+       - Now we can define
+         $$\Omega_{A/R}\coloneqq Ab^A_R(A)=LQ_A RI_A(p_*A\wedge_R A)$$
+         where $Mod_A$ is category of modules over $A$ a connective,
+         non-untial ring spectrum
+  - $TAQ_*(A,R; M) = \pi_*(\Omega_{A/R}\wedge A M)$
+    - we replace augmentation ideal with the augmentation functor (given
+      by a pullback)
+    - we replace $I/I^2$ with the unit of an adjunction
+  - $R$ a commutative ring, $A$ a commuative $R$-algebra
+    - Q: Can we compare $AQ(A,R,M)$ with $TAQ(HA, HR, HM)$ where $HA$
+      is the Eilenberg-MacLane ring spectrum associated to $A$.
+    - Given a simplicial ring $A$, how do we apply $H(-)$ to $A$ in
+      order to get a simplicial object int he category of ring spectra?
+      - $\pi_*A=\pi_*HA_*$ just apply $H$ to each $A_n$, giving a
+        simplicial object in ring spectrum
+    - Guess: $AQ_*(A,R;M)=\pi_*\mathscr{L}_{A/R}$ shuod be related (or
+      the same as) $TAQ_*(HA,HR;HM)=\pi_(\Omega_{A/R}\wedge_A M)=\pi_*(\mathscr{L}_{A/R})$
+      - These are not the same.
+    - Why?
+      - André-Quillen detects very sensitive info about morphisms of
+        commutative rings
+        - Let $A$ be a finitely generated $R$-algebra
+        - $R\rightarrow A$ is smooth iff $\mathscr{L}_{A/R}\rightarrow
+          \Omega_{A/R}$ is a weak equivalence and $\Omega_{A/R}$ is a
+          projective $A$-module
+        - $R\rightarrow A$ is étale iff $H_*\mathscr{L}_{A/R}$ vanishes
+      - Note: AQ Tells us about maps of rings, TAQ tells us about
+        maps of spectra.
+      - Over a field $k$, $char k=0$, there is a spectral sequence
+        $$E^2_{p,q}=AQ_p(A;k;M)\otimes TAQ_q(Hk[x],Hk;HM) \Rightarrow TAQ_{p+q}(HA,Hk;HM)$$
+      - $\Gamma$-homology (of $H\mathbb{Z}$) (Robinson) and AQ homology agree for flat
+        extensions of rings
+    - Free commutative algebra functor
+      - $O:DGA_R\leftrightarrow Ch_k:S_k(-)$
+      - $Omeags_{X/A}=P_*X\wedge_A X$ (where $X$ is a cofibrant $A$-module)
+      - McCarthy: $P_*X=$ converging Goodwillie tower of the forgetful
+        functor $Alg/R\rightarrow Mod_R$
+      - Dugger-Shipley: have an obstruction theory to having a $P_{*A}X$
+      - Mandel-Basterra: to talk about $\Omega_{P_*X/A}$ where $A=BP$.
+- [[math.uic.edu/~bshipley][Summer School 2001 - Iyengar]]
+- Paul Goerss and Kristen Schemmerhorn
