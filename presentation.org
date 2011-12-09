@@ -1,0 +1,139 @@
+#+TITLE: Smallness and Brown Representability
+#+AUTHOR: Tom Prince
+
+* Smallness
+- Given a cardinal $\kappa$, an object $c\in C$ is  $\kappa$-small iff
+  every map $c\rightarrow \lim_{i\in\kappa}x_i$ factors through some
+  $i<\kappa$.
+  - Typically one takes $\kappa$ to be a regular cardinal (defined
+    later)
+  - An ordinal is a well-ordered set (typically taken from a
+    particular skeleton). A cardinal is initial (in ordered sets) of a
+    given isomorphism class (in sets).
+  - For $\omega$, in triangulated categories Neeman discuses the
+    related notions of smallness and compactness. For what we need,
+    this definition is sufficient.
+  - This is exactly what is needed for Quill en's small object argument.
+    - Start with a morphsim $X\rightarrow Y$. We take a set of
+      morphisms $\{A_i\rightarrow B_i\}$ with $A_i$J $\kappa$-small.
+    - Let $X_0=X$, and form the pushouts
+      #+BEGIN_SRC latex :file presentation1.svg
+        \begin{diagram}
+          \coprod A_i && \rTo && X_i \\
+          && &\dlTo \\
+          \dTo && X_{i+1} && \dTo \\
+          &\ruTo && \drTo\\
+          \coprod B_i&& && Y
+        \end{diagram}
+      #+END_SRC
+      and for a limit ordinal $\lambda$, let $X_\lambda=\lim_{i<\lambda}X_i$.
+    - Then, given any map $A_i\rightarrow \lim_{i<\kappa}= X_\kappa$,
+      this factors through some $X_j$, so we have a diagram
+      #+BEGIN_SRC latex :file presentation2.svg
+        \begin{diagram}
+          &&X_j\\
+          &\ruTo&\dTo\\
+          A&&&X_{j+1}\\
+          \dTo&\ruDotsto&\dTo\\
+          B&&X_\kappa\\
+          &\rdTo&\dTo\\
+          &&Y
+        \end{diagram}
+      #+END_SRC
+  - *Examples*
+    - A cardinal $\kappa$ is regular, if every $\lambda < \kappa$ is
+      $\kappa$-small.
+      - This is traditionally expressed by saying that the union of
+        any collection of $<\kappa$ cardinals, all $<\kappa$ is itself $<\kappa$.
+    - Finite sets are $\chi_0$-small, and countable sets are $\chi_1$-small.
+    - ??? In a presheaf category (for example, $sSet$), an object is
+      small if its image is small.
+
+* Brown Representable
+- Give axioms for a cohomology theory
+- What does it mean for such a thing to be representable
+- $\Sigma$ axiom
+  - relates different levels.
+  - $\Sigma$ has a cogroup structure, and $\Sigma^2$ an abelian
+    cogroup structure.
+  - Thus, all we need to show is that the remaining axiom, for a set
+    valued functor, imply representability.
+- *Proof*
+  - The basic idea is to create a sequence of objects for which
+    $Hom(-,X_n)\rightarrow Hom(-, X_{n+1})$ is an isomorphism on the
+    images (on the generators). In other words, the image of the above
+    morphism at each stage is isomorphic, and isomorphic to $F(-)$.
+  - Assumptions
+    - C has all small colimits and is pointed
+    - There is a set $\{K\}$ of compact cofibrant objects that jointly detect
+      weak equivalence: $[K,X]\xrightarrow{f}[K,Y]$ is an isomorphism for
+      all $K$ iff $f$ is a weak equivalence.
+    - $F$ is homotopical
+    - $F(*)=*$
+    - $F(\wedge X_i)\rightarrow \coprod F(X_i)$ is a bijection
+    - Mayer-Vietoris: Given
+      #+BEGIN_SRC latex :file presentation5.svg
+        \begin{diagram}
+          A&\rTo&X\\
+          \dTo^i&&\dTo\\
+          B&\rTo&B\cup_A X
+        \end{diagram}
+      #+END_SRC
+      where $i$ is a cofibration, and the objects are cofibrant,
+      $G(B\cup_A X)\rightarrow G(B)\times_{G(A)}G(X)$ is surjective
+  - Outline
+    1) Define universal elements
+       - A element $u\in F(Y)$, (equivalently by yoneda, a map
+         $u:[-,Y]\rightarrow F(-)$) is universal if it is an
+         isomorphism for all generators.
+    2) Every map $Hom(-,Y)\rightarrow F(-)$ extends to a universal
+       one.
+       - Step 1: Given $u\in F(X)$, construct $X\rightarrow Y$ and
+         $v\in F(Y)$ with $v$ surjective, any two $a,b\in[K,X]$ that
+         are equal in $F(K)$ are already equal in $[K,Y]$
+         - Given $u\in F(X)$.
+         - Take $X_0=X\wedge \bigwedge_{\lambda\in F(K)} K$. This gives
+           $[-,X_0]\rightarrow F(-)$ surjective for all generators.
+         - Take $X_1$ to be the pushout along
+           #+BEGIN_SRC latex :file presentation6.svg
+           \begin{diagram}
+             \wedge_{a,b}K\wedge K&\rTo& X&\rTo& X_0\\
+             \dTo&& &&\dTo\\
+             \wedge_{a,b} K\times I&& \rTo&& X_1
+           \end{diagram}
+           #+END_SRC
+       - Step 2: Apply step 1 inductively, up to $\kappa$.
+    3) Given a map $Y\rightarrow Y'$ with $F(Y')\ni u'\mapsto u\in
+       F(Y)$ with $u$ and $u'$ universal, $Y\rightarrow Y'$ is a weak equivalence.
+       - It induces a bijection for all $K$, since $[-,Y]$ and
+         $[-,Y']$ both coincide with $F(-)$ on $K$.
+    4) Given a solid diagram
+       #+BEGIN_SRC latex :file presentation3.svg
+         \begin{diagram}
+           A&\rTo& Y\\
+           \dTo&&\dDotsto\\
+           B&\rDotsto&Y'
+         \end{diagram}
+       #+END_SRC
+       with $A\rightarrow B$ cofibrant, mapping to
+       #+BEGIN_SRC latex :file presentation4.svg
+         \begin{diagram}
+           F(A)&\lTo&F(Y)\\
+           \uTo&&\uDotsto\\
+           F(B)&\lDotsto&F(Y')
+         \end{diagram}
+       #+END_SRC
+       with $u\in F(y)$ universal and $x\in F(B)$, such that the
+       images in $F(A)$ coincide, there exists a $Y'$ and universal $u'\in
+       F(Y')$ mapping to $u$ and $x$.
+       - Take the pushout, and then extend to a universal
+         element. This works because of mayer-vietoris.
+       - By the previous step, we have a map $B\rightarrow Y$ in the
+         homotopy category.
+    5) Therefore, a universal element gives an isomorphism
+       $Hom(-,Y)\simeq F(-)$
+       - There is a universal element $u\in F(Y)$, (extending $*\in F(*)$)
+       - By 4, given any $x\in F(X)$, there is $X\rightarrow Y$,
+         taking $u$ to $x$, giving surjectivity.
+       - Extend along $X\wedge X\rightarrow X\times I$ to get
+         injectivity.
