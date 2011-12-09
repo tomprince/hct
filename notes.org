@@ -2903,3 +2903,29 @@ We need to cover
       - Mandel-Basterra: to talk about $\Omega_{P_*X/A}$ where $A=BP$.
 - [[math.uic.edu/~bshipley][Summer School 2001 - Iyengar]]
 - Paul Goerss and Kristen Schemmerhorn
+* Notes for 2011-12-09
+- [[http://www.math.uwo.ca/~plowrey/teaching/M9502B/][Math 9502 - Topics in Homotopy Theory: Derived Algebraic Geometry]]
+- Eric Finster (Lausanne) - Lecture notes - intro to Quasicatgories
+- For Next Term
+  - Definition of model cat, cofibrantly generated, (total) dervied
+    functors, Quillen pairs and examples
+    - Dwyer-Splinski
+    - Chain Complexes (bounded and unbounded)
+      - perfect complexes
+      - stable model categories
+  - From stable homotopy theory
+    - how to tell if you have a stable model category
+    - Therorem (Schwede-Shipley)
+      - If you have a set of compact generators
+  - Symmetric Spectra
+    - Definition
+    - Examples
+    - Suspention/loops, Free, Endomorpism, internal hom
+    - Schwede (book)
+  -
+    - Dervied Mapping Spaces $Map^h(X,Y)$
+    - is a Quasicategory
+    - algebraic geometry from "functor of points" point-of-view
+    - $\mathbb{R}Hom(Spec R, X)=Map^h(Spec R, X)$
+    - Model Categories and Simplicial Methods - Goerss-Schemmerhorn
+  - (Framings & Coframings - Hovey ch.5), (Toen-Vezzzosi)

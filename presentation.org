@@ -13,7 +13,7 @@
   - For $\omega$, in triangulated categories Neeman discuses the
     related notions of smallness and compactness. For what we need,
     this definition is sufficient.
-  - This is exactly what is needed for Quill en's small object argument.
+  - This is exactly what is needed for Quillen's small object argument.
     - Start with a morphsim $X\rightarrow Y$. We take a set of
       morphisms $\{A_i\rightarrow B_i\}$ with $A_i$J $\kappa$-small.
     - Let $X_0=X$, and form the pushouts
