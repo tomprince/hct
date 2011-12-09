@@ -1,0 +1,101 @@
+#+AUTHOR: Marcy
+#+TITLE: Derived Hall Algebras
+
+* History (1990s)
+- Ringle constructs an associative algebra $H(\mathscr{A})$ on a nice-enough
+  abelian category
+  - nice enough: $\mathscr{A}$ Abelian category
+    - $Ext^1(\mathscr{A}(x,y))<\infty$ for $x,y\in \mathscr{A}$.
+    - Example $\mathbb{F}_q$, $A$ an $\mathbb{F}_q$-algebra, $A$-mod
+- Construct $H(\mathbb{A})$
+  - as a vector space, has a basis {iso classes of objects of A}q(\
+  - $[x]\cdot[y]=\sum_z g^z_{x,y}z$ where
+    - $g^z_{x,y}$ is the number of short exact sequences in $\mathscr{A}$
+      $$0\rightarrow x\rightarrow z\rightarrow y\rightarrow 0$$
+- *Example* $\mathfrak{g}$ be a complex simple Lie algebra of type A, D, E
+  - to each $\mathfrak{g}$ we can associate a Dynkin diagram
+    (undirected graph)
+  - give a direction, to get quiver $Q$ associated to $\mathfrak{g}$
+  - $\mathbb{F}_q$ reperestations of $Q$, $Rep Q$$ is a nice enough
+    abelian cat
+  - $H(\mathfrak{g}$ is a hall algebra on $Rep(Q)$ (independent of $Q$)
+  - *Theorem* (Ringle) There exists a unique isomorphism of rings.
+    $$H(\mathfrak{g})\xrightarrow{~} U_q(\eta^+)$$
+    - $U_q(\eta^+)$ is the positive nilpotent quantum group
+      - $U_q(\mathfrak(g))$ universal envolping algebra, defined by
+        $q$
+      - $U_q(\mathfrak(g))=U_q(\eta^+)\oplus U_q(h)\oplus_q(\eta^-)$
+        Drinfield-Jumbo decomposition
+    - K-theory of category of perverse sheaves on moduli stack of modules over an algebra
+- Can we enlarge $H(\mathfrak)$ in a way to recover the entire $U_q(\mathfrak{g})$?
+  - *Conjecture* (Peng and Xiao)
+    Any such algebra will be constructed on the 2-periodic $D^b(Rep(Q))$
+    - $D(Rep(Q))$ is triangulated not abelian
+    - will never be finite
+  - Bad Idea: Extend Ringle's definition to count distinguished
+    triangles instead of short exact sequences
+    - If we try to construct an algebra like this, it will not be associative
+  - Partial answers
+    - Toen/Bergner approach this problem with homotopy theory
+    - *Definition* A dg-category $T$ is a category enriched in
+      $\mathbb{Z}$-graded chain complexes
+    - $T^{op}$ opposite category of $T$
+    - *Definition* A $T$-module is an enriched functor $M:T\rightarrow Ch_{\mathbb{Z}(K)$
+    - *Theorem* (Tabuda) Fix $T$, then the category of
+      $T^{op}$-modules admits a model category structure with
+      - weak-equivalences $f:M\rightarrow M'$ such that
+        $f:M(x)\rightarrow M'(X)$ are quasi-isomorphisms
+    - $Ho(T^{op}-mod)\eqqcolon D(T)$
+    - Let $\matbb{F}_q$ finite field, $T$ a dg-category over
+      $\mathbb{F}_q$ s.t.
+      - $H^*(T(x,y))=Ext^*(x,y)<\infty$
+    - Some general facts about $D(T)$
+      - $D(T)$ is a triangulated category
+      - We have a sub-category of perfect $T^{op}$ modules $P(T)$ s.t.
+        $Ho(P(T)$ is Quillen equivalent to $Ho(T^{op}-mod$ (Toen)
+        - perfect, $k-field
+          - $X\in Ch_{\mathbb{Z}}(k)$ is perfect iff its homology is
+            finite dimensional.
+          - a perfect dg-$T^{op}$-module is quasi-isomorphic to a
+            prefect complex with each piece projective (cofibrant,
+            bounded, generators)
+    - *Theorem* (Toen) $T$ as above, we can construct an algebra
+      $DH(T)$ as a $Q$-vector space with basis $x_M$ quasi-isomorphism
+      classes of perfect-$T^{op}-modules
+      - $\mu:DH(T)\otimes DH(T)\rightarrow DH(T)$
+      - $DH(T)|_{heart DT}=H(heart)$
+      - Construction
+        - $P(T)\subset T^{op}-mod$ full subcategory
+        - $w(P(T))$ the wide subcategory of weak-equivalences
+        - $X_{(0)}(\T)=N(w(P(t))$
+          - $\pi_0(X_{(0)}(T))$ connected components =
+            quasi-isomorphism classes
+          - $\pi_1(X_{(0)}(T),M)=Aut^k(M)$
+          - $\pi_i(X_{(0)}(T),M)=Ext^{1-i}(M,M)$
+        - By nonsesne, we also have a classifying space for morphisms $X_{(1)}$
+          #+BEGIN_SRC latex :file 2011-11-04.1.svg
+            \begin{diagram}
+              X_{(1)}(T)&\rTo^t&X_{(0)}(T)\\
+              \dTo^(S\times C)
+              X_{(0)}(T)\times X_{(0)}(T)
+            \end{diagram})
+          #+END_SRC
+        - $t ([f]:X\rightarrow Y)= [Y]$
+        - $S\times C:(f:X\rightarrow Y)=([X], hocofib[f])$
+        - $DH(T)=functions $X_{(0)}T\rightarrow \mathbb{Q}$ with
+          finite support
+          - $\mu=t_!\circ(S\times C)^*$
+          - $t_!$ fancy pushforward (motivic integration on moduli stacks
+          - $[M][N]=\sum_z g^Z_{M,N}Z$
+          - $g_^Z_{M,N}=\frac{|[M,Z]_Y|\cdot
+            \pi_{iso}|Ext^{1-i}(M,Z)|^{(-1)^i}}
+            {|Aut(M)|\cdot\pi_{iso}|Ext^i(M,M)|^{(-1)^i}}$
+        - This algebra only depends on $Ho(M(T))$
+        - *Problem* still too many restrictions
+    - Bergner: Construct the necessary algebra $DH(D(Rep Q))$ as some
+      colimit of finite pieces
+      - Problem: instead of model categories, uses
+        $(\infty,1)$-categories or complete Segal spaces
+    - Go back and look at the geometry
+      - $H(A)$ is $K_0$ of perverse sheaves on moduli stacks
+      - sheaves on "higher stacks" - derived version of moduli stacks

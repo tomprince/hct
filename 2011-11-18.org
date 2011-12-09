@@ -1,0 +1,23 @@
+
+"The concept of flatness is a riddle that comes out of algebra, but which
+technically is the answer to many prayers" - D Mumford
+
+Auslander - 1961
+- $R$ regular local ring
+- $M,N$ finite $R$-module
+- Q: What does it say about $M$ and $N$, that $M\otimes_RN$ is
+  $R$-torsion free?
+- *Theorem* (Auslander)
+  - $M$ is $R$-flat iff $M^{\otimes_Rn}$ is $R$-torision free where
+    $n=dim R$
+  - Remarks
+    1) -> obvious
+    2) the theorem is sharp, (i.e. there exists $M$ non-$R$-flat such
+       that $M,M^{\otimes2},\dotsc,M^{\otimes n-1}$ are torsion-free)
+    3) $M^{\otimes_Rd}$ is $R$-torsion free for all $d$ iff
+       $M^{\otimes n}$ is $R$-torsion-free.
+- Vascancelos Conjecture ('97)
+  - $R$ regular ring, $dim R=n$, $A=R-alg$ of finite type.
+  - then $A$ is $R$-flat iff $A^{\otimes_Rn}$ is $R$-torsion-free
+- Q: What does it mean (geometrically) about $\phi:X\rightarrow Y$
+  that $\mathscr{O}_{X,\xi}$ has
