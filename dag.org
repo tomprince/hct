@@ -13,13 +13,18 @@
 - Webpage: www.math.uwo.ca/~plowrey
 
 * Notes for 2012-01-10 - Overview (lies)
+:PROPERTIES:
+:ID: f62ab3fd-fe80-4bc4-b5e6-dc41ebf05eb1
+:END:
 - Modern algebraic geometry was formed in 1950s-1960s
 - Techniques developed to study algebraic geometry have impacted much
   of modern mathematics
 - Analogy
-  |                       | Modern Algebraic geometry                                                 | Derived algebraic geometry            |
-  |-----------------------+---------------------------------------------------------------------------+---------------------------------------|
-  | basic building blocks | commutative ring objects in $Set$ (fancy way of saying commutative rings) | Commutative ring objects $Set_\Delta$ |
+  - Modern Algebraic geometry
+    - basic building blocks: commutative ring objects in $Set$ (fancy
+      way of saying commutative rings)
+  - Derived algebraic geometry
+    - Commutative ring objects $Set_\Delta$
   - $Set\subset Set_\Delta$, but not every "topologically" discrete
     object is actually discrete
 - Notation: $C$, $D$ categories, write $D^C=Fun(C,D)$ and $D_C=Fun(C^{op},D)$
