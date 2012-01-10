@@ -1,0 +1,137 @@
+#+TITLE: Notes for Derived Algebraic Geometry
+#+AUTHOR: Parker Lowrey
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{empheq}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{examples}{Example}
+#+MATHJAX: mathml:t
+#+LINK_HOME: index
+#+BABEL :exports results
+
+#+HTML: \(\def\coloneqq{:=}\)
+
+- Webpage: www.math.uwo.ca/~plowrey
+
+* Notes for 2012-01-10 - Overview (lies)
+- Modern algebraic geometry was formed in 1950s-1960s
+- Techniques developed to study algebraic geometry have impacted much
+  of modern mathematics
+- Analogy
+  |                       | Modern Algebraic geometry                                                 | Derived algebraic geometry            |
+  |-----------------------+---------------------------------------------------------------------------+---------------------------------------|
+  | basic building blocks | commutative ring objects in $Set$ (fancy way of saying commutative rings) | Commutative ring objects $Set_\Delta$ |
+  - $Set\subset Set_\Delta$, but not every "topologically" discrete
+    object is actually discrete
+- Notation: $C$, $D$ categories, write $D^C=Fun(C,D)$ and $D_C=Fun(C^{op},D)$
+- Modern Algebraic Geometry
+  - Any $R\in CRing$ should be "functors" on some topological space in
+    a natural way
+  - $F:CRings\rightarrow Top$
+    - Problem: Let $k$ be a field, $F(k)$ is a point - i.e. not fully faithful.
+    - We really want our target to be Ringed topological spaces
+    - Let $RTop$ be the category of ringed topological spaces $(X,O_X)$
+    - On a field, $F(k)=(*,k)$.
+    - $R\in CRing$, $F(R)=(Spec R,O_{Spec R})$, $\Gamma(O_{Spec R}=R$
+    - Let $R$ be a finitely generated $\mathbb{C}$-algebra. This
+      implies that $R$ is $\mathbb{C}[x_1,\dotsc,x_n]/I$. If
+      $(f_1,\dotsc f_n)=I$, Then the topological space assigned to $R$
+      should look something like the common zeros of $f_1,\dotsc,f_n$.
+  - Side note on manifolds
+    - (Loose) Definition
+      - A manifold is a (smooth, anayltic, topological) topological
+        space that locally looks like an open set in
+        $\mathbb{R}^n$.
+      - The various flavours are obtained by restricting the gluing
+        maps to various types of functions.
+      - What about algebraic manifolds?
+        - Is this concept enough to study affine schemes and schemes
+          in general? No.
+        - Theorem ([[https://en.wikipedia.org/wiki/Noether_normalization_lemma][Noether normalization lemma]])
+          - Notation: The topological spaces associated to a Cring $R$
+            shall be denoted by $Spec R$ and called the affine scheme
+            associated to $R$).
+          - Does $Spec R$ (for $R$ a $\mathbb{C}$-algebra) look like
+            "an algebraic manifold"?
+          - Suppose $R$ has finite degree n, then there exists a
+            finite map from $Spec R$ to $\mathbb{A}^n$.
+      - Why schemes? Because to build any reasonable notions of
+        "algebraic manifold" we need as basic building blocks, we need
+        *all* affine schemes.
+        - Not so formal definition of scheme: a locally ringed
+          topological space that is obtained by gluing affine schemes.
+        - What is gluing?
+          #+BEGIN_SRC latex :file dag.01.svg
+            \begin{diagram}
+              C&\rInto B\\
+              \dInto\\
+              A
+            \end{diagram}
+          #+END_SRC
+          I want "space" $X$ such that $X\rightarrow Y$ is really a map
+          #+BEGIN_SRC latex :file dag.02.svg
+            C&\rTo&B\\
+            \dTo&&\dTo\\
+            A&\rTo&Y
+          #+END_SRC
+          This is know as a colimit of the first diagram.
+          - Example: $A=Spec\mathbb{C}[x]$,
+            $B=Spec\mathbb{C}[x^{-1}]$, $C=Spec \mathbb{C}[x,x^{-1}]$
+            #+BEGIN_SRC latex :file dag.03.svg
+              \begin{diagram}
+                Spec\mathbb{C}[x,x^{-1}]&\rTo Spec\mathbb{C}[x^{-1}]\\
+                \dTo\\
+                Spec\mathbb{C}[x]
+              \end{diagram}
+            #+END_SRC
+            equivalently
+            #+BEGIN_SRC latex :file dag.04.svg
+              \begin{diagram}
+                \mathbb{C}[x,x^{-1}]&\lTo \mathbb{C}[x^{-1}]\\
+                \uTo\\
+                \mathbb{C}[x]
+              \end{diagram}
+            #+END_SRC
+            - Try colimit in $Aff$. Converting to a statement about rings,
+              we are looking for the limit of the above diagram, which is
+              $\mathbb{C}, which corresponds to a point.
+            - Assume Sch. Now perform gluing.
+              $\mathbb{p}$ has a cover by twho copies of $\mathbb{C}$
+              which are identified by gluing along $\mathbb{C}^*$.
+- Derived algebraic geometry
+  - Carry out a similiar program but using $CRing_\Delta$ as
+    building blocks rather than $CRing$. Further, since
+    $CRing\subset CRing_\Delta$, the theory needs to agree there.
+  - Also $E_\infty-rings_\Delta$, $E_infty$-spectra, $c-dg-rings$,
+    $E_\infty$-dg-rings, etc.
+  - We want functor that assigns to a $R\in CRing_\Delta$ a "ringed"
+    topological space $(X,O_x)$ where $O_X$ is a functor from
+    $Open_X\rightarrow Set_\Delta$. Rick's theory enters this in an
+    integral way.
+  - Alternative way of building schemes: to glue objects in $Aff$, a
+    natural place to do this is in $Fun(Aff^{op},Set)\supset Aff$
+  - Side note: One of Grothendieck's gifts to the mathematical communtity:
+    - Given any scheme $X$, $Home(-,X)|_Aff$, so $Sch\subset
+      Fun(Aff^{op}Set)$.
+    - Quot scheme
+    - Pic scheme
+  - starts at derived algebraic geometry
+    - $dAff := CRing^{op}_\Delta$
+    - To create a derived scheme, I glue together derived affine
+      schemes in $Fun(dAff^{op}, Set_\Delta)$
+    - Toen - Homotopical Algebraic Geometry II
+  - An analogy to "locally ringed topological space" is a "locally
+    ringed topos"
+  - Lurie's DAG define the notion of locally ringed $\infty$-topos
+    associated to a $R\in CRing_\Delta$. Perform the gluing in the
+    category of locally ringed $\infty$-topos
+  - Side note:
+    - Ch 1 of $\infty$-topoi => $(\infty,0)-cat are equivalent to
+      topological spaces
+  - Grothendieck:
+    - Given $X$ a topological space.
+    - Get fundamental groupoid $\Pi_\infty X$
+      - objects are points of $X$
+      - morphisms are (parameterized) paths between two points
+      - 2-morphisms are homotopies between paths.
+      - $n$-morphism are homotopies between homotopies
+      - every morphism is invertable up-to homotopy.
