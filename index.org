@@ -11,7 +11,7 @@
 ** [[id:cfffda59-52bc-4c4e-8915-767659e589e0][[2011-10-07]]]
 #+END_COMMENT
 ** [[file:smallness.org][Notes on smallness]]
-* [[dag.org][Notes for Derived Algebraic Geometry]]
+* [[file:dag.org][Notes for Derived Algebraic Geometry]]
 #+BEGIN_COMMENT
 ** [[id:f62ab3fd-fe80-4bc4-b5e6-dc41ebf05eb1][Notes for 2012-01-10 - Overview (lies)]]
 #+END_COMMENT
