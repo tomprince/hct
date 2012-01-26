@@ -651,5 +651,104 @@
       - Let $X$ be a $1-Scheme and let $U_\alpha\rightarrow X$ be an atlas
       - We claim $X\cong \colim (\coprod
         U_\alpha\times_XU\beta\doublerightarrow \prod
-        U_\alpha)\eqcolon Y$
+        U_\alpha)\exiling Y$
       - First, we get a morphism $Y\rightarrow X$ which we claim is a monomorphism
+* Notes for 2012-01-26
+- $\eta:F\rightarrow G = Hom_{Set_{Aff}}(F,G)$ then $\eta$ is Zariski
+  open immersion if it is $-11$-rep &
+  the natural morphism $F\times_G h_a\rightarrow h_a$ is a Zariski
+  open immersion.
+- $\eta$ is $n$-representable if $F\times_G h_A$ is a $n$-scheme
+- $\eta$ is a Zariski open immersion if $F\times_G h_A$ has an atlas
+  $\{h_{\beta\alpha}\rightarrow F\times_G h_A\}$
+  st. $h_{\beta_A}\rightarrow F\times_G h_a\rightarrow h_a$ is a
+  Zariski open immersion.
+- Theorem*
+  - TFAE
+    1) F is a $n$-scheme
+    2) $F\cong|X_1\xdoublerightarrow[g]{f}X_0$ with $X_1$ and $X_0$
+       disjoint unions of $n-1$ schemes and $f$ a Zariski open isomorphism
+  - (1=>2) Let $X_*=\{H_{A_\alpha}\rightarrow F\}$ be an atlas for
+    $F$. So, $h_{A_\alpha}\rightarrow F$ is $n-1$ representable =>
+    $X_0\coprod h_{A_\alpha}$ and $X_1=\coprod H_{A_\alpha}\times F
+    h_{A_\beta}$
+    - For explicit, non-reducible example, set $n=0$.
+    - *Lemma* $F\superset|X_1\doublerightarrow X_0|$ in $Shv$
+      - Easily shown in set. We have a model for
+        $|X_1\doublerightarrow X|=_{Set_{Aff}}Y'$
+      - Then $Y'(Spec B)=|X_1(Spec B)\doublerightarrow X_0(Spec B)|_{Set}$
+      - One can easily show that $Y'\ne Y$ in $Set_{Aff/k}$
+      - What is true?
+        - Sheafification $+:F\mapsto F^+$
+        - $Hom_{Set_{Aff}(F, G)= Hom_{Shv)(F^+, G)$ when $G$ is a sheaf.
+        - Applying this to $Y'$ we see $(Y')^+)\cong Y$.
+      - Since $F\in Set_{Aff/k}$, our model for $Y'$ implies
+        $Y'\subset F$.
+      - This implies that $Y'$ is separated, so $+$ only add elements
+        to $Y'$
+      - $X_0\rightarrow Y'\subset F$. $X_0\rightarrow F$ is an epi (in
+        Shv). So by explicit calculation, $(Y')^+\rightarrow F$ will
+        be an equivalence.
+  - (2=>1)
+    - $X_*$ is an $n-1$ scheme, thus has an atlas
+      $h_{A_\alpha}\rightarrow X}$.
+    - *Lemma*
+      1) Composition of $n-1$ representable morphisms are $n-1$ representable
+      2) Composition of Zariski open morphisms are Zariski open.
+    - We must show $A_\alpha\rightarrow F$ is $n-1$-rep and Zariski open.
+      - Let $h_C\rightarrow F$ be a morphism
+        #+BEGIN_SRC latex :file dag.19.svg
+          \begin{diagram}
+            G&\rTo&X_0\\
+            \dTo_\eta&&\dTo\\
+            h_C&\rTo&F$
+          \end{diagram}
+        #+END_SRC
+        We must show $G$ is a $n-1$ scheme and $\eta is Zariski open
+      - $X_0\rightarrow F$ is an epi (by construction), so there
+        exists a Zariski open cover $\{h_{C_i}\rightarrow h_C\}$ such
+        that we get a diagram
+        #+BEGIN_SRC latex :file dag.20.svg
+          \begin{diagram}
+            &&&&X_0\\
+            &&&\ru(4,2)&\dTo\\
+            \coprod H_{C_i}&\rTo&h_C&\rTo&F
+          \end{diagram}
+        #+END_SRC
+      - *Lemma* $G\rightarrow h_C$ is $n-1$ representable and has
+        cover such that composition is Zariski open if we can find an
+        open cover of $h_C$ such that $h_{C_j}\times
+        {h_{C}}\rightarrow h_C$ satisfies this property.
+      - From lemma, we can replace $h_C$ by $h_{C_j}$ and assume our
+        morphism $h_C\rightarrow F$ factors through $X_0\rightarrow F$
+      - In this case, $G=h_C\times_F X_0=h_C\times_{X_0}X_0\times_F
+        X_0\cong h_C\times_{X_0}X_1$
+      - $G$ is $n-1$ scheme and has a cover that gives a Zariski open immersion
+    - Corollary
+      - $1$-schemes are obtained by gluing 0-schemes.
+      - $0$-schems are obtained by gluing "affine" schemes along
+        affine subschemes?
+    - Theorem
+      - $Sch/k\rightarrow Set_{Aff/k}$ is a fully faithful subcategory
+        whose essential image is the union of $n$-schemes
+      - A $n$-scheme is a $1$-scheme
+      - Claim: $Sch/k\rightarrow Shv_{Aff/k}$ preserves colimits
+      - We found that *any* scheme $X\cong|X_1\doublerightarrow X_0$
+        where $X_1$ is a disjoint union of open subschemes of elements
+        - $X_0$ is a disjoint union of affine scheme and $X_1$ is a
+          disjoint union of open subschemes of these affine subschemes
+      - Claim: If $U$ is a Zariski open subscheme of $Spec A$ then
+        $h_U$ is a 0-subscheme of $h_{Spec A}$.
+      - Theses condition then show $h_X$ is a $1$-scheme
+      - In particular, image of $Shv_k$ is contained  in $1$-scheme.
+      - Applying this in reverse, if $X$ is a 0-scheme, then
+        $X=|\coprod H_{A_\beta}\doublerightarrow \coprod
+        H_{A_\alpha}|_{Shv}$ and $\tilde X=|\coprod
+        H_{A_\beta}\doublerightarrow \coprod H_{A_\alpha}|_{Sch} is a
+        scheme. Further, $h_{\tilde X}\cong X$.
+      - 0-scheme \subset im Sch/k \subset 1-scheme
+      - Apply again to get $1-scheme\subset Shv/k$
+- Claim
+  - $Sch/k\rightarrow Shv_{Aff/k}$ preserves colimimts
+  - Exists a right adjoint to the inclusion, so preserves colimtis
+  - We have an explicit formula for our colimits in both directions
