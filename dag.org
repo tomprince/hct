@@ -74,9 +74,11 @@
           #+END_SRC
           I want "space" $X$ such that $X\rightarrow Y$ is really a map
           #+BEGIN_SRC latex :file dag.02.svg
-            C&\rTo&B\\
-            \dTo&&\dTo\\
-            A&\rTo&Y
+            \begin{diagram}
+              C&\rTo&B\\
+              \dTo&&\dTo\\
+              A&\rTo&Y
+            \end{diagram}
           #+END_SRC
           This is know as a colimit of the first diagram.
           - Example: $A=Spec\mathbb{C}[x]$,
@@ -140,3 +142,514 @@
       - 2-morphisms are homotopies between paths.
       - $n$-morphism are homotopies between homotopies
       - every morphism is invertable up-to homotopy.
+* Notes for 2012-01-12 - Affine Schemes I
+- Recall $R_{loc}Top$ Category of Locally Ringed spaces
+- Main Theorem: $CRings/k^{op}\cong Aff\subset R_{loc}Top/k$
+- *Definition*
+  - A locally ringed topological space is a pair $(X,\O_X)$ with $X\in
+    Top$ and $\O_X\in Shv(X)$, such that $\O_X(U)$ is a unital
+    commutative ring and given any $p\in X$, $\O_{X,p$ is a local ring.
+  - $\O_{X,p}=\lim_{U\ni p\\U\text{ open}}\O_X(U)$
+  - Motivation: $M$ is a smooth compact manifold. Let $C^\infty(M)$ be
+    the ring of complex smooth (analytic) functions on $M$.
+    - $m\in M$,
+      $\delta_m:C^\infty(M)\doubleheadedrightarrow\mathbb{C}:f\mapsto
+      f(m)$
+    - *Claim* $ker\delta_m$ is a maximal ideal
+      - Let $\eufrak{p}\subset M$. In
+        particular, we have $f\in\eufrak{p}$ such that
+        $\delta_m{f}\ne0$. Since the only primes in $\mathbb{C}$ are
+        $0$ and $\mathbb{C}$, and $\delta_m{\eufrak(p)}\ne0$, $\eufrak{p}=C^\infty(M)$.
+      - Let $I\subet C^\infty(M)$ be a maximal ideal. Set $Z(f)$ to be
+        the zero set of $f$. Let $Z_I=\cap_{f\in I} Z(f)$.
+        - Case $Z_I\ne0$: Let $m\in Z_I$. Then $I\subset\ker\delta_m$,
+          so $I=\ker\delta_m$.
+        - Case $Z_i=\emptyset$: Let $D(f)=M\setminus Z(f)$. Then
+          $D(f)$ is open. $Z_i=\emptyset$ iff $\bigcup_fD(f)$ is a
+          covering. Let $f_1,\dotsc,f_n$ correspond to a choice of
+          finite subcovering.
+          $$g=\overline{f_1}f_1+\overline{f_2}f_2+\cdots+\overline{f_n}f_n\in I$$
+          Then $g$ is non-zero everywhere, so $g$ is invertible and
+          $1\in I$.
+    - To recover $M$ as a set, we just need to look at maximal ideals
+      of $C^\infty(M)$.
+    - Assumption: Every point of $\mathbb{C}$ is closed.
+    - Using this, we know for each $f\in C^\infty(M)$, $Z(f)$ is
+      closed (if $f$ is continuous). Therefor $D(f)$ is open.
+    - If we let $\{D(f)\}$ be a sub-basis, we recover a topology on
+      $M$ for which $C^\infty(M)$ are continuous.
+  - What have we learned?
+    - Given $R$ a finitely generated $\mathbb{C}$-algebra. The
+      "points" of $Spec R$ (the space we want to create) should
+      correspond to maximal ideals.
+    - We'll label this set as $Spec_mR$.
+  - Let $f\in R$ and suppose $(f)$ is prime.
+    - Algebra Viewpoint: $R\rightarrow R/(f)\rightarrow k$, $f$ prime implies
+      $R/(f)$ is an integral domain, so has quotient field $k$.
+      - There is no natural map $Spec_m k\rightarrow Spec_mR$.
+      - To get this morphism, we need to add a "point" $(*,k)$ to $Spec_mR$
+      - So, this leads us to the definition of an affine scheme.
+        $|Spec R|=\{\eufrak{p}\in R\|\text{\eufrak{p}\text{is a prime ideal}\}$
+    - Generate topology by functions from $Spec R\rightarrow \mathbb{C}$
+      - $\mathbb{C}=Spec \mathbb{C}[t]$. Assume every point (besides
+        the generic point is closed).
+      - Want $Aff=CRing^{op}$. In $\mathbb{C}-Alg$,
+        $Hom(\mathbb{C}[t], R) = R$.
+      - So any $f\in R$ should correspond to a morphism $Spec
+        R\rightarrow \mathbb{C}$
+      - Copy what we did for smooth compact mainfolds. Since $0$ is
+        closed in $\mathbb{C}$.
+        - Side Note: How does a map get generated from $f\in R$?
+          - Define $f(\eufrak{p})$ for $\eufrak{p}$ maximal, to be the
+            image of $f$ in $R/\eufrak{p}$.
+          - For non-maximal ideals, if $f\in R/\eufrak{p}$ is
+            "constant" (is in the image of $\mathbb{C}\rightarrow R/\eufrak{p}$, send $\eufrak{p}$ to that value. If image of
+            $f$ is not constant, then send $\eufrak{p}$ to the generic point.
+        - Now, define $Z(f)$ as preimage of 0. Define $D(f)$ as
+          $SpecR\setminus Z(f)$. Define topology on $Spec R$ as that
+          generated from $\{D(f)\}$.
+      - $Spec R$ is a topological space. We still need to define sheaf
+        of rings.
+        - Observe: Given $f\in R$, $\overline{f}:Spec R\rightarrow
+          \mathbb{C}$ and $\overline{f}(D(f))\subet
+          \mathbb{C}\setminus 0$. So $\overline(f)$ should be
+          invertible. $Spec R_f=D(f)$.
+          - $D(f)$ will be the primes not containing $f$. This
+            observation says that functions on $D(f)=R_f$.
+        - Open sets of $Spec R$ are such that
+          each element is of the form $D(f)$ for some $f\in R$.
+        - $\O_{Specc R)(D(f)) = R_f$. Now, sheafify to get sheaf on
+          $Spec R$.
+        - Sanity check: Proposition 2.2 in Hartshorne.
+          1) For any $\eufrak{p}\in Spec R$, the stalk is a local ring.
+          2) For any element $f\in R$, the ring $\O(D(f))$ is
+             isomorphic to $R_f$
+        - In particular, setting $f=1$, $D(f)=Spec R, so $\O_{Spec
+          R}(Spec R)=R$.
+        - $\lim_{U\text{ open}\\p\in U} \O_{Spec R}(U)=R_{\eufrak{p}$ a local ring.
+        - We have a map (of sets) $K-alg\rightarrow R_{loc}Top$
+          - Given $(X,\O_X)$ and $(Y,\O_Y)$, a morphism (in $RTop$) is
+            a pair $(f,f^\sharp)$, with $f\in Hom_{Top}(X,Y)$ and
+            $f^\sharp:O_Y\rightarrow f_*\O_X$ (in $Shv(Y)$).
+          - Side: $f_*$ is a functor from $Shv(X)$ to $Shv(Y)$.
+        - A morphism in $R_{loc}Top$ consists of the same data, plus
+          the additional condition
+          - For $p\in Y$, $q\in X$, with
+            $f(q)=p$. $f^{-1}\O_{Y,p}\rightarrow \O_{X,q}$ is a morphism
+            of local rings.
+            - So, given $\O_Y\rightarrow f_*O_X$, there exists an
+              adjoint $f^{-1}\O_Y\rightarrow \O_X$.
+            - Further, there exists a morphism from
+              $\O_{Y,p}\rightarrow (f_*O_x)_p$.
+            - Definition of $f^{-1}Shv(Y)\rightarrow Shv(X)$. Given
+              $G\in Shv(Y)$, $f^{-1}G(U)=\colim_{V\superset f(U)} G(V)$
+            - $f^{-1}\rightarrow f^{-1}(f_*(O_X))\rightarrow
+              O_X\rightarrw O_{X,q}$ gives $\O_{Y,p}\rightarrow \O_{X,q}$
+- $CRings/k^{op}\xleftrightarrow[F]{Spec} R_{loc}Top$
+  - $F((X,\O_X))= \O_X(X)$
+  - Theorem: $Spec$ provides a full and faithful embedding.
+* Notes for 2012-01-17  - Schemes I
+- Notation: Let $R$ be a unital commuative ring.
+  - The unit provies a natural ring morphism $\mathbb{Z}\rightarrow R$.
+  - Thus, $R$ is a $\mathbb{Z}$-algebra.
+  - $CRing\cong \mathbb{Z}-Alg$
+  - $\mathbb{Z}$ is initial in $\mathbb{Z}-alg$.
+- Since $Aff cong CRing^{op}$, we see $Spec\mathbb{Z}$ is terminal in $Aff$.
+  - $|Spec\mathbb{Z}|$ is prime numbers + generic point
+  - If $R$ is an $\mathbb{F}_p$-algebra, then the natural morphism
+    $Spec R\rightarrow Spec\mathbb{Z}$ factors through the prime $p$.
+  - Similarly, if $R$ is characteristic $0$, then it factors through
+    the generic point.
+- Many times, it is necessary to work with $k-alg$ where $k$ is some
+  $\mathbb{Z}$-algebra
+  - $k-alg\cong \mathbb{Z}-alg_{k/}$. Will denote $k-alg^{op}$ as $Aff/k$.
+  - Technically, $k-alg^{op}\cong (\mathbb{Z}-alg)^{op}=Aff_{Spec
+    k}\cong Aff_k$
+  - $Spec k$ is terminal in $Aff/k$
+- *Definition* A scheme is an object $(X,O_X)\subet R_{loc}Top$ with
+  the condition that every $p\in X$ has a neighbourhood $U_p$ with
+  $(U)P,O_X|_{U_p})\cong Spec R_p$ for some $R_p\in\mathbb{Z}-alg$
+  - Here $O_x|_{U_p}(V)=O_x(V)$.
+  - Inherent glueing. Want explicit gluing.
+  - $\{U_p\}_{p\in X$ is an open cover
+- *Alternate Definition 1*
+  - $(X,O_X)$ is a scheme, if there exists an open cover
+    $\{U_\alpha\}$ of $X$ with
+    each $(U_\alpha,O_X|_{U_\alpha})\cong Spec R_\alpha$
+  - Where's the glueing?
+    - Given $U_1$, $U_2$, one naturally has a diagram
+      #+BEGIN_SRC latex :file dag.06.svg
+        \begin{diagram}
+          U_1\cup U_2&\rTo&U_2\\
+          \dTo&&\dTo\\
+          U_1&\rTo X
+        \end{diagram}
+      #+END_SRC
+    - Now, suppose $U_1$ and $U_2$ cover X$. Question: Is $X\cong
+      \colim(U_2\leftarrow U_1\cup U_2\rightarrow U_1}$?
+    - We will write $U_1\cup U_2$ as $U_12$.
+    - *Exammple* Let $A,B,C\in Set$ with $A\superset_{i_A} B\subset_{i_B} C$
+      - We can glue $A$ to $C$ along $B$ by inducing an equivalence
+        relation: Let $D=A \coprod C$. Let $p\in A$, $q\in C$ be
+        equivalent if there exists $b\in B$ with $i_A(b)=p$ and
+        $i_B(b)=q$. Then our "glued" set is $D/~$.
+      - *Claim* $D/~=A\coprod_B C$.
+        - Exists $A\rightarrow D/~$ and $C\rightarrow D/~$, which
+          agree on $B$, so there exists a natural map $A\coprod_B
+          C\rightarrow D/~$.
+        - Likewise, $D/~$ has the universal property regarding maps
+          that identify via the relation.
+    - *Example* Given $A,B,C\in Top$ with $A\superset B \subet C$
+      - Let $Y$ denote the "glude" space $|Y|=A\coprod_B C$. Topology
+        on Y: $U\subset Y$ is open iff $f^{-1}(U)$ and $g^{-1}(U) are
+        open (where $A\xrightarrow{f}Y$ and $C\xrightarrow{g}Y$).
+      - Is this $A\coprod_B C$ in $Top$?
+        - Have $A\coprod_B C\rightarrow Y$
+        - Underlying sets are the same, so just need to check open sets
+        - Let $U$ be open in $A\coprod_B C$, then the natural maps
+          $A\rightarrow A\coprod_B C$ and $C\rightarrow A\coprod_BC$
+          are continuous.
+    - Is $X\cong \colim(U_2\leftarrow U_1\cup U_2\rightarrow U_1}$?
+      - Yes.
+        - We really need $U_1$ and $U_2$ to be open.
+      - Setwise this is clear
+      - We also have a morphism $Y\rightarrow X$. Let $U$ be open in
+        $Y$. Then $U_1\xrightarrow{p_1} Y$ and $U_2\xrightarrow{p_2} Y$ are continuous.
+      - $p_i^{-1}(U)$ is open in $U_i$
+      - However, $U_i$ is open in $X$, so $U=(U_1\cap U)\cup(U_2\cap
+        U)$, so $U$ is open in $X$. So $Y\rightarrow Y$ is a homeomorphism.
+      - What about on structure sheaves?
+      - Locally, $(Y,O_Y)$ and $(X,O_X$ look identical. So, using the
+        sheaf property of $O_Y$ and $O_X$, you can show $O_Y\cong O_X$.
+    - Result
+      - $Sch/k$ is the full subcategory of $R_{loc}Top/Spec k$
+        obtained by closing $Aff_{/k}$ by adding colimits of the form
+        $\prod V_\beta\xdoublerightarrow[g]{f} \prod U_\alpha$ where
+        $V_\beta and $U_\alpha$ are all affine schemes and $f$ and $g$
+        are open imbeddings
+      - A colimit of this form generates an equivalence relation; most
+        of the time it is *not* an equivalence relation.
+      - For this to be a reasonable (more controlled) construction we
+        want our colimits to be equivalence relations.
+      - In $Top$, if we have a diagram $\prod
+        V_\beta\xrightarrow[g]{f}\prod U_\alpha$, with open
+        immersion. Then we have $\coprod
+        U_\alpha\xrightarrow{\epsilon} X=\colim$. Taking the fiber
+        product of $\epsilon with itself, gives a morphism $\coprod
+        U_\alpha\times_X\coprod U_\alpha\rightarrow X\times X$, this
+        becomes an equivalence relation.
+      - Further,
+        #+BEGIN_SRC latex :file dag.07.svg
+          \begin{diagram}
+            \prod V_\beta&\rTo&\prod U_\alpha\\
+            \dTo&&\dTo\\
+            \prod U_\alpha&\rTo& X
+          \end{diagram}
+        #+END_SRC
+      - Conclusion, $\prod V_\beta\rightarrow R$ should be a homeomorphism.
+      - The category $Sch/k$ is a full subcategory of $R_{loc}Top/k$
+        generated by diagrams
+        $\prod V_\beta\xdoublerightarrow[g]{f} \prod U_\alpha$ with
+        $f$ and $g$ Zariski open immersion, and $\prod V_\beta$ and
+        equivalence relation.
+      - Remark: connecting axioms of equivalence relation to maps
+        relates Hartshrone's gluing, aka the cocycle condition.
+      - Remark: If $X$ is a scheme (in our original definition) and
+        $U_\alpha$ is an open affine cover, then $X=colim
+        (\prod_\alpha\beta\doublerightarrow \prod U_\alpha)$
+      - Question? What happens if we enlarge $Sch/k$ by adding
+        colimits of similiar diagrams of schemes (not necessarily affine)
+        - A: Nothing new.
+        - The equivalence relation ensures $\{U_\alpha}$ is an open
+          cover of  the resulting colimit. Using this, you break each
+          $U_{\alpha$ into $U_{\alpha\gamma}$ where each
+          $U_{\alpha\gamma}$ is affine. This provides an open affine
+          cover of $X$. Then one just checks that this satisfied the
+          equivalence relation condition.
+      - Important propery about $Sch_k$
+        - $Sch_k$ is closed under fiber products and $Aff_k\subet
+          Sch_k$ is closed under fiber products as well.
+        - But, $Aff_k$ is not closed under pushout.
+        - The fiber product in $Aff/k$ is the pushout in $k-alg$. This
+          is better known as the tensor product.
+      - Given $(X,O_X)\xrightarrow{f} (Spec A,O_{Spec A}$ in $Sch_k$ is
+        fully determined by $O_X(X)\leftarrow A$
+        - $X=colim U_{\alpha\beta}\doublerightarrow U_\alpha$, where
+          $U_\alpha$ is a Zariski affine open cover
+        - $f$ is equivalent to a diagram
+          #+BEGIN_SRC latex :file dag.08.svg
+            \begin{diagram}
+              Spec k_{\alpha\beta}&=&U_{\alpha\beta}\\
+              &&\dTo&\drTo&\\
+              Spec k_\alpha&=&U_\alpha&\rTo&Spec A
+            \end{diagram}
+          #+END_SRC
+* Notes for 2012-01-19
+- Yoneda Lemma
+  - Given $C$ a category
+  - Contravriant
+    - The asssignment $X\mapsto h_X\in Fun(C^{op},Set)$, $h_X:Y\mapsto
+      Hom (Y,X)$
+      extends to a fully faithful functor $C\rightarrow Fun(C^{op}, Set).
+    - Given any $H\in Fun(C^{op}, Set)$, the set of natural
+      transformations $$Hom(h_X, H)\cong H(X)$.
+  - Covariant
+    - The asssignment $X\mapsto h_X\in Fun(C,Set)$, $h_X:Y\mapsto
+      Hom (X,Y)$
+      extends to a fully faithful functor $C\rightarrow Fun(C, Set).
+    - Given any $H\in Fun(C, Set)$, the set of natural
+      transformations $$Hom(H,h_X)\cong H(X)$.
+  - Sketch of Proof
+    - Given $f\in Hom(h_x, H)$, we need to give an element of $H(X)$.
+      - $id\in Hom(X,X)=h_X(X)$, $f_*(id)\in H(X)$
+    - Given $p\in H(X)$
+      - $f:h_x\rightarrow H$ will assign $id\mapsto p
+  - ...
+- Introduction to Grothendieck Topology
+  - *Example*
+    - Let $X$ be a scheme and $Y=Spec A$.
+    - We should $Hom_(Sch/k)(X,Y)\cing Hom_{k-alg}(A,\O_X(X))$
+    - We proved this via a descent argument
+      - We find an open (affine) cover of $X$.
+        - (assume the every intersection of affines is affine in X)
+      - Now, $f:X\rightarrow Y$ iduces two diagrams
+        #+BEGIN_SRC latex :file dag.09.svg
+          \begin{diagram}
+            \coprod U_{\alpha\beta}\\
+            \dTo^{i_\alpha&\rdTo(2,4)^{g'}\\
+            \coprod U_\alpha\\
+            \dTo^\epsilon\\
+            X&\rTo^f&Y
+          \end{diagram}
+        #+END_SRC
+        #+BEGIN_SRC latex :file dag.10.svg
+          \begin{diagram}
+            \coprod U_{\alpha\beta}\\
+            \dTo^{i_\beta&\rdTo(2,4)^{g}\\
+            \coprod U_\alpha\\
+            \dTo^\epsilon\\
+            X&\rTo^f&Y
+          \end{diagram}
+        #+END_SRC
+      - Further, since $X=\colim(\coprod
+        U_{\alpha\beta}\doublerightarrow \coprod U_\alpha)$ then any
+        pair of such diagrams yields a morphism $X\rightarrow Y$
+      - Given any $Y\in Sch/k$, for any $X\in Sch_k$ and any open
+        covering $U_\alpha$ of $X$, then $Hom(X,Y)$ is the equualizer
+        of the diagram
+        $$\prod Hom(U_\alpha, Y)\doublerightarrow \prod
+        Hom(U_{\alpha\beta}, Y)$$
+      - This condition is a condition on $Hom(-,Y)$. These conditions
+        go by the name *sheaf*.
+      - Explicitly $h_Y=Hom(-,Y)$ is a sheaf in the Zariski topology.
+      - Not every $f\in Fun(Sch_k^{op}, Set)$ is a sheaf!
+      - *Example* Let $LB:Sch_k^{op}\rightarrow Set$
+        - $LB(X)$ is the set of line bundles up to isomorphism on X$
+        - *Claim* $LB$ is not a sheaf.
+          - Let $L$ and LB$ be two non-isomorphic line bundles in $LB(X)$.
+            - $LB(\mathbb{P}^1)=\mathbb{Z}$
+          - Let $U_\alpha$ and $V_\beta$ be the trivializing (Zariski)
+            open covers of $L$ and $L'$, respectively.
+          - Let $O_X$ denote the trivial bundle.
+          - $$\prod U_\alpha\xrightarrow{\epsilon}X\qquad \prod V_\beta\xrightarrow{\epsilon'}X$$
+          - $\epsilon^*(L)=\O_{\prod U_\alpha}$ and
+            $\epsilon'^*(L')=\O_{\prod V_\beta$
+          - I can refine these two covers to $W_\gamma$ so that
+          - $\prod U_\alpha\xrightarrow{\delta}$
+            gives $$\delta^*L=\delta^*L'=O_{\corpod W_\gamma}$
+          - $LB=\pi_0Pic$
+      - Yoneda: $Sch/k\rightarrow Fun(Sch_{/k}^{op}, Set)$ functors
+        through $Shv^{Zar}_k$.
+      - Our example of a Grothendieck site on a category: the "big"
+        Zariski site
+        - $Sch_k$ + for each $X\in Sch/k$ a grouping of
+          $\{U_\alpha\rightarrow X\}$ designated as covers of $X$.
+        - $\{U_\alpha\rightarrow X}$ is a covering in $Sch^{Zar}_{/k}$
+          iff $\{U_\alpha}$ forms a Zariski open cover of $X$.
+        - A sheaf in $Sch^{Zar}_/K$ is a functor $Sch_{/k}^{op}\rightarrow
+          Sets$ such that
+          $$F(X)=\lim( \prod F(U_\alpha}\doublerightarrow \prod
+          F(U_\alpha\times_{X} U_beta))$$
+      - Let $X\in Sch/k$ and $X=U_1\cup U_2$. ($U_1$ and $U_2$ forms a cover.
+        - Know
+          #+BEGIN_SRC latex :file dag.10.svg
+            \begin{diagram}
+              U_1\times_{X}U_2\SEpbk&\rTo&U_2 \\
+              \dTo&&\dTo\\
+              U_1&\rTo&X
+            \end{diagram}
+          #+END_SRC
+        - Question: Is
+          #+BEGIN_SRC latex :file dag.11.svg
+            \begin{diagram}
+              h_{U_1\times_{X}U_2}\SEpbk&\rTo&h_{U_2} \\
+              \dTo&&\dTo\\
+              h_{U_1}&\rTo&h_X
+            \end{diagram}
+          #+END_SRC
+          a pullback?
+          - No. Use $LB$ for example.
+        - Lesson learned, we need to e taking this colimit in sheaves.
+        - Ask same question, but where colimit is a sheaf.
+          - What is a colimit?
+            - $F=colim(U_1\leftarrow U_1\cap U_2 \rightarrow U_2)$
+              if it represents the functor
+              $G\mapsto Hom(U_1,G)\coprod_{Hom(U_1\cap U_2, G),-}Hom(U_2, G)$
+              (this is in $Fun(Sch^{op}_{/k},Set)$).
+            - It is clear that $h_X$ will represent this.
+  - To functors!
+    - We have seen that we can build interesting geometric objects
+      closing $Aff/k$ in $R_{loc}Top$ by certain "glueing" colimits
+    - By Yoneda, $R_{loc}Top$ isn't the only category that $Aff/k$
+      sits in as a full subcategory.
+      #+BEGIN_SRC latex :file dag.12.svg
+        \begin{diagram}
+          Sch/k&\rTo^H&Fun(Sch/k^{op}, Set)\\
+          \uInto&&\dTo_{\text{restriction}}\\
+          Aff/k&\rTo&fun(Aff/k^{op}, Set)
+        \end{diagram}
+      #+END_SRC
+      - Gives $Sch/k\rightarrow Fun(Aff/k^{op},Set)
+        - What properties does this have?
+        - What happens if we glue in $Fun(Aff^{op}_{/k}, Set)$
+        - $Aff^{op}_{/k}\cong k-alg$
+        - Really were embedding $Sch/k\rightarrow Fun(k-alg, Set)$
+  - 1st goal
+    - What geometry can we obtain/impose on a morphism of functors
+      $F\rightarrow G$?
+    - If $X$=Spec A\times_{Spec B}Spec C$, is $h_X=H_{Spec A}\times
+      _{h_{Spec B}}h_{Spec C}$?
+      - Yes
+      - Let $G=h_A\times_{h_B}h_C$, then
+        $$Hom(F,G)=Hom(F,h_A)\times_{Hom(F,h_B)}Hom(F,h_C)$$
+      - $h_X$ represents the functor
+        $$Spec D\mapsto Hom(Spec D, Spec A)\times_{Hom(Spec D, Spec
+        B)} Hom(Spec D, Spec C)$$
+      - Yoneda says these functors are equivalent if $F$ is of the
+        form $Spec D\in Aff/k$.
+      - To understand $G$ we need only give $G(Spec D)$ restricted to
+        $F=Spec D$.
+      - The yoneda embedding preserves fiber products.
+* Notes for 2012-01-24
+- We found
+  - $h:Aff/k\rightarrow Fun(Aff/k, Set)$ is fully faithful and
+    preserves fiber products
+  - $h$ does *not* preserve pushouts
+- Setup
+  - Let $U$ and $Z$ be open (closed) affine subschemes of an affine
+    scheme $X$.
+  - Then given any two distinct morphisms $f,g:Y\rightarrow U$,
+    composition with $U\hookrightarrow X$ preserves the "distinctness"
+    of $f$ and $g
+    - This is obvious on the topological level.
+    - For sheaves
+      $$f^*\O_Y\xdoublelftarrow[g]{f}\O_X$$
+      - By construction,
+        $$f^*\O_Y\xdoublelftarrow\epsilon_*\O_U\leftarrow \O_X$$
+      - If $X=Spec R$, then $U=Spec S$ with $S$ a localization of R.
+      - The construction of $r,r^{-1}\in S$ really means that $r$ has
+        to go to a unit and $r^{-1}$ is the inverse of that unit.
+      - Thus, a morphism on $R$ is determines and is determined by a
+        morphism on $S$.
+  - Same statement holds for $Z\subset X$
+  - Given
+    #+BEGIN_SRC latex :file dag.13.svg
+      \begin{diagram}
+        &&U\\
+        &&\dTo\\
+        Y&\rTo_h&X
+      \end{diagram}
+    #+END_SRC
+    with $Y$ any scheme, then $Y\times_X U=h^{-1}(U)$ is a Zariski
+    open subscheme of $Y$.
+  - Suppose further that $Y$ is affine and the inclusion has the
+    property that $X\times_X U$ is affine.
+  - We can run this argument in reverse, i.e.
+    - This property holds implies that $U$ is Zariski open
+      - Choose the $Y$'s to be an open affine cover of
+        $X$. Reconstruct $U$ as $\bigcup U\cap U_\alpha$
+- With this motivation, let us define ...
+  - Let $F, G\in Fun(k-\alg, Set)$
+  - We say that a morphism $\eta:F\rightarrow G$ is a monomorphism (or $F$
+    is a subfunctor of $G$) if $\eta_X:F(X)\rightarrow G(X)$ is a n
+    inclusion of sets.
+  - An epi differs depending on what category we look at:
+    $Shv_Zar\subset Fun(k-alg, Set)$
+  - An epimorphism of sheaves is a morphism $\eta:F\rightarrow G$ s.t.
+    - For any $\phi\in G(Spec A)$, there exists an affine cover
+      $U_\alpha$ of $Spec A$ such that we get a commutative diagram
+      #+BEGIN_SRC latex :file dag.14.svg
+        \begin{diagram}
+          \prod F(U_\alpha)&\rTo&\prod G(U_\alpha)\\
+          \uTo&&\uTo\\
+          F(Spec A)&\rTo_{\eta_*}&G(Spec A)
+        \end{diagram}
+      #+END_SRC
+      and a $\psi\in\prod F(U_\alpha)$, s.t. $(\prod
+      \eta_{U_\alpha})(\psi)=\prod (G|_\alpha)\phi$
+    - Example
+      #+BEGIN_SRC latex :file dag.16.svg
+        \begin{diagram}
+          \coprod Y\times_XU_\alpha&\rTo&\coprod U_\alpha\\
+          \dTo&&\dTo\\
+          Y&\rTo&X
+        \end{diagram}
+      #+END_SRC
+      The covering need to get $f\in h_X(Y)$ is just $\{U_\alpha\times_XY\}$
+- *Definition*
+  - $F\in Shv_{Zar}$ is a $-1$-scheme if it is representable
+    (i.e. $F\simeq h_{Spec A}$, for some $A\in k-alg$)
+  - A morphism $F\rightarrow G$ is $-1$-representable if for any
+    affine scheme $Spec A$, and morphism $Spec A\rightarrow G$
+    #+BEGIN_SRC latex :file dag.17.svg
+      \begin{diagram}
+        F\times_G Spec A&\rTo&F\\
+        \dTo&&\dTo\\
+        Spec A&\rTo&G
+      \end{diagram}
+    #+END_SRC
+    $F\times_GSpec A is affine ($-1$-representable)
+  - $F$ is a 0-scheme if
+    1) there exists an epi $\coprod
+       h_{A_\alpha}\xrightarrow{\epsilon}F$ satisfying
+       - Each $h_{A_\alpha}$ is representable
+       - The morphism from $h_{A_\alpha}\rightaarrow F$ is
+         $-1$-representable
+  - A Zariski immersion, in other words, for any $Spec B\rightarrow
+    F$, the fiber morphism is a Zariski open inclusion
+  - If $0$-shemes denotes the subcategory of $Fun(k-alg, Set)$ with
+    objects $0$-schemes, does the natural morphism $Sch/k\rightarrow
+    Fun(k-alg, Set)$ factor through a $0$-scheme.
+    - No. Let $X$ be a scheme, $U_1$ and $U_2$ two open affine schemes
+      - Condition 1 says $U_1\times_{h_X}U_2$ is affine = $h_{U_1\cap
+        U_2}$
+  - *Definition* A morphisn $F\rightarrow G$ is $0-representable if
+    for $h_A\rightarrow G$, $h_A\times_G F$ is a $0$-scheme
+  - $F$ is a 1-scheme, if
+    - there exists an epi $\coprod h_{A_\alpha}\rightarrow F$ s.t.
+      - each $h_{A_\alpha}$ is representable
+      - the pullback morphism is a zariski open immersion.
+  - A morphism $U_\alpha\rightarrow H_A$ where $U_\alpha$ is a
+    $0-scheme and $h_A$ is a $-1$-sehcme is a Zariski open immersion
+    if there exists an atlas $\{V_\beta\rightarrow U_\alpha\}_\beta$
+    with composition $V_\beta\rightarrow U_\alpha\rightarrow h_A$ a
+    Zariski open immersion.
+  - We can repeat this indefinitely, *but* this is the last
+    non-trivial enlargement.
+  - 3 categories $0-schemes, $-1$-schemes, $1$-schemes
+    - *Proposition*
+      #+BEGIN_SRC latex :file dag.18.svg
+        \begin{diagram}
+          Sch/k&\rTo^h&Fun(Sch/k^{op},Set)\\
+          \uInto&\rdTo&\dTo\\
+          Aff/k&\rTo^{h}&Fun(Aff_{/k}^{op},Set)
+        \end{diagram}
+      #+END_SRC
+      - The functor $Sch/k\rightarrow Fun(Aff_{/k}^{op},Set)$ is fully faithful
+      - The image of $Sch_{/k}$ is equivalent to $1-Sch$
+    - Proof
+      - Let $X$ be a $1-Scheme and let $U_\alpha\rightarrow X$ be an atlas
+      - We claim $X\cong \colim (\coprod
+        U_\alpha\times_XU\beta\doublerightarrow \prod
+        U_\alpha)\eqcolon Y$
+      - First, we get a morphism $Y\rightarrow X$ which we claim is a monomorphism
