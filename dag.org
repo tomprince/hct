@@ -752,3 +752,287 @@
   - $Sch/k\rightarrow Shv_{Aff/k}$ preserves colimimts
   - Exists a right adjoint to the inclusion, so preserves colimtis
   - We have an explicit formula for our colimits in both directions
+* Notes for 2012-01-31
+** Grothendieck Topologies
+- Definition
+  - Let $C$ be a category and $c\in C$.
+  - A *sieve on $C$ is a subfunctor $F\subset h_c$.
+  - Alternatively, a sieve $F$ on $c$ is a subcategory of $C/c$,
+    satisfying $f:d\rightarrow c\in F$ and $g:d'\rightarrow d$, then
+    $fg\in F$.
+  - Examples
+    - Let $C=Aff/k$. And any $\{U_\alpha \rightarrow X\}$ a Zariski
+      covering. Then $h_{U_\alpha}\rigghtarrow h_X$ is a
+      monomorphism. $h_{U_\alpha}$ is a sieve.
+    - $F\subset h_X$ given by $f\in F(Y)$ if $f$ factors through
+      $\coprod U_{\alpha}$.
+- Definition
+  - A grothendieck topology on $C$ is a collection of sieves $Cov(c)$
+    for each $c\in C$, satisfying
+    - $h_c$ is in $Cov(c)$
+    - $F$ a covering sieve of $c$ and $b\rightarrow C$ any morphisms,
+      then $G=h_b\times_{h_c}F$ is a covering sieve of $b$
+    - If $S$ is a covering sieve for $c$ and $R$ is any sieve on $c$,
+      and for all $f:d\rightarrow c\in S$, $h_d\times{h_C}R$ is a
+      covering sieve for $d$, then $R$ is a covering sieve for $c$.
+- Definition
+  - A grothendieck pretopology is a collection $B(c)$ (for every $c\in
+    C$) of subsets of $C/c$ s.t.
+    - $\{c\rightarrow c\}\in B(c)$
+    - If $\{f_i:c_i\rightarrow c\}\in B(c)$ and $g:d\rightarrow c$,
+      then $\{g^*f_i\}$ is in $B(d)$
+    - If $\{f_i:c_i\rightarrow c\}$ in $B(c)$ and
+      $\{g_{ij}:d_{ij}\rightarrow c_i\}\in B(c_i)$, then
+      $\{f_ig_{ij}\}\in B(c)$.
+  - A pretopology generates a topology, by setting $F\in Cov(c)$, if
+    there exists an $R\in B(c)$ s.t. $R\subset F$.
+  - Examples of pretopologies
+    - $C=Sch/k$, $F\in B(c)$ if $F=\{U_\alpha\rightarrow c\}$ with
+      $U_\alpha$ affine and $\coprod U_\alpha$ covers $c$ and
+      $U_\alpha$ Zariski open
+    - $C=Top$, $B(c)$ collection of open covers
+    - Alt topology on $Sch/k$, $B(X)$ collection of Zariski open covers
+  - Sheaves: $F\in Set_C$ is a sheaf if, for any $S\in Cov(c)$,
+    $Hom(S,F)=Hom(h_c, F)=F(c)$
+  - Incredibly useful fact: Being a sheaf depends on a pretopology,
+    not the topology:
+    - $F$ is a sheaf iff given a pretopology on $C$ generating our
+      topology, and $\{U_\alpha\rightarrow C\}\in B(c)$, then
+      $$ \prod F(U_\alpha\times_c U_\beta)\twoleftarrows\prod
+      F(U_\alpha)\leftarrow F(c)$$ is a limit diagram.
+  - Denote the full subcategory of $Set_C$ consitying of sheaves on a
+    topology $~$ as $Shv_{C,~}\subset Set_C$.
+- Definition
+  - A category $D$ is a grothendieck topos if $D\cong Shv_{C,~}$, for
+    some $(C,~)$
+  - Most common/useful example of a category with a pretopology, for
+    $X\in
+- Proposition (Giraud's Theorem)
+  - Let $C$ be a category. TFAE
+    - The category is a Grothendiect topos
+    - $C$ is a equivalent to a left exact localization of $Set_D$ for
+      some $D$
+    - Giraud's axioms are satisfied
+      - The category is presentable (has small colimits and a set of generators)
+      - colimits are universal
+      - coproducts are disjoint
+      - equivalence rlations are effective
+  - A left exact localization of $C$ is a full and faithful embedding
+    $D\subset C$ with a left adjoint to inclusion $+$. This left
+    adjoin preserves limits)
+    - Example: $++:Fun_{Ouv(X)}\rightarrow Shv_X$
+  - presentable: means that small categories are too small
+    - having a "small" set of generators that generate the category
+      off small colimits has the best of both worlds
+    - Definition
+      - A set $D$ generates a category if for any parallel morphisms
+        $c_0\rightarrow C_1$ in $C$, there exists $d\in D$ with
+        $d\rightarrow c_0$ that distinguishes them.
+      - Immediate consequence: $C\rightarrow Set_D$ is faithful
+      - Implies that $C$ will have all small limits
+  - colimits are universal:
+    - since $C$ has all small limits, it has fiber products
+    - Definition: If $f:d\rightarow c$, then $f^*:C/c\rightarrow C/d$ preserves
+      all small colimits
+  - coproducts are disjoint: $Y\times_{Y\coprod Z} Z=\emptyset$
+  - Every equivalence relation is effective:
+    - Definition: $x\in C$, $R$ is an equivalence relation if there
+      exists $R\rightarrow X\times X$, s.t. $Hom(S,R)\rightarrow
+      Hom(S,X)\times Hom(S,X)$ is an equivalence relation for every $S$.
+    - $R$ is effective if $R\cong X\times_{X/R}X$. ($X/R\cong
+      X\coprod_R X$)
+- Definition
+  - A geometric morphism $F:X\rightarrow Y$ ($X$,$Y$ topoi) is a pair
+    $(f^*,f_*)$ of adjoint functors, with $f^*:Y\rightarrow X$ left
+    adjoint to $f_*$ and $f^* preserves finite limits.
+  - Example
+    - $Shv_X=Shv_{Ouv(X)}$
+    - $X\rightarrow Y\in Hom_{Top}(X,Y)$
+    - $Ouv_X\leftarrow Ouv_Y$
+    - $Set_{Ouv_X}\rightarrow Set_{Ouv_Y}$
+    - $F\in Set_{Ouv_X}\rightarrow f_*F(U)=F(f^{-1}(U))$
+  - This motivates Grothendiecks definition of a point.
+    - A point is a geometric morphism from $Set$
+* Notes for 2012-02-02                                            :CANCELLED:
+CLOSED: [2012-02-09 Thu 12:07]
+- Missing
+* Notes for 2012-02-07
+- ...
+- $f^*$ restricts to a functor from $Ouv(Y)\rightarrow Ouv(X)$
+- Denote $Topoi\rightarrow Top:X\mapsto\{\text{points of }X\}$
+  (i.e. geometric morphisms from set.
+  - Let $p$ be a point of $X$: ($Set\leftrightarrows X$
+  - We know $Ouv(X)\xrightarrow{p^*}Ouv(Set)$
+  - Given $U\in Ouv(X)$, $\overline{U}$ is points of $X$ s.t. $p^*U=1$
+  - Does this form a topology (in the classical sense) on points of $X$?
+    - Yes
+    - $\overline{U}\cap\overline{V}$ open?
+      - $\overline{U}\cap\overline{V}=\overline{U\times_{\mathbb{1}}V$
+    - $\overline{V}=\bigcup\overline{U_\alpha}$ open?
+      - Set $V$ to the smallest subobject of $\mathbb{1}$ containing
+        all $U_\alpha$
+  - We have a functor $X\mapsto \overline{X}\in Top$
+    - Given $X\rightarrow Y$
+    - Do we get a morphism $pt X\rigtharrow pt Y$?
+      - $Set\leftrightarrwos X\leftrightarrows Y)$
+    - Verification that it is continous amounts to the fact that
+      $Ouv(Y)$ maps to $Ouv(X)$
+- Proposition
+  - $X\cong \overline{Shv_X}$ iff $X$ is *sober*
+  - $X\cong Shv_{\overline{X}}$ iff $X$ is localic and has enough points.
+  - Recall
+    - $X$ is *sober* if it has a unique generic point associated to
+      every irreducible closed subset.
+  - $pt(X)\hookrightarrow pt(Shv_X)$
+    - This is continous, $X\rightarrow \overline(Shv_X}$ is continuous.
+    - Why? We can recover open sets of $X$ as subobjects of $\mathbb{1}$
+    - Technically, by construction, the topology on $X$ is the
+      subspace topology induced from $X\hookrightarrow \overline{Shv_X}$
+    - Let $p\in \overline{Shv_X}$, $p\nin X$. Let $V_p$ be the largest
+      open set not containing $p$. Then $\overline{Shv_X}\setminus
+      V_p=\overline{p}$. $g^{-1}(V_p$ is open and
+      $\overline{Z_p}=g^{-1}(\overline{Shv_X}\setminus V_p)$ is
+      closed. $X$ has a unique point whose closure is $\overline{Z_p}$.
+    - Suppose $\overline{V_p}$ was reducible. Then there exists two
+      closed subsets $V_1$ and $V_2$ of $X$, with $V_1\cup V_2=\overline{V_p}$.
+    - Check that the point $q\inX$
+      s.t. $\overline{q}=\overline{Z_p}$. Write out explicitly the
+      geometric point corresponding to $q$. This will induce the same
+      map $Ouv(X)\rightarrow Ouv(Set)$ as $p$.
+  - $X$ is localic if $X$ is generated by subobjects of the terminal object.
+    - $Ouv(X)\subset X$,
+      #+BEGIN_SRC latex :file dag.21.svg
+        \begin{diagram}
+          X&\rTo&Fun(X^{op},Set}\\
+          \uTo&\rdTo\luTo& \dTo\\
+          Ouv(X)&\rTo&Fun(Ouv(X)^{op}, Set)
+        \end{diagram}
+      #+END_SRC
+    - There is a map $Fun(Ouv(X)^{op}, Set)\rightarrow X$.
+    - Denote $X_O=Ouv(X)$. Let $F\in Fun(X^{op}_O, Set)$. Then $F\cong
+      colim(X/F\rightarrow Fun(X^{op}_O, Set))$ Let $\tilde F=colim(X/F\rightarrow
+      X\rightarrow X)$.
+    - $X_0$ has a natural (Grothendieck) topology from being a full
+      subcategory of $X$.
+    - We actually have $X\leftrightarrows Shv_{X_O}$.
+    - Need to show that $Ouv(\overline{X})\doubleheadedleftarrow X_O$.
+      - $X$ *has enough points* if $F\xrightarrow{f} G\in Hom_X(F,G)$
+        is an equivalence iff $p^*f$ is for all points.
+      - Easier: $X$ has enough points if given $U$, $V$ in $X_O$ with
+        $U\ne V$, there exists a point s.t $p^*U\ne p^*V$.
+      - Now, given $U$, $V$, with $U\ne V$; if $\overline{U}$,
+        $\overline{V}$, $X$ have enough points, then there exists
+        $p\in \overline U$ by $p\nin\overline{V}$. So
+        $Ouv(X)\hookrightarrow Ouv(\overline(X)$)$. So $Ouv(X)\cong
+        Ouv(\overline X)$ implies $Shv_{Ouv(\overline{X})cong
+        Shv_{Ouv(X)}\cong X$.
+    - A schme is a ringed topos $(X,\O_X)$ s.t. there exists
+      $\{U_\alpha\rightarrow\mathbb{1}\}$ s.t. $X/U_\alpha\cong
+      Shv_{Spec A, Zer}$ and $\coprod U_\alpha\doubleheadedrightarrow
+          \mathbb{1}$ and $\O_X|_{X|_{\O_X}}\cong \O_{Spec A}$.
+      - $\O_X\in X$, $h_{\O_X}: X^{op}\rightarrow CRings\rightarrow Set$
+      - $X/U_\alpha\xrightarrow{F} X\xrightarrow{h_{\O_X}CRings
+        - composition gives $F^*\O_X\in Fun(X/U_\alpha, CRings)$
+        - $F^*\O_X$ will naturally be a sheaf on $X/U_\alpha. Write
+          $F^*\O_X=\O_X|_{U_\alpha}$.
+      - Check
+        - $X$ is a scheme implies $X$ is localic
+        - $X$ has enough points
+      - $Clear: $(X, \O_X)$ a scheme in ringed top, then
+        $(Shv_X,\O_X)$ is a scheme in ringed topoi.
+        - If $V_\alpha\rightarrow X$ is a covering of $X$ then
+          $\coprod h_{V_\alpha\rightarrow H_X=*$ is
+          epi. $Shv_{X/V_\alpha}\cong Shv_{V_\alpha}$
+      - $Ouv(\mathbb{1})$ generates, if for any 2 parallel arrows,
+        $f,g:F\rightarrow G$ with $f\ne g$ there exists a $V\in
+        Ouv(\mathbb{1}$ and a morphisms $V\xrightarrow{i} F$
+        s.t. $fi\ne gi$.
+
+
+* Notes for 2012-02-09
+- Étale Topos of a scheme and Deligne-Mumford stacks
+- Example from topology
+  - Let $X$ be a (smooth) manifold
+  - Enlarge $Ouv(X)$ by adding $Y\xrightarrow{f}X$ s.t. $f$ induces a
+    local homeomorphism.
+  - $Ouv_{ét}(X)$
+    - objects $Y\rightarrow X$ s.t. $f$ is a local homeomorphism
+    - morphisms - local homeomrophisms
+    - $\coprod_n X\rightarrow X$ is in $Ouv_{ét}$, so is not a poset
+    - Define the grothendieck topology on $Ouv_{ét}$ by saying a
+      collection ${Y_\alpha\rightarrow X}$ is a cover if for every
+      $x\in X$, there is $\alpha$ s.t. $f_\alpha^{-1}(x)\ne\emptyset$
+      - Check
+        1) refinement of a cover is a cover.
+        2) pullback of a cover is a cover
+      - Follows from the fact that local homeomorphisms are closed
+        under composition
+    - *Claim* $Shv_{Ouv_{ét}}=Shv_X$!
+      - $Ouv_{ét}\superset Ouv(X)$, so we get a restriction
+        $Shv_{Ouv_{ét}}\rightarrow Shv_X$
+      - *Definition* A site $(C,~)$ is sub-canonoical, if the Yoneda embedding
+        $C\rightarrow Set_C$ factors through $Shv_{C,~}$.
+        - If $(C,~)$ is subcanonical, then any covering in $C$ is a
+          covering in the canonical topology on $Shv_{C,~}$
+        - Why? Let $c\in C$ and $\{b_\alpha\rightarrow c\}$ a
+          covering. We know $Hom(h_c, F)\cong F(c)$. So if $F$ is a
+          sheaf, then
+          $$F(c)\cong \lim \prod F(b_\alpha)\tworightarrows \prod
+          F(b_\alpha\times_c b_\beta)$$
+          $$Hom(h_c, F)\cong \lim \prod Hom(h_{b_\alpha},
+          F)\tworightarrows\prod Hom(h_{b_\alpha}_\times_{h_c}h_{b_\beta})$$
+          Thus $Hom(h_c, F)\hookrightarrow Hom(\coprod h_{b_\alpha}, F)$
+          and $prod h_{b_\alpha}\doubleheadedrightarrow h_c}$. This
+          proves that $\{h_{b_\alpha}\rightarrow h_c\}$ is a cover in
+          the canonical topology.
+      - $Ouv(X)$ and $Ouv_{ét}(X)$ are sub-canonical.
+      - For any $Y\xrightarrow{f} X\in Ouv_{ét}$, there exists a
+        covering $U_\alpha$ s.t. $fi_\alpha:U_\alpha\rightarrow X$ is
+        in $Ouv(X)$.
+      - The restriction $Ouv_{ét}\rightarrow Set_{Ouv_{ét}}\rightarrow Set_{Ouv_X}$
+        is fully faithful (for the same reason $Sch\rightarrow
+        Fun(Aff^{op}, Set)$. This gives a fully faithful functor
+        $Ouv_{ét}(X)\rightarrow Shv_X$
+      - $Shv_X\cong
+        Shv_{Shv_X,can}\xrightarrow{f}Shv_{Ouv_{ét},X}\cong Shv_X$
+    - Let $X$, $Y$ be in $Sch/\mathbb{C}$. with $X$ and $Y$ of finite
+      type. WE have "analytic variety" $X^{an}$, $Y^{an}$. There
+      exists a covering of $X$ by finite type affine schemes. An
+      finite type affine scheme over $\mathbb{C}$ is a subset of
+      $\mathbb{C}^n$: $R\doubleheadedleftarrow \mathbb{C}[x_1,\dotsc
+      x_n\hookleftarrow I$.
+      - Each $U_\alpha$ has the subspace topology from $\mathbb{C}^n$
+        with analytic topology. These glue to give $X^{an}$ a
+        Hausdorff topology.
+        - Example $\mathbb{P}^{an}_1\cong S^2$
+      - Fact: $X^{an}\rightarrow Y^{an}$ is a local diffeomorphism iff
+        at every $x\in X^{an}$, $y\in Y^{an}$, $f_*:T_xX^{an}\xrightarrow{\cong}T_yY^{an}$
+      - This is not true for the Zariski topology.
+      - Informally, over $\mathbb{C}$, a morphism $Y\rightarrow X$
+        will be étale, if after "analytification", it satisfies either
+        of the above conditions.
+      - The latter condition can be tested without topology.
+        - *Fact* If $f^{an}$ satisfies this, then $f^*TY\cong TX$
+      - We need a definition of $T^*X$ without going to $Top$
+      - Kähler differntials
+        - Let $Spec k\rightarrow Spec X\rightarrow Spec k$ (i.e. $X$
+          is a "pointed" $k$-scheme)
+        - If $X=Spec B$ is affine, then the Kähler differntials are
+          $\pi_o\mathbb{L}_{B/k}$, where $\mathbb{L}_{B/K}$ is
+          André-Quillen homology
+        - Derivations
+          - Let $B$ be a $k$-algebra and $M$ a $B$-module
+          - An $M$ valued $k$-linear derivation of $B$ is a $\phi\in
+            Hom_{k-mod}(B,M)$ s.t. $\phi(bb')=b\phi(b')+\phi(b)+b'$
+            (not a morphism of $B$-modules)
+          - Let $Der_{B/k}(M)$ be the collection of all $M$ valued derivations.
+          - *Definition* The Kähler differntial $\Omega_{B/k}$ is the
+            $B$ module representing $Der_{B/k}$.
+- Definition
+  - Let $X$ and $Y$ be $Sch$.
+  - $f:X\rightarrow Y$ is *étale* if for all $x,y$ with $f(x)=y$,
+    there exists $U_x=Spec B$ and $V_y=Spec B$ affines,
+    s.t. $\overline{f}:=f|_{U_x}:U_x\rightarrow V_y$
+    s.t. $\overline{f}^*\Omega_{B/k}\cong \Omega_{A/k}.
+  - Assuming Kähler diffentials are a sheaf, $f:X\rightarrow Y$ is
+    étale if $f^*(\Omega_{X/k}\rightarrow \Omega{Y/K}$ is an isomorphism.
