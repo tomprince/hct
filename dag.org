@@ -853,8 +853,7 @@
     - $F\in Set_{Ouv_X}\rightarrow f_*F(U)=F(f^{-1}(U))$
   - This motivates Grothendiecks definition of a point.
     - A point is a geometric morphism from $Set$
-* Notes for 2012-02-02                                            :CANCELLED:
-CLOSED: [2012-02-09 Thu 12:07]
+* Notes for 2012-02-02
 - Missing
 * Notes for 2012-02-07
 - ...
@@ -1036,3 +1035,278 @@ CLOSED: [2012-02-09 Thu 12:07]
     s.t. $\overline{f}^*\Omega_{B/k}\cong \Omega_{A/k}.
   - Assuming Kähler diffentials are a sheaf, $f:X\rightarrow Y$ is
     étale if $f^*(\Omega_{X/k}\rightarrow \Omega{Y/K}$ is an isomorphism.
+* Notes for 2012-02-14
+- Recall
+  - $f:Spec B\rightarrow Spec A$ is étale iff $\Omega_{B/A}\cong 0$
+    - technically, $f^*:\Omeaga_{Spec
+      A/k}\xrightarrow{\cong}\Omega_{Spec B/k}$
+- Alternative definition
+  - $f$ is étale if it is
+    1) flat
+    2) unramified
+  - $f$ is *flat* iff $B$ an a module
+    - An $A$-module $M$ is flat if $\otimes M$ preserves exact
+      sequences in $A$-mod
+    - $B$ being a flat $A$-module is the algebraic geometer's version
+      of a subversion.
+  - $f$ is *unramified* if for any $p,q$ in $Spec B$ (resp. $Spec A$),
+    with $f(p)=q$, the induced morphisms $A_q\rightarrow B_p$ of local
+    rings satifies $B_p/mA_q\otimes B$ is a finite field extension
+    of $A_q/mA_q$.
+  - Suppose we are working over an algebraic closed field
+    $Sch/k$. Then $f$ is étale iff given $Spec k\rightarrow Spec
+    A\xleftarrow{f} Spec B$,
+    $$Spec k\times_{Spec A}Spec A\cong \coprod Spec k$
+  - Theorem: The two definitions of étale are equivalent.
+  - Example: Let $A=\mathbb{C}$ then $Spec B\rightarrow Spec A$ is
+    étale if $Spec B=\coprod Spec\mathbb{C}$
+- Define the *little étale site* of $Spec A$ to be the category of
+  étale morphisms whose codomain is $Spec A$.
+  - *Example* If $U$ is a Zariski
+    open subset of $Spec A$, then $U\hookrightarrow Spec A$ is étale.
+    - $Ouv_{Spec A}\subet Ét_A$. Define a grothendieck pretopology
+      on $Ét_A$. A covering of $Y\rightarrow Spec A$ is a collection
+      of $\{Y_\alpha\rightarrow Y\}$ of étale maps s.t. every point
+      in $Y$ has a lift to some $Y_\alpha$.
+    - To show that this is indeed a grothendieck pretopology, we
+      just need
+      1) composition of étale maps are étale
+         - $Spec C\xrightarrow{f} Spec B \xrightarrow{g} Spec A$ If
+           $f$ and $G$ are étale, then
+           $$\Omega_{Spec C/k}\cong f^*\Omega_{Spec B/k}\cong
+             f^*g^*\Omega_{Spec A/k}$\cong (g\comp f)^*\Omega_{Spec A/k}$$
+      2) pullbacks of étale maps are étale
+  - The *étale topos* of $Spec A$ is $Shv_{Ét_A}$
+    - Generally speaking $Shv_{Ét_A}$ will not be localic.
+    - $Ouv_{Spec A}\hookrightarrow Ét_A$ gives $Shv_{Ét_A}\rightarrow
+      Shv_{Zar, Spec A}$
+    - Main difference.
+      - Let $A$ be a field.
+      - $Spec B\rightarrow Spec A$ is étale iff $Spec B=\coprod Spec
+        K_\alpha$ with $K_\alpha$ a finite separable field extension
+        of $A$.
+      - $Shv_{Zar, Spec A}\cong Set \leftarrow Shv_{Ét_A}$
+      - $f$ étale (and each $K_\alpha$ is normal.
+        - Let $B=K$ with $K$ finite seperable over $A$
+        - $Spec K\times_{Spec A}Spec K$ splits as
+          $\coprod_{Gal(K/A)}Spec K$
+      - Let $F$ be an étale sheaf on $Spec A$. Then
+        $$F(Spec A)\cong \lim(Spec K\tworightarrows \prod F(Spec
+        K\times_{Spec A}Spec K)$$.
+        The splitting implies
+        $$F(Spec A)\cong \lim(Spec K\xtworightarrows[id]{Gal} \prod F(Spec K)$$
+        - $Shv_{Ét_A}\cong Gal(\overline{A^{sep}/A)-sets$
+          ($Gal(\overline{A^{sep})$ profinte group)
+- *Definition*
+  - $(X,\O_X)$ (a ringed topos) is a *Deligne-Mumford stack* if there
+    exists $F_\alpha$, s.t. $\coprod F_\alpha\doubleheadedrightarow
+    \mathbb{1}$. and $(X/F_\alpha, \O_X|_{F_\alpha})\cong Shv_{Ét_{A_\alpha}}$.
+** $\infty$-categories and quasi-categories
+- Chapter 1 of Lurie's $\infty$-topoi
+- Fundamental example
+  - Grothendieck: $X$ topological space.
+  - $\Pi_{\le0}$ set of points, up to homotopy (path components)
+  - $\Pi_{\le1} X$ is a category
+    - objects :: points of X
+    - morphisms :: homotopy classes of paths
+  - $\Pi_{le2} X$
+    - objects :: points of X
+    - morphisms :: parameterized paths $I\rightarrow X$
+    - 2-morphims :: $Hom(\gamma,\sigma)$ ($\gamma,\sigma:I\rightarrow
+                    X$) are (homotopy classes of) homotopies between
+                    $\gamma$ and $\sigma$ fixing the endpoints
+  - $Pi_{<\infty}X$ has as "$n$-morphisms" all homotopies between $n-1$-homotopies
+  - composition of morphisms isn't associative, but is up to homotopy.
+  - every morphisms is invertible up to higher morphisms.
+- Grothendieck: Any reasonable definition of a higher category
+  satisfying these two properties should give an equivalence with
+  $\Pi_{<\infty}X$ for some $X\in Top$.
+- Definition: The "category" of $(\infty,0)$-categories is $Top$.
+- $\Pi_{\le1}$ and $\Pi_{\le1}Y$ Are categories, Now, suppose
+  $X\rightarrow Y$ is a continuous morphism. When is the induced
+  $\Pi_{\le1}X\rightarrow \Pi_{\le1}Y$ an "equivalence of categories".
+  - Suppose $X$ and $Y$ are $2$-truncated (i.e. $\pi_{\ge2}$(X)=*$)
+  - Conversion:
+    - $\pi_0(X)\rightarrow \pi_0(Y)$ is an isomorphism
+    - $\pi_1(X,x)\cong\pi_1(Y,q)$ s.t. $f(p)$ is in the same path
+      component as $q$.
+    - $f$ is a "weak equivalence".
+- Definition
+  - A $(\infty,0)$-category is $\Pi_{<\infty}X$ for some $X$ in $Top$
+    and an equivalence of $(\infty,0)$-categories is a a weak
+    homotopy equivalence of space.
+- Recall: Category of categories is a category, but also a $2$-category
+  - This points to the "category" of $(\infty,0)$-catgeory as being
+    something more than just a category
+  - Cat of $(\infty,0)$-cat should be a $(\infty,1)-cat
+  - Points to $(\infty,0)-cat being $Top$ with natural enrichment
+  - *Definition* $(\infty,0)-cat is the enriched category of
+    CW-comlexes with its natural $Top$-enrichment
+- *Definition* An $(\inty,1)$-category has as hom objects,
+  $(\intfy,0)-categories
+  - A $(\infty,1)$-category is a category enriched over topological spaces
+- If we use $Sing:Top:\leftrightarrows:Set_\Delata:|\cdot|$. The nwe
+  can say that an $(\infty,1)$-category is a simplicial category where
+  the simplicial sets are Kan complexes
+- Given a category $C$, $NC\in Set_\Delta$
+- We can pick out which simplicial sets are in the image of $N$.
+* Notes for 2012-02-16
+- 0-cat -> Set
+- 1-cat -> cat
+- 2-cat -> cat enriched over categories
+- $(\intfy,0)$ -> space
+- $(\intfy,1)$ -> category enriched over $(\infty,0)$-category (spaces)
+- Recall
+  - A quasi-category will be a model for $(\infty,1)$-categories, is a
+    sSet satisfying the Kan condition for $0<1<n$.
+  - Let $C$ be a category, $\Lambda_2^0\rightarrow NC$ is a pair of
+    morphisms $f,g$ with the same domain. Then a lift is a morphism
+    $f'$ with $f'\circ f=id$.
+  - If $NC$ is a Kan complex, then $C$ is a groupoid
+- One advantage: $Set_\Delta$ is enriched over itself, and given a
+  quasi-cat $X$, $Map(K,X)$ for any $K\in Set_\Delta$ is a quasi category.
+- So $Set_\Delta$ with its natural self enrichment provides the
+  $(\infty, 2)$-category of $(\infty,1)$-categories.
+- To tie quasi categories to 2-cat and provide a notion of equivalence
+  - $C:Set_\Delta\leftrightarrows Cat_\Delta:N$ will be an adjoint
+    pair. The restriction of $N$ to $Cat$ should recover nerve.
+  - *Fact* to give a colimit preserving functor from
+    $Set_\Delta\rightarrow C$, it is enough to give values on the full
+    subcategory $\Delta\subset Set_\Delta$.
+  - $C\Delta_n$
+    - $C\Delta_n=\{*\}$
+    - $C\Delta_1:*\xrightarrow{*}*$
+    - Recipe for $C\Delta_n$ has $n-1$ objects and $Hom(n,n+m)$ will
+      be an $m-1$ cube. The vertices in the cube correspond to all
+      possible compositions.
+    - Lastly $N$ is the adjoint. Let $C\in Cat_\Delta$. Then
+      $(NC)_n=Hom(C\Delta_n, C)$. i.e. $NC_0=ob C$, $NC_1$ is
+      morphism of $C$. $NC_2$ a composable pair $(f,g)$ and a homotopy
+      from $f\circ g$ to any other morphism.
+    - Does $CNC=C$?
+      - No, but it is weakly equivalent.
+      - Recall an equivalence of simplicial categories is a morphism
+        $F:C\rightarrow D$ s.t. $\pi_0F:\pi_0C\rightarrow \pi_0D$ is
+        an equivalence and $f$ induces a weak equivalence on Hom's.
+      - Define to $X,Y\in Set_\Delta$ to be *categorically equivalent*
+        iff $C(X)=C(Y)$.
+      - Inside of $Cat_\Delta$ you have the subcategory enriched over
+        Kan comlexes. $N:KCat\rightarrow$quasicategories
+      - If $C\in KCat_\Delta$ and every morphisms is invertable up to
+        homotopy, then $NC$ is a Kan complex.
+      - Our model for $(\infty,1)-cat$ will be $Kan\subset Qcat\subset
+        Set_\Delta$. $Sing X$ ($X$ a topoligical space)$ is the model
+        for $\Pi_{<\infty}X$.
+      - *Proposition* There exists a model structure on $Set_\Delta$
+        s.t. weak equivalences are "categorical equivalence" for
+        quasicategories.
+* Notes for 2012-02-28
+- We redefine the limit in a category as the final object in a type of
+  overcategory.
+- $f:C\rightarrow D$, $Nf:NC\rightarrow ND$, we have $ND/NF$
+- Give any morphism in $Set_\Delta$ $f:X\rightarrow Y$ we always have $Y/f$
+- We are left with defining initial/terminal objects.
+- Recall $Set_\Delta\xleftrightarrwos[\mathbb{C}]{N}Cat_\Delta$
+  - What is a terminal object in $\mathbb{C}X$
+  - 1st definition: A final object in a simplical cateegory $C$ is an
+    object of $c\in C$, s.t. $Hom(c',c)=*$
+  - Example: Given a ring $R$, $CH(R-mod)$ is an abelian category.
+    - $(CH(R-mod,W=\text{quasi-iso})$
+    - $L^wCH(R-mod)\in Cat_\Delta$
+      - Given $f:F\rightarrow G$ a quasi-iso,
+      - $Hom_{L^w(CH(R-mod))}(G,0)$ has (at least) two elements
+        #+BEGIN_SRC latex :file dag22.svg
+          \begin{diagram}
+            G&\rTo&G&\rTo&0 \\
+            =&&\dTo^f&&=\\
+            G&\rTo&F&\rTo&0
+          \end{diagram}
+        #+END_SRC
+      - $L^w(CH(R-mod)$ is not $*$ but is contractible.
+      - Recall, $C$ a category, $c\in C$ final, then $C/c\simeq C$
+  - Final definition: A final object in $C\in Cat_\Delta$ is an object
+    $c\in C$ with $Hom(-,c)$ weakly equivalent to $*$.
+  - Example: What property does the morphism $NC/c\rightarrow NC$ have
+    if $c$ is final.
+    - Claim: $c$ is final iff $NC/c\rightarrow NC$ is a trivial Kan fibration.
+      - A lift in
+        #+BEGIN_SRC latex :file dag23.svg
+          \begin{diagram}
+            \partial \Delta_n&\rTo&NC/c \\
+            \dInto&\ruDashedto&\dTo \\
+            \Delta_n & \rTo & NC
+          \end{diagram}
+        #+END_SRC
+        is given by the choice of composable morphism, which is
+        compatible since $N$ commutes with $-/c$.
+      - Suppose $C$ is not final. Then there exists $c'\in C$
+        s.t. $Hom(c', c)$ is either $\emptyset$ or has at least 2
+        elements $g$ and $g'$. A lift in the diagram
+        #+BEGIN_SRC latex :file dag24.svg
+          \begin{diagram}
+            \partial \Delta_1&\rTo^{g,g'}&NC/c \\
+            \dInto&&\dTo \\
+            \Delta_1 & \rTo & NC
+          \end{diagram}
+        #+END_SRC
+        would give a map in $C$ contracting the two morphisms.
+    - This suggests the following: A terminal object in a
+      quasicategory $X$ is $x\in X_0$ s.t. $X/x\rightarrow X$ is a
+      trivial Kan fibration.
+    - *Definition* A limit of $f\in Hom_{Set_\Delta}(X, Y)$ is a choice of terminal
+      object in $Y/f$.
+    - Remark: In $C\in Cat$, a terminal object is well defined up to
+      iso. In quasi-categories, it is well defined up to a
+      contractible space.
+    - $(Y/f)_0$ is an element in $Hom(\Delta_0\times X,
+      Y)$. $\Dlata_0\rightarrow \Delta_0\times X$ induces
+      $$Hom(\Delta_0\times X,Y)\rightarrow Hom(\Delta_0, Y)=Y_0$
+    - Let $C$ be a model category. $f:D\rightarrow C^{cf}$ induces
+      $D\rightarrow L^w(D)\xrightarrow{L^wF}(C^{cf})$. Taking nerves:
+      $ND\rightarrow NL^w(C^{cf}$ in quasi-categories.
+      - *Claim* $\lim NL^w f\simeq holim f$
+- 2 Constructions: Yoneda and Adjoint Functors.
+  - Yoneda: $c\rightarrow Hom(-,c)$ for $c\in C$ induces a full and
+    faithful embedding.
+  - Enriched Yoneda: If $c\in C\in Cat_\Delta$, $Hom(-,
+    C):C^{op}\rightarrow Set_\Delta$
+  - One can hope for $C\rightarrow Fun(C^{op}, Set_\Delta)$ to be an embedding.
+    - $Fun(C^{op}, Set_\Delta)$ is the simplical category of
+      simplicial functors
+    - Technically a category, but there exists the projective model structure
+    - Will right $L^wFun(C^{op}, Set_\Delta)$ as $Fun(C^{op}, Set_\Delta$
+  - Brief (but important detour)
+    - Recall that associated to a (pseudo-) functor $C\xrightarrow{F}Cat$ we can
+      build a category $\Epsilon\rightarrow C$
+      - objects of $\Epsilon=\coprod_{c\in C}obj F(c)$
+      - morphisms in $\Epsilon(x,y)$, are pairs $(g,\eta)$ with $g\in
+        Hom_C(\pi x, \pi y)$ and $\eta\in Hom(Ff(x), y$
+    - Given $\Epsilon\rightarrow C$, when does it give a functor
+      $C\rightarrow Cat$?
+    - Right condition: $\Epsilon\rightarrow is a cocartesian fibration.
+      - *Definition* A morphism $f:x\rightarrow y$ in $\Epsilon$ is cocartesian over
+        $C$ if, given a diagram
+        #+BEGIN_SRC latex :file dag25.svg
+          \begin{diagram}
+            &&z\\
+            &\ruTo&\uDotsto \\
+            x&\rTo^f& Y \\
+
+            &&\pi z\\
+            &\ruTo&\uTo \\
+            \pi x&\rTo^{\pi f}& \pi Y \\
+          \end{diagram}
+        #+END_SRC
+        there exists a lift making both diagram commute.
+        (We want $f$ to lokk like the morphism $F(\pi(f))(x)$.
+      - Alternative characterization, $Hom(y,z)\cong
+        Hom(x,z)\times_{Hom(\pi x, \pi y)}Hom(\pi y, \pi z)$.
+      - *Definition* $\Epsilon \rightarrow C$ is a cocartesian
+        fibration if for every $\eta\in C$ there is a cocartesian
+        morphism lifting it.
+      - To assign a functor to $\pi$,
+        - objects of $F(c)$ objects in $\Epsilon lifting above $c$
+        - morphisms of $F(c)$, $Hom_{F(c)(e, e')\subset
+          Hom_\Epsilon(e,e')$ with $\pi\eta = id_c$
+      - *Prop* Given a morphism $f\in C$, any two choices of cartesian
+        morphisms lifting $f$ are isomorphic
