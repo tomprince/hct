@@ -1310,3 +1310,124 @@
           Hom_\Epsilon(e,e')$ with $\pi\eta = id_c$
       - *Prop* Given a morphism $f\in C$, any two choices of cartesian
         morphisms lifting $f$ are isomorphic
+* Notes for 2012-03-01
+- Why? Yoneda is not illuminating in quasi categories
+- *Definition* $\Epsilon\xrightarrow{\pi}C$ is a cocartesian fibration
+  if for every pair $(e,f)$, with
+  #+BEGIN_SRC latex :file dag26.svg
+    \begin{diagram}
+      e\in\Epsilon\\
+      \dTo
+      \pi(e)&\rTo^f&y'
+    \end{diagram}
+  #+END_SRC
+  there exists $\overline{f}\in Hom(e,y)$ s.t. $\pi\overline{F}=f$,
+  initial among $g$, with $\pi(g)$ factoring through $f$.
+- *Example* $C_{c/}\rightarrow C$ is a cocartesian fibration.
+- *Example* of psuedofunctor: $K-alg \rightarrow Cat:A\mapsto A-mod$ -
+  moduli stack of $K-modules$
+- All these statements have a dual.
+- *Theorem*fi_
+  - cocartesian fibration over $C$ iff psuedofunctor
+  - cartesian fibration over $C$ iff contravariant psuedofunctor
+- Exists quasicategory notion of this.
+  - $let $\Epsilon, X\in Set_\Delta$.
+    #+BEGIN_SRC latex :file dag27.svg
+      \begin{diagram}
+        \Lambda^i_k&\rTo&\Epsilon\\
+        \dTo&&\dTo\\
+        \Delta_k&\rTo& X
+      \end{diagram}
+    #+END_SRC
+    1) $\pi$ is a right fibration if the diagram has a lift for all
+       $0<i\le k$.
+    2) $\pi$ is a left fibration if the diagram has a lift for all
+       $0\le i< k$.
+    3) $\pi$ is a inner fibration if the diagram has a lift for all
+       $0\le i\le k$.
+  - a left fibration *is* a cocartesian fibration, for nerves.
+- *Remark* Set $X=\Delta_0$
+  - Proposition
+    - $\Epsilon\xrightarrow{\pi} \Delta_0$ is an inner fibration if
+      $\Epsilon$ is a quasicategory.
+    - $\pi$ is a right/left fibrationff $\Epsilon$ is a Kan complex.
+- Let $\pi$ be a left fibration
+  #+BEGIN_SRC latex :file dag28.svg
+    \begin{diagram}
+      \Delta_k&\rTo&\Epsilon\times_X\Delta_0&\rTo&\Epsilon \\
+      \dTo&&\dTo&&\dTo^{\pi} \\
+      \Delta_k&\rTo&\Delta_0&\rTo&X
+    \end{diagram}
+  #+END_SRC
+  $\Epsilon\times_X\Delta_0\rightarrow \Delta_0$ is a left fibration,
+  so it is a kan complex.
+- Want to say a left fibration is equivalent to $Fun(X, S)$.
+  - Let $S=N(Kan)$ where $Kan$ is the full subcategory of kan complexes
+  - *Theorem*
+    - There exists a model structure on $Set_\Delta/X$ s.t. the
+      fibrant and cofibrant objects are left (resp. right) fibrations
+    - with this model, there exists a quillen equivalence with
+      $Fun(\mathbb{C}X, Set_\Delta)$ (projective model structure.
+* Notes for 2012-03-06
+- $X\rightarrow S$ a left fibration <=> $\mathbb{C}S\rightarrow Kan$
+- (co-)cartesian fibrations <=> $\mathbb{C}S^{op}\rightarrow
+  Cat_\Delta$ ($\mathbb{C}S\rightarrow Cat_\Delta)$
+- Set $S=\Delta_1$. $M\xrightarrow{f} \Delta_1$ cocartesian
+  - $\mathbb{C}\Delta_1}\rightarrow Cat_\Delta$
+    #+BEGIN_SRC latex :file dag29.svg
+      \begin{diagram}
+        C=M\times_{\Delta_1} \Lambda_1^0&\rTo&\Lambda^1 \\
+        \dTo&&\dTo\\
+        \Lambda_1^0&\rTo&\Delta_1
+      \end{diagram}
+    #+END_SRC
+    #+BEGIN_SRC latex :file dag30.svg
+      \begin{diagram}
+        D=M\times_{\Delta_1}\Lambda_1^1&\rTo&M\\
+        \dTo&&\dTo\\
+        \Lambda_1^1&\rTo&\Delta_1
+      \end{diagram}
+    #+END_SRC
+    Gives map $\mathbb{C}C\rightarrow \mathbb{C}D$. If $M$ is a
+    cartesian fibration, there is $\mathbb{C}D\rightarrow\mathbb{C}C$.
+  - *Claim* If $M$ is cartesian and co cartesian,then those two
+    functors are adjoint.
+- *Definition* An adjoint functor in quasi-cat is a cartesian
+  cocartesian fibration over $\Delta_1$
+- Big side example
+  - Let $k$ be a commutative ring. (i.e. $k$ is a $\mathbb{Z}$-algebra)
+  - There exists a natural category $K-alg$
+  - $k-alg_\Delta\coloneqq Fun(\Delta^{op}, k-alg)$
+  - Any category that has infinite coproducts is tensored over sets.
+  - We make $k-alg$ tensored over $Set_\Delta$ levelwise.
+  - General nonsense => if $C\otimes D\rightarrow D$, we can give $D$
+    an enrichment over $C$.
+  - Given $R_*, S_*\in k-alg$, Hom(\Delta_0\otimes R_*,S_*)$ is a set,
+    $Hom(\Delta_1\otimes R_*,S_*)$ is a set.
+  - Set
+    $Hom(_{k-alg_{\Delta}}(R,S)_n=Hom_{k-alg_\Delta}(\Delta_n\otimes
+    R, S)$.
+  - Likewise, if $D$ is enriched over $C$ often means that $D$ is
+    tensored and cotensored over $C$.
+    - *Definition* $Hom(-\otimes X, Y)$ is a representable functor.
+  - We should think of $k-alg_\Delta\in Cat_\Delta$, not $\in Cat$.
+  - *Propostion* (Homotopical Algebra, Quillen)
+    - $k-alg$ has a combinatorial simplicial model structure where
+      weak equivalences are defined by th natural map
+      $k-alg\rightarrow Set_\Delta$.
+    - Side note: Can do same operation in dg.
+    - Shipley:
+      - $DK:Ch^{\le0}(k-alg)\leftrightarrows k-alg_\Delta:N$
+      - $N$ is monoidal but *not* symmetric monoidal
+  - Now: Using this model structure on $k-alg_\Delta$, apply
+    $N(k-alg_\Delta^{cf})$ to get a quasicategory
+  - $k-alg\rightarrow Cat:A\mapsto A-mod, (A\rightarrow
+    B)\mapsto(-\otmes B)$
+  - $k-alg^{op}\rightarrow Cat:A\mapsto A-mod, (A\rightarrow B)\mapsto(forget)$
+  - $\tilde{QC}\xrigarrow{\pi} k-alg$. Over $A$ this is $A-mod$.
+    - obj of $\tilde{QC}=\coprod_{A\in\k-alg}obj(A-mod)$
+    - $Morph(P,Q)\ni(f,\epsilon)$ where $f\in Hom(\pi_1(p), \pi_1(Q))$ and
+      $\epsilon:P\otimes \pi_1(Q)\rightarrow Q$
+  - $\tilde{\tilde{QC}}\xrigarrow{\pi_2} k-alg$. Over $A$ this is $A-mod$.
+    - $Hom(P,Q)\ni(g,\eta)$ where $g\in Hom(\pi_2 P,\pi_2 Q)$ and
+      $\eta\in Hom(Q,P)$
