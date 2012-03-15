@@ -1431,3 +1431,67 @@
   - $\tilde{\tilde{QC}}\xrigarrow{\pi_2} k-alg$. Over $A$ this is $A-mod$.
     - $Hom(P,Q)\ni(g,\eta)$ where $g\in Hom(\pi_2 P,\pi_2 Q)$ and
       $\eta\in Hom(Q,P)$
+* Notes for 2012-03-13
+- *Definition* $C$ is an $\infty$-topos, if there exists an adjoint
+  pair $(i:C\rightarrow P(D)=Fun(D,S):a)$, such that $i$ makes $C$ a
+  full subcategory of $P(D)$, and $i$ preserves finite limits.
+  - Alternative characterization, $C$ is a left exact localization of
+    $P(D)$, for some $\infty$-category $D$.
+- *Remark* In the case that $C, D, S=Set$, then $$C$ is a topos by
+  giraud's theorem
+- Connection with Jardine's theory
+  - Let $(C,\tau)$ be a site. $Fun(C^{op}, Set)$ has at least 2
+    important model structures
+    - projective
+    - Jardine's local
+- Prop 5 11.1 (Lurie's $\infty$-topos)
+  - $C$ a quasicategory
+  - There are 3 equivalent ways of describing $P(C)$
+    - $P'(C)=NP'_D(C)^{cf}$ where $P'_\Delta(C)$ is the model
+      category $Set/C$ with the model structure having right fibrations
+      as objects
+    - $P''(C)=NP''_\Delta(C)^{cf}$, where
+      $P''_\Delta(C)=Fun(\mathbb{C}C^{op}, Set_\Delta)$
+    - $P(C)=Map_{Set_\Delta}(C^{op},S)$
+  - $P'(C)\simeq P''(C)\simeq P(C)$
+  - $P(C)$ is presheaves on $C$
+  - So, knwo $N\mathbb{C}C \simeq C$. so
+    $N(Fun_{Cat_\Delta}(C^{op},Sets_\Delta))\cong P(NC)$
+  - So, A left localization of $Fun_{Cat_\Delta}(C,Set_\Delta)^{cf}$
+    will have a left exact totalization on $P(NC)$
+  - Point: If $X$ is Fun(C^{op},Set_\Delta)^{cf,-}$, then $NX$
+    is a quasicategory, and will be a left exact localization of $P(NC)$.
+  - In particular, $NX$ is an $\infty$-topos
+- Grothendieck topologies on $C$ are in correspondence with
+  grothendiect topologies on $hC$..
+- If $C=ND$, $D$ an actual category, then $hND\cong D$.
+- Define $Shv_{ND,~}\subset P(ND)$ as the full subcategory of $P(ND)$
+  conisting of $F\in P(ND)$ s.t. $Map(c,
+  F)\xrightarrow{\simeq}Map(U,F)$ (in $hP(ND)$) for any covering sieve
+  $U\rightarrow h_C$.
+- Facts $NX\subset Shv_{ND,~}$.
+  - You can recover $NX$ from $Shv_{ND,~}$ by further localizing
+    1) localize with respect to $\tilde\pi_i$
+    2) look at objects that are are hyper-complete.
+  - Now, let $X$ be an $\infty$-topos, and $C$ an $\infty$-category
+    - A $C$-valued sheaf on $X$ is a functor $X^{op}\rightarrow C$
+      that preserves limits.
+  - Suppose that $C=S$. Then a space valued sheaf on $X$ is a limit
+    preserving functor $X'\subset P(X)$ of space-valued sheaves
+  - $X\subset Fun(X^{op}, Set$, then $F\in Fun(X^{op}, Set)$ is
+    represetnable if $F$ preserves limits
+
+- $\tilde{k-alg_\Delta}=N(k-alg_\Delta)^{cf}$. Let
+  $F:X^{op}\rightarrow \tilde{k-alg}$ be limit preserving. ($F is a
+  "ring valued" sheaf on $X$). Composing with
+  $\tilde{k-alg)\rightarrow S$, we get back an object of $X$. This, a
+  *ring-valued sheaf* is just a $x\in X$ s.t. $Hom(-,x)$ has a ring structure.
+- *Definition* A ringed $\infty$-topos is a pair $(X,\O_X$ with $X$
+  and $\infty$-topos and $\O_X$ a simplicial $k-alg$ valued sheaf on $X
+- *Definition* A $C$-structured $\infty topos is a pair $(X,\O_X)$
+  with $\O_X$ a $C$ valued sheaf on $X$.
+- A $C$-structured morphism between $C$-structured topoi $(X,\O_X$ and
+  $(Y,\O_Y$ is
+  - a geomtric morphism $(f^*,f_*:X\rightarrow Y$
+  - ${f^{*}}^{op}:Y^{op}\leftarrow X^{op}\xrightarrow{\O_X}C$ is a $C$
+    valued sheaf on $X$. $\eta:\O_Y\rightarrow F_*\O_X$ in $Fun(X^{op},C)$.
