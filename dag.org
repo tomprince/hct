@@ -1495,3 +1495,93 @@
   - a geomtric morphism $(f^*,f_*:X\rightarrow Y$
   - ${f^{*}}^{op}:Y^{op}\leftarrow X^{op}\xrightarrow{\O_X}C$ is a $C$
     valued sheaf on $X$. $\eta:\O_Y\rightarrow F_*\O_X$ in $Fun(X^{op},C)$.
+* Notes for 2012-03-15
+- $Shv_X(C)\subset Fun(X^{op}, C)$ where $X$ an $\infty$-topos and $C$ an $\infty$-category
+- Many equivalent ways of defining "sheaf of rings" on a topos
+  (classically)
+  - where $X$ topological space, $C=Shv_{Ouv(X)}\cong Shv_X$.
+  - $F: Ouv(X)^{op}\rightarrow CRing$
+  - $F:Shv_X^{op}\rightarrow CRing$ (limit preserving)
+    - $G\in Shv_X^{op}$ is $lim Ouv(X)^{op}_{G/}$
+    - $G\in Shv_X\cong colim Ouv_(X)/G$
+  - $\tilde F: Shv_X^{op}\rightarrow CRing$ by Freyd's adjoint functor
+    theorem, there exists a $\tilde G:CRings\rightarrow Shv_X^{op}$
+    with $G$ preserving colimits.
+    - $G^{op}:CRings\rightarrow Shv_X$ (explicitly given by object
+      representing  $R\mapsto Hom(R, F(-))$
+  - $\tilde G:(CRing^{fin}^{op}\rightarrow Shv_X$ (limit preserving)
+    - $CRings$ is generated (by colimits) by $CRing^{fin}$ (finitely
+      presented rings)
+    - $R\in CRing^{fin}$ implies $Hom(R, -)$ commutes with colimits
+      (i.e. compact)
+- "hand wavy" definition of presentable
+  - $C$ is presentable if there exists $C^0\subset C$ a full
+    subcategory with objects in $C^0$ all "compact" and $C\cong
+    Ind(C^0)$
+    - $ob Ind(C^0)$ - $Fun(\mathbb{Z}, C^0)$  --- we actually need to
+      vary $\mathbb{Z}$
+    - morphisms $\lim\colim Hom(A_\alpha, B_\beta)$
+  - Example - $P(D)$, $D$ a small $\infty$-category
+    - Fact: Any presentable category is a localization of $P(D) for
+      some $D$.
+    - Suppose $D=*=\Delta_0$. Then $P(D)=S$.
+  - Property we actually need: Given $Fun^{colim}(P(D), C)\subet
+    Fun(P(D), C)$ consiting of limit preserving functors, and $D$
+    presentable, $Fun^{colim}(D,C)\cong Fun(D^{gen},C)$
+- We had $X\xrightarrow{f}Y$ a geometric morphisms.
+  - Let $F\in Shv_Y(C)$, $F:Y^{op}\rightarrow C$, with $C$
+    presentable. Then, by Adjoint functor theorem (see MacLane or
+    Lurie), there exists a left adjoint $C\xrightarrow{G}Y^{op}$ which
+    preserves colimits.
+  - Then $C^{fin}\rightarrow Y^{op}\xrightarrow
+    {F^!}X^{op}$. Composing $f^{!}\tilde G:C^{fin}\rightarrow
+    X^{op}$. This extends to a colimit preserving functor
+    $C\rightarrow X^{op}$, so by adjoint functor theorem there exists
+    $X^{op}\rightarrow C$ which preserves limits.
+  - This assembles to a functor
+    $Shv_Y(C)\xrightarrow{f^*}Shv_X(C)$. Further, by construction we
+    have an adjoint pair.
+- Alternative definition of $Shv_T$ where $T$ is a Small category with
+  a grothendieck topology.
+  - Recall a sieve over $x\in T$ is a subcategory of $T/x$.
+  - A functor $F:T^{op}\rightarrow C$ is a sheaf if for any "covering"
+    sieve of $x$, $U\subset T/X$,
+    $$ U^{op}\subset (T/x)^{op}\xrightarrow{i}T^{op}\xrightarrow{F}C$
+    $lim F_i\cong F(X)$
+  - Fact, in $T/X\rightarrow{i}T$, $\colim i\cong X$
+  - *Exercises* When $C=S$, show this matches our previous definition
+  - Advantage: No Yoneda!
+  - *Proposition* $Shv_T(C)\cong Shv_{Shv_T}(C)$
+    - $Shv_{Shv_T}(C)\cong Fun^{lim}(Shv_T^{op}, C)\rightarrow
+      Fun(T^{op}, C)$
+    - $i:Shv_T\leftrightarrows P(T):L$ gives
+      $$Fun(Shv_T^{op},C)\leftrightarrows Fun^{colim}(P(T)^{op},
+      C)\cong Fun(T^{op}, C)$$
+    - $Since, for any sieve $U\subset h_X$, $L(U)\cong L(h_X)$, thus
+      $Shv_{Shv_T}(C)\subset Shv_T(C)$.
+    - In actuality, the condition on covering sieves *is* the sheaf
+      condition, so this is an equivalence.
+- Let $C$ be an $\infty$-cat with finite colimits (think $C=N(k-alg^{fin})$)
+- An admissible topology on $C$ consists of
+  - A class of morphisms in $C$ called "admissible morphisms"
+  - For each object $A\in C$, a class of functors $\{A\rightarrow
+    A_\alpha}$ of admissible morphisms called covering families satisfying
+    - Any morphisms equivalent to an admissible morphism is admissible.
+    - $id$ is admissible
+    - composition of admissible morphisms is admissible.
+    - transitivity: If $\{A\rightarrow A_\alpha\}$ and
+      $\{A_\alpha\rightarrow A_{\alpha\beta}\}$ are covering, then
+      $\{A\rightarrow A_{\alpha\beta}\}$ is covering
+    - If $A\rightarrow A'$ is covering, and $A\rightarrow B$ is any
+      morphism, then $B\rightarrow B\coprod_AA'$ is admissible.
+    - If a family $\{A\rightarrow A_\alpha\}$ is a covering, then any
+      larger family containing it is a covering family.
+    - Any covering family contains a finite covering subfamily.
+  - Examples
+    - trivial: admissible iff equivalence, covering iff contains an admissible
+    - Zar
+      - $A\rightarrow A_a$ is admissible, for $a\in A$
+      - $\{A\rightarrow A_\alpha\}_C$ is a covering, if there exists a
+        (finite) subset $B\subset C$ s.t. $(a_\beta)_{\beta\in B$\cong
+        A$.
+    - Étale
